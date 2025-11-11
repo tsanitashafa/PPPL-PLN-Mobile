@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('reward', function () {
+    return view('reward');
+});
+Route::get('voucher', function () {
+    return view('voucher');
+});
+Route::get('infovoucher', function () {
+    return view('infovoucher');
+});
+Route::get('riwayat', function () {
+    return view('riwayat');
+});
+Route::get('riwayatpoin', function () {
+    return view('riwayatpoin');
 });
