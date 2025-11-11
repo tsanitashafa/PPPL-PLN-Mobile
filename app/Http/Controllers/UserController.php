@@ -17,6 +17,7 @@ class UserController extends Controller
         return view('registerphone');
     }
 
+
     // ===== [CREATE] Simpan nomor HP =====
     public function storePhone(Request $request)
     {
@@ -28,6 +29,11 @@ class UserController extends Controller
         Session::put('phone', '+62' . $request->phone);
 
         return redirect()->route('verifyphone');
+    }
+
+    public function showVerifyEmail()
+    {
+        return view('verifyemail');
     }
 
     // ===== [READ] Halaman verifikasi =====
