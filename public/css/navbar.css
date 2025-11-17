@@ -1,0 +1,18 @@
+.custom-navbar {
+    padding-top: 5px;
+}
+
+.back-icon {
+    text-decoration: none;
+    color: #000;
+    font-size: 26px;
+}
+
+.back-icon:hover {
+    opacity: 0.6;
+}
+
+.custom-navbar h5 {
+    font-size: 18px;
+    font-weight: 600;
+}

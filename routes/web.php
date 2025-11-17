@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
+Route::get('/homepage', function () {
     return view('homepage');
 });
+
+
+Route::get('/masukkan-token', function () {
+    return view('MasukkanToken.masukkan-token');
+});
+
+Route::get('/token-success', function () {
+    return view('MasukkanToken.token-success');
+});
+
+
