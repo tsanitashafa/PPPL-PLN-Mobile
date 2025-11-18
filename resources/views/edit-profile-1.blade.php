@@ -152,9 +152,7 @@
 </style>
 
 <body>
-    <div class=" d-block" style="z-index: 1050;">
-        <img src="assets/img/top-bar.png" alt="Status Bar Mobile" style="width: 100%;">
-    </div>
+
 
     <div style="position: relative; ">
 
@@ -177,13 +175,15 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-black">
-                            <img src="assets/img/image-profile.png" alt="Foto Profil Abyan" class="rounded-circle"
+                            <img src="{{ $pengguna->photoUrl ?? '' }}" alt="Foto Profil " class="rounded-circle"
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
-                                <h2 class="h6 m-0 fw-bold poppins-bold">Abyan Tsabit</h2>
-                                <p class="small m-0 poppins-regular">abyantsabit777@gmail.com</p>
+                                <h2 class="h6 m-0 fw-bold poppins-bold">{{ $pengguna->nama ?? '' }}
+                                </h2>
+                                <p class="small m-0 poppins-regular">{{ $pengguna->email ?? '' }}</p>
                             </div>
                         </div>
+
                         <div class="d-flex align-items-center">
                             <div class="card rounded-circle text-white d-flex align-items-center justify-content-center"
                                 style="
@@ -221,14 +221,20 @@
 
                 <!-- Edit Profile -->
                 <li class="mb-3">
-                    <a href="#"
+
+
+
+                <li class="mb-3">
+                    <a href="{{ route('profile.edit', ['id' => $pengguna->penggunaid]) }}"
                         class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm text-dark text-decoration-none">
                         <div class="d-flex align-items-center">
                             <i class="fas fa-user fa-lg mr-3 text-secondary"></i>
                             <span class="font-weight-normal">Edit Profile</span>
                         </div>
+
                         <i class="fas fa-chevron-right text-muted"></i>
                     </a>
+                </li>
                 </li>
 
                 <!-- Notifications (dengan switch toggle Bootstrap style) -->

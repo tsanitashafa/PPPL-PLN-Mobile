@@ -111,25 +111,16 @@
 </head>
 
 <body>
-    <div class="d-block" style="z-index: 1050; margin-bottom: -5px;">
-        <div class="d-flex justify-content-between align-items-center bg-white px-3 py-1" style="font-size: 0.75rem;">
-            <span class="font-weight-bold">16:09</span>
-            <div>
-                <i class="fas fa-signal mx-1"></i>
-                <i class="fas fa-wifi mx-1"></i>
-                <i class="fas fa-battery-full mx-1"></i>
-            </div>
-        </div>
-    </div>
+
 
     <div class="bg-white pt-2 pb-3 mb-3">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href='{{ url()->previous() }}' class="text-decoration-none text-dark">
                     <i class="fa-solid fa-arrow-left fa-lg"></i>
                 </a>
 
-                <h1 class="h5 m-0 font-weight-bold text-center w-100" style="color: #333;">
+                <h1 class="h5 m-0  font-weight-bold text-center w-100" style="color: #333;">
                     Pembayaran
                 </h1>
                 <div style="width: 24px;"></div>
@@ -171,17 +162,20 @@
                         <div class="logo-placeholder logo-gopay">G</div>
                         <span>Gopay</span>
                     </div>
-                    <a href="#" class="text-decoration-none link-text d-flex align-items-center">
+                    <a
+                        href='{{ url('/menyambungkan-gopay') }}'class="text-decoration-none link-text d-flex align-items-center">
                         Hubungkan <i class="fas fa-chevron-right ml-2" style="font-size: 0.8rem;"></i>
                     </a>
                 </div>
+
 
                 <div class="payment-method-item d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <div class="logo-placeholder logo-shopeepay">S</div>
                         <span>ShopeePay</span>
                     </div>
-                    <a href="#" class="text-decoration-none link-text d-flex align-items-center">
+                    <a href='{{ url('/ menyambungkan-shopeePay') }}'
+                        class="text-decoration-none link-text d-flex align-items-center">
                         Hubungkan <i class="fas fa-chevron-right ml-2" style="font-size: 0.8rem;"></i>
                     </a>
                 </div>
