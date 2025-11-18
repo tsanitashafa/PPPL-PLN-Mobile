@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{{-- by mirza --}}
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -83,45 +84,56 @@
 
   <!-- Content -->
   <div class="container mt-3">
-    <div>
-      <div class="section-title">Hari Ini</div>
+    @if($user->notifenabled)
+      <div>
+        <div class="section-title">Hari Ini</div>
 
-      <div class="notif-card">
-        <div class="notif-icon"><i class="bi bi-bookmark"></i></div>
-        <div class="notif-text">
-          <span class="notif-title">Listrik sisa 5kWh</span>
-          <span class="notif-time">06.12 AM</span>
+        <div class="notif-card">
+          <div class="notif-icon"><i class="bi bi-bookmark"></i></div>
+          <div class="notif-text">
+            <span class="notif-title">Listrik sisa 5kWh</span>
+            <span class="notif-time">06.12 AM</span>
+          </div>
+        </div>
+
+        <div class="notif-card">
+          <div class="notif-icon"><i class="bi bi-bookmark"></i></div>
+          <div class="notif-text">
+            <span class="notif-title">Token Terisi</span>
+            <span class="notif-time">06.12 AM</span>
+          </div>
         </div>
       </div>
 
-      <div class="notif-card">
-        <div class="notif-icon"><i class="bi bi-bookmark"></i></div>
-        <div class="notif-text">
-          <span class="notif-title">Token Terisi</span>
-          <span class="notif-time">06.12 AM</span>
+      <div>
+        <div class="section-title">Minggu Lalu</div>
+
+        <div class="notif-card">
+          <div class="notif-icon"><i class="bi bi-bookmark"></i></div>
+          <div class="notif-text">
+            <span class="notif-title">Token Terisi</span>
+            <span class="notif-time">06.12 AM</span>
+          </div>
+        </div>
+
+        <div class="notif-card">
+          <div class="notif-icon"><i class="bi bi-bookmark"></i></div>
+          <div class="notif-text">
+            <span class="notif-title">Listrik sisa 5kWh</span>
+            <span class="notif-time">06.12 AM</span>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div>
-      <div class="section-title">Minggu Lalu</div>
-
-      <div class="notif-card">
-        <div class="notif-icon"><i class="bi bi-bookmark"></i></div>
-        <div class="notif-text">
-          <span class="notif-title">Token Terisi</span>
-          <span class="notif-time">06.12 AM</span>
+    @else
+      <div class="text-center mt-5">
+        <div class="mb-4">
+          <i class="bi bi-bell-slash" style="font-size: 4rem; color: #6c757d;"></i>
         </div>
+        <h4 class="text-muted mb-3">Notifications are currently off</h4>
+        <p class="text-muted mb-4">Please enable notifications in your profile settings to receive updates.</p>
+        <a href="{{ route('edit-profile-1') }}" class="btn btn-primary">Go to Profile Settings</a>
       </div>
-
-      <div class="notif-card">
-        <div class="notif-icon"><i class="bi bi-bookmark"></i></div>
-        <div class="notif-text">
-          <span class="notif-title">Listrik sisa 5kWh</span>
-          <span class="notif-time">06.12 AM</span>
-        </div>
-      </div>
-    </div>
+    @endif
   </div>
 
   <!-- Bootstrap Icons -->

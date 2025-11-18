@@ -22,6 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -152,15 +153,15 @@
 </style>
 
 <body>
-    <div class=" d-block" style="z-index: 1050;">
+    {{-- <div class=" d-block" style="z-index: 1050;">
         <img src="assets/img/top-bar.png" alt="Status Bar Mobile" style="width: 100%;">
-    </div>
+    </div> --}}
 
     <div style="position: relative; ">
 
         <div class="d-flex align-items-center justify-content-between p-3 position-relative">
 
-            <a href="#" class="text-decoration-none text-dark position-absolute start-0 ms-3">
+            <a href="{{ route('homepage') }}" class="text-decoration-none text-dark position-absolute start-0 ms-3">
                 <i class="fa-solid fa-arrow-left fa-lg"></i>
             </a>
 
@@ -170,6 +171,24 @@
 
             <div style="width: 24px;"></div>
         </div>
+
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="col py-5" style="position: relative; z-index: 2;">
 
             <div class="row mb-4">
@@ -177,11 +196,11 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-black">
-                            <img src="assets/img/image-profile.png" alt="Foto Profil Abyan" class="rounded-circle"
+                            <img src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}" alt="Foto Profil {{ $user->nama }}" class="rounded-circle"
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
-                                <h2 class="h6 m-0 fw-bold poppins-bold">Abyan Tsabit</h2>
-                                <p class="small m-0 poppins-regular">abyantsabit777@gmail.com</p>
+                                <h2 class="h6 m-0 fw-bold poppins-bold">{{ $user->nama }}</h2>
+                                <p class="small m-0 poppins-regular">{{ $user->email }}</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
@@ -221,7 +240,7 @@
 
                 <!-- Edit Profile -->
                 <li class="mb-3">
-                    <a href="#"
+                    <a href="{{ route('edit-profil-2') }}"
                         class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm text-dark text-decoration-none">
                         <div class="d-flex align-items-center">
                             <i class="fas fa-user fa-lg mr-3 text-secondary"></i>
@@ -231,7 +250,6 @@
                     </a>
                 </li>
 
-                <!-- Notifications (dengan switch toggle Bootstrap style) -->
                 <li class="mb-3">
                     <div class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm">
                         <div class="d-flex align-items-center">
@@ -239,7 +257,7 @@
                             <span class="font-weight-normal text-dark">Notifications</span>
                         </div>
                         <div class="custom-control custom-switch m-0">
-                            <input type="checkbox" class="custom-control-input" id="notifSwitch" checked>
+                            <input type="checkbox" class="custom-control-input" id="notifSwitch" {{ $user->notifenabled ? 'checked' : '' }}>
                             <label class="custom-control-label" for="notifSwitch"></label>
                         </div>
                     </div>
@@ -247,14 +265,17 @@
 
                 <!-- Sign Out -->
                 <li>
-                    <a href="#"
-                        class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm text-dark text-decoration-none">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-sign-out-alt fa-lg mr-3 text-secondary"></i>
-                            <span class="font-weight-normal">Sign Out</span>
-                        </div>
-                        <i class="fas fa-chevron-right text-muted"></i>
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                        @csrf
+                        <button type="submit"
+                            class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm text-dark text-decoration-none border-0 w-100">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-sign-out-alt fa-lg mr-3 text-secondary"></i>
+                                <span class="font-weight-normal">Sign Out</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </button>
+                    </form>
                 </li>
 
             </ul>
@@ -264,13 +285,44 @@
         </div>
     </div>
 
+    {{-- script untuk set notification switch agar terganti di database by mirza--}}
+    <script>
+        $(document).ready(function() {
+            $('#notifSwitch').change(function() {
+                var isChecked = $(this).is(':checked');
+                $.ajax({
+                    url: '{{ route("toggle-notification") }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        notifenabled: isChecked ? 1 : 0
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            console.log('Notification setting updated successfully');
+                        } else {
+                            alert('Failed to update notification setting');
+                            // Revert the switch if update failed
+                            $('#notifSwitch').prop('checked', !isChecked);
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred while updating notification setting');
+                        // Revert the switch if error occurred
+                        $('#notifSwitch').prop('checked', !isChecked);
+                    }
+                });
+            });
+        });
+    </script>
+
     <div class="fixed-bottom">
         <nav class="navbar navbar-expand-lg r p-0 sm:navbar-expand-lg" id="bottom-nav"
             style="box-shadow: 0px 10px 29px rgba(0, 0, 0, 0.15); border-radius-top: 50px;">
             <ul class="navbar-nav w-100 d-flex justify-content-between align-items-end">
 
                 <li class="nav-item text-center">
-                    <a class="nav-link menu-link active" aria-current="page" href="#">
+                    <a class="nav-link menu-link" href="{{ route('homepage') }}">
                         <i class="fa-solid fa-house-chimney"></i>
                         <span class="d-block small">Home</span>
                     </a>
@@ -292,14 +344,14 @@
                 </div>
 
                 <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('notif') }}">
                         <i class="fa-solid fa-newspaper"></i>
                         <span class="d-block small">Artikel</span>
                     </a>
                 </li>
 
                 <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link active" href="{{ route('edit-profile-1') }}">
                         <i class="fa-solid fa-user"></i>
                         <span class="d-block small">Profile</span>
                     </a>

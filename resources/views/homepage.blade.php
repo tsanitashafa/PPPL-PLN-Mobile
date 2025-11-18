@@ -152,9 +152,6 @@
 </style>
 
 <body>
-    <div class=" d-block" style="z-index: 1050;">
-        <img src="assets/img/top-bar.png" alt="Status Bar Mobile" style="width: 100%;">
-    </div>
 
     <div style="position: relative; ">
 
@@ -169,11 +166,11 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-white">
-                            <img src="assets/img/image-profile.png" alt="Foto Profil Abyan" class="rounded-circle"
+                            <img src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}" alt="Foto Profil {{ $user->nama }}" class="rounded-circle"
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
-                                <h2 class="h6 m-0 fw-bold poppins-bold">Hi, Abyan</h2>
-                                <p class="small m-0 poppins-regular">Silver - 3000 Poin</p>
+                                <h2 class="h6 m-0 fw-bold poppins-bold">Hi, {{ $user->nama }}</h2>
+                                <p class="small m-0 poppins-regular">{{ ucfirst($user->tier) }} - {{ $user->poin }} Poin</p>
                             </div>
                         </div>
 
@@ -190,7 +187,7 @@
                                     style="height: 40px; padding-left: 40px; border: none; background-color: #fff; color: #6c757d; font-size: 0.9rem;">
                             </div>
 
-                            <a href="#" class="text-white fs-4 ms-2">
+                            <a href="{{ route('notif') }}" class="text-white fs-4 ms-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
                                     <path
@@ -208,7 +205,7 @@
 
                         <div
                             class="d-flex justify-content-between align-items-center pb-2 border-bottom mb-3; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                            <h3 class="h4 m-0 fw-normal">18437249224</h3>
+                            <h3 class="h4 m-0 fw-normal">{{ $user->phone }}</h3>
                             <div class="d-flex align-items-center text-black" style="color: #18a2bb">
                                 <i class=" h4 fa-solid fa-chevron-right"></i>
                             </div>
@@ -219,7 +216,7 @@
                             <div class="col-6 border-end">
                                 <p class="text-muted small mb-1">Saldo</p>
                                 <div class="d-flex align-items-center">
-                                    <h4 class="m-0 fw-bold">Rp 15.300</h4>
+                                    <h4 class="m-0 fw-bold">Rp {{ number_format($user->saldo, 0, ',', '.') }}</h4>
                                     <div class="d-flex align-items-center text-black" style="color: #18a2bb">
                                         <i class="fa-solid fa-circle-plus"></i>
                                     </div>
@@ -231,7 +228,7 @@
                             <div class="col-6">
                                 <p class="text-muted small mb-1">Token Listrik</p>
                                 <div class="d-flex align-items-center">
-                                    <h4 class="m-0 fw-bold">5.26 kWh</h4>
+                                    <h4 class="m-0 fw-bold">0 kWh</h4>
                                     <a href="#" class="text-info ms-2 ">
                                         <i class="fa-solid fa-circle-plus "></i>
                                     </a>
@@ -390,14 +387,13 @@
                 </div>
 
                 <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
                         <i class="fa-solid fa-newspaper"></i>
                         <span class="d-block small">Artikel</span>
                     </a>
                 </li>
 
                 <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('edit-profile-1') }}">
                         <i class="fa-solid fa-user"></i>
                         <span class="d-block small">Profile</span>
                     </a>

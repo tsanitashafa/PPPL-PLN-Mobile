@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{{-- by mirza --}}
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -62,7 +63,7 @@
 
   <div class="d-flex flex-column align-items-center">
     <a href= "{{ route('registerphone') }}" class="btn btn-custom">Register</a>
-    <button class="btn btn-custom">Login</button>
+    <a href="{{ route('loginphone') }}" class="btn btn-custom">Login</a>
   </div>
 
 </body>

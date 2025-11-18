@@ -54,52 +54,68 @@
 
 <body>
 
-    <!-- Header -->
     <div class="d-flex align-items-center justify-content-between p-3 border-bottom bg-white">
-        <a href="#" class="text-dark"><i class="fas fa-arrow-left fa-lg"></i></a>
+        <a href="{{ route('edit-profile-1') }}" class="text-dark"><i class="fas fa-arrow-left fa-lg"></i></a>
         <h5 class="mb-0 font-weight-medium">Edit Profile</h5>
-        <a href="#" class="text-info font-weight-medium">Simpan</a>
+        <button type="submit" form="editProfileForm" class="btn btn-link text-info font-weight-medium p-0">Simpan</button>
     </div>
 
-    <!-- Foto Profil -->
     <div class="text-center my-4">
         <div class="profile-container">
-            <img src="assets/img/image-profile.png" alt="Foto Profil">
+            <img id="profileImage" src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}" alt="Foto Profil {{ $user->nama }}" class="rounded-circle">
             <div class="upload-icon">
-                <i class="fas fa-plus"></i>
+                <label for="profileImageInput" style="cursor: pointer; margin: 0;">
+                    <i class="fas fa-plus"></i>
+                </label>
+                <input type="file" id="profileImageInput" name="profile_image" accept="image/*" style="display: none;" form="editProfileForm">
             </div>
         </div>
     </div>
 
-    <!-- Form Edit -->
     <div class="container">
-        <form>
+        <form id="editProfileForm" method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label for="nama">Nama</label>
-                <input type="text" class="form-control rounded-pill" id="nama" placeholder="Masukkan nama Anda">
+                <input type="text" class="form-control rounded-pill" id="nama" name="nama" value="{{ $user->nama }}" placeholder="Masukkan nama Anda" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control rounded-pill" id="email"
-                    placeholder="Masukkan email Anda">
+                <input type="email" class="form-control rounded-pill" id="email" name="email" value="{{ $user->email }}"
+                    placeholder="Masukkan email Anda" required>
             </div>
 
             <div class="form-group">
-                <label for="tgl">Tanggal Lahir</label>
-                <input type="date" class="form-control rounded-pill" id="tgl">
+                <label for="phone">No. HP</label>
+                <input type="text" class="form-control rounded-pill" id="phone" name="phone" value="{{ $user->phone }}" placeholder="Masukkan nomor HP" required>
             </div>
 
             <div class="form-group">
-                <label for="hp">No. HP</label>
-                <input type="text" class="form-control rounded-pill" id="hp" placeholder="Masukkan nomor HP">
+                <label for="tanggal_lahir">Tanggal Lahir</label>
+                <input type="date" class="form-control rounded-pill" id="tanggallahir" name="tanggallahir" value="{{ $user->tanggallahir }}">
             </div>
+
         </form>
     </div>
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Preview image before upload
+        document.getElementById('profileImageInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 
 </body>
 
