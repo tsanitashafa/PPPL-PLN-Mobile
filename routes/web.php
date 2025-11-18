@@ -30,4 +30,14 @@ Route::get('/token-success', function () {
     return view('MasukkanToken.token-success');
 });
 
+Route::get('/cek-token', function () {
+    return view('CekToken.cek-token');
+});
 
+Route::get('/detail-pelanggan', function () {
+    return view('CekToken.detail-pelanggan');
+});
+
+Route::get('/history-pemakaian', function () {
+    return view('CekToken.history-pemakaian');
+});
