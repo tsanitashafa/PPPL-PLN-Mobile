@@ -123,6 +123,7 @@
     <div class="fixed-bottom bg-transparent" style="padding: 20px 15px;">
         <div class="container p-0">
             <button class="btn btn-block font-weight-bold"
+                onclick="window.location.href='{{ url('/verifikasi-gopay') }}'"
                 style="background-color: #4aa3b3; color: #fff; border-radius: 10px; padding: 12px 0; border: none; font-size: 1.1rem;">
                 Lanjutkan
             </button>

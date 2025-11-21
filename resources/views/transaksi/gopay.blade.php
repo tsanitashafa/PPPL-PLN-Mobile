@@ -75,7 +75,7 @@
     </div>
 
     <div class="container">
-        <button class="btn btn-block font-weight-bold"
+        <button class="btn btn-block font-weight-bold" onclick="window.location.href='{{ url('/verifikasi-gopay') }}'"
             style="background-color: #4aa3b3; color: #fff; border-radius: 10px; padding: 20px 0; border: none;">
             Sambungkan Akun Gopay
         </button>
