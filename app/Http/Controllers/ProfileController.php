@@ -12,7 +12,7 @@ class ProfileController extends Controller
      * Menampilkan halaman Profile Index.
      * Menggunakan session untuk mengambil data user terakhir yang diupdate.
      */
-    public function index()
+    public function loadEditProfile()
     {
         // Dalam aplikasi nyata, ini seharusnya Auth::id() atau ID user yang sedang login
         $penggunaid = session('last_updated_id');
@@ -25,7 +25,7 @@ class ProfileController extends Controller
             $pengguna = Pengguna::first();
         }
 
-        return view('edit-profile-1', compact('pengguna'));
+        return view('fitur-tambahan/edit-profile-1', compact('pengguna'));
     }
 
     // ----------------------------------------------------
@@ -45,7 +45,7 @@ class ProfileController extends Controller
             abort(404);
         }
 
-        return view('edit-profile-2', compact('pengguna'));
+        return view('fitur-tambahan/edit-profile-2', compact('pengguna'));
     }
 
     // ----------------------------------------------------

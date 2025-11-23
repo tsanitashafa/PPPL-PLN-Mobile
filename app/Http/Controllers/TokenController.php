@@ -13,7 +13,7 @@ class TokenController extends Controller
     public function showBuyTokenPage()
     {
         // Ganti dengan view yang sesuai
-        return view('transaksi/beli-token');
+        return view('beli-token/beli-token');
     }
 
 

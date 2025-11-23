@@ -1,0 +1,86 @@
+/* --- Global Styles --- */
+body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    background-color: #fff;
+}
+
+/* --- Header/Fixed Top Bar --- */
+.custom-header-border {
+    padding: 15px 0;
+    /* !important digunakan untuk mengesampingkan border-bottom default Bootstrap yang mungkin ada */
+    border-bottom-color: #eee !important;
+}
+
+.header-content {
+    /* Menentukan lebar untuk elemen panah kembali */
+    /* Menggantikan style="padding-right: 15px;" */
+}
+
+.back-button {
+    padding-right: 15px;
+}
+
+.header-title {
+    /* Memindahkan style font untuk judul dari inline */
+}
+
+.header-title span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-bottom: 5px;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+.placeholder-space {
+    width: 24px;
+}
+
+/* --- Main Content Area --- */
+.main-content-padding {
+    padding-top: 55px; /* Memberikan ruang agar tidak tertutup fixed header */
+    padding-bottom: 100px;
+}
+
+/* --- Logo Section --- */
+.logo-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.vertical-divider {
+    height: 80px;
+    width: 1px;
+    background-color: #000000;
+    margin: 0 10px;
+}
+
+/* --- Syarat & Ketentuan Section --- */
+.section-title {
+    font-size: 1.1rem;
+}
+
+.requirement-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- Button Section --- */
+.connect-button-container {
+    /* Jika diperlukan styling container */
+}
+
+.connect-button {
+    background-color: #16a1ba !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 20px 0 !important;
+    border: none !important;
+    transition: background-color 0.3s ease;
+}
+
+.connect-button:hover {
+    background-color: #3e8e9c !important;
+}

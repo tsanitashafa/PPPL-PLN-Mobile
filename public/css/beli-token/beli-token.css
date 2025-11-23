@@ -1,0 +1,143 @@
+/* --- Global Styles --- */
+body {
+    /* Menggunakan font Inter/Poppins untuk tampilan aplikasi seluler */
+    font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+/* --- Fixed Header --- */
+.custom-header {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+}
+
+.header-title span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-bottom: 5px;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+.empty-space {
+    width: 24px;
+}
+
+/* --- Input Section --- */
+.meter-input {
+    border-radius: 12px;
+    padding: 20px 15px;
+    border: 1px solid #ccc;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.customer-name-display {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.token-amount-label {
+    font-weight: 500;
+}
+
+/* --- Token Button Styles --- */
+
+/* Style default untuk tombol yang TIDAK dipilih */
+.token-btn {
+    border: 1px solid #e9ecef;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+    border-radius: 12px;
+    padding: 15px 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Style untuk tombol yang DIPILIH */
+.token-btn.active {
+    border: 1px solid #2a88a0 !important;
+    background-color: #2a88a0 !important;
+    color: #fff !important;
+    /* Sedikit efek shadow untuk menonjolkan */
+    box-shadow: 0 4px 6px rgba(42, 136, 160, 0.2) !important;
+}
+
+/* --- Content Padding & Summary/Footer Styles --- */
+/* Padding bawah untuk mengatasi fixed footer/summary */
+.content-padding {
+    /* Sesuaikan dengan tinggi kedua box summary: Voucher (60px) + Summary Detail (150px) */
+    padding-bottom: 250px;
+}
+
+/* Voucher Box */
+.voucher-box {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.voucher-btn i {
+    font-size: 1.2rem;
+}
+
+/* Summary Detail Box */
+.summary-detail-box {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.total-payment-row {
+    margin-top: 15px;
+}
+
+.total-payment-label, .total-payment-amount {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.discount-amount {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.total-pln {
+    font-weight: 500;
+}
+
+/* Fixed Bottom Summary */
+.fixed-bottom-summary {
+    background-color: #fff;
+    margin-top: 20px;
+    border: 1px solid #eee;
+    z-index: 999;
+    border-radius: 12px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.total-label {
+    font-size: 0.9rem;
+}
+
+.total-amount {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Style khusus untuk tombol Lanjutkan Pembayaran */
+.btn-lanjutkan {
+    background-color: #2a88a0 !important;
+    border-color: #2a88a0 !important;
+    color: #fff !important;
+    font-size: 1.1rem !important; /* Ditingkatkan dari 0.6rem agar lebih mudah diklik */
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    padding: 12px 0 !important;
+}

@@ -10,35 +10,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/bayar-token/transaksi-berhasil.css">
 </head>
 
 <body class="bg-white">
 
-    <div class="container text-center d-flex flex-column justify-content-center align-items-center"
-        style=" max-width: 400px; padding: 20px; margin-top: 20vh;">
+    <div
+        class="container transaction-success-card text-center d-flex flex-column justify-content-center align-items-center">
 
-        <div class="d-flex justify-content-center align-items-center mb-4"
-            style="width: 120px; height: 120px; background-color: #f2e66c; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="success-icon-wrapper d-flex justify-content-center align-items-center mb-4">
             <i class="fas fa-check fa-4x text-white"></i>
         </div>
 
         <h5 class="font-weight-bold mb-2">Selamat!</h5>
 
-        <div class="d-inline-flex align-items-center mb-3 p-2 border rounded" style="background-color: #f8f9fa;">
+        <div class="transaction-id-box d-inline-flex align-items-center mb-3 p-2 border rounded">
             <strong class="text-dark">312154156040</strong>
-            <i class="fas fa-copy ml-2 text-secondary" style="cursor: pointer;" title="Salin ID Transaksi"></i>
+            <i class="fas fa-copy ml-2 text-secondary copy-icon" title="Salin ID Transaksi"></i>
         </div>
 
         <p class="mb-1">Transaksi berhasil diproses.</p>
         <p class="font-weight-bold text-success mb-5">+78 poin</p>
-
-
-
     </div>
-    <div class="container text-center d-flex flex-column justify-content-center align-items-center"
-        style=" padding: 20px;  margin-top: 10vh;">
-        <button class="btn btn-block" onclick="window.history.back()"
-            style="background-color: #4aa3b3; color: #fff; border-radius: 25px; padding: 10px 50px; border: none; max-width: 300px; transition: background-color 0.3s ease; **margin-top: 25vh;**">
+
+    <div class="container button-container text-center d-flex flex-column justify-content-center align-items-center">
+        <button class="btn btn-block back-button" onclick="window.history.back()">
             Kembali
         </button>
     </div>

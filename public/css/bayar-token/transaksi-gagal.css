@@ -1,0 +1,38 @@
+/* Styling untuk container utama card transaksi gagal */
+.transaction-failed-card {
+    max-width: 400px;
+    padding: 20px;
+    margin-top: 20vh; /* Memindahkan gaya inline ke CSS */
+}
+
+/* Styling untuk wrapper ikon silang (failed icon) */
+.failed-icon-wrapper {
+    width: 120px;
+    height: 120px;
+    background-color: #ed3337; /* Warna merah untuk gagal */
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling untuk container tombol */
+.button-container {
+    padding: 20px;
+    margin-top: 25vh; /* Memindahkan gaya inline ke CSS */
+}
+
+/* Styling untuk tombol "Kembali" */
+.back-button {
+    background-color: #4aa3b3 !important; /* Warna latar belakang tombol */
+    color: #fff !important;
+    border-radius: 25px !important;
+    padding: 10px 50px !important;
+    border: none !important;
+    max-width: 300px;
+    transition: background-color 0.3s ease;
+    margin-top: 2vh; /* Memindahkan gaya inline ke CSS */
+}
+
+/* Efek hover untuk tombol (opsional) */
+.back-button:hover {
+    background-color: #3e8e9c !important; /* Sedikit lebih gelap saat di-hover */
+}

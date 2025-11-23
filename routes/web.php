@@ -17,6 +17,92 @@ use App\Http\Controllers\TokenController;
 
 //Route pengerjaan manzil
 
+//bayar token
+Route::get('pembayaran', function () {
+    return view('bayar-token/pembayaran');
+
+});
+
+Route::get('transaksi-berhasil', function () {
+    return view('bayar-token/transaksi-berhasil');
+});
+
+Route::get('transaksi-gagal', function () {
+    return view('bayar-token/transaksi-gagal');
+});
+
+
+
+//beli token
+Route::get('beli-token', function () {
+    return view('beli-token/beli-token');
+});
+
+
+//fitur tambahan
+// edit profile
+Route::get('edit-profile-1', function () {
+    return view('fitur-tambahan/edit-profile-1');
+});
+
+Route::get('edit-profil-2', function () {
+    return view('fitur-tambahan/edit-profile-2');
+});
+
+Route::get('/profile', [ProfileController::class, 'loadEditProfile']);
+// Added a placeholder {id} for the edit route
+Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+// Consolidated update routes and made them RESTful-ish
+Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
+// Hubungkan e wallete
+//halaman utama masuk
+Route::get('gopay', function () {
+    return view('hubungkan-ewallet/gopay');
+});
+
+Route::get('shopePay', function () {
+    return view('hubungkan-ewallet/shopeePay');
+});
+
+
+// halaman kedua
+
+Route::get('hubungkan-gopay', function () {
+    return view('hubungkan-ewallet/hubungkan-gopay');
+});
+Route::get('hubungkan-shopepay', function () {
+    return view('hubungkan-ewallet/hubungkan-shopepay');
+});
+
+
+
+//verifikasi halaman
+
+Route::get('verifikasi-gopay', function () {
+    return view('hubungkan-ewallet/verifikasi-gopay');
+});
+
+Route::get('verifikasi-shopePay', function () {
+    return view('hubungkan-ewallet/verifikasi-shopeePay');
+});
+
+
+Route::get('menyambungkan-berhasil', function () {
+    return view('hubungkan-ewallet/menyambungkan-berhasil');
+});
+
+Route::get('menyambungkan-gagal', function () {
+    return view('hubungkan-ewallet/menyambungkan-gagal');
+});
+
+
+
+
+
+
+//homepage
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,60 +111,24 @@ Route::get('homepage', function () {
     return view('homepage');
 });
 
-// edit profile
-Route::get('edit-profile-1', function () {
-    return view('edit-profile-1');
+
+
+//template
+Route::get('/template', function () {
+    return view('template'); // Ambil dari nama file template.blade.php
 });
 
-Route::get('edit-profil-2', function () {
-    return view('edit-profil-2');
-});
-
-// web.php
-
-Route::get('/profile', [ProfileController::class, 'index']);
-// Added a placeholder {id} for the edit route
-Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-// Consolidated update routes and made them RESTful-ish
-Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
-
-Route::get('menyambungkan-gopay', function () {
-    return view('transaksi/gopay');
-});
-
-Route::get('menyambungkan-shopeePay', function () {
-    return view('transaksi/shopeePay');
+Route::get('/', function () {
+    return view('welcome');
 });
 
 
-Route::get('hubungkan-gopay', function () {
-    return view('transaksi/hubungkan-gopay');
-});
-
-Route::get('verifikasi-gopay', function () {
-    return view('transaksi/verifikasi-gopay');
-});
 
 
-Route::get('transaksi-berhasil', function () {
-    return view('transaksi/transaksi-berhasil');
-});
 
 
-Route::get('beli-token', function () {
-    return view('transaksi/beli-token');
-});
-
-Route::get('pembayaran', function () {
-    return view('transaksi/pembayaran');
-
-});
 
 
-Route::get('transaksi-gagal', function () {
-    return view('transaksi/transaksi-gagal');
-});
 
 
 

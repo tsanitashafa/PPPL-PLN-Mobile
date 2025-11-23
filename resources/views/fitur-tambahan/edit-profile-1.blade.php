@@ -29,6 +29,17 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 <style>
     /* Variabel untuk konsistensi */
@@ -152,7 +163,7 @@
 </style>
 
 <body>
-
+    @include('template')
 
     <div style="position: relative; ">
 
@@ -161,10 +172,9 @@
             <a href="#" class="text-decoration-none text-dark position-absolute start-0 ms-3">
                 <i class="fa-solid fa-arrow-left fa-lg"></i>
             </a>
-
-            <h1 class="h5 m-0 poppins-regular w-100 text-center">
-                Profile
-            </h1>
+            <br />
+            <br />
+            <h5 class="nunito-sans-semibold">Profile</h5>
 
             <div style="width: 24px;"></div>
         </div>
@@ -174,20 +184,22 @@
                 <div class="col">
                     <div class="d-flex align-items-center justify-content-between">
 
-                        <div class="d-flex align-items-center text-black">
+                        <div class="d-flex align-items-center text-black" style="font-family: 'Poppins', sans-serif;">
                             <img src="{{ $pengguna->photoUrl ?? '' }}" alt="Foto Profil " class="rounded-circle"
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
-                                <h2 class="h6 m-0 fw-bold poppins-bold">{{ $pengguna->nama ?? '' }}
-                                </h2>
-                                <p class="small m-0 poppins-regular">{{ $pengguna->email ?? '' }}</p>
+                                <h5 class="poppins-medium">
+                                    {{ $pengguna->nama ?? '' }}
+                                </h5>
+                                <p class=" poppins-regular">
+                                    {{ $pengguna->email ?? '' }}</p>
                             </div>
                         </div>
 
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center mb-3">
                             <div class="card rounded-circle text-white d-flex align-items-center justify-content-center"
                                 style="
-                                    background-color: #43A0AD;
+                                    background-color: #16a1ba;
                                     width: 50px;
                                     height: 50px;
                                     font-size: 24px;
@@ -228,8 +240,8 @@
                     <a href="{{ route('profile.edit', ['id' => $pengguna->penggunaid]) }}"
                         class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm text-dark text-decoration-none">
                         <div class="d-flex align-items-center">
-                            <i class="fas fa-user fa-lg mr-3 text-secondary"></i>
-                            <span class="font-weight-normal">Edit Profile</span>
+                            <i class="far fa-user-circle fa-lg mr-3 text-secondary "></i>
+                            <span class="poppins-regular">Edit Profile</span>
                         </div>
 
                         <i class="fas fa-chevron-right text-muted"></i>
@@ -241,7 +253,7 @@
                 <li class="mb-3">
                     <div class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm">
                         <div class="d-flex align-items-center">
-                            <i class="fas fa-bell fa-lg mr-3 text-secondary"></i>
+                            <i class="fa-regular fa-bell fa-lg mr-3 text-secondary"></i>
                             <span class="font-weight-normal text-dark">Notifications</span>
                         </div>
                         <div class="custom-control custom-switch m-0">
@@ -270,48 +282,6 @@
         </div>
     </div>
 
-    <div class="fixed-bottom">
-        <nav class="navbar navbar-expand-lg r p-0 sm:navbar-expand-lg" id="bottom-nav"
-            style="box-shadow: 0px 10px 29px rgba(0, 0, 0, 0.15); border-radius-top: 50px;">
-            <ul class="navbar-nav w-100 d-flex justify-content-between align-items-end">
 
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link active" aria-current="page" href="#">
-                        <i class="fa-solid fa-house-chimney"></i>
-                        <span class="d-block small">Home</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-gift"></i>
-                        <span class="d-block small">Reward</span>
-                    </a>
-                </li>
-
-                <li class="nav-item spacer-qr"></li>
-
-                <div class="qr-btn-container">
-                    <a href="#" class="qr-btn d-flex justify-content-center align-items-center shadow-lg">
-                        <i class="fa-solid fa-qrcode"></i>
-                    </a>
-                </div>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-newspaper"></i>
-                        <span class="d-block small">Artikel</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="d-block small">Profile</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
 
 </html>

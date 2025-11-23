@@ -14,19 +14,28 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body style="font-family: 'Poppins', sans-serif; background-color: #fff;">
 
     <!-- Header -->
-    <div class="d-flex align-items-center justify-content-between p-3 border-bottom bg-white">
+    <div class="d-flex align-items-center justify-content-between p-3  bg-white">
         <a href="/profile" class="text-dark">
             <i class="fas fa-arrow-left fa-lg"></i>
 
         </a>
 
-        <h5 class="mb-0 font-weight-medium">Edit Profile</h5>
-        <a href="#" class="text-info font-weight-medium"
+        <h5 class="nunito-sans-semibold">Edit Profile</h5>
+        <a href="#" class="nunito-sans-semibold font-weight-medium text-black" style="color: black"
             onclick="document.getElementById('formProfile').submit();">
             Simpan
         </a>
@@ -57,25 +66,29 @@
             <input type="hidden" name="penggunaid" value="{{ $pengguna->penggunaid ?? '' }}">
             <div class="form-group">
                 <label for="nama">Nama</label>
-                <input type="text" name="nama" class="form-control rounded-pill" id="nama"
+                <input type="text" name="nama"
+                    class="form-control rounded-pill poppins-medium color-white shadow-sm" id="nama"
                     placeholder="Masukkan nama Anda" value="{{ $pengguna->nama ?? '' }}">
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" class="form-control rounded-pill" id="email"
+                <input type="email" name="email"
+                    class="form-control rounded-pill poppins-medium color-white shadow-sm" id="email"
                     value="{{ $pengguna->email ?? '' }}">
             </div>
 
             <div class="form-group">
                 <label for="tgl">Tanggal Lahir</label>
-                <input type="date" name="tanggallahir" class="form-control rounded-pill" id="tgl"
+                <input type="date" name="tanggallahir"
+                    class="form-control rounded-pill poppins-medium color-white shadow-sm" id="tgl"
                     value="{{ $pengguna->tanggallahir ? date('Y-m-d', strtotime($pengguna->tanggallahir)) : '' }}">
             </div>
 
-            <div class="form-group">
+            <div class="form-group poppins-medium">
                 <label for="hp">No. HP</label>
-                <input type="text" name="phone" class="form-control rounded-pill" id="hp"
+                <input type="text" name="phone"
+                    class="form-control rounded-pill poppins-medium color-white shadow-sm" id="hp"
                     value="{{ $pengguna->phone ?? '' }}" placeholder="Masukkan nomor HP">
             </div>
         </form>

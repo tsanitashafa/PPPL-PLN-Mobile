@@ -1,0 +1,165 @@
+/* --- Global & Background Styles --- */
+body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    background-color: #f8f9fa; /* Latar belakang abu-abu muda di luar kontainer */
+    overflow-x: hidden;
+}
+
+/* --- Wave Background --- */
+.background-wave {
+    position: relative;
+}
+
+.wave-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    z-index: 1;
+    object-fit: cover;
+}
+
+/* --- Header --- */
+.header-container {
+    padding: 15px 0;
+    z-index: 100;
+    position: relative;
+}
+
+.header-content-wrapper {
+    margin-top: 20px;
+}
+
+.back-button {
+    padding-right: 15px;
+}
+
+.header-title span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-bottom: 5px;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+.placeholder-space {
+    width: 24px;
+}
+
+/* --- Main Content and Card Popup (Konten Belakang) --- */
+.main-content-wrapper {
+    padding-top: 100px;
+}
+
+.card-popup {
+    margin-top: -80px; /* Tarik ke atas agar masuk ke area gelombang */
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 50; /* Lebih tinggi dari latar belakang gelombang */
+}
+
+/* Logo & Step Indicator (Sama seperti hubungkan-gopay.css) */
+.logo-wrapper {
+    width: 50px;
+    height: 50px;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+}
+
+.step-active {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    opacity: 1;
+}
+
+.step-inactive {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    opacity: 0.5;
+}
+
+/* Input Group (Sama seperti hubungkan-gopay.css) */
+.custom-input-group {
+    border-color: #ccc !important;
+}
+
+.phone-input {
+    font-size: 1rem;
+}
+
+.terms-title {
+    font-size: 1rem;
+}
+
+.terms-item {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #555;
+}
+
+
+/* --- Modal/Overlay Styles (Pop-up Verifikasi) --- */
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.3); /* Latar belakang gelap transparan */
+    display: flex !important; /* Tampilkan modal secara default */
+    opacity: 1;
+    overflow: hidden;
+    z-index: 1050;
+    position: fixed;
+}
+
+.modal-fixed-bottom {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+.modal-content-bottom {
+    border-radius: 20px 20px 0 0 !important; /* Corner bulat di atas */
+    margin-top: auto; /* Dorong ke bawah */
+    height: auto;
+}
+
+/* Drag Handle Bar di atas Modal */
+.drag-handle-bar {
+    width: 40px;
+    height: 4px;
+    background-color: #ddd;
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+/* Input PIN */
+.pin-input {
+    width: 40px; /* Ukuran kotak PIN */
+    height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 5px; /* Margin horizontal antar kotak */
+    padding: 0;
+    box-shadow: none !important;
+}
+
+/* Tombol Masukkan */
+.enter-button {
+    background-color: #4aa3b3 !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 12px 0 !important;
+    border: none !important;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.enter-button:hover {
+    background-color: #3e8e9c !important;
+}
