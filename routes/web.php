@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TokenController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\VoucherController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,7 +89,7 @@ Route::get('verifikasi-shopePay', function () {
     return view('hubungkan-ewallet/verifikasi-shopeePay');
 });
 
-
+//menyambungkan berhasil dan gagal
 Route::get('menyambungkan-berhasil', function () {
     return view('hubungkan-ewallet/menyambungkan-berhasil');
 });
@@ -124,68 +125,23 @@ Route::get('/', function () {
 
 
 
+// mengambil data pelanggan beli token
+Route::get('/pelanggan/detail/{nomorMeter}', [PelangganController::class, 'detailPelanggan']);
+// Mengambil get voucher untuk di beli token
+Route::get('voucher/get/{pelangganid}', [VoucherController::class, 'getVoucher']);
 
 
+// pembayaran ambil data dari beli-token
+Route::post('/set-total-pembayaran', [PelangganController::class, 'setTotalPembayaran'])
+    ->name('set.total.pembayaran');
 
+Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
+    ->name('pembayaran');
 
+//mengarahkan yg bayar itu transaksinya berhasil atau nggak
+Route::post('/bayar-token', [PelangganController::class, 'bayarToken'])
+    ->name('bayar-token');
 
-
-
-
-
-// Route untuk menampilkan halaman (asumsi sudah ada)
-Route::get('/beli-token', [TokenController::class, 'showBuyTokenPage'])->name('token.buy');
-
-// Route API untuk mencari nama pelanggan
-Route::post('/api/cari-pelanggan', [TokenController::class, 'cariPelanggan'])->name('api.cari_pelanggan');
-
-
-
-
-
-// Route::get('/pln', function () {
-//     return view('welcome');
-// });
-
-
-// Route::get('/registerphone', function () {
-//     return view('registerphone');
-// });
-
-// Route::get('/verifyphone', function () {
-//     return view('verifyphone');
-// });
-
-// Route::get('/registuser', function () {
-//     return view('registuser');
-// });
-
-// Route::get('/verifyemail', function () {
-//     return view('verifyemail');
-// });
-
-// Route::get('/createpin', function () {
-//     return view('createpin');
-// });
-
-
-Route::get('/', [UserController::class, 'welcome'])->name('welcome');
-
-Route::get('/registerphone', [UserController::class, 'showRegisterPhone'])->name('registerphone');
-Route::post('/registerphone', [UserController::class, 'storePhone']);
-
-Route::get('/verifyphone', [UserController::class, 'showVerifyPhone'])->name('verifyphone');
-Route::post('/verifyphone', [UserController::class, 'verifyOTP'])->name('verifyotp');
-
-Route::get('/registuser', [UserController::class, 'showRegistUser'])->name('registuser');
-Route::post('/registuser', [UserController::class, 'storeUserData'])->name('storeuserdata');
-
-Route::get('/verifyemail', [UserController::class, 'showVerifyEmail'])->name('verifyemail');
-
-Route::get('/createpin', [UserController::class, 'showCreatePin'])->name('createpin');
-Route::post('/createpin', [UserController::class, 'storePin'])->name('storepin');
-
-Route::get('/notif', [UserController::class, 'notif'])->name('notif');
-
+Route::get('/transaksi-berhasil', [PelangganController::class, 'transaksiBerhasil'])->name('transaksi.berhasil');
 
 

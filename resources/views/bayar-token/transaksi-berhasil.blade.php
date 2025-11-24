@@ -26,8 +26,9 @@
         <h5 class="font-weight-bold mb-2">Selamat!</h5>
 
         <div class="transaction-id-box d-inline-flex align-items-center mb-3 p-2 border rounded">
-            <strong class="text-dark">312154156040</strong>
-            <i class="fas fa-copy ml-2 text-secondary copy-icon" title="Salin ID Transaksi"></i>
+            <strong class="text-dark">{{ session('token') }}</strong>
+            <p class="font-weight-bold text-success mb-5">+{{ session('poin') }} poin</p>
+
         </div>
 
         <p class="mb-1">Transaksi berhasil diproses.</p>

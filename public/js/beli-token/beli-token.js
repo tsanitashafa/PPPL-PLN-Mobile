@@ -27,7 +27,7 @@ $(document).ready(function() {
         updateSummary(selectedNominal);
     });
 
-    $('#meter-id').on('input', function() {
+    $('#nomor-meter').on('input', function() {
         var nomorMeter = $(this).val();
         var displayElement = $('#nama-pelanggan-display');
 
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
         if (nomorMeter.length === 8) {
 
-            var ajaxUrl = $('#meter-id').data('url'); // SOLUSI
+            var ajaxUrl = $('#nomor-meter').data('url'); // SOLUSI
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
@@ -62,3 +62,104 @@ $(document).ready(function() {
         }
     });
 });
+
+
+// mengambil data pelanggan beli token berdasarkan nomor meter
+document.getElementById('nomor-meter').addEventListener('input', function () {
+    const nomorMeter = this.value;
+
+    // hanya fetch jika panjang input 8 digit
+    if (nomorMeter.length === 8) {
+        fetch(`/pelanggan/detail/${nomorMeter}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.nama) {
+                    document.getElementById('nama-pelanggan-display').innerHTML =
+                        `Nama Pelanggan: <strong>${data.nama}</strong>`;
+                } else {
+                    document.getElementById('nama-pelanggan-display').innerHTML =
+                        `Nama Pelanggan: <span class="text-danger">Tidak ditemukan</span>`;
+                }
+            });
+    } else {
+        document.getElementById('nama-pelanggan-display').innerHTML =
+            "Nama Pelanggan: (Masukkan 8 digit Nomor Meter)";
+    }
+});
+
+
+//mengambil data voucher untuk beli token
+function attachVoucherClick() {
+    document.querySelectorAll('.voucher-item').forEach(item => {
+        item.addEventListener('click', function () {
+            const nilaiVoucher = parseInt(this.dataset.value);
+
+            // ambil total pembayaran saat ini
+            const totalPlnText = document.querySelector('.total-pln').innerText.replace(/\D/g, '');
+
+            const totalPln = parseInt(totalPlnText);
+
+            //hitung
+            const totalSetelahVoucher = Math.max(totalPln - nilaiVoucher, 0);
+
+            //update tampilan
+            document.querySelector('.discount-amount').innerText =
+            `-Rp ${nilaiVoucher.toLocaleString()}`;
+
+            document.querySelector('.total-payment-amount').innerText =
+            `Rp ${totalSetelahVoucher.toLocaleString()}`;
+
+            // update element di summmary bawah (fixed-bottom-summary)
+            document.querySelector('.total-amount').innerText =
+            `Rp ${totalSetelahVoucher.toLocaleString()}`;
+
+            //tutup list voucher
+            document.getElementById('voucher-list').classList.add('d-none');
+        })
+    })
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const btn = document.getElementById("btnLanjutkan");
+
+    btn.addEventListener("click", function () {
+
+        const url = this.dataset.url; // ← route pembayaran
+
+        // Ambil data dari halaman
+        const nomorMeter = document.getElementById("nomor-meter").value;
+
+        const nominalToken = document.querySelector(".total-pln").innerText.replace(/\D/g, "");
+        const totalBayar   = document.querySelector(".total-payment-amount").innerText.replace(/\D/g, "");
+        const voucherPotongan = document.querySelector(".discount-amount").innerText.replace(/\D/g, "");
+
+        // Redirect pakai query string
+       window.location.href =
+    `${url}?meter=${nomorMeter}&nominal=${nominalToken}&total=${totalBayar}&voucher=${voucherPotongan}`;
+
+    });
+});
+
+
+document.getElementById("btnBayar").addEventListener("click", function () {
+
+    // Ambil dari atribut tombol (TIDAK pakai request())
+    const meter = this.dataset.meter;
+    const nominal = this.dataset.nominal;
+    const total = this.dataset.total;
+    const voucher = this.dataset.voucher;
+
+    // Isi hidden input
+    document.getElementById("meterInput").value = meter;
+    document.getElementById("nominalInput").value = nominal;
+    document.getElementById("totalInput").value = total;
+    document.getElementById("voucherInput").value = voucher;
+
+    document.getElementById("formBayar").submit();
+});
+
+
+

@@ -46,7 +46,13 @@
         <div class="text-center mb-4 card p-4" style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
             <p class="nunito-sans mb-1" style="font-size: 0.9rem;">Total Pembayaran</p>
             <h2 class="h5 mb-0 nunito-sans-semibold">
-                Rp 10.000
+                <span class="poppins-regular">@php
+                    $total = request('total') ?? 0;
+                @endphp
+
+                    <span class="poppins-regular">Rp {{ number_format($total, 0, ',', '.') }}</span>
+                </span>
+
             </h2>
         </div>
 
@@ -133,23 +139,48 @@
                 <span class="poppins-regular">Rp 10.000</span>
             </div>
             <div class="d-flex justify-content-between mb-3">
+                @php
+                    $total = request('total') ?? 0;
+                    $biayaLayanan = 1500;
+                    $totalAkhir = $total + $biayaLayanan;
+                @endphp
+
+
                 <span class="poppins-regular">Biaya Layanan</span>
                 <span class="poppins-regular">Rp 1.500</span>
             </div>
             <hr class="my-2">
             <div class="d-flex justify-content-between pt-2">
                 <span class="text-danger font-weight-bold poppins-regular">Total Pembayaran</span>
-                <span class="text-danger font-weight-bold poppins-regular">Rp 11.500</span>
+                <span class="text-danger font-weight-bold">
+                    Rp {{ number_format($totalAkhir, 0, ',', '.') }}
+                </span>
+
             </div>
         </div>
     </div>
 
 
     <div class="container">
-        <button class="btn btn-primary btn-block poppins-regular btn-pay"
-            onclick="window.location.href='{{ url('/transaksi-berhasil') }}'">
+
+        <form id="formBayar" action="{{ route('bayar-token') }}" method="POST">
+            @csrf
+
+            <input type="hidden" name="meter" id="meterInput">
+            <input type="hidden" name="nominal" id="nominalInput">
+            <input type="hidden" name="total" id="totalInput">
+            <input type="hidden" name="voucher" id="voucherInput">
+        </form>
+
+
+        <button class="btn btn-primary btn-block poppins-regular btn-pay" id="btnBayar"
+            data-meter="{{ request('meter') }}" data-nominal="{{ request('nominal') }}"
+            data-total="{{ request('total') }}" data-voucher="{{ request('voucher') }}">
             Bayar
         </button>
+
+
+
     </div>
     <br />
 
@@ -159,6 +190,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
+    <script src="js/beli-token/beli-token.js"></script>
+
 </body>
 
 </html>

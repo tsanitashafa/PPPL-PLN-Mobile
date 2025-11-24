@@ -33,6 +33,9 @@
                     <span>Beli Token</span>
                 </h1>
 
+
+
+
                 <div class="empty-space"></div>
             </div>
         </div>
@@ -44,7 +47,8 @@
     <div class="container" style="padding-bottom: 10px;">
         <div class="mt-3">
             <label for="meter-id" class="text-black" style="font-weight: 400;">ID Pelanggan/Nomor Meter</label>
-            <input type="text" class="form-control meter-input" id="meter-id" value="" maxlength="8">
+            <input type="text" class="form-control meter-input" id="nomor-meter" value="" maxlength="8"
+                name="meter">
         </div>
         <div class="mt-2 text-black customer-name-display" id="nama-pelanggan-display">
             Nama Pelanggan: **(Masukkan 8 digit Nomor Meter)**
@@ -89,12 +93,16 @@
 
 
     <div class="container content-padding">
-        <div class="voucher-box p-3 mb-3 shadow p-3 ">
-            <a href="#" class="btn btn-block text-dark text-decoration-none p-0 popins-regular voucher-btn">
-                <i class="fa-solid fa-ticket-simple mr-2"></i>
-                Gunakan Voucher
-            </a>
+        <div class="voucher-box p-3 mb-3 shadow p-3 voucher-btn" style="cursor: pointer;">
+            <i class="fa-solid fa-ticket-simple mr-2"></i>
+            Gunakan Voucher
+
+            <div id="voucher-list" class="p-3 bg-light shadow mt-2 d-none">
+                <h5>Pilih Voucher</h5>
+                <div id="voucher-items"></div>
+            </div>
         </div>
+
 
         <div class="summary-detail-box p-3 shadow p-3 ">
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -106,7 +114,7 @@
                 <span class="discount-amount">-Rp 0</span>
             </div>
             <div class="d-flex justify-content-between align-items-center popins-regular total-payment-row">
-                <span class="total-payment-label">Total Pembayaran</span>
+                <span class="total-payment-label ">Total Pembayaran</span>
                 <span class="total-payment-amount">Rp 10.000</span>
             </div>
         </div>
@@ -118,10 +126,12 @@
                         <small class="text-secondary total-label">Total</small>
                         <span class="total-amount">Rp 10.000</span>
                     </div>
-                    <button class="btn w-50 shadow p-3 btn-lanjutkan card"
-                        onclick="window.location.href = '{{ url('pembayaran') }}';">
+                    <button class="btn w-50 shadow p-3 btn-lanjutkan card" id="btnLanjutkan"
+                        data-url="{{ route('pembayaran') }}">
                         Lanjutkan Pembayaran
                     </button>
+
+
                 </div>
             </div>
         </div>
