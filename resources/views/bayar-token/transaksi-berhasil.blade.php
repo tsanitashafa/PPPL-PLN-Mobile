@@ -26,13 +26,11 @@
         <h5 class="font-weight-bold mb-2">Selamat!</h5>
 
         <div class="transaction-id-box d-inline-flex align-items-center mb-3 p-2 border rounded">
-            <strong class="text-dark">{{ session('token') }}</strong>
-            <p class="font-weight-bold text-success mb-5">+{{ session('poin') }} poin</p>
-
+            <strong class="text-dark">{{ session('token', 'Token Tidak Ada') }}</strong>
         </div>
 
         <p class="mb-1">Transaksi berhasil diproses.</p>
-        <p class="font-weight-bold text-success mb-5">+78 poin</p>
+        <p class="font-weight-bold text-success mb-5">+{{ session('poin', 0) }} poin</p>
     </div>
 
     <div class="container button-container text-center d-flex flex-column justify-content-center align-items-center">

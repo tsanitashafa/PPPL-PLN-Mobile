@@ -18,6 +18,8 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/beli-token/beli-token.css">
+    <script src="js/bayar-token/pembayaran.js"></script>
+
 </head>
 
 <body>
@@ -48,7 +50,7 @@
         <div class="mt-3">
             <label for="meter-id" class="text-black" style="font-weight: 400;">ID Pelanggan/Nomor Meter</label>
             <input type="text" class="form-control meter-input" id="nomor-meter" value="" maxlength="8"
-                name="meter">
+                name="meter" data-url="{{ route('cari-pelanggan') }}">
         </div>
         <div class="mt-2 text-black customer-name-display" id="nama-pelanggan-display">
             Nama Pelanggan: **(Masukkan 8 digit Nomor Meter)**
@@ -126,10 +128,15 @@
                         <small class="text-secondary total-label">Total</small>
                         <span class="total-amount">Rp 10.000</span>
                     </div>
-                    <button class="btn w-50 shadow p-3 btn-lanjutkan card" id="btnLanjutkan"
+                    {{-- <button class="btn w-50 shadow p-3 btn-lanjutkan card" id="btnLanjutkan"
                         data-url="{{ route('pembayaran') }}">
                         Lanjutkan Pembayaran
-                    </button>
+                    </button> --}}
+
+                    <button class="btn w-50 shadow p-3 btn-lanjutkan card" id="btnLanjutkan"
+                        data-url="{{ route('pembayaran') }}" data-meter="" data-nominal="" data-total=""
+                        data-voucher="">
+
 
 
                 </div>

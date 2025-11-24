@@ -121,6 +121,8 @@ function attachVoucherClick() {
 
 
 
+// ... (Bagian sebelumnya)
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const btn = document.getElementById("btnLanjutkan");
@@ -132,33 +134,54 @@ document.addEventListener("DOMContentLoaded", function () {
         // Ambil data dari halaman
         const nomorMeter = document.getElementById("nomor-meter").value;
 
-        const nominalToken = document.querySelector(".total-pln").innerText.replace(/\D/g, "");
-        const totalBayar   = document.querySelector(".total-payment-amount").innerText.replace(/\D/g, "");
-        const voucherPotongan = document.querySelector(".discount-amount").innerText.replace(/\D/g, "");
+        // **PERBAIKAN: Ambil nilai numerik mentah (tanpa 'Rp ' dan titik)**
+        const nominalToken = document.querySelector(".total-pln").innerText.replace(/[^\d]/g, "");
+        const totalBayar = document.querySelector(".total-payment-amount").innerText.replace(/[^\d]/g, "");
+        const voucherPotongan = document.querySelector(".discount-amount").innerText.replace(/[^\d]/g, "") || '0'; // Pastikan ada nilai, default '0'
 
         // Redirect pakai query string
-       window.location.href =
-    `${url}?meter=${nomorMeter}&nominal=${nominalToken}&total=${totalBayar}&voucher=${voucherPotongan}`;
+        window.location.href =
+       `${url}?meter=${nomorMeter}&nominal=${nominalToken}&total=${totalBayar}&voucher=${voucherPotongan}`;
 
     });
 });
+// ... (Sisa kode)
+
 
 
 document.getElementById("btnBayar").addEventListener("click", function () {
 
-    // Ambil dari atribut tombol (TIDAK pakai request())
     const meter = this.dataset.meter;
     const nominal = this.dataset.nominal;
     const total = this.dataset.total;
     const voucher = this.dataset.voucher;
 
-    // Isi hidden input
+    // isi hidden input
     document.getElementById("meterInput").value = meter;
     document.getElementById("nominalInput").value = nominal;
     document.getElementById("totalInput").value = total;
     document.getElementById("voucherInput").value = voucher;
 
+    // kirim form
     document.getElementById("formBayar").submit();
+});
+
+
+
+document.getElementById("btnLanjutkan").addEventListener("click", function () {
+
+    const meter = document.getElementById("nomor-meter").value;
+    const nominal = document.querySelector(".token-btn.active").dataset.nominal;
+    const total = document.querySelector(".total-amount").innerText.replace(/\D/g,'');
+    const voucher = selectedVoucherId ?? 0;
+
+    const url = this.dataset.url +
+        "?meter=" + meter +
+        "&nominal=" + nominal +
+        "&total=" + total +
+        "&voucher=" + voucher;
+
+    window.location.href = url;
 });
 
 

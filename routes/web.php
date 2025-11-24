@@ -139,9 +139,27 @@ Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
     ->name('pembayaran');
 
 //mengarahkan yg bayar itu transaksinya berhasil atau nggak
+// Route yang menggunakan controller
+// mengambil data pelanggan beli token
+Route::get('/pelanggan/detail/{nomorMeter}', [PelangganController::class, 'detailPelanggan']);
+// Mengambil get voucher untuk di beli token
+Route::get('voucher/get/{pelangganid}', [VoucherController::class, 'getVoucher']);
+
+
+// pembayaran ambil data dari beli-token
+// Route::post('/set-total-pembayaran', [PelangganController::class, 'setTotalPembayaran']) // Tidak perlu lagi
+//     ->name('set.total.pembayaran'); // Tidak perlu lagi
+
+Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
+    ->name('pembayaran');
+
+//mengarahkan yg bayar itu transaksinya berhasil atau nggak
 Route::post('/bayar-token', [PelangganController::class, 'bayarToken'])
     ->name('bayar-token');
 
 Route::get('/transaksi-berhasil', [PelangganController::class, 'transaksiBerhasil'])->name('transaksi.berhasil');
 
+Route::post('/cari-pelanggan', [TokenController::class, 'getPelanggan'])
+    ->name('cari-pelanggan');
 
+// ... (Route lainnya)
