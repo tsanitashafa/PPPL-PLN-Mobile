@@ -15,12 +15,12 @@
 <body>
 
   <!-- App Bar -->
-  <header class="app-bar">
-    <button class="back-btn" aria-label="Kembali" onclick="history.back()">
-      <i class="bi bi-arrow-left"></i>
-    </button>
-    <h1 class="app-title">Riwayat</h1>
-  </header>
+    <div class="app-bar position-relative mb-2">
+        <a href="{{ url('reward') }}" class="back-btn text-dark position-absolute start-0">
+            <i class="bi bi-arrow-left fs-4"></i>
+        </a>
+        <h5 class="app-title text-center m-0">Riwayat</h5>
+    </div>
 
   <!-- Konten -->
   <main class="container-app">

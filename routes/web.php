@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\RiwayatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,21 +15,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('reward', function () {
-    return view('reward');
-});
-Route::get('voucher', function () {
-    return view('voucher');
-});
-Route::get('infovoucher', function () {
-    return view('infovoucher');
-});
-Route::get('riwayat', function () {
-    return view('riwayat');
-});
-Route::get('riwayatpoin', function () {
-    return view('riwayatpoin');
-});
+Route::get('/reward', [VoucherController::class, 'loadReward']);
+Route::get('/voucher', [VoucherController::class, 'loadVoucher'])->name('voucher/voucher');
+Route::get('/infovoucher/{id}', [VoucherController::class, 'loadInfoVoucher'])->name('voucher/infovoucher');
+Route::get('/riwayat', [RiwayatController::class, 'loadRiwayat'])->name('riwayat/riwayat');
+Route::get('/riwayatpoin', [RiwayatController::class, 'loadRiwayatPoin'])->name('riwayat/riwayatpoin');
+
 // Route::get('/pln', function () {
 //     return view('welcome');
 // });
