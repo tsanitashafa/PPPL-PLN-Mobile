@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-
+// Models pengguna + function profile picture by Mirza Fathi Taufiqurrahman 5026231105
 
 class Pengguna extends Authenticatable
 {
@@ -18,7 +18,6 @@ class Pengguna extends Authenticatable
 
     protected $fillable = ['phone', 'nama', 'email', 'pin', 'poin', 'tier', 'notifenabled', 'saldo', 'photourl', 'tanggallahir'];
 
-    // by mirza
     // Accessor: ketika mengakses $user->profile_image, mengembalikan nilai photourl
     public function getProfileImageAttribute()
     {

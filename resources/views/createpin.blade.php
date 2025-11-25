@@ -6,73 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buat PIN</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #fff;
-      font-family: 'Poppins', sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .top-bar {
-      display: flex;
-      align-items: center;
-      padding: 1rem;
-    }
-    .back-btn {
-      border: none;
-      background: none;
-      font-size: 1.5rem;
-    }
-    .title {
-      flex-grow: 1;
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin-right: 2rem;
-    }
-    .pin-section {
-      flex: 0.3;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .pin-title {
-      font-weight: 700;
-      color: #106C7E;
-      margin-bottom: 2rem;
-      font-size: 2rem
-    }
-    .pin-inputs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-    .pin-inputs input {
-      width: 45px;
-      height: 45px;
-      text-align: center;
-      border-radius: 8px;
-      border: 1px solid #00000050;
-      font-size: 1.25rem;
-    }
-    .btn-continue {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      background-color: #13a0b5;
-      color: white;
-      font-weight: 500;
-      border-radius: 16px;
-      padding: 12px;
-      box-shadow: 0 3px 5px rgba(0,0,0,0.15);
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ asset('css/createpin.css') }}">
 </head>
 <body>
 

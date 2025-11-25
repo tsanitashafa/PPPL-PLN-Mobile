@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Pengguna;
-class ControllerPengguna extends Controller
+
+// Controller pengguna(fitur signup+login+notification settings) by Mirza Fathi Taufiqurrahman 5026231105
+class PenggunaController extends Controller
 {
     public function welcome()
     {
@@ -19,7 +21,7 @@ class ControllerPengguna extends Controller
 
 
     // simpan no hp
-    public function storePhone(Request $request)
+    public function cekNoHP(Request $request)
     {
         $validated = $request->validate([
             'phone' => 'required|numeric'
@@ -79,7 +81,7 @@ class ControllerPengguna extends Controller
         return view('registuser');
     }
 
-    public function storeUserData(Request $request)
+    public function savePengguna(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string',
@@ -111,7 +113,7 @@ class ControllerPengguna extends Controller
         return view('createpin');
     }
 
-    public function storePin(Request $request)
+    public function setPIN(Request $request)
     {
         // Handle PIN combination if JS fails
         if (!$request->has('pin') && $request->has('pin.*')) {
@@ -145,7 +147,7 @@ class ControllerPengguna extends Controller
     }
 
     // proses login hp
-    public function processLoginPhone(Request $request)
+    public function cekNoHPLog(Request $request)
     {
         $validated = $request->validate([
             'phone' => 'required|numeric'
@@ -169,7 +171,7 @@ class ControllerPengguna extends Controller
     }
 
     // proses loginpin
-    public function processLoginPin(Request $request)
+    public function setLogin(Request $request)
     {
         // Handle PIN combination if JS fails
         if (!$request->has('pin') && $request->has('pin.*')) {
@@ -193,7 +195,7 @@ class ControllerPengguna extends Controller
         }
     }
 
-    public function homepage()
+    public function ambilDataPengguna()
     {
         // ambil user authenticated dari session
         $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
@@ -209,42 +211,6 @@ class ControllerPengguna extends Controller
         }
 
         return view('homepage', compact('user'));
-    }
-
-    public function editProfile1()
-    {
-        // ambil user authenticated dari session
-        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
-
-        if (!$userId) {
-            return redirect()->route('welcome');
-        }
-
-        $user = Pengguna::find($userId);
-
-        if (!$user) {
-            return redirect()->route('welcome');
-        }
-
-        return view('edit-profile-1', compact('user'));
-    }
-
-    public function editProfile2()
-    {
-        // ambil user authenticated dari session
-        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
-
-        if (!$userId) {
-            return redirect()->route('welcome');
-        }
-
-        $user = Pengguna::find($userId);
-
-        if (!$user) {
-            return redirect()->route('welcome');
-        }
-
-        return view('edit-profil-2', compact('user'));
     }
 
     public function notif()
@@ -296,62 +262,4 @@ class ControllerPengguna extends Controller
 
         return response()->json(['success' => true, 'message' => 'Notification setting updated successfully']);
     }
-
-    public function updateProfile(Request $request)
-    {
-        $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'tanggallahir' => 'nullable|date',
-            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-
-        // ambil authenticated user dari session
-        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
-
-        if (!$userId) {
-            return redirect()->route('welcome')->with('error', 'Please login first');
-        }
-
-        $user = Pengguna::find($userId);
-
-        if (!$user) {
-            Session::flush();
-            return redirect()->route('welcome')->with('error', 'Session expired, please login again');
-        }
-
-        // Handle profile image upload
-        if ($request->hasFile('profile_image')) {
-        $image = $request->file('profile_image');
-        
-        // Delete old image if exists (using photourl directly)
-        if ($user->photourl && file_exists(public_path($user->photourl))) {
-            unlink(public_path($user->photourl));
-        }
-        
-        $imageName = time() . '_' . $user->penggunaid . '.' . $image->getClientOriginalExtension();
-        $destinationPath = public_path('storage/profile_images');
-        
-        // Ensure directory exists
-        if (!file_exists($destinationPath)) {
-            mkdir($destinationPath, 0755, true);
-        }
-        
-        // Move the file
-        if ($image->move($destinationPath, $imageName)) {
-            // Save to photourl column (Laravel will use the mutator)
-            $user->photourl = 'storage/profile_images/' . $imageName;
-        }
-    }
-        // Update user data
-        $user->nama = $request->nama;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->tanggallahir = $request->tanggallahir;
-        $user->save();
-
-        return redirect()->route('edit-profile-1')->with('success', 'Profile updated successfully');
-    }
 }
-

@@ -1,0 +1,97 @@
+:root{
+  
+  --nav-h: 92px;
+  --nav-icon-size: 1.25rem;
+  --nav-font-size: .8rem;
+}
+/* ===== Curved Bottom Navbar ===== */
+.bottom-nav.curved {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #e6e9ee;
+  box-shadow: 0 -4px 12px rgba(0,0,0,.08);
+  border-radius: 24px 24px 0 0;
+  z-index: 10;
+  max-width: var(--app-max);
+  margin: 0 auto;
+}
+
+/* Notch effect di tengah navbar */
+.bottom-nav.curved::before {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 45px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Nav links */
+.bottom-nav.curved .nav-link {
+  flex: 1;
+  font-size: .8rem;
+  color: #b0b3b8;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+}
+
+.bottom-nav.curved .nav-link.active {
+  color: #14a2ba;
+}
+
+.bottom-nav.curved i {
+  display: block;
+  font-size: 1.3rem;
+}
+
+/* ===== Floating Action Button (FAB) ===== */
+.fab-main {
+  position: fixed;
+  bottom: 38px; /* sejajar dengan notch */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background: #14a2ba;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 16px rgba(20, 162, 186, .35);
+  z-index: 20;
+  transition: all .2s ease;
+}
+
+.fab-main:active {
+  transform: translateX(-50%) scale(0.96);
+  box-shadow: 0 4px 10px rgba(20, 162, 186, .3);
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 400px) {
+  .fab-main {
+    width: 58px;
+    height: 58px;
+    bottom: 36px;
+  }
+  .bottom-nav.curved::before {
+    width: 80px;
+    height: 40px;
+    top: -24px;
+  }
+}
