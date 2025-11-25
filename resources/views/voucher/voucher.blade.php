@@ -1,3 +1,4 @@
+{{--5026231088 Tsanita Shafa Hadinanda--}}
 <!doctype html>
 <html lang="id">
 <head>
@@ -27,8 +28,12 @@
                 <button class="voucher-card w-100 text-start mb-4"
                         onclick="window.location.href='{{ url('infovoucher/'.$v->rewardid) }}'">
                     <div class="card-body d-flex align-items-center">
+                        @php
+                            $voucherImg = 'voucher' . $v->nilai . '.png';
+                        @endphp
+
                         <div class="thumb">
-                            <img src="{{ asset('img/img25off.png') }}" alt="25% OFF" class="img-fluid">
+                            <img src="{{ asset('img/' . $voucherImg) }}" alt="voucher" class="img-fluid">
                         </div>
                         <div class="ms-4 me-2">
                             <div class="fw-semibold">{{ $v->rewardname }}</div>

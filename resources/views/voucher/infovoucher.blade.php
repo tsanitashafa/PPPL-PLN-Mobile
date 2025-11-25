@@ -1,3 +1,4 @@
+{{--5026231088 Tsanita Shafa Hadinanda--}}
 <!doctype html>
 <html lang="id">
 <head>
@@ -23,9 +24,13 @@
 
     {{-- Banner --}}
     <div class="ratio ratio-16x9 banner mb-3">
+        @php
+            $voucherImg = 'voucher' . $voucher->nilai . '.png';
+        @endphp
+
         <img
-            src="{{ asset('img/imginfovoucher.png') }}"
-            alt="Banner"
+            src="{{ asset('img/' . $voucherImg) }}"
+            alt="voucher"
             class="rounded-3">
     </div>
 

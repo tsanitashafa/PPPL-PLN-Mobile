@@ -1,5 +1,6 @@
+/* {{--5026231088 Tsanita Shafa Hadinanda--}} */
 :root{
-  --app-max: clamp(360px, 92vw, 520px);  /* tetap “ukuran HP” di layar lebar */
+
   --nav-h: 92px;
   --nav-icon-size: 1.25rem;
   --nav-font-size: .8rem;

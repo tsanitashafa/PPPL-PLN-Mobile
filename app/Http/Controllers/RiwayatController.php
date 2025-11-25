@@ -1,46 +1,32 @@
 <?php
-
+// {{--5026231088 Tsanita Shafa Hadinanda--}}
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Models\Pengguna;
 use App\Models\Riwayat;
 
 class RiwayatController extends Controller
 {
+    // dipakai di Reward, cuma balikin data
+    public function loadRiwayatLimit($limit = 3)
+    {
+        return Riwayat::orderBy('timestamp', 'desc')
+            ->limit($limit)
+            ->get();
+    }
+
+    // halaman semua riwayat
     public function loadRiwayat()
-    {
-        $user = Pengguna::findOrFail(1);
+{
+    $all = Riwayat::orderBy('timestamp', 'desc')->get();
 
-        $tier      = $user->tier;
-        $points    = $user->poin;
-        $totalGoal = 10000;
-        $progress  = min(100, round(($points / $totalGoal) * 100));
+    // Group per bulan
+    $grouped = $all->groupBy(function ($item) {
+        return \Carbon\Carbon::parse($item->timestamp)->isoFormat('MMMM YYYY');
+    });
 
-        $riwayat = Riwayat::where('penggunaid', $user->penggunaid)
-                    ->orderByDesc('timestamp')
-                    ->limit(3)
-                    ->get();
+    return view('riwayat.riwayat', [
+        'grouped' => $grouped
+    ]);
+}
 
-        return view('riwayat/riwayat', [
-            'tier'     => $tier,
-            'points'   => $points,
-            'progress' => $progress,
-            'riwayat'  => $riwayat
-        ]);
-    }
-
-    public function loadRiwayatPoin()
-    {
-        $user = Pengguna::findOrFail(1);
-
-        $riwayat = Riwayat::where('penggunaid', $user->penggunaid)
-                    ->orderByDesc('timestamp')
-                    ->get();
-
-        return view('riwayat/riwayatpoin', [
-            'riwayat' => $riwayat
-        ]);
-    }
 }

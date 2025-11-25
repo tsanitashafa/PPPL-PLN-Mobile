@@ -1,106 +1,63 @@
+{{--5026231088 Tsanita Shafa Hadinanda--}}
 <!doctype html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reward</title>
+  <title>Riwayat Poin</title>
 
-  <!-- Bootstrap Icons untuk ikon panah dan navbar -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-  <!-- CSS kustom -->
-  <link href="css/riwayat.css" rel="stylesheet">
+  <link href="{{ asset('css/reward.css') }}" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- App Bar -->
-  <header class="app-bar">
-    <button class="back-btn" aria-label="Kembali" onclick="history.back()">
-      <i class="bi bi-arrow-left"></i>
-    </button>
-    <h1 class="app-title">Reward</h1>
-  </header>
+<div class="container container-app px-3">
 
-  <!-- Konten -->
-  <main class="container-app">
-    <!-- Tier Card -->
-    <section class="tier-card">
-      <div class="tier-left">
-        <div class="tier-line">
-          <span class="tier-name">Silver</span>
-          <span class="tier-point">· 3000 Poin</span>
-        </div>
-        <div class="tier-progress">
-          <div class="tier-progress-fill" style="width:30%"></div>
-        </div>
-      </div>
-      <div class="tier-coin" aria-hidden="true"></div>
-    </section>
+    <div class="app-bar position-relative mb-3">
+        <a href="{{ url()->previous() }}" class="back-btn text-dark position-absolute start-0">
+            <i class="bi bi-arrow-left fs-4"></i>
+        </a>
+        <h5 class="app-title text-center m-0">Riwayat Poin</h5>
+    </div>
 
-    <!-- Tabs -->
-    <nav class="chips">
-      <button class="chip">Voucher</button>
-      <button class="chip">Tukar</button>
-      <button class="chip active">Riwayat</button>
-    </nav>
+    {{-- Loop Bulan --}}
+    @foreach ($grouped as $month => $items)
 
-    <!-- List Riwayat -->
-    <section class="list">
-      <article class="item-card">
-        <div class="item-left">
-          <div class="item-title">Token Listrik Senilai</div>
-          <div class="item-sub">Rp50.000</div>
-        </div>
-        <div class="item-point negative">-5.000 Poin</div>
-      </article>
+        <h6 class="fw-bold ms-1 mt-4">{{ $month }}</h6>
 
-      <article class="item-card">
-        <div class="item-left">
-          <div class="item-title">Top Up Token</div>
-        </div>
-        <div class="item-point positive">+900 Poin</div>
-      </article>
+        @foreach ($items as $r)
+            @php
+                $poin = (int) $r->riwayatpoin;
+                $neg = $poin < 0;
+            @endphp
 
-      <article class="item-card">
-        <div class="item-left">
-          <div class="item-title">Top Up Token</div>
-        </div>
-        <div class="item-point positive">+450 Poin</div>
-      </article>
+            <article class="item-card">
+                <div class="item-left">
+                    <div class="item-title">{{ $r->deskaktivitas }}</div>
 
-      <div class="see-more">
-        <button class="see-more-btn">
-          Lihat Semua <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-    </section>
-  </main>
+                    @if($r->detailaktivitas)
+                        <div class="item-sub" style="margin-top: 4px;">
+                            {{ $r->detailaktivitas }}
+                        </div>
+                    @endif
+                </div>
 
-  <!-- Bottom Navbar dengan FAB tengah -->
-  <nav class="bottom-bar">
-    <a href="#" class="tab">
-      <i class="bi bi-house-door"></i>
-      <span>Home</span>
-    </a>
-    <a href="#" class="tab active">
-      <i class="bi bi-gift"></i>
-      <span>Reward</span>
-    </a>
+                <div class="item-point {{ $neg ? 'negative' : 'positive' }}">
+                    {{ $poin > 0 ? '+' : '-' }}
+                    {{ number_format(abs($poin), 0, ',', '.') }} Poin
+                </div>
+            </article>
 
-    <!-- FAB pemindai -->
-    <button class="fab" aria-label="Scan">
-      <i class="bi bi-qr-code-scan"></i>
-    </button>
+        @endforeach
 
-    <a href="#" class="tab">
-      <i class="bi bi-newspaper"></i>
-      <span>Artikel</span>
-    </a>
-    <a href="#" class="tab">
-      <i class="bi bi-person"></i>
-      <span>Profile</span>
-    </a>
-  </nav>
+    @endforeach
 
+</div>
+
+@include('template')
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

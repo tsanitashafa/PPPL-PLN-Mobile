@@ -1,6 +1,7 @@
+/* {{--5026231088 Tsanita Shafa Hadinanda--}} */
 /* ========= Variables & Base ========= */
 :root{
-  --app-max: clamp(360px, 92vw, 520px);  /* tetap “ukuran HP” di layar lebar */
+
   --nav-h: 92px;
   --nav-icon-size: 1.25rem;
   --nav-font-size: .8rem;
@@ -20,7 +21,6 @@ html,body{
 
 /* ========= Layout Container ========= */
 .container-app{
-  max-width: var(--app-max);
   margin-top: 60px;
   margin: 0 auto;
   padding-bottom: calc(var(--nav-h) + 64px);
@@ -189,15 +189,29 @@ html,body{
   -webkit-box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
 box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
 }
-.thumb{
-  width:74px; height:74px; border-radius:8px;
+/* dasar kotaknya */
+.thumb {
+  width: 74px;
+  height: 74px;
+  border-radius: 8px;
+  overflow: hidden;
   margin-left: 8px;
-  display:flex; align-items:center; justify-content:center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
 }
-.thumb img {
-  width: 100%;
-  height: auto;
+
+/* tukar: benar benar kotak penuh */
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
 }
+
+
 
 /* Kartu riwayat */
 .list{margin-top:6px}
