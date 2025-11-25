@@ -1,3 +1,5 @@
+//5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
+
 // mengambil data dari button
 document.getElementById('btnBayar').addEventListener('click', function () {
     document.getElementById('meterInput').value = this.dataset.meter;

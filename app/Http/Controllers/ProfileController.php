@@ -12,6 +12,7 @@ class ProfileController extends Controller
      * Menampilkan halaman Profile Index.
      * Menggunakan session untuk mengambil data user terakhir yang diupdate.
      */
+    // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
     public function loadEditProfile()
     {
         // Dalam aplikasi nyata, ini seharusnya Auth::id() atau ID user yang sedang login
@@ -34,6 +35,7 @@ class ProfileController extends Controller
      * Menampilkan halaman Edit Profile.
      * Menggunakan Eloquent untuk mengambil data.
      */
+    // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
     public function edit($id)
     {
         // Eloquent: Menggunakan find() untuk mencari berdasarkan primary key (penggunaid)
@@ -54,6 +56,7 @@ class ProfileController extends Controller
      * Memproses update data Profile.
      * Menggunakan Eloquent untuk mencari dan menyimpan data.
      */
+    // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
     public function update(Request $request)
     {
         // 1. Cari objek Pengguna berdasarkan ID

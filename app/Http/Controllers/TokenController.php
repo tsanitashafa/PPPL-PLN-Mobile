@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pelanggan; // Import Model Pelanggan
 
+
+// --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
+
 class TokenController extends Controller
 {
 

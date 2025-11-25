@@ -9,9 +9,11 @@ use function PHPUnit\Framework\returnArgument;
 
 class PelangganController extends Controller
 {
+    // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
     public function getDataBeliToken()
     {
     }
+    // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
     public function detailPelanggan($nomorMeter)
     {
@@ -24,7 +26,7 @@ class PelangganController extends Controller
         ]);
 
     }
-
+    // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
 
     // antar sesion beli token ke pembayaran
@@ -35,6 +37,7 @@ class PelangganController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+    // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
     public function pembayaran(Request $request)
     {
@@ -54,6 +57,7 @@ class PelangganController extends Controller
     {
     }
 
+    // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
 
     public function bayarToken(Request $request)
@@ -120,64 +124,5 @@ class PelangganController extends Controller
         return view('bayar-token.transaksi-berhasil');
     }
 
-    // ... (Metode lain)
 
-
-    //     public function getDataReward(Request $request)
-//     {
-//         // Ambil total tagihan akhir dari form
-//         $totalAkhir = $request->total_akhir;
-
-    //         // Ambil data pelanggan (misal login / id 1 saja sementara)
-//         $pelanggan = Pelanggan::find(1);
-
-    //         // Jika saldo tidak cukup → gagal
-//         if ($pelanggan->saldo < $totalAkhir) {
-//             return view('bayar-token/transaksi-gagal');
-//         }
-
-    //         // Jika cukup → proses transaksi
-//         $pelanggan->saldo -= $totalAkhir;
-//         $pelanggan->poin += 10;
-//         $pelanggan->save();
-
-    //         // Generate token PLN (dummy 20 digit)
-//         $token = strtoupper(Str::random(20));
-
-    //         return redirect()->route('transaksi.berhasil')->with([
-//             'token' => $token,
-//             'poin' => 10,
-//             'saldo' => $pelanggan->saldo
-//         ]);
-//     }
-
-
-    //     //cek agi
-//     // public function bayarToken(Request $request)
-//     // {
-//     //     $meter = $request->meter;
-//     //     $nominal = $request->nominal;
-//     //     $total = $request->total;
-//     //     $voucher = $request->voucher;
-
-    //     //     // Cek saldo / logika lain
-//     //     if ($total > 500000) {
-//     //         return view('bayar-token.transaksi-gagal');
-//     //     }
-
-    //     //     return view('bayar-token.transaksi-berhasil', [
-//     //         'meter' => $meter,
-//     //         'nominal' => $nominal,
-//     //         'total' => $total,
-//     //         'voucher' => $voucher
-//     //     ]);
-//     // }
-
-    //     // $meter = $request->meter;
-//     // $nominal = $request->nominal;
-//     // $total = $request->total;
-//     // $voucher = $request->voucher;
-
-    //     // return view('pembayaran', compact('meter', 'nominal', 'total', 'voucher'));
-// }
 }

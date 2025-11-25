@@ -1,3 +1,5 @@
+//5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
+
 // Fungsi untuk memformat angka menjadi format Rupiah
 function formatRupiah(angka) {
     var reverse = angka.toString().split('').reverse().join(''),
