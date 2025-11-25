@@ -136,7 +136,8 @@
                     <button class="btn w-50 shadow p-3 btn-lanjutkan card" id="btnLanjutkan"
                         data-url="{{ route('pembayaran') }}" data-meter="" data-nominal="" data-total=""
                         data-voucher="">
-
+                        Lanjutkan Pembayaran
+                    </button>
 
 
                 </div>

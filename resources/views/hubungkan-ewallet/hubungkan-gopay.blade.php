@@ -29,7 +29,7 @@
     <div class="header-container bg-transparant">
         <div class="container header-content-wrapper">
             <div class="d-flex align-items-center justify-content-between">
-                <a href="#" class="text-decoration-none text-dark back-button">
+                <a href='{{ url('/gopay') }}' class="text-decoration-none text-dark back-button">
                     <i class="fa-solid fa-arrow-left fa-xl"></i>
                 </a>
                 <h1 class="h5 m-0 font-weight-bold text-center w-100 text-dark header-title">

@@ -105,7 +105,9 @@ class PelangganController extends Controller
             'nominal_beli' => $nominal,
             'meter' => $meter,
             'total_bayar' => $totalAkhir
+
         ]);
+
     }
 
 

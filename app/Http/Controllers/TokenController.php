@@ -7,6 +7,8 @@ use App\Models\Pelanggan; // Import Model Pelanggan
 
 class TokenController extends Controller
 {
+
+    // check duluh nanti belum fixs
     /**
      * Menampilkan halaman beli token (asumsi)
      */
