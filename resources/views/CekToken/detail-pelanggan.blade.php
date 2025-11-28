@@ -99,15 +99,13 @@
             <span style="font-size: 20px;">+</span>
         </button>
 
-        <div class="location-item mt-3">
-            <span>Rumah</span>
-            <span>&#8250;</span>
-        </div>
+        @foreach($pelanggan as $p)
+            <div class="location-item mt-3">
+                <span>{{ $p->tandaisebagai }} ({{ $p->alamat }})</span>
+                <span>&#8250;</span>
+            </div>
+        @endforeach
 
-        <div class="location-item">
-            <span>Toko</span>
-            <span>&#8250;</span>
-        </div>
     </div>
 
     <h6 class="fw-bold mb-2">Bagikan Data</h6>
@@ -126,50 +124,88 @@
         <div class="modal-content p-3" style="border-radius: 22px;">
 
             <!-- Header -->
-            <div class="modal-header-custom mb-2">
-                <button class="info-btn" type="button">
-                    <img src="/images/info.png" width="30">
-                </button>
-
-                <span class="modal-title-centered">Tambah Lokasi</span>
-
-                <button class="close-btn" data-bs-dismiss="modal">
-                    ✕
-                </button>
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title w-100 text-center fw-bold">Tambah Lokasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Map -->
-            <iframe
-                width="100%"
-                height="200"
-                style="border:0; border-radius: 12px;"
-                loading="lazy"
-                allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=-6.200000,106.816666&hl=id&z=15&output=embed">
-            </iframe>
+            <div class="mt-2 mb-3">
+                <iframe
+                    width="100%"
+                    height="200"
+                    style="border:0; border-radius: 12px;"
+                    loading="lazy"
+                    allowfullscreen
+                    src="https://www.google.com/maps?q=-6.200000,106.816666&hl=id&z=15&output=embed">
+                </iframe>
+            </div>
 
             <!-- Form -->
-            <form>
+            <form action="{{ route('lokasi.tambah') }}" method="POST">
+                @csrf
+                
                 <div class="mb-3">
-                    <label class="form-label">Lokasi</label>
-                    <input type="text" class="form-control rounded-pill px-3" placeholder="Lokasi">
+                    <label class="form-label fw-semibold">Alamat</label>
+                    <input type="text" name="alamat" class="form-control" placeholder="Masukkan alamat" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">ID Pelanggan</label>
-                    <input type="text" class="form-control rounded-pill px-3" placeholder="ID Pelanggan">
+                    <label class="form-label fw-semibold">Nomor Meter</label>
+                    <input type="text" name="nomormeter" class="form-control" placeholder="Nomor meter listrik" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Tandai Sebagai</label>
-                    <input type="text" class="form-control rounded-pill px-3" placeholder="Contoh: Rumah / Toko">
+                    <label class="form-label fw-semibold">Nama Pengguna</label>
+                    <input type="text" name="nama" class="form-control" placeholder="Masukkan nama pengguna" required>
                 </div>
 
-                <button type="submit" 
-                        class="btn w-100 text-white"
-                        style="background-color: #009FB7; border-radius: 12px; padding: 10px; font-weight: 600;">
-                    Tambahkan Lokasi
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">ID Pengguna</label>
+                    <input type="text" name="penggunaid" class="form-control" placeholder="Masukkan ID Pengguna" required>
+                </div>
+
+            <!-- TANDAI LOKASI SEBAGAI-->
+                <div class="mb-3">
+                <label class="form-label fw-semibold">Tandai Sebagai</label>
+                <select id="tandaisebagai" name="tandaisebagai" class="form-select" required>
+                    <option value="">Pilih...</option>
+                    <option value="Rumah">Rumah</option>
+                    <option value="Kantor">Kantor</option>
+                    <option value="Gudang">Gudang</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                </div>
+
+                <div class="mb-3 d-none" id="inputLainnyaWrapper">
+                <label class="form-label fw-semibold">Nama Custom</label>
+                <input 
+                    type="text" 
+                    id="inputLainnya" 
+                    name="tandaisebagai_custom" 
+                    class="form-control" 
+                    placeholder="Tulis nama label…" />
+                </div>
+
+                <script>
+                const select = document.getElementById('tandaisebagai');
+                const inputWrapper = document.getElementById('inputLainnyaWrapper');
+                const customInput = document.getElementById('inputLainnya');
+
+                select.addEventListener('change', function() {
+                    if (this.value === "Lainnya") {
+                        inputWrapper.classList.remove('d-none');
+                        customInput.setAttribute('required', true);
+                    } else {
+                        inputWrapper.classList.add('d-none');
+                        customInput.removeAttribute('required');
+                        customInput.value = "";
+                    }
+                });
+                </script>
+            <!-- BUTTON SUBMIT -->
+                <button type="submit" class="btn w-100 text-white" style="background-color:#009FB7; border-radius:14px;">
+                    Tambah Lokasi
                 </button>
             </form>
 
