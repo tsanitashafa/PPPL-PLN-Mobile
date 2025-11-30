@@ -13,11 +13,52 @@ class VoucherController extends Controller
         TukarPoinController $tukarCtrl,
         RiwayatController $riwayatCtrl
     ) {
-        $user = Pengguna::find(1);
+        // sementara: user id 1
+        $user = Pengguna::findOrFail(1);
 
-        $tier      = $user->tier;
-        $points    = $user->poin;
-        $totalGoal = 2000;
+        $points = (int) $user->poin;
+
+        // ======================
+        // HITUNG TIER DARI POIN
+        // ======================
+        // silakan ubah batas kalau mau
+        if ($points >= 5000) {
+            $calculatedTier = 'Gold';
+        } elseif ($points >= 1000) {
+            $calculatedTier = 'Silver';
+        } else {
+            $calculatedTier = 'Bronze';
+        }
+
+        // ============================
+        // UPDATE TIER DI DATABASE
+        // (abaikan huruf besar kecil)
+        // ============================
+        $currentTier = $user->tier ?? '';
+        if (strtolower($currentTier) !== strtolower($calculatedTier)) {
+            $user->tier = $calculatedTier;   // simpan rapi "Gold/Silver/Bronze"
+            $user->save();
+        }
+
+        // ======================
+        // PILIH GAMBAR BERDASAR TIER
+        // ======================
+        switch (strtolower($calculatedTier)) {
+            case 'gold':
+                $tierImage = 'gold.png';
+                break;
+            case 'silver':
+                $tierImage = 'silver.png';
+                break;
+            default: // bronze / lainnya
+                $tierImage = 'bronze.png';
+                break;
+        }
+
+        // ======================
+        // PROGRESS BAR (MAX 5000)
+        // ======================
+        $totalGoal = 5000; // << sesuai permintaan
         $progress  = min(100, round(($points / $totalGoal) * 100));
 
         // 3 voucher
@@ -30,7 +71,8 @@ class VoucherController extends Controller
         $riwayatLast = $riwayatCtrl->loadRiwayatLimit(3);
 
         return view('voucher/reward', [
-            'tier'        => $tier,
+            'tier'        => $calculatedTier,
+            'tierImage'   => $tierImage,
             'points'      => $points,
             'progress'    => $progress,
             'vouchers'    => $vouchers,

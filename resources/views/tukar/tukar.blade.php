@@ -23,7 +23,8 @@
     </div>
 
     @foreach($tukarItems as $t)
-        <button class="voucher-card w-100 text-start mb-4">
+        <button class="voucher-card w-100 text-start mb-4"
+                onclick="window.location.href='{{ url('tukar/'.$t->tukarid) }}'">
             <div class="card-body d-flex align-items-center justify-content-between">
 
                 {{-- kiri: gambar + teks --}}
@@ -53,7 +54,7 @@
 
 </div>
 
-@include('template')
+@include('components/template')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

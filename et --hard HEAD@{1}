@@ -1,0 +1,37 @@
+[33m10a5d2b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev-5026231088-Tsanita-Shafa-Hadinanda[m[33m, [m[1;31morigin/dev-5026231088-Tsanita-Shafa-Hadinanda[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33m10a5d2b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev-5026231088-Tsanita-Shafa-Hadinanda[m[33m, [m[1;31morigin/dev-5026231088-Tsanita-Shafa-Hadinanda[m[33m)[m HEAD@{1}: checkout: moving from tes to dev-5026231088-Tsanita-Shafa-Hadinanda
+[33m30043d1[m[33m ([m[1;32mtes[m[33m)[m HEAD@{2}: checkout: moving from dev-5026231088-Tsanita-Shafa-Hadinanda to tes
+[33m10a5d2b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev-5026231088-Tsanita-Shafa-Hadinanda[m[33m, [m[1;31morigin/dev-5026231088-Tsanita-Shafa-Hadinanda[m[33m)[m HEAD@{3}: checkout: moving from tes to dev-5026231088-Tsanita-Shafa-Hadinanda
+[33m30043d1[m[33m ([m[1;32mtes[m[33m)[m HEAD@{4}: commit: fix case Pelanggan model
+[33m722ae47[m HEAD@{5}: checkout: moving from tes to tes
+[33m722ae47[m HEAD@{6}: commit: tes
+[33m2b99383[m HEAD@{7}: commit: resolve conflict Pelanggan
+[33m405b1fa[m HEAD@{8}: reset: moving to HEAD
+[33m405b1fa[m HEAD@{9}: reset: moving to HEAD
+[33m405b1fa[m HEAD@{10}: commit: tes
+[33m72cee6e[m HEAD@{11}: commit: tes
+[33m4bd8090[m HEAD@{12}: commit: revisi
+[33m5c9a86e[m HEAD@{13}: commit: revisi
+[33mf1ef6a4[m HEAD@{14}: commit: tes
+[33mb99d133[m HEAD@{15}: commit (merge): tes
+[33mb625bcb[m HEAD@{16}: commit (merge): tes
+[33m1bbbe68[m HEAD@{17}: commit (merge): tes
+[33mf0ddeb3[m HEAD@{18}: merge origin/dev-5026231148-Tiara-Aulia-Azadirachta-Indica: Fast-forward
+[33m4ceeb0e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{19}: checkout: moving from tes to tes
+[33m4ceeb0e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{20}: checkout: moving from IntegrasiPlnMobile to tes
+[33m1c7650d[m[33m ([m[1;32mIntegrasiPlnMobile[m[33m)[m HEAD@{21}: commit (merge): merge shafa
+[33md48c47a[m HEAD@{22}: checkout: moving from dev-5026231088-Tsanita-Shafa-Hadinanda to IntegrasiPlnMobile
+[33m10a5d2b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev-5026231088-Tsanita-Shafa-Hadinanda[m[33m, [m[1;31morigin/dev-5026231088-Tsanita-Shafa-Hadinanda[m[33m)[m HEAD@{23}: commit: revisi
+[33m7aa4abe[m HEAD@{24}: checkout: moving from IntegrasiPlnMobile to dev-5026231088-Tsanita-Shafa-Hadinanda
+[33md48c47a[m HEAD@{25}: checkout: moving from dev-5026231088-Tsanita-Shafa-Hadinanda to IntegrasiPlnMobile
+[33m7aa4abe[m HEAD@{26}: reset: moving to HEAD
+[33m7aa4abe[m HEAD@{27}: commit: Checkpoint 25 Nopember 2025 by Tsanita Shafa Hadinanda 5026231088
+[33m5f71e7b[m HEAD@{28}: reset: moving to HEAD
+[33m5f71e7b[m HEAD@{29}: reset: moving to HEAD
+[33m5f71e7b[m HEAD@{30}: commit: add model dan controller voucher, tukarpoin, dan riwayatpoin
+[33m1c05dcf[m HEAD@{31}: commit (merge): coba
+[33m68c1f30[m HEAD@{32}: checkout: moving from dev-5026231105-Mirza-Fathi-Taufiqurrahman to dev-5026231088-Tsanita-Shafa-Hadinanda
+[33ma8d2676[m[33m ([m[1;32mdev-5026231105-Mirza-Fathi-Taufiqurrahman[m[33m)[m HEAD@{33}: checkout: moving from dev-5026231088-Tsanita-Shafa-Hadinanda to dev-5026231105-Mirza-Fathi-Taufiqurrahman
+[33m68c1f30[m HEAD@{34}: commit: Tsanita1
+[33m50dd70c[m[33m ([m[1;31morigin/origin/Tiara-Aulia[m[33m, [m[1;32mmain[m[33m)[m HEAD@{35}: checkout: moving from main to dev-5026231088-Tsanita-Shafa-Hadinanda
+[33m50dd70c[m[33m ([m[1;31morigin/origin/Tiara-Aulia[m[33m, [m[1;32mmain[m[33m)[m HEAD@{36}: clone: from https://github.com/manzil26/pln-mobile-app.git
