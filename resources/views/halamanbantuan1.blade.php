@@ -103,23 +103,11 @@
         </div>
 
         <div class="content-area">
-            
-            <a href="{{ route('bantuan.detail') }}" class="help-card">
-                Apakah ada minimum transaksi untuk mendapatkan poin?
+            @foreach($bantuan as $item)
+            <a href="{{ route('bantuan.detail', ['id' => $item->bantuanid]) }}" class="help-card">
+                {{ $item->judul }}
             </a>
-
-            <a href="{{ route('bantuan.detail') }}" class="help-card">
-                Apakah ada minimum transaksi untuk mendapatkan poin?
-            </a>
-
-            <a href="{{ route('bantuan.detail') }}" class="help-card">
-                Apakah ada minimum transaksi untuk mendapatkan poin?
-            </a>
-
-            <a href="{{ route('bantuan.detail') }}" class="help-card">
-                Apakah ada minimum transaksi untuk mendapatkan poin?
-            </a>
-
+            @endforeach
         </div>
     </div>
 

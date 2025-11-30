@@ -13,6 +13,5 @@ class Bantuan extends Model
     protected $fillable = [
         'judul',
         'konten',
-        'kategori'
     ];
 }

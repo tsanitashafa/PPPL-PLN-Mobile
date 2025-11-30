@@ -146,11 +146,11 @@
                 <div class="drag-handle"></div>
 
                 <!-- Judul Pertanyaan -->
-                <h6 class="sheet-title">Apakah ada minimum transaksi untuk mendapatkan poin?</h6>
+                <h6 class="sheet-title">{{ $bantuanItem->judul }}</h6>
 
                 <!-- Jawaban -->
                 <p class="sheet-body">
-                    Tidak ada. Setiap transaksi kelipatan Rp100 tetap akan mendapatkan poin.
+                    {!! nl2br(e($bantuanItem->konten)) !!}
                 </p>
             </div>
         </a>

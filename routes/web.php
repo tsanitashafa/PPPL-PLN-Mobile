@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsController; 
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\BantuanController;
 
 
 Route::get('/tes', function () {
@@ -22,19 +23,11 @@ Route::get('/artikel', [NewsController::class, 'index'])->name('artikel');
 
 
 
-Route::get('/berita', function () {
-    return view('halamanberita');
-})->name('berita');
+Route::get('/berita', [NewsController::class, 'berita'])->name('berita');
 
-Route::get('/berita2', function () {
-    return view('halamanberita2');
-})->name('berita.detail');
+Route::get('/berita/{id}', [NewsController::class, 'beritaDetail'])->name('berita.detail');
 
 
-Route::get('/bantuan', function () {
-    return view('halamanbantuan1'); 
-})->name('bantuan');
+Route::get('/bantuan', [BantuanController::class, 'bantuan'])->name('bantuan');
 
-Route::get('/bantuan/detail', function () {
-    return view('halamanbantuan2');
-})->name('bantuan.detail');
+Route::get('/bantuan/{id}', [BantuanController::class, 'bantuanDetail'])->name('bantuan.detail');

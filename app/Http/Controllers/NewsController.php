@@ -10,13 +10,28 @@ class NewsController extends Controller
 {
     public function index()
     {
-        // 1. AMBIL NEWS (Urutkan pakai 'beritaid')
+
         $news = News::orderBy('beritaid', 'desc')->take(2)->get();
 
-        // 2. AMBIL BANTUAN (Urutkan pakai 'bantuanid')
+
         $bantuan = Bantuan::orderBy('bantuanid', 'desc')->take(2)->get();
 
-        // 3. Kirim ke View
+
         return view('halamanartikel', compact('news', 'bantuan'));
+    }
+
+    public function berita()
+    {
+        $news = News::orderBy('beritaid', 'desc')->get();
+        return view('halamanberita', compact('news'));
+    }
+
+    public function beritaDetail($id)
+    {
+        $newsItem = News::find($id);
+        if (!$newsItem) {
+            abort(404);
+        }
+        return view('halamanberita2', compact('newsItem'));
     }
 }

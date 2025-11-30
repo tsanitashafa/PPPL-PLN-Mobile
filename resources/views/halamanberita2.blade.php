@@ -123,24 +123,16 @@
         </div>
 
         <div class="overlap-card">
-            <h2 class="news-title">PLN Luncurkan Program Loyalti Gelegar PLN Mobile 2025, Hadiah Menarik untuk Pelanggan Setia</h2>
+            <h2 class="news-title">{{ $newsItem->judul }}</h2>
             <div class="divider"></div>
             <div class="d-flex justify-content-between align-items-center">
                 <span style="font-size: 0.8rem; color: #555;">Tanggal</span>
-                <span class="news-date">11 May 2025</span>
+                <span class="news-date">{{ $newsItem->tglrilis ? \Carbon\Carbon::parse($newsItem->tglrilis)->format('d M Y') : 'N/A' }}</span>
             </div>
         </div>
 
         <div class="article-content">
-            <p>
-                Jakarta, 11 Mei 2025 – PT PLN (Persero) resmi meluncurkan Gelegar PLN Mobile 2025 pada Kamis (8/5) di Jakarta. Program ini merupakan bentuk apresiasi kepada pelanggan setia PLN Mobile yang telah aktif bertransaksi dan berinteraksi melalui aplikasi PLN Mobile.
-            </p>
-            <p>
-                Melalui program ini, pelanggan akan mendapatkan reward point yang dapat ditukarkan dengan berbagai hadiah menarik, mulai dari produk digital, hadiah langsung, hingga kupon undian berhadiah.
-            </p>
-            <p>
-                Direktur Utama PLN menyatakan bahwa transformasi digital ini bertujuan untuk meningkatkan pengalaman pelanggan dalam menikmati layanan kelistrikan yang lebih mudah dan terjangkau.
-            </p>
+            {!! nl2br(e($newsItem->konten)) !!}
         </div>
 
     </div>

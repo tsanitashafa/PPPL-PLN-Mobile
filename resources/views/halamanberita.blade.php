@@ -1,10 +1,9 @@
-<!-- Haliza Putri Amelliani - 5026231213 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Berita</title>
+    <title>Halaman Bantuan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     
@@ -20,18 +19,20 @@
         }
 
         .mobile-frame {
-            /* UPDATE SIZE: Standar 375x667 */
             width: 375px;
             height: 667px;
             background-color: #ffffff;
             position: relative;
-            overflow-y: auto; 
+            overflow-y: auto;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            border-radius: 0px; /* UPDATE: Sudut Kotak */
+            display: flex;
+            flex-direction: column;
+            border-radius: 0px;
         }
 
+        /* --- HEADER --- */
         .app-header {
-            padding: 15px;
+            padding: 20px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -39,65 +40,60 @@
             top: 0;
             background: white;
             z-index: 100;
-            border-bottom: 1px solid #f0f0f0;
+            /* Tidak ada border bottom di foto */
         }
         
         .app-header h5 {
             font-weight: 600;
             margin: 0;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #000;
         }
 
         .back-btn {
             position: absolute;
-            left: 15px;
-            font-size: 1.4rem;
+            left: 20px;
+            font-size: 1.6rem;
             color: #000;
             text-decoration: none; 
+            display: flex;
+            align-items: center;
         }
 
-        .custom-card {
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-            margin-bottom: 12px;
+        .content-area {
+            padding: 10px 25px;
+        }
+
+        /* --- CARD STYLE --- */
+        .help-card {
             background: white;
-            padding: 10px;
-            transition: background-color 0.2s;
-            border: 1px solid #f5f5f5;
-        }
-        
-        .custom-card:active, .custom-card:hover {
-            background-color: #f8f9fa;
-        }
-
-        .news-img {
-            width: 65px;
-            height: 65px;
-            border-radius: 6px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .card-text {
-            font-size: 0.85rem;
-            font-weight: 500;
-            line-height: 1.3;
-            color: #333;
-        }
-
-        .news-link {
+            /* UPDATE: Sudut lebih bulat */
+            border-radius: 20px; 
+            /* UPDATE: Padding disesuaikan agar rapi saat rata kiri */
+            padding: 25px; 
+            margin-bottom: 20px;
+            /* UPDATE: Shadow lebih lembut dan lebar seperti di foto */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
             text-decoration: none;
-            color: inherit;
+            color: #000;
             display: block;
+            /* UPDATE PENTING: Teks rata kiri sesuai foto */
+            text-align: left; 
+            font-weight: 500;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            transition: transform 0.2s, box-shadow 0.2s;
+            /* UPDATE: Hapus border garis */
+            border: none;
         }
 
-        ::-webkit-scrollbar {
-            width: 4px;
+        .help-card:active, .help-card:hover {
+            transform: scale(0.98);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background-color: #fafafa;
         }
-        ::-webkit-scrollbar-thumb {
-            background-color: #ccc;
-        }
+
+        ::-webkit-scrollbar { width: 0px; }
     </style>
 </head>
 <body>
@@ -108,47 +104,15 @@
             <a href="{{ route('artikel') }}" class="back-btn">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h5>News</h5>
+            <h5>Bantuan</h5>
         </div>
 
-        <div class="p-3"> 
-            
-            <a href="{{ route('berita.detail') }}" class="news-link">
-                <div class="custom-card d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="news-img" alt="news">
-                    <div class="ps-3">
-                        <p class="card-text mb-0">PLN Luncurkan Program Loyalti Gelegar PLN Mobile 2025</p>
-                    </div>
-                </div>
+        <div class="content-area pt-2">
+            @foreach($bantuan as $item)
+            <a href="{{ route('bantuan.detail', ['id' => $item->bantuanid]) }}" class="help-card">
+                {{ $item->judul }}
             </a>
-
-            <a href="{{ route('berita.detail') }}" class="news-link">
-                <div class="custom-card d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="news-img" alt="news">
-                    <div class="ps-3">
-                        <p class="card-text mb-0">PLN Luncurkan Program Loyalti Gelegar PLN Mobile 2025</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{ route('berita.detail') }}" class="news-link">
-                <div class="custom-card d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="news-img" alt="news">
-                    <div class="ps-3">
-                        <p class="card-text mb-0">PLN Luncurkan Program Loyalti Gelegar PLN Mobile 2025</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{ route('berita.detail') }}" class="news-link">
-                <div class="custom-card d-flex align-items-center">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="news-img" alt="news">
-                    <div class="ps-3">
-                        <p class="card-text mb-0">PLN Luncurkan Program Loyalti Gelegar PLN Mobile 2025</p>
-                    </div>
-                </div>
-            </a>
-
+            @endforeach
         </div>
     </div>
 
