@@ -1,5 +1,6 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 namespace App\Models;
 
@@ -9,6 +10,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 >>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
+=======
+
+namespace App\Models;
+
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
 use Illuminate\Database\Eloquent\Model;
 
 class Riwayat extends Model
@@ -22,6 +28,7 @@ class Riwayat extends Model
         'timestamp',
         'satuanlistrik',
         'riwayatpoin',
+<<<<<<< HEAD
 <<<<<<< HEAD
         'penggunaid'
     ];
@@ -42,3 +49,8 @@ class Riwayat extends Model
     }
 }
 >>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
+=======
+        'penggunaid'
+    ];
+}
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman

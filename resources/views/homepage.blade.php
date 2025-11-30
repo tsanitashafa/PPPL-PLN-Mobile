@@ -29,7 +29,10 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/bottom-navbar.css') }}">
+=======
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
 </head>
 <style>
     /* Variabel untuk konsistensi */
@@ -157,7 +160,11 @@
     <div style="position: relative; ">
 
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 180px; z-index: 1;">
+<<<<<<< HEAD
             <img src="/images/wave.svg" alt="Latar Belakang Gelombang"
+=======
+            <img src="assets/img/wave.svg" alt="Latar Belakang Gelombang"
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                 style="width: 100%; height: 100%; object-fit: cover;">
         </div>
 
@@ -167,11 +174,19 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-white">
+<<<<<<< HEAD
                             <img src="/images/image-profile.png" alt="Foto Profil Abyan" class="rounded-circle"
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
                                 <h2 class="h6 m-0 fw-bold poppins-bold">Hi, Abyan</h2>
                                 <p class="small m-0 poppins-regular">Silver - 3000 Poin</p>
+=======
+                            <img src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}" alt="Foto Profil {{ $user->nama }}" class="rounded-circle"
+                                style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
+                            <div>
+                                <h2 class="h6 m-0 fw-bold poppins-bold">Hi, {{ $user->nama }}</h2>
+                                <p class="small m-0 poppins-regular">{{ ucfirst($user->tier) }} - {{ $user->poin }} Poin</p>
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                             </div>
                         </div>
 
@@ -188,7 +203,11 @@
                                     style="height: 40px; padding-left: 40px; border: none; background-color: #fff; color: #6c757d; font-size: 0.9rem;">
                             </div>
 
+<<<<<<< HEAD
                             <a href="#" class="text-white fs-4 ms-2">
+=======
+                            <a href="{{ route('notif') }}" class="text-white fs-4 ms-2">
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
                                     <path
@@ -206,7 +225,11 @@
 
                         <div
                             class="d-flex justify-content-between align-items-center pb-2 border-bottom mb-3; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+<<<<<<< HEAD
                             <h3 class="h4 m-0 fw-normal">18437249224</h3>
+=======
+                            <h3 class="h4 m-0 fw-normal">{{ $user->phone }}</h3>
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                             <div class="d-flex align-items-center text-black" style="color: #18a2bb">
                                 <i class=" h4 fa-solid fa-chevron-right"></i>
                             </div>
@@ -217,7 +240,11 @@
                             <div class="col-6 border-end">
                                 <p class="text-muted small mb-1">Saldo</p>
                                 <div class="d-flex align-items-center">
+<<<<<<< HEAD
                                     <h4 class="m-0 fw-bold">Rp 15.300</h4>
+=======
+                                    <h4 class="m-0 fw-bold">Rp {{ number_format($user->saldo, 0, ',', '.') }}</h4>
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                     <div class="d-flex align-items-center text-black" style="color: #18a2bb">
                                         <i class="fa-solid fa-circle-plus"></i>
                                     </div>
@@ -229,7 +256,11 @@
                             <div class="col-6">
                                 <p class="text-muted small mb-1">Token Listrik</p>
                                 <div class="d-flex align-items-center">
+<<<<<<< HEAD
                                     <h4 class="m-0 fw-bold">5.26 kWh</h4>
+=======
+                                    <h4 class="m-0 fw-bold">0 kWh</h4>
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                     <a href="#" class="text-info ms-2 ">
                                         <i class="fa-solid fa-circle-plus "></i>
                                     </a>
@@ -247,25 +278,41 @@
                             <div class="col text-center">
                                 <a href="#" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba ">
+<<<<<<< HEAD
                                         <img src="/images/beli-token.png" alt="beli token" class="d-block mx-auto"
+=======
+                                        <img src="assets/img/beli-token.svg" alt="beli token" class="d-block mx-auto"
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Beli Token</p>
                                 </a>
                             </div>
                             <div class="col text-center">
+<<<<<<< HEAD
                                 <a href="{{ route('masukkan-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
                                         <img src="/images/masukkan-token.png" alt="masukkan token"
+=======
+                                <a href="#" class="text-decoration-none d-block">
+                                    <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
+                                        <img src="assets/img/masukkan-token.svg" alt="masukkan token"
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                             class="d-block mx-auto" style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Masukkan Token</p>
                                 </a>
                             </div>
                             <div class="col text-center">
+<<<<<<< HEAD
                                 <a href="{{ route('cek-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
                                         <img src="/images/cek-token.png" alt="cek token" class="d-block mx-auto"
+=======
+                                <a href="#" class="text-decoration-none d-block">
+                                    <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
+                                        <img src="assets/img/cek-token.svg" alt="cek token" class="d-block mx-auto"
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Cek Token</p>
@@ -274,7 +321,11 @@
                             <div class="col text-center">
                                 <a href="#" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
+<<<<<<< HEAD
                                         <img src="/images/lihat-semua.png" alt="Lihat Semuanya" class="d-block mx-auto"
+=======
+                                        <img src="assets/img/lainya.png" alt="Lihat Semuanya" class="d-block mx-auto"
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Lihat Semuanya</p>
@@ -320,7 +371,11 @@
                             </div>
 
                             <div class="col-4 d-flex justify-content-end align-items-center">
+<<<<<<< HEAD
                                 <img src="/images/artikel.svg" alt="Foto Artikel" class="img-fluid"
+=======
+                                <img src="assets/img/img-artikel.svg" alt="Foto Artikel" class="img-fluid"
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
 
@@ -347,7 +402,11 @@
                             </div>
 
                             <div class="col-4 d-flex justify-content-end align-items-center">
+<<<<<<< HEAD
                                 <img src="/images/artikel.svg" alt="Foto Artikel" class="img-fluid"
+=======
+                                <img src="assets/img/img-artikel.svg" alt="Foto Artikel" class="img-fluid"
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
 
@@ -360,8 +419,54 @@
         </div>
     </div>
 
+<<<<<<< HEAD
    @include('components/template')
     </div>
 
 
+=======
+    <div class="fixed-bottom">
+        <nav class="navbar navbar-expand-lg r p-0 sm:navbar-expand-lg" id="bottom-nav"
+            style="box-shadow: 0px 10px 29px rgba(0, 0, 0, 0.15); border-radius-top: 50px;">
+            <ul class="navbar-nav w-100 d-flex justify-content-between align-items-end">
+
+                <li class="nav-item text-center">
+                    <a class="nav-link menu-link active" aria-current="page" href="#">
+                        <i class="fa-solid fa-house-chimney"></i>
+                        <span class="d-block small">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav-item text-center">
+                    <a class="nav-link menu-link" href="#">
+                        <i class="fa-solid fa-gift"></i>
+                        <span class="d-block small">Reward</span>
+                    </a>
+                </li>
+
+                <li class="nav-item spacer-qr"></li>
+
+                <div class="qr-btn-container">
+                    <a href="#" class="qr-btn d-flex justify-content-center align-items-center shadow-lg">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </a>
+                </div>
+
+                <li class="nav-item text-center">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span class="d-block small">Artikel</span>
+                    </a>
+                </li>
+
+                <li class="nav-item text-center">
+                    <a class="nav-link menu-link" href="{{ route('edit-profile-1') }}">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="d-block small">Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
 </html>

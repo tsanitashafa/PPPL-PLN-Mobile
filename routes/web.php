@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\TokenController;
 
@@ -86,34 +87,55 @@ Route::get('/tukar', [TukarPoinController::class, 'loadTukarSemua']);
 // Route::get('/pln', function () {
 //     return view('welcome');
 // });
+=======
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\ProfileController;
 
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('homepage', [PenggunaController::class, 'ambilDataPengguna'])->name('homepage');
+Route::get('edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
+Route::get('edit-profil-2', [ProfileController::class, 'editProfile2'])->name('edit-profil-2');
+Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
+Route::post('/toggle-notification', [PenggunaController::class, 'toggleNotification'])->name('toggle-notification');
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
 
-// Route::get('/registerphone', function () {
-//     return view('registerphone');
-// });
+Route::get('transaksi-berhasil', function () {
+    return view('transaksi-berhasil');
+});
+Route::get('pembayaran', function () {
+    return view('pembayaran');
 
-// Route::get('/verifyphone', function () {
-//     return view('verifyphone');
-// });
+});
+Route::get('transaksi-gagal', function () {
+    return view('transaksi-gagal');
+    
+});
+Route::get('/', [PenggunaController::class, 'welcome'])->name('welcome');
 
-// Route::get('/registuser', function () {
-//     return view('registuser');
-// });
+Route::get('/registerphone', [PenggunaController::class, 'showRegisterPhone'])->name('registerphone');
+Route::post('/registerphone', [PenggunaController::class, 'cekNoHP']);
 
-// Route::get('/verifyemail', function () {
-//     return view('verifyemail');
-// });
+Route::get('/verifyphone', [PenggunaController::class, 'showVerifyPhone'])->name('verifyphone');
+Route::post('/verifyphone', [PenggunaController::class, 'verifyOTP'])->name('verifyotp');
 
-// Route::get('/createpin', function () {
-//     return view('createpin');
-// });
+Route::get('/registuser', [PenggunaController::class, 'showRegistUser'])->name('registuser');
+Route::post('/registuser', [PenggunaController::class, 'savePengguna'])->name('storeuserdata');
 
+Route::get('/verifyemail', [PenggunaController::class, 'showVerifyEmail'])->name('verifyemail');
+Route::post('/verifyemail', [PenggunaController::class, 'verifyEmailOTP'])->name('verifyemailotp');
 
-Route::get('/', [UserController::class, 'welcome'])->name('welcome');
+Route::get('/createpin', [PenggunaController::class, 'showCreatePin'])->name('createpin');
+Route::post('/createpin', [PenggunaController::class, 'setPIN'])->name('storepin');
 
-Route::get('/registerphone', [UserController::class, 'showRegisterPhone'])->name('registerphone');
-Route::post('/registerphone', [UserController::class, 'storePhone']);
+Route::get('/loginphone', [PenggunaController::class, 'showLoginPhone'])->name('loginphone');
+Route::post('/processloginphone', [PenggunaController::class, 'cekNoHPLog'])->name('processloginphone');
 
+Route::get('/loginpin', [PenggunaController::class, 'showLoginPin'])->name('loginpin');
+Route::post('/processloginpin', [PenggunaController::class, 'setLogin'])->name('processloginpin');
+
+<<<<<<< HEAD
 Route::get('/verifyphone', [UserController::class, 'showVerifyPhone'])->name('verifyphone');
 Route::post('/verifyphone', [UserController::class, 'verifyOTP'])->name('verifyotp');
 
@@ -127,3 +149,7 @@ Route::post('/createpin', [UserController::class, 'storePin'])->name('storepin')
 
 Route::get('/notif', [UserController::class, 'notif'])->name('notif');
 >>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
+=======
+Route::get('/notif', [PenggunaController::class, 'notif'])->name('notif');
+Route::post('/logout', [PenggunaController::class, 'logout'])->name('logout');
+>>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman

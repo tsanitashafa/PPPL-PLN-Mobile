@@ -1,19 +1,5 @@
 <?php
-<<<<<<< HEAD
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class TukarPoinController extends Controller
-{
-    public function loadTukar($limit)
-    {
-    }
-
-    public function loadTukarSemua()
-    {
-=======
 // {{--5026231088 Tsanita Shafa Hadinanda--}}
 namespace App\Http\Controllers;
 
@@ -35,15 +21,11 @@ class TukarPoinController extends Controller
         return view('tukar/tukar', [
             'tukarItems' => $tukarItems,
         ]);
->>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
+
     }
 
     public function loadTukarById($id)
     {
-<<<<<<< HEAD
-    }
-}
-=======
         $tukar = TukarPoin::findOrFail($id);
 
         return view('tukar/detail', [
@@ -51,4 +33,5 @@ class TukarPoinController extends Controller
         ]);
     }
 }
->>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
+
+

@@ -1,13 +1,5 @@
 <?php
-<<<<<<< HEAD
 
-namespace App\Http\Controllers;
-
-class VoucherController extends Controller
-{
-    public function loadVoucherLimit($limit)
-    {
-=======
 // {{--5026231088 Tsanita Shafa Hadinanda--}}
 namespace App\Http\Controllers;
 
@@ -46,31 +38,9 @@ class VoucherController extends Controller
             'tukarItems'  => $tukarItems,
             'riwayatLast' => $riwayatLast,
         ]);
->>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
     }
-
     public function loadVoucher()
     {
-<<<<<<< HEAD
-    }
-
-    public function loadVoucherById($id)
-    {
-    }
-
-    public function getDataReward()
-    {
-    }
-
-    public function loadReward()
-    {
-    }
-
-    public function redeemReward($id)
-    {
-    }
-}
-=======
         $vouchers = Voucher::all();
 
         return view('voucher/voucher', [
@@ -87,4 +57,3 @@ class VoucherController extends Controller
         ]);
     }
 }
->>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda

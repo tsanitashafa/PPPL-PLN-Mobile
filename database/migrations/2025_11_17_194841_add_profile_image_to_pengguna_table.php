@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('phone');
-            $table->string('name');
-            $table->string('email');
-            $table->string('pin')->nullable();
-            $table->timestamps();
+        Schema::table('pengguna', function (Blueprint $table) {
+            $table->string('profile_image')->nullable()->after('saldo');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::table('pengguna', function (Blueprint $table) {
+            $table->dropColumn('profile_image');
+        });
     }
 };

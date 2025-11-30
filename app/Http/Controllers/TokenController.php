@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +11,7 @@ class TokenController extends Controller
     {
         return view('MasukkanToken.masukkan-token');
     }
-    
+
       public function verifikasiToken(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
     {
         $request->validate([
@@ -63,7 +62,7 @@ class TokenController extends Controller
 
     public function history($generateNoToken) //Tiara Aulia Azadirachta Indica | 5026231148
     {
-        // sesuai diagram: getHistoryPemakaian(generateNoToken) 
+        // sesuai diagram: getHistoryPemakaian(generateNoToken)
         $history = BeliToken::where('generateNoToken', $generateNoToken)
             ->with('pelanggan')
             ->first();
@@ -71,24 +70,5 @@ class TokenController extends Controller
         return view('CekToken.history-pemakaian', [
             'history' => $history
         ]);
-=======
-
-class TokenController extends Controller
-{
-    public function verifikasiToken($generateNoToken)
-    {
-    }
-
-    public function loadCekToken()
-    {
-    }
-
-    public function loadHistory()
-    {
->>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
-    }
-
-    public function getHistoryPemakaian($generateNoToken)
-    {
     }
 }
