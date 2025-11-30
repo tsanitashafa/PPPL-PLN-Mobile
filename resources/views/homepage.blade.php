@@ -153,7 +153,6 @@
 </style>
 
 <body>
-    @include('template')
 
     <div style="position: relative; ">
 
@@ -361,47 +360,7 @@
         </div>
     </div>
 
-    <div class="fixed-bottom">
-        <nav class="navbar navbar-expand bottom-nav shadow-sm">
-            <ul class="navbar-nav w-100 d-flex justify-content-between align-items-end">
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link active" aria-current="page" href="#">
-                        <i class="fa-solid fa-house-chimney"></i>
-                        <span class="d-block small">Home</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-gift"></i>
-                        <span class="d-block small">Reward</span>
-                    </a>
-                </li>
-
-                <li class="nav-item spacer-qr"></li>
-
-                <li class="nav-item text-center qr-btn-container">
-                    <a href="#" class="qr-btn d-flex justify-content-center align-items-center shadow-lg">
-                        <i class="fa-solid fa-qrcode"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-newspaper"></i>
-                        <span class="d-block small">Artikel</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="d-block small">Profile</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+   @include('componentS/template')
     </div>
 
 
