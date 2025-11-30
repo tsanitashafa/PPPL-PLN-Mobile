@@ -47,21 +47,14 @@ class PenggunaController extends Controller
     {
     }
 
-    public function getDetailPelanggan(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
+    public function getDetailPelanggan(Request $request)
     {
-        //$pelanggan = Pelanggan::where('penggunaid', Auth::id())->get(); //nanti dipakai kalau udah nyambung login
-         $pelanggan = Pelanggan::where('penggunaid', 4)->get(); // sementara hardcode
+        $pelanggan = Pelanggan::where('penggunaid', Auth::id())->get();
 
         return view('CekToken.detail-pelanggan', compact('pelanggan'));
-
-        $pelanggan = Pelanggan::with('alamat')->find($pelangganId); // ini untuk cek token
-
-        return view('CekToken.detail-pelanggan', [
-            'pelanggan' => $pelanggan
-        ]);
     }
 
-    public function tambahLokasi(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
+    public function tambahLokasi(Request $request)
     {
         $request->validate([
             'alamat' => 'required',
@@ -86,16 +79,6 @@ class PenggunaController extends Controller
 
         return redirect()->route('detail-pelanggan')
             ->with('success', 'Lokasi berhasil ditambahkan!');
-    }
-
-    public function cekTokenPelanggan($pelangganId) //Tiara Aulia Azadirachta Indica | 5026231148
-    {
-        $data = BeliToken::where('pelangganid', $pelangganid)->get();
-
-        return view('CekToken.cek-token', [
-            'tokens' => $data,
-            'pelangganid' => $pelangganid
-        ]);
     }
 
     public function setLogin()

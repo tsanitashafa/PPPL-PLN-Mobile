@@ -1,16 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-class PelangganController extends Controller
-{
-    public function getDataBeliToken()
-    {
-    }
-
-    public function detailPelanggan()
-    {
-    }
 use Illuminate\Http\Request; // Import Request
 use Illuminate\Support\Str; // Import Str untuk generate token
 use App\Models\Pelanggan;
@@ -66,9 +56,6 @@ class PelangganController extends Controller
     public function detailPelangganLokasi()
     {
     }
-<<<<<<< HEAD
-}
-=======
 
     // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
@@ -139,4 +126,3 @@ class PelangganController extends Controller
 
 
 }
->>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah

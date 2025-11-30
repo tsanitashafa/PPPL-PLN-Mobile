@@ -2,12 +2,6 @@
 
 namespace App\Http\Controllers;
 
-class ProfileController extends Controller
-{
-    public function loadEditProfile()
-    {
-    }
-}
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pengguna; // Pastikan model Anda bernama 'Pengguna'

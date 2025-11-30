@@ -18,4 +18,4 @@ class Voucher extends Model
         'transaksiid'
     ];
 }
-}
+
