@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+{{-- 5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH  --}}
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +33,10 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/bottom-navbar.css') }}">
+=======
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 </head>
 <style>
     /* Variabel untuk konsistensi */
@@ -153,12 +160,22 @@
 </style>
 
 <body>
+<<<<<<< HEAD
     @include('template')
+=======
+    <div class=" d-block" style="z-index: 1050;">
+        <img src="assets/img/top-bar.png" alt="Status Bar Mobile" style="width: 100%;">
+    </div>
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 
     <div style="position: relative; ">
 
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 180px; z-index: 1;">
+<<<<<<< HEAD
             <img src="/images/wave.svg" alt="Latar Belakang Gelombang"
+=======
+            <img src="assets/img/wave.svg" alt="Latar Belakang Gelombang"
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
                 style="width: 100%; height: 100%; object-fit: cover;">
         </div>
 
@@ -168,7 +185,11 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-white">
+<<<<<<< HEAD
                             <img src="/images/image-profile.png" alt="Foto Profil Abyan" class="rounded-circle"
+=======
+                            <img src="assets/img/image-profile.png" alt="Foto Profil Abyan" class="rounded-circle"
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
                                 <h2 class="h6 m-0 fw-bold poppins-bold">Hi, Abyan</h2>
@@ -248,25 +269,41 @@
                             <div class="col text-center">
                                 <a href="#" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba ">
+<<<<<<< HEAD
                                         <img src="/images/beli-token.png" alt="beli token" class="d-block mx-auto"
+=======
+                                        <img src="assets/img/beli-token.svg" alt="beli token" class="d-block mx-auto"
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Beli Token</p>
                                 </a>
                             </div>
                             <div class="col text-center">
+<<<<<<< HEAD
                                 <a href="{{ route('masukkan-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
                                         <img src="/images/masukkan-token.png" alt="masukkan token"
+=======
+                                <a href="#" class="text-decoration-none d-block">
+                                    <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
+                                        <img src="assets/img/masukkan-token.svg" alt="masukkan token"
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
                                             class="d-block mx-auto" style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Masukkan Token</p>
                                 </a>
                             </div>
                             <div class="col text-center">
+<<<<<<< HEAD
                                 <a href="{{ route('cek-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
                                         <img src="/images/cek-token.png" alt="cek token" class="d-block mx-auto"
+=======
+                                <a href="#" class="text-decoration-none d-block">
+                                    <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
+                                        <img src="assets/img/cek-token.svg" alt="cek token" class="d-block mx-auto"
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Cek Token</p>
@@ -275,7 +312,11 @@
                             <div class="col text-center">
                                 <a href="#" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
+<<<<<<< HEAD
                                         <img src="/images/lihat-semua.png" alt="Lihat Semuanya" class="d-block mx-auto"
+=======
+                                        <img src="assets/img/lainya.png" alt="Lihat Semuanya" class="d-block mx-auto"
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Lihat Semuanya</p>
@@ -321,7 +362,11 @@
                             </div>
 
                             <div class="col-4 d-flex justify-content-end align-items-center">
+<<<<<<< HEAD
                                 <img src="/images/artikel.svg" alt="Foto Artikel" class="img-fluid"
+=======
+                                <img src="assets/img/img-artikel.svg" alt="Foto Artikel" class="img-fluid"
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
 
@@ -348,7 +393,11 @@
                             </div>
 
                             <div class="col-4 d-flex justify-content-end align-items-center">
+<<<<<<< HEAD
                                 <img src="/images/artikel.svg" alt="Foto Artikel" class="img-fluid"
+=======
+                                <img src="assets/img/img-artikel.svg" alt="Foto Artikel" class="img-fluid"
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
 
@@ -362,7 +411,12 @@
     </div>
 
     <div class="fixed-bottom">
+<<<<<<< HEAD
         <nav class="navbar navbar-expand bottom-nav shadow-sm">
+=======
+        <nav class="navbar navbar-expand-lg r p-0 sm:navbar-expand-lg" id="bottom-nav"
+            style="box-shadow: 0px 10px 29px rgba(0, 0, 0, 0.15); border-radius-top: 50px;">
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
             <ul class="navbar-nav w-100 d-flex justify-content-between align-items-end">
 
                 <li class="nav-item text-center">
@@ -381,11 +435,19 @@
 
                 <li class="nav-item spacer-qr"></li>
 
+<<<<<<< HEAD
                 <li class="nav-item text-center qr-btn-container">
                     <a href="#" class="qr-btn d-flex justify-content-center align-items-center shadow-lg">
                         <i class="fa-solid fa-qrcode"></i>
                     </a>
                 </li>
+=======
+                <div class="qr-btn-container">
+                    <a href="#" class="qr-btn d-flex justify-content-center align-items-center shadow-lg">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </a>
+                </div>
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 
                 <li class="nav-item text-center">
                     <a class="nav-link menu-link" href="#">
@@ -404,5 +466,9 @@
         </nav>
     </div>
 
+<<<<<<< HEAD
 
 </html>
+=======
+</html>
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah

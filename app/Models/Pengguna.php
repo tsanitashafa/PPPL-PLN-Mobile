@@ -22,4 +22,8 @@ class Pengguna extends Model
         'saldo',
         'pin'
     ];
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah

@@ -17,4 +17,8 @@ class Voucher extends Model
         'pelangganid',
         'transaksiid'
     ];
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
