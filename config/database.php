@@ -76,11 +76,14 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => env('DB_SSLMODE', 'require'),
+<<<<<<< HEAD
             'options' => [
                 // Ganti 'ep-sesuai-host-kamu' dengan Endpoint ID dari Langkah 1
                 // Contoh: 'endpoint=ep-solitary-fire-78234'
                 'endpoint' => 'endpoint=ep-odd-bar-a132kt3u-pooler$npg_1JCfwHuzMD3Q' 
             ],
+=======
+>>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
         ],
 
         'sqlsrv' => [

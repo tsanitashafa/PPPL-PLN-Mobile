@@ -1,7 +1,14 @@
 <?php
+<<<<<<< HEAD
 
 namespace App\Models;
 
+=======
+// {{--5026231088 Tsanita Shafa Hadinanda--}}
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+>>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
 use Illuminate\Database\Eloquent\Model;
 
 class Riwayat extends Model
@@ -15,6 +22,23 @@ class Riwayat extends Model
         'timestamp',
         'satuanlistrik',
         'riwayatpoin',
+<<<<<<< HEAD
         'penggunaid'
     ];
 }
+=======
+        'penggunaid',
+    ];
+
+    protected $casts = [
+        'timestamp'    => 'datetime',
+        'riwayatpoin'  => 'integer',
+        'penggunaid'   => 'integer',
+    ];
+
+    public function pengguna()
+    {
+        return $this->belongsTo(Pengguna::class, 'penggunaid');
+    }
+}
+>>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda

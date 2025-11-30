@@ -1,0 +1,257 @@
+/* {{--5026231088 Tsanita Shafa Hadinanda--}} */
+/* ========= Variables & Base ========= */
+:root{
+
+  --nav-h: 92px;
+  --nav-icon-size: 1.25rem;
+  --nav-font-size: .8rem;
+    --accent-pos:#1c88ff;
+  --accent-neg:#e44d4d;
+
+  --bg:#f5f6f8; --text:#1c1d20; --sub:#6b7280;
+  --brand:#15b6c9; --brand-2:#1da6b8; --chip:#14a2ba;
+}
+
+html,body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom,0px));
+}
+
+/* ========= Layout Container ========= */
+.container-app{
+  margin-top: 60px;
+  margin: 0 auto;
+  padding-bottom: calc(var(--nav-h) + 64px);
+}
+/* Warna link "Lihat Semua" */
+.see-more {
+  color: black !important;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.see-more:hover {
+  font-weight: bold !important; /* sedikit lebih gelap saat hover */
+}
+.sub{ color: var(--sub); }
+
+/* ===== App Bar Center Title (versi dinaikkan) ===== */
+.app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 1050; /* pastikan di atas semua elemen lain */
+  padding: 6px 0 10px;
+}
+
+.app-bar .back-btn {
+  position: absolute;
+  left: 6px;
+  top: 45%;
+  transform: translateY(-55%);
+  padding: 0 10px;
+  color: #1c1d20;
+  text-decoration: none;
+}
+
+.app-bar .app-title {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-top: -4px; /* sedikit naik agar sejajar dengan back */
+}
+
+
+
+/* ========= Tier Card ========= */
+.tier-card{
+  border-radius:32px; border:0; color:#fff;
+  background: url('../img/bannerpoin.png') center/cover no-repeat;
+  position:relative; overflow:hidden; min-height:150px;
+  -webkit-box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+    box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+}
+.tier-coin{ width:110px; height:110px; object-fit:contain; }
+
+/* ===== Progress Bar (rounded + smooth) ===== */
+.progress-wrap {
+  height: 35px;
+  background: rgba(255,255,255,.15);
+  border-radius: 999px; /* bikin pembungkus luar bulat */
+  padding: 3px;
+  position: relative;
+}
+
+.progress-track {
+  position: relative;
+  height: 30px;
+  border-radius: 999px; /* sudut dalam bulat juga */
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Olive = sisa (selalu penuh di belakang) */
+.bar-olive {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #9aa01f;
+  border-radius: 999px; /* ujung olive juga bulat */
+}
+
+/* Kuning = poin yang sudah tercapai */
+.bar-yellow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #ffeb3b;
+  border-radius: 999px; /* penting: ujung depan bulat */
+  z-index: 2;
+  transition: width 0.4s ease;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+}
+
+
+/* ===== Split Oval Chips (terpisah & oval) ===== */
+.nav-chips-split{
+  display:flex;
+  gap:2rem;             /* jarak antar chip */
+}
+
+.nav-chips-split .nav-item{
+  flex:1 1 0;            /* bagi rata lebar */
+  display:flex;          /* biar <a> bisa full width */
+}
+
+.nav-chips-split .nav-link.chip{
+  width:100%;
+  border-radius:999px;   /* oval */
+  padding:.55rem 0;      /* tinggi chip */
+  text-align:center;
+  font-weight:600;
+  background:#fff;       /* chip normal */
+  color:#6b7280;
+  border:1px solid #e5e7eb;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+  transition:all .2s ease;
+  -webkit-box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+  box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+}
+
+.nav-chips-split .nav-link.chip:hover{
+  background:#f7faff;
+  color:#14a2ba;
+  border-color:#dbe8ff;
+  -webkit-box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+  box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+}
+
+.nav-chips-split .nav-link.chip.active{
+  background:#14a2ba;    /* chip aktif */
+  color:#fff;
+  border-color:#14a2ba;
+  box-shadow:0 3px 10px rgba(13,110,253,.22);
+  -webkit-box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+  box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+}
+
+/* Aksesibilitas (keyboard focus) */
+.nav-chips-split .nav-link.chip:focus{
+  outline:0;
+  box-shadow:0 0 0 3px rgba(13,110,253,.25);
+}
+
+/* Jika layar sangat sempit, biarkan wrap rapi */
+@media (max-width: 360px){
+  .nav-chips-split{ flex-wrap:wrap; }
+  .nav-chips-split .nav-item{ flex:1 1 100%; }
+}
+
+
+/* ========= Voucher Card ========= */
+.voucher-card{
+  border:0; border-radius:16px; background:#fff;
+  height: 100px;
+  -webkit-box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+}
+/* dasar kotaknya */
+.thumb {
+  width: 74px;
+  height: 74px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+/* tukar: benar benar kotak penuh */
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+
+
+/* Kartu riwayat */
+.list{margin-top:6px}
+.item-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  background:var(--white);;
+  margin-bottom:14px;
+  border:0; border-radius:16px; background:#fff;
+  height: 100px;
+  -webkit-box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+    box-shadow: -1px 7px 6px 1px rgba(0,0,0,0.25);
+}
+.item-left{min-width:0}
+.item-title{
+  font-size:15px;
+  font-weight:700;
+  color:#111827;
+}
+.item-sub{
+  margin-top:2px;
+  font-size:13px;
+  color:var(--muted);
+}
+.item-point{
+  white-space:nowrap;
+  font-weight:700;
+  font-size:14px;
+}
+.item-point.positive{color:var(--accent-pos)}
+.item-point.negative{color:var(--accent-neg)}
+
+/* ========= Desktop Canvas ========= */
+@media (min-width: 992px){
+  body{ background: linear-gradient(#eef3f7,#f7f9fb); }
+  .container-app{
+    margin:24px auto 0; padding:16px; border-radius:24px;
+    background:#f8fafc; box-shadow:0 10px 24px rgba(0,0,0,.06);
+  }
+}

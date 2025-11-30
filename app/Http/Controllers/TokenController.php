@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -70,6 +71,21 @@ class TokenController extends Controller
         return view('CekToken.history-pemakaian', [
             'history' => $history
         ]);
+=======
+
+class TokenController extends Controller
+{
+    public function verifikasiToken($generateNoToken)
+    {
+    }
+
+    public function loadCekToken()
+    {
+    }
+
+    public function loadHistory()
+    {
+>>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
     }
 
     public function getHistoryPemakaian($generateNoToken)

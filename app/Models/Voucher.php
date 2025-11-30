@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 
+=======
+// {{--5026231088 Tsanita Shafa Hadinanda--}}
+>>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -17,4 +21,8 @@ class Voucher extends Model
         'pelangganid',
         'transaksiid'
     ];
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
