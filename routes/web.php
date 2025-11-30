@@ -276,8 +276,6 @@ Route::get('/transaksi-berhasil', [PelangganController::class, 'transaksiBerhasi
 Route::post('/cari-pelanggan', [TokenController::class, 'getPelanggan'])
     ->name('cari-pelanggan');
 
-Route::get('/createpin', [PenggunaController::class, 'showCreatePin'])->name('createpin');
-Route::post('/createpin', [PenggunaController::class, 'storePin'])->name('storepin');
 
 Route::get('/notif', [PenggunaController::class, 'notif'])->name('notif');
 

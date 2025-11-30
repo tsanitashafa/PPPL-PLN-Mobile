@@ -267,7 +267,23 @@ class PenggunaController extends Controller
 
         return view('homepage', compact('user'));
     }
+ public function ambilDataPengguna()
+    {
+        // ambil user authenticated dari session
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
 
+        if (!$userId) {
+            return redirect()->route('welcome');
+        }
+
+        $user = Pengguna::find($userId);
+
+        if (!$user) {
+            return redirect()->route('welcome');
+        }
+
+        return view('homepage', compact('user'));
+    }
     public function notif()
     {
         // ambil user authenticated dari session
