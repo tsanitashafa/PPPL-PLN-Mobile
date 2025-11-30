@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
 
 class PelangganController extends Controller
 {
@@ -12,7 +11,6 @@ class PelangganController extends Controller
     public function detailPelanggan()
     {
     }
-=======
 use Illuminate\Http\Request; // Import Request
 use Illuminate\Support\Str; // Import Str untuk generate token
 use App\Models\Pelanggan;
@@ -60,7 +58,6 @@ class PelangganController extends Controller
         return view('bayar-token/pembayaran', compact('total'));
     }
 
->>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 
     public function getListPelanggan()
     {

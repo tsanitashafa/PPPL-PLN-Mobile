@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 class ProfileController extends Controller
 {
     public function loadEditProfile()
     {
     }
 }
-=======
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pengguna; // Pastikan model Anda bernama 'Pengguna'
@@ -90,4 +88,3 @@ class ProfileController extends Controller
         return redirect('/profile')->with('success', 'Profile berhasil diperbarui!');
     }
 }
->>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah

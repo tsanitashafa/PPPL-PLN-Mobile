@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 class VoucherController extends Controller
 {
-<<<<<<< HEAD
     public function loadVoucherLimit($limit)
     {
     }
@@ -29,7 +28,6 @@ class VoucherController extends Controller
     {
     }
 }
-=======
 
     // //mengambil voucher untuk beli token
     // public function getVoucher($pelangganId)
@@ -39,4 +37,3 @@ class VoucherController extends Controller
     //     return response()->json($voucher);
     // }
 }
->>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah

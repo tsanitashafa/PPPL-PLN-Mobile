@@ -1,19 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class TokenController extends Controller
 {
-     // Tampilkan form input token (Tiara Aulia Azadirachta Indica | 5026231148)
+    // Tampilkan form input token (Tiara Aulia Azadirachta Indica | 5026231148)
     public function showForm()
     {
         return view('MasukkanToken.masukkan-token');
     }
-    
-      public function verifikasiToken(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
+
+    public function verifikasiToken(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
     {
         $request->validate([
             'nomor_token' => 'required'
@@ -21,8 +20,8 @@ class TokenController extends Controller
 
         // ambil token dari table belitoken
         $token = DB::table('belitoken')
-                    ->where('generatenotoken', $request->nomor_token)
-                    ->first();
+            ->where('generatenotoken', $request->nomor_token)
+            ->first();
 
         if (!$token) {
             return redirect()->route('gagal')->with('message', 'Token tidak ditemukan.');
@@ -63,7 +62,7 @@ class TokenController extends Controller
 
     public function history($generateNoToken) //Tiara Aulia Azadirachta Indica | 5026231148
     {
-        // sesuai diagram: getHistoryPemakaian(generateNoToken) 
+        // sesuai diagram: getHistoryPemakaian(generateNoToken)
         $history = BeliToken::where('generateNoToken', $generateNoToken)
             ->with('pelanggan')
             ->first();
@@ -77,7 +76,6 @@ class TokenController extends Controller
     {
     }
 }
-=======
 
 use Illuminate\Http\Request;
 use App\Models\Pelanggan; // Import Model Pelanggan
@@ -159,4 +157,3 @@ class TokenController extends Controller
         return $start . $sensor . $end;
     }
 }
->>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah

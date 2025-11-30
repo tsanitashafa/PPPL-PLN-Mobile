@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\TokenController;
 
@@ -10,7 +9,6 @@ Route::get('/tes', function () {
 });
 
 Route::get('/homepage', function () {
-=======
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\PelangganController;
@@ -120,7 +118,6 @@ Route::get('/', function () {
 });
 
 Route::get('homepage', function () {
->>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
     return view('homepage');
 });
 
@@ -161,7 +158,7 @@ Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'
 Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
     ->name('lokasi.tambah');
 //cek token Tiara Aulia Azadirachta Indica | 5026231148
-Route::get('/cek-token/pelanggan/{pelangganId}', 
+Route::get('/cek-token/pelanggan/{pelangganId}',
 [PelangganController::class, 'cekTokenPelanggan']
 )->name('cek-token-pelanggan');
 
