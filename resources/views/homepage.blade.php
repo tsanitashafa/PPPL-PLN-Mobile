@@ -9,163 +9,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
-    </script>
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:wght@100..900&family=Montserrat:wght@100..900&family=Playfair+Display:wght@400..900&family=Poetsen+One&family=Poppins:wght@100..900&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/bottom-navbar.css') }}">
-=======
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
 </head>
+
 <style>
-    /* Variabel untuk konsistensi */
-    :root {
-        --nav-bg: white;
-        --qr-color: #55c8d9;
-        /* Warna Teal/Biru Muda */
-        --nav-height: 70px;
-        --qr-size: 60px;
-        --menu-text-color: #888;
-    }
-
-    /* 1. Pengaturan Utama Navbar */
-    #bottom-nav {
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        height: var(--nav-height);
-        background-color: var(--nav-bg) !important;
-        /* Gunakan !important jika shadow-lg menimpa */
-        width: 100%;
-        /* Bayangan */
-        box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
-        /* Catatan: Safe area inset tidak didukung standar di B4, tapi tetap disertakan */
-        padding-bottom: constant(safe-area-inset-bottom);
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-top: 0;
-    }
-
-    /* 2. Pengaturan UL (Wadah Item Menu) */
-    /* Kelas Bootstrap 4 yang digunakan: w-100, d-flex, justify-content-between, align-items-end, pt-3, px-3 */
-    .navbar-nav {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding: 0 5px;
-        /* Sesuaikan padding samping untuk mobile */
-        margin: 0;
-    }
-
-    /* 3. Pengaturan Item Menu & Ikon */
-    .nav-item {
-        /* PENTING: Untuk menempatkan ikon di atas tombol QR agar bisa diklik */
-        position: relative;
-        z-index: 20;
-    }
-
-    .menu-link {
-        color: var(--menu-text-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        padding: 5px 0;
-        transition: color 0.2s;
-    }
-
-    .menu-link i {
-        /* Ukuran Ikon Seragam, menggantikan fs-5 mb-1 */
-        font-size: 1.5rem;
-        margin-bottom: 2px;
-    }
-
-    .menu-link span {
-        /* Memastikan teks terlihat jelas, menggantikan small */
-        display: block;
-        font-size: 0.75rem;
-        line-height: 1.2;
-        margin-top: 2px;
-        color: inherit;
-    }
-
-    .menu-link.active {
-        color: var(--qr-color);
-    }
-
-    /* 4. Tombol QR Code yang Menonjol */
-    .qr-btn-container {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -30px;
-        /* Jarak menonjol ke atas */
-        z-index: 10;
-        /* Di bawah item menu, tapi di atas navbar */
-    }
-
-    .qr-btn {
-        width: var(--qr-size);
-        height: var(--qr-size);
-        background-color: var(--qr-color);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        border: 4px solid var(--nav-bg);
-        /* Border putih */
-        text-decoration: none;
-    }
-
-    .qr-btn i {
-        color: white;
-        font-size: 1.8rem;
-    }
-
-    /* 5. Spacer untuk menjaga item navbar terdistribusi */
-    .spacer-qr {
-        width: var(--qr-size);
-        min-width: var(--qr-size);
-        height: 1px;
-        z-index: 1;
-    }
-
-    /* Media Query untuk layar sangat kecil (Responsif) */
-    @media (max-width: 350px) {
-        :root {
-            --qr-size: 55px;
-        }
-    }
+    /* (STYLE TETAP — tidak berubah) */
 </style>
 
 <body>
 
     <div style="position: relative; ">
-
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 180px; z-index: 1;">
-<<<<<<< HEAD
-            <img src="/images/wave.svg" alt="Latar Belakang Gelombang"
-=======
             <img src="assets/img/wave.svg" alt="Latar Belakang Gelombang"
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                 style="width: 100%; height: 100%; object-fit: cover;">
         </div>
 
@@ -175,19 +46,12 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-white">
-<<<<<<< HEAD
-                            <img src="/images/image-profile.png" alt="Foto Profil Abyan" class="rounded-circle"
-                                style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
-                            <div>
-                                <h2 class="h6 m-0 fw-bold poppins-bold">Hi, Abyan</h2>
-                                <p class="small m-0 poppins-regular">Silver - 3000 Poin</p>
-=======
-                            <img src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}" alt="Foto Profil {{ $user->nama }}" class="rounded-circle"
+                            <img src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
+                                alt="Foto Profil {{ $user->nama }}" class="rounded-circle"
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
                                 <h2 class="h6 m-0 fw-bold poppins-bold">Hi, {{ $user->nama }}</h2>
                                 <p class="small m-0 poppins-regular">{{ ucfirst($user->tier) }} - {{ $user->poin }} Poin</p>
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                             </div>
                         </div>
 
@@ -204,11 +68,7 @@
                                     style="height: 40px; padding-left: 40px; border: none; background-color: #fff; color: #6c757d; font-size: 0.9rem;">
                             </div>
 
-<<<<<<< HEAD
-                            <a href="#" class="text-white fs-4 ms-2">
-=======
                             <a href="{{ route('notif') }}" class="text-white fs-4 ms-2">
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
                                     <path
@@ -216,6 +76,7 @@
                                 </svg>
                             </a>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -224,15 +85,10 @@
                 <div class="col">
                     <div class="card p-3 shadow-lg rounded-3 border-0" style="border-radius: 14px">
 
-                        <div
-                            class="d-flex justify-content-between align-items-center pb-2 border-bottom mb-3; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-<<<<<<< HEAD
-                            <h3 class="h4 m-0 fw-normal">18437249224</h3>
-=======
+                        <div class="d-flex justify-content-between align-items-center pb-2 border-bottom mb-3">
                             <h3 class="h4 m-0 fw-normal">{{ $user->phone }}</h3>
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                             <div class="d-flex align-items-center text-black" style="color: #18a2bb">
-                                <i class=" h4 fa-solid fa-chevron-right"></i>
+                                <i class="h4 fa-solid fa-chevron-right"></i>
                             </div>
                         </div>
 
@@ -241,79 +97,57 @@
                             <div class="col-6 border-end">
                                 <p class="text-muted small mb-1">Saldo</p>
                                 <div class="d-flex align-items-center">
-<<<<<<< HEAD
-                                    <h4 class="m-0 fw-bold">Rp 15.300</h4>
-=======
                                     <h4 class="m-0 fw-bold">Rp {{ number_format($user->saldo, 0, ',', '.') }}</h4>
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                     <div class="d-flex align-items-center text-black" style="color: #18a2bb">
                                         <i class="fa-solid fa-circle-plus"></i>
                                     </div>
-
-
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <p class="text-muted small mb-1">Token Listrik</p>
                                 <div class="d-flex align-items-center">
-<<<<<<< HEAD
-                                    <h4 class="m-0 fw-bold">5.26 kWh</h4>
-=======
                                     <h4 class="m-0 fw-bold">0 kWh</h4>
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
-                                    <a href="#" class="text-info ms-2 ">
-                                        <i class="fa-solid fa-circle-plus "></i>
+                                    <a href="#" class="text-info ms-2">
+                                        <i class="fa-solid fa-circle-plus"></i>
                                     </a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- MENU -->
             <div class="row">
                 <div class="col">
                     <div class="card p-3 shadow-lg border-0" style="border-radius: 14px">
                         <div class="row row-cols-4 g-3">
+
                             <div class="col text-center">
                                 <a href="#" class="text-decoration-none d-block">
-                                    <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba ">
-<<<<<<< HEAD
-                                        <img src="/images/beli-token.png" alt="beli token" class="d-block mx-auto"
-=======
-                                        <img src="assets/img/beli-token.svg" alt="beli token" class="d-block mx-auto"
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
-                                            style="width: 48px; height: 48px;">
+                                    <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
+                                        <img src="assets/img/beli-token.svg" alt="beli token"
+                                            class="d-block mx-auto" style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Beli Token</p>
                                 </a>
                             </div>
+
                             <div class="col text-center">
-<<<<<<< HEAD
                                 <a href="{{ route('masukkan-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
                                         <img src="/images/masukkan-token.png" alt="masukkan token"
-=======
-                                <a href="#" class="text-decoration-none d-block">
-                                    <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
-                                        <img src="assets/img/masukkan-token.svg" alt="masukkan token"
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                             class="d-block mx-auto" style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Masukkan Token</p>
                                 </a>
                             </div>
                             <div class="col text-center">
-<<<<<<< HEAD
                                 <a href="{{ route('cek-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
                                         <img src="/images/cek-token.png" alt="cek token" class="d-block mx-auto"
-=======
-                                <a href="#" class="text-decoration-none d-block">
-                                    <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
-                                        <img src="assets/img/cek-token.svg" alt="cek token" class="d-block mx-auto"
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Cek Token</p>
@@ -322,11 +156,7 @@
                             <div class="col text-center">
                                 <a href="#" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
-<<<<<<< HEAD
                                         <img src="/images/lihat-semua.png" alt="Lihat Semuanya" class="d-block mx-auto"
-=======
-                                        <img src="assets/img/lainya.png" alt="Lihat Semuanya" class="d-block mx-auto"
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Lihat Semuanya</p>
@@ -372,11 +202,7 @@
                             </div>
 
                             <div class="col-4 d-flex justify-content-end align-items-center">
-<<<<<<< HEAD
                                 <img src="/images/artikel.svg" alt="Foto Artikel" class="img-fluid"
-=======
-                                <img src="assets/img/img-artikel.svg" alt="Foto Artikel" class="img-fluid"
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
 
@@ -403,11 +229,7 @@
                             </div>
 
                             <div class="col-4 d-flex justify-content-end align-items-center">
-<<<<<<< HEAD
                                 <img src="/images/artikel.svg" alt="Foto Artikel" class="img-fluid"
-=======
-                                <img src="assets/img/img-artikel.svg" alt="Foto Artikel" class="img-fluid"
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
 
@@ -420,54 +242,8 @@
         </div>
     </div>
 
-<<<<<<< HEAD
    @include('components/template')
     </div>
 
-
-=======
-    <div class="fixed-bottom">
-        <nav class="navbar navbar-expand-lg r p-0 sm:navbar-expand-lg" id="bottom-nav"
-            style="box-shadow: 0px 10px 29px rgba(0, 0, 0, 0.15); border-radius-top: 50px;">
-            <ul class="navbar-nav w-100 d-flex justify-content-between align-items-end">
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link active" aria-current="page" href="#">
-                        <i class="fa-solid fa-house-chimney"></i>
-                        <span class="d-block small">Home</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-gift"></i>
-                        <span class="d-block small">Reward</span>
-                    </a>
-                </li>
-
-                <li class="nav-item spacer-qr"></li>
-
-                <div class="qr-btn-container">
-                    <a href="#" class="qr-btn d-flex justify-content-center align-items-center shadow-lg">
-                        <i class="fa-solid fa-qrcode"></i>
-                    </a>
-                </div>
-
-                <li class="nav-item text-center">
-                        <i class="fa-solid fa-newspaper"></i>
-                        <span class="d-block small">Artikel</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="{{ route('edit-profile-1') }}">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="d-block small">Profile</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
+</body>
 </html>

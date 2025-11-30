@@ -26,9 +26,10 @@ Route::get('/token-success', function () {
     return view('MasukkanToken.token-success');
 });
 
+
 Route::get('/cek-token', function () {
     return view('CekToken.cek-token');
-})->name('cek-token');
+})->name('cek-token'); //ketimpa controller ini nanti diganti yaaa
 
 /*Route::get('/detail-pelanggan', function () {
     return view('CekToken.detail-pelanggan');
@@ -48,7 +49,7 @@ Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'
 Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
     ->name('lokasi.tambah');
 //cek token Tiara Aulia Azadirachta Indica | 5026231148
-Route::get('/cek-token/pelanggan/{pelangganId}',
+Route::get('/cek-token/pelanggan/{pelangganid}',
 [PelangganController::class, 'cekTokenPelanggan']
 )->name('cek-token-pelanggan');
 
@@ -61,17 +62,7 @@ Route::post('/verifikasi-token', [TokenController::class, 'verifikasiToken'])->n
 Route::get('/token-success', [TokenController::class, 'selamat'])->name('selamat');
 Route::get('/token-failed', [TokenController::class, 'gagal'])->name('gagal');
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+//TSANIRA SHAFA
 Route::get('/reward', [VoucherController::class, 'loadReward']);
 Route::get('/voucher', [VoucherController::class, 'loadVoucher'])->name('voucher/voucher');
 Route::get('/infovoucher/{id}', [VoucherController::class, 'loadInfoVoucher'])->name('voucher/infovoucher');

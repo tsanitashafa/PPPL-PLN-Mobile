@@ -57,6 +57,43 @@
 
 <div class="container mt-4">
 
+        {{-- DATA TOKEN DINAMIS BERDASARKAN LOKASI --}}
+    @if(isset($pelanggan))
+        <div class="token-card mb-3">
+            <h6 class="fw-bold">
+                Cek Token — {{ $pelanggan->tandaisebagai ?? 'Lokasi' }}
+            </h6>
+            <p class="text-muted mb-2">{{ $pelanggan->alamat }}</p>
+
+            @if($tokens->isEmpty())
+                <p class="text-center text-danger mb-0">Tidak ada data token untuk alamat ini.</p>
+            @else
+                <table class="table table-bordered mt-2">
+                    <thead>
+                        <tr>
+                            <th>Tanggal Beli</th>
+                            <th>Jumlah Token</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($tokens as $t)
+                        <tr>
+                            <td>{{ $t->tanggal_beli }}</td>
+                            <td>{{ $t->token }} kWh</td>
+                            <td>
+                                <span class="badge {{ $t->is_used ? 'bg-danger' : 'bg-success' }}">
+                                    {{ $t->is_used ? 'Sudah Dipakai' : 'Belum Dipakai' }}
+                                </span>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
+        </div>
+    @endif
+
     <!-- TOKEN CARD -->
     <div class="token-card">
         <h6 class="fw-bold text-center">Sisa Token Rumah</h6>

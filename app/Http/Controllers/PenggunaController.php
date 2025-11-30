@@ -14,7 +14,7 @@ class PenggunaController extends Controller
     public function getDetailPelanggan(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
     {
         //$pelanggan = Pelanggan::where('penggunaid', Auth::id())->get(); //nanti dipakai kalau udah nyambung login
-        $pelanggan = Pelanggan::where('penggunaid', 4)->get(); // sementara hardcode
+        $pelanggan = Pelanggan::where('penggunaid', 19)->get(); // sementara hardcode
 
         return view('CekToken.detail-pelanggan', compact('pelanggan'));
 
@@ -54,12 +54,16 @@ class PenggunaController extends Controller
 
     public function cekTokenPelanggan($pelangganId) //Tiara Aulia Azadirachta Indica | 5026231148
     {
-        $data = BeliToken::where('pelangganid', $pelangganId)->get();
+         // ambil data pelanggan (supaya tandaisebagai bisa dipakai di Blade)
+        $pelanggan = Pelanggan::find($pelangganid);
 
-        return view('CekToken.cek-token', [
-            'tokens' => $data,
-            'pelangganid' => $pelangganId
-        ]);
+        // ambil data tokennya
+        $data = BeliToken::where('pelangganid', $pelangganid)->get();
+            return view('CekToken.cek-token', [
+                'tokens' => $data,
+                'pelanggan' => $pelanggan,
+                'pelangganid' => $pelangganId
+            ]);
     }
 
     // signup, login, and notif by mirza
