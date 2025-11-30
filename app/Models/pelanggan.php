@@ -9,8 +9,6 @@ class Pelanggan extends Model
     protected $table = 'pelanggan';
     protected $primaryKey = 'pelangganid';
     public $timestamps = false;
-    public $incrementing = true;
-    protected $keyType = 'int';
 
     protected $fillable = [
         'nama',
