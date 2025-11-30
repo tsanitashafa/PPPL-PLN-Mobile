@@ -153,6 +153,7 @@
 </style>
 
 <body>
+    @include('template')
 
     <div style="position: relative; ">
 

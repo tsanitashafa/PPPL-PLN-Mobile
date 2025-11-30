@@ -11,6 +11,6 @@
 
     <!-- Judul (selalu di tengah) -->
     <h5 class="fw-bold text-center w-100 m-0">
-        {{ $title }}
+        {{ $title }} <!-- namanya apa-->
     </h5>
 </div>

@@ -56,12 +56,12 @@
         ✓
     </div>-->
     <div class="container text-center py-5"> 
-        <img src="{{ asset('images/Selamat.png') }}" 
-        alt="Sukses" width="140" class="mx-auto mb-4 d-block">
+        <img src="{{ asset('images/gagal.png') }}" 
+        alt="Gagal" width="140" class="mx-auto mb-4 d-block">
     
 
-    <h4 class="fw-bold">Selamat!</h4>
-    <p class="text-muted mb-4">Berhasil memasukkan token</p>
+    <h4 class="fw-bold">Gagal</h4>
+    <p class="text-muted mb-4">Gagal memasukkan token</p>
 
     <!-- Tombol kembali -->
     <button 

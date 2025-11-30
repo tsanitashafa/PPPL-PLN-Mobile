@@ -69,16 +69,22 @@
         <h5 class="fw-bold">Punya token listrik?</h5>
         <p class="text-muted">Masukkan token listriknya di sini ya.</p>
     </div>
+    <!--form input token-->
+        <form method="POST" action="{{ route('verifikasi-token') }}">
+        @csrf
 
-    <!-- Input Token -->
-    <input type="text" class="form-control input-token mb-4" placeholder="Enter Token">
+        <input
+            type="text"
+            name="nomor_token"
+            class="form-control input-token mb-4"
+            placeholder="Masukkan Token"
+            required
+        >
 
-    <!-- Tombol Submit -->
-    <button 
-        class="btn-figma"
-        onclick="window.location.href='{{ url('/token-success') }}'">
-        Masukkan
-    </button>
+        <button type="submit" class="btn-figma">
+            Masukkan
+        </button>
+    </form>
 
 </div>
 
