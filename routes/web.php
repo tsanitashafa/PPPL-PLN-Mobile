@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\TokenController;
+use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\TukarPoinController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/tes', function () {
     return view('tes'); // Ambil dari nama file template.blade.php
@@ -46,7 +48,7 @@ Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'
 Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
     ->name('lokasi.tambah');
 //cek token Tiara Aulia Azadirachta Indica | 5026231148
-Route::get('/cek-token/pelanggan/{pelangganId}', 
+Route::get('/cek-token/pelanggan/{pelangganId}',
 [PelangganController::class, 'cekTokenPelanggan']
 )->name('cek-token-pelanggan');
 
@@ -59,20 +61,6 @@ Route::post('/verifikasi-token', [TokenController::class, 'verifikasiToken'])->n
 Route::get('/token-success', [TokenController::class, 'selamat'])->name('selamat');
 Route::get('/token-failed', [TokenController::class, 'gagal'])->name('gagal');
 
-
-
-
-=======
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\VoucherController;
-use App\Http\Controllers\RiwayatController;
-use App\Http\Controllers\TukarPoinController;
-=======
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TokenController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\VoucherController;
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -84,21 +72,19 @@ use App\Http\Controllers\VoucherController;
 |
 */
 
-<<<<<<< HEAD
 Route::get('/reward', [VoucherController::class, 'loadReward']);
 Route::get('/voucher', [VoucherController::class, 'loadVoucher'])->name('voucher/voucher');
 Route::get('/infovoucher/{id}', [VoucherController::class, 'loadInfoVoucher'])->name('voucher/infovoucher');
 Route::get('/riwayat', [RiwayatController::class, 'loadRiwayat'])->name('riwayat/riwayat');
 Route::get('/riwayatpoin', [RiwayatController::class, 'loadRiwayatPoin'])->name('riwayat/riwayatpoin');
 Route::get('/tukar', [TukarPoinController::class, 'loadTukarSemua']);
+Route::get('/tukar/{id}', [TukarPoinController::class, 'loadTukarById']);
+Route::get('/tukar/redeem/{id}', [TukarPoinController::class, 'redeem']);
 
 // Route::get('/pln', function () {
 //     return view('welcome');
 // });
-=======
-use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\ProfileController;
-=======
+
 // //Route pengerjaan manzil
 // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
@@ -213,7 +199,6 @@ Route::get('/', function () {
 Route::get('/pelanggan/detail/{nomorMeter}', [PelangganController::class, 'detailPelanggan']);
 // Mengambil get voucher untuk di beli token
 Route::get('voucher/get/{pelangganid}', [VoucherController::class, 'getVoucher']);
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 
 Route::get('/', function () {
     return view('welcome');
@@ -223,9 +208,7 @@ Route::get('edit-profile-1', [ProfileController::class, 'editProfile1'])->name('
 Route::get('edit-profil-2', [ProfileController::class, 'editProfile2'])->name('edit-profil-2');
 Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
 Route::post('/toggle-notification', [PenggunaController::class, 'toggleNotification'])->name('toggle-notification');
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
 
-<<<<<<< HEAD
 Route::get('transaksi-berhasil', function () {
     return view('transaksi-berhasil');
 });
@@ -235,7 +218,7 @@ Route::get('pembayaran', function () {
 });
 Route::get('transaksi-gagal', function () {
     return view('transaksi-gagal');
-    
+
 });
 Route::get('/', [PenggunaController::class, 'welcome'])->name('welcome');
 
@@ -247,7 +230,7 @@ Route::post('/verifyphone', [PenggunaController::class, 'verifyOTP'])->name('ver
 
 Route::get('/registuser', [PenggunaController::class, 'showRegistUser'])->name('registuser');
 Route::post('/registuser', [PenggunaController::class, 'savePengguna'])->name('storeuserdata');
-=======
+
 // pembayaran ambil data dari beli-token
 Route::post('/set-total-pembayaran', [PelangganController::class, 'setTotalPembayaran'])
     ->name('set.total.pembayaran');
@@ -261,12 +244,10 @@ Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
 Route::get('/pelanggan/detail/{nomorMeter}', [PelangganController::class, 'detailPelanggan']);
 // Mengambil get voucher untuk di beli token
 Route::get('voucher/get/{pelangganid}', [VoucherController::class, 'getVoucher']);
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 
 Route::get('/verifyemail', [PenggunaController::class, 'showVerifyEmail'])->name('verifyemail');
 Route::post('/verifyemail', [PenggunaController::class, 'verifyEmailOTP'])->name('verifyemailotp');
 
-<<<<<<< HEAD
 Route::get('/createpin', [PenggunaController::class, 'showCreatePin'])->name('createpin');
 Route::post('/createpin', [PenggunaController::class, 'setPIN'])->name('storepin');
 
@@ -276,10 +257,9 @@ Route::post('/processloginphone', [PenggunaController::class, 'cekNoHPLog'])->na
 Route::get('/loginpin', [PenggunaController::class, 'showLoginPin'])->name('loginpin');
 Route::post('/processloginpin', [PenggunaController::class, 'setLogin'])->name('processloginpin');
 
-<<<<<<< HEAD
-Route::get('/verifyphone', [UserController::class, 'showVerifyPhone'])->name('verifyphone');
-Route::post('/verifyphone', [UserController::class, 'verifyOTP'])->name('verifyotp');
-=======
+Route::get('/verifyphone', [PenggunaController::class, 'showVerifyPhone'])->name('verifyphone');
+Route::post('/verifyphone', [PenggunaController::class, 'verifyOTP'])->name('verifyotp');
+
 // pembayaran ambil data dari beli-token
 // Route::post('/set-total-pembayaran', [PelangganController::class, 'setTotalPembayaran']) // Tidak perlu lagi
 //     ->name('set.total.pembayaran'); // Tidak perlu lagi
@@ -290,23 +270,19 @@ Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
 //mengarahkan yg bayar itu transaksinya berhasil atau nggak
 Route::post('/bayar-token', [PelangganController::class, 'bayarToken'])
     ->name('bayar-token');
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 
 Route::get('/transaksi-berhasil', [PelangganController::class, 'transaksiBerhasil'])->name('transaksi.berhasil');
 
 Route::post('/cari-pelanggan', [TokenController::class, 'getPelanggan'])
     ->name('cari-pelanggan');
 
-<<<<<<< HEAD
-Route::get('/createpin', [UserController::class, 'showCreatePin'])->name('createpin');
-Route::post('/createpin', [UserController::class, 'storePin'])->name('storepin');
+Route::get('/createpin', [PenggunaController::class, 'showCreatePin'])->name('createpin');
+Route::post('/createpin', [PenggunaController::class, 'storePin'])->name('storepin');
 
-Route::get('/notif', [UserController::class, 'notif'])->name('notif');
->>>>>>> origin/dev-5026231088-Tsanita-Shafa-Hadinanda
-=======
+Route::get('/notif', [PenggunaController::class, 'notif'])->name('notif');
+
 Route::get('/notif', [PenggunaController::class, 'notif'])->name('notif');
 Route::post('/logout', [PenggunaController::class, 'logout'])->name('logout');
->>>>>>> origin/dev-5026231105-Mirza-Fathi-Taufiqurrahman
-=======
+
 // ... (Route lainnya)
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
+
