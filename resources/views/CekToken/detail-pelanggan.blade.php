@@ -80,6 +80,23 @@
             font-size: 22px;
             padding: 5px;
         } 
+
+        .location-item {
+            background: #ffffff;
+            padding: 14px 16px;
+            border-radius: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: 0.2s;
+        }
+
+        .location-item:hover {
+            background: #f7f7f7;
+        }
+
+        .location-item span {
+            font-size: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -100,11 +117,33 @@
         </button>
 
         @foreach($pelanggan as $p)
+            <a href="{{ route('cek-token', $p->id) }}" 
+            class="location-item d-flex justify-content-between align-items-center mt-3 text-decoration-none">
+
+                <span class="text-dark fw-semibold">
+                    {{ $p->tandaisebagai }} ({{ $p->alamat }})
+                </span>
+
+                <span class="text-muted" style="font-size: 20px;">&#8250;</span>
+            </a>
+        @endforeach
+
+<!-- ini versi abu2 lama
+        @foreach($pelanggan as $p)
             <div class="location-item mt-3">
                 <span>{{ $p->tandaisebagai }} ({{ $p->alamat }})</span>
                 <span>&#8250;</span>
             </div>
         @endforeach
+    -->
+    <!-- ini versi tombol responsive yg biru2 tapi belum sesuai desain
+    @foreach ($pelanggan as $p) //ini yg responsif
+        <a href="{{ route('cek-token', $p->id) }}" 
+           class="btn btn-outline-primary w-100 my-2">
+           {{ $p->tandaisebagai }} — {{ $p->alamat }}
+        </a>
+    @endforeach    
+    -->
 
     </div>
 

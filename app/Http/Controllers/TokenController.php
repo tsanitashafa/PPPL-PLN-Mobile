@@ -53,11 +53,22 @@ class TokenController extends Controller
     public function cekToken() //Tiara Aulia Azadirachta Indica | 5026231148
     {
         // ambil data beli token (generateNoToken)
-        $data = BeliToken::select('generatenotoken', 'is_used', 'pelanggan_id')->get();
+        $data = BeliToken::select('generatenotoken', 'is_used', 'pelangganid')->get();
 
         return view('CekToken.cek-token', [
             'tokens' => $data
         ]);
+    }
+
+    public function cekTokenPelanggan($pelangganid) //Tiara Aulia Azadirachta Indica | 5026231148
+    {
+        // Ambil data pelanggan
+        $pelanggan = Pelanggan::findOrFail($pelangganid);
+
+        // Ambil token berdasarkan pelanggan_id
+        $tokens = BeliToken::where('pelangganid', $pelangganid)->get();
+
+        return view('CekToken.cek-token', compact('tokens', 'pelanggan'));
     }
 
     public function history($generateNoToken) //Tiara Aulia Azadirachta Indica | 5026231148
