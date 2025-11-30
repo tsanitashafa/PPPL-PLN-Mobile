@@ -1,0 +1,55 @@
+/* {{--5026231088 Tsanita Shafa Hadinanda--}} */
+body {
+    background: #fafafa;
+}
+
+/* Ikon sukses */
+.success-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #f4e54c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    color: white;
+    margin: 0 auto 25px;
+}
+
+/* Box kode token */
+.copy-box {
+    width: 220px;
+    margin: 0 auto;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.copy-box span {
+    font-weight: 600;
+}
+
+.cta-wrap{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  background: transparent;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+  z-index: 50;
+}
+.cta-wrap{ max-width: var(--app-max); margin: 0 auto; }
+
+.btn-cta{
+  background: #14a2ba;
+  color: #fff;
+  font-weight: 600;
+  border: 0;
+  padding: 14px 18px;
+  border-radius: 18px;
+  box-shadow: 0 10px 20px rgba(20,162,186,.35); /* shadow bawah */
+}
+.btn-cta:active{ transform: translateY(1px); box-shadow: 0 6px 14px rgba(20,162,186,.28); }
