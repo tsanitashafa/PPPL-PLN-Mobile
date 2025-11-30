@@ -16,7 +16,7 @@ class PenggunaController extends Controller
 
     public function showRegisterPhone()
     {
-        return view('registerphone');
+        return view('SignUp.registerphone');
     }
 
 
@@ -35,7 +35,7 @@ class PenggunaController extends Controller
 
     public function showVerifyEmail()
     {
-        return view('verifyemail');
+        return view('SignUp.verifyemail');
     }
 
     // verif kode otp email
@@ -57,7 +57,7 @@ class PenggunaController extends Controller
     public function showVerifyPhone()
     {
         $phone = Session::get('phone');
-        return view('verifyphone', compact('phone'));
+        return view('SignUp.verifyphone', compact('phone'));
     }
 
     // verif otp hp
@@ -78,7 +78,7 @@ class PenggunaController extends Controller
     // isi nama & email
     public function showRegistUser()
     {
-        return view('registuser');
+        return view('SignUp.registuser');
     }
 
     public function savePengguna(Request $request)
@@ -110,7 +110,7 @@ class PenggunaController extends Controller
     // buat pin
     public function showCreatePin()
     {
-        return view('createpin');
+        return view('SignUp.createpin');
     }
 
     public function setPIN(Request $request)
@@ -143,7 +143,7 @@ class PenggunaController extends Controller
     // show login hp
     public function showLoginPhone()
     {
-        return view('loginphone');
+        return view('Login.loginphone');
     }
 
     // proses login hp
@@ -167,7 +167,7 @@ class PenggunaController extends Controller
     // buka loginpin
     public function showLoginPin()
     {
-        return view('loginpin');
+        return view('Login.loginpin');
     }
 
     // proses loginpin
