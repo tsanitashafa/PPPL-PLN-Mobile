@@ -360,7 +360,7 @@
         </div>
     </div>
 
-   @include('componentS/template')
+   @include('components/template')
     </div>
 
 
