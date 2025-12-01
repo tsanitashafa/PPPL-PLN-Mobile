@@ -85,8 +85,7 @@
                 </li>
             </ol>
 
-            {{-- <div class="fixed-bottom
-                bg-transparent
+            {{-- <div class="fixed-botto     bg-transparent
                 bottom-button-bar">
                     <div class="container p-0">
                         <button type="submit" class="btn btn-block font-weight-bold continue-button">
