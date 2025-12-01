@@ -1,0 +1,12 @@
+/* --- VARIANT: PAY BUTTON --- */
+
+
+/* --- VARIANT: CONNECT BUTTON --- */
+
+
+/* Container spacing untuk connect buttons */
+.connect-button-container {
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-bottom: 20px;
+}

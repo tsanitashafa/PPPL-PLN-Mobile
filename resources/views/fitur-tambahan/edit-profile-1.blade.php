@@ -164,7 +164,7 @@
 </style>
 
 <body>
-    @include('template')
+    @include('components/template')
 
     <div style="position: relative; ">
 

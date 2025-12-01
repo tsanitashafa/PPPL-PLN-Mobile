@@ -217,12 +217,19 @@
             <input type="hidden" name="voucher" id="voucherInput">
         </form>
 
-
+        {{--
         <button class="btn btn-primary btn-block poppins-regular btn-pay" type="button" id="btnBayar"
             data-meter="{{ request('meter', 0) }}" data-nominal="{{ request('nominal', 0) }}"
             data-total="{{ request('total', 0) }}" data-voucher="{{ request('voucher', 0) }}">
             Bayar
-        </button>
+        </button> --}}
+
+        <x-button id="btnBayar" variant="pay" data-meter="{{ request('meter', 0) }}"
+            data-nominal="{{ request('nominal', 0) }}" data-total="{{ request('total', 0) }}"
+            data-voucher="{{ request('voucher', 0) }}">
+            Bayar
+        </x-button>
+
 
 
 

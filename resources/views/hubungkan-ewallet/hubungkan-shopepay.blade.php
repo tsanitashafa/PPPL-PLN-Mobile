@@ -85,24 +85,41 @@
                 </li>
             </ol>
 
-        </div>
-    </div>
+            {{-- <div class="fixed-bottom
+                bg-transparent
+                bottom-button-bar">
+                    <div class="container p-0">
+                        <button type="submit" class="btn btn-block font-weight-bold continue-button">
+                            Lanjutkan
+                        </button>
+                    </div>
+                </div> --}}
 
-    <div class="fixed-bottom bg-transparent bottom-button-bar">
-        <div class="container p-0">
-            <button class="btn btn-block font-weight-bold continue-button"
-                onclick="window.location.href='{{ url('/verifikasi-shopePay') }}'">
-                Lanjutkan
-            </button>
-        </div>
-    </div>
+            <div class="fixed-bottom bg-transparent bottom-button-bar">
+                <div class="container p-0">
+                    <x-button type="submit" variant="continue-button" class="font-weight-bold">
+                        Lanjutkan
+                    </x-button>
+                </div>
+            </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
+            </form>
+
+            <div class="fixed-bottom bg-transparent bottom-button-bar">
+                <div class="container p-0">
+                    <button class="btn btn-block font-weight-bold continue-button"
+                        onclick="window.location.href='{{ url('/verifikasi-shopePay') }}'">
+                        Lanjutkan
+                    </button>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+            </script>
 </body>
 
 </html>
