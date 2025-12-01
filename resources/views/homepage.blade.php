@@ -25,7 +25,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/bottom-navbar.css') }}">
+
 </head>
 
 <style>
@@ -243,7 +243,6 @@
     </div>
 
    @include('components/template')
-    </div>
 
 </body>
 </html>

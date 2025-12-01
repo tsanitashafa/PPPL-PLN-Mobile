@@ -62,7 +62,8 @@ Route::post('/verifikasi-token', [TokenController::class, 'verifikasiToken'])->n
 Route::get('/token-success', [TokenController::class, 'selamat'])->name('selamat');
 Route::get('/token-failed', [TokenController::class, 'gagal'])->name('gagal');
 
-//TSANIRA SHAFA
+
+// {{--5026231088 Tsanita Shafa Hadinanda--}}
 Route::get('/reward', [VoucherController::class, 'loadReward']);
 Route::get('/voucher', [VoucherController::class, 'loadVoucher'])->name('voucher/voucher');
 Route::get('/infovoucher/{id}', [VoucherController::class, 'loadInfoVoucher'])->name('voucher/infovoucher');
@@ -70,7 +71,7 @@ Route::get('/riwayat', [RiwayatController::class, 'loadRiwayat'])->name('riwayat
 Route::get('/riwayatpoin', [RiwayatController::class, 'loadRiwayatPoin'])->name('riwayat/riwayatpoin');
 Route::get('/tukar', [TukarPoinController::class, 'loadTukarSemua']);
 Route::get('/tukar/{id}', [TukarPoinController::class, 'loadTukarById']);
-Route::get('/tukar/redeem/{id}', [TukarPoinController::class, 'redeem']);
+Route::get('/tukar/redeem/{id}', [TukarPoinController::class, 'redeem'])->name('tukar/redeem');
 
 // Route::get('/pln', function () {
 //     return view('welcome');

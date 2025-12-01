@@ -1,10 +1,10 @@
 /* {{--5026231088 Tsanita Shafa Hadinanda--}} */
 :root{
-
   --nav-h: 92px;
   --nav-icon-size: 1.25rem;
   --nav-font-size: .8rem;
 }
+
 /* ===== Curved Bottom Navbar ===== */
 .bottom-nav.curved {
   position: fixed;
@@ -48,8 +48,10 @@
   z-index: 2;
 }
 
-.bottom-nav.curved .nav-link.active {
-  color: #14a2ba;
+/* === ACTIVE / SELECTED item jadi BIRU === */
+.bottom-nav.curved .nav-link.active,
+.bottom-nav.curved .nav-link.active i {
+  color: #14a2ba !important;
 }
 
 .bottom-nav.curved i {

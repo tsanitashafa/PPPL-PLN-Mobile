@@ -315,49 +315,7 @@
             });
         });
     </script>
-
-    <div class="fixed-bottom">
-        <nav class="navbar navbar-expand-lg r p-0 sm:navbar-expand-lg" id="bottom-nav"
-            style="box-shadow: 0px 10px 29px rgba(0, 0, 0, 0.15); border-radius-top: 50px;">
-            <ul class="navbar-nav w-100 d-flex justify-content-between align-items-end">
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="{{ route('homepage') }}">
-                        <i class="fa-solid fa-house-chimney"></i>
-                        <span class="d-block small">Home</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-gift"></i>
-                        <span class="d-block small">Reward</span>
-                    </a>
-                </li>
-
-                <li class="nav-item spacer-qr"></li>
-
-                <div class="qr-btn-container">
-                    <a href="#" class="qr-btn d-flex justify-content-center align-items-center shadow-lg">
-                        <i class="fa-solid fa-qrcode"></i>
-                    </a>
-                </div>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="{{ route('notif') }}">
-                        <i class="fa-solid fa-newspaper"></i>
-                        <span class="d-block small">Artikel</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link active" href="{{ route('edit-profile-1') }}">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="d-block small">Profile</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    @include('components/template')
+</body>
 
 </html>

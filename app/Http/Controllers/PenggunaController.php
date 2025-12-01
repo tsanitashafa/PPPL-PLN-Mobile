@@ -271,7 +271,7 @@ class PenggunaController extends Controller
 
         return view('homepage', compact('user'));
     }
- public function ambilDataPengguna()
+    public function ambilDataPengguna()
     {
         // ambil user authenticated dari session
         $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
@@ -336,5 +336,30 @@ class PenggunaController extends Controller
         $user->save();
 
         return response()->json(['success' => true, 'message' => 'Notification setting updated successfully']);
+    }
+
+    // {{--5026231088 Tsanita Shafa Hadinanda--}}
+    // ambil user yang "lagi login" (asumsi: id = 1)
+    protected function getCurrentUser(): Pengguna
+    {
+        return Pengguna::findOrFail(1);
+    }
+
+    public function cekJumlahPoin(int $tukarId): bool
+    {
+        $user  = $this->getCurrentUser();
+        $tukar = TukarPoin::findOrFail($tukarId);
+
+        return (int) $user->poin >= (int) $tukar->poindibutuhkan;
+    }
+
+    // mengurangi poin user sesuai poin yang dibutuhkan
+    public function updatePoin(int $tukarId): void
+    {
+        $user  = $this->getCurrentUser();
+        $tukar = TukarPoin::findOrFail($tukarId);
+
+        $user->poin = (int) $user->poin - (int) $tukar->poindibutuhkan;
+        $user->save();
     }
 }

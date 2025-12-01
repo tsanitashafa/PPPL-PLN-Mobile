@@ -40,7 +40,7 @@
             </div>
 
             <div class="ms-2">
-                <img src="{{ asset('img/silver.png') }}" alt="Silver Coin" class="tier-coin">
+                <img src="{{ asset('img/' . $tierImage) }}" alt="{{ $tier }} Coin" class="tier-coin">
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
         <div class="tab-pane fade" id="tab-tukar">
             @foreach($tukarItems as $t)
                 <button class="voucher-card w-100 text-start mb-4"
-                        onclick="window.location.href='{{ url('tukar2/'.$t->tukarid) }}'">
+                        onclick="window.location.href='{{ url('tukar/'.$t->tukarid) }}'">
                     <div class="card-body d-flex align-items-center justify-content-between">
 
                         {{-- Kiri: gambar + teks --}}

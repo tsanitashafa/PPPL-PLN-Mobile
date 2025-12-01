@@ -16,16 +16,16 @@
 
     <!-- Curved Bottom Nav -->
     <nav class="bottom-nav curved mb-2">
-    <a class="nav-link text-center" href="#">
+    <a class="nav-link text-center" href="{{ url('/homepage') }}">
         <i class="bi bi-house-door fs-5 d-block"></i>Home
     </a>
-    <a class="nav-link text-center active me-5" href="#">
+    <a class="nav-link text-center active me-5" href="{{ url('/reward') }}">
         <i class="bi bi-gift fs-5 d-block"></i>Reward
     </a>
     <a class="nav-link text-center ms-5" href="#">
         <i class="bi bi-newspaper fs-5 d-block"></i>Artikel
     </a>
-    <a class="nav-link text-center" href="#">
+    <a class="nav-link text-center" href="{{ url('/edit-profile-1') }}">
         <i class="bi bi-person fs-5 d-block"></i>Profile
     </a>
     </nav>

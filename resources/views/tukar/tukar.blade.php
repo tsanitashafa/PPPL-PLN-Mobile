@@ -24,7 +24,7 @@
 
     @foreach($tukarItems as $t)
         <button class="voucher-card w-100 text-start mb-4"
-                onclick="window.location.href='{{ url('tukar2/'.$t->tukarid) }}'">
+                onclick="window.location.href='{{ url('tukar/'.$t->tukarid) }}'">
             <div class="card-body d-flex align-items-center justify-content-between">
 
                 {{-- kiri: gambar + teks --}}
