@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\PenggunaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,6 +87,11 @@ Route::get('verifikasi-gopay', function () {
     return view('hubungkan-ewallet/verifikasi-gopay');
 });
 
+// Also accept GET with the exact path used by the form (`verifikasi-goPay`)
+Route::get('/verifikasi-goPay', function () {
+    return view('hubungkan-ewallet/verifikasi-gopay');
+});
+
 Route::get('verifikasi-shopePay', function () {
     return view('hubungkan-ewallet/verifikasi-shopeePay');
 });
@@ -124,10 +130,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('menyambungkan-berhasil', function () {
+    return view('hubungkan-ewallet/menyambungkan-berhasil');
+});
+Route::get('menyambungkan-berhasil', function () {
+    return view('hubungkan-ewallet/menyambungkan-gagal');
+});
+
+
 
 
 // mengambil data pelanggan beli token
 Route::get('/pelanggan/detail/{nomorMeter}', [PelangganController::class, 'detailPelanggan']);
+
+// mengambil data verifikasi shopepay
+Route::post('/verifikasi-shopePay', [PenggunaController::class, 'verifyOTP'])->name('verifikasi.shopepay');
+
+// mengambil data verifikasi gopay
+Route::post('/verifikasi-goPay', [PenggunaController::class, 'verifyOTP'])->name('verifikasi.gopay');
+
 // Mengambil get voucher untuk di beli token
 Route::get('voucher/get/{pelangganid}', [VoucherController::class, 'getVoucher']);
 

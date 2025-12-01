@@ -61,39 +61,43 @@
             </div>
 
             <p class="text-secondary small mb-2">Masukkan nomor HP sebagai ID ShopePay</p>
-            <div class="input-group mb-4 custom-input-group border-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white ">
-                        <i class="fa-solid fa-phone text-secondary"></i>
-                    </span>
+
+            <form method="GET" action="{{ url('/verifikasi-shopePay') }}">
+                <div class="input-group mb-4 custom-input-group border-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">
+                            <i class="fa-solid fa-phone text-secondary"></i>
+                        </span>
+                    </div>
+                    <input type="tel" name="phone" class="form-control phone-input" placeholder="+62213129328"
+                        aria-label="Nomor HP" required>
                 </div>
-                <input type="tel" class="form-control phone-input" placeholder="+62213129328" aria-label="Nomor HP">
-            </div>
 
-            <h6 class="font-weight-bold mb-3 terms-title">Syarat & Ketentuan</h6>
-            <ol class="pl-3 terms-list">
-                <li class="mb-2 terms-item">
-                    Sudah memiliki Akun ShopePay, dan aktivasi ShopePay payment.
-                </li>
-                <li class="mb-2 terms-item">
-                    Saldo ShopePay cukup untuk membeli produk di PLN Mobile.
-                </li>
-                <li class="mb-2 terms-item">
-                    Anda akan menghubungkan akun ShopePay anda dengan PLN Mobile dan setelah dihubungkan ShopePay baru
-                    bisa
-                    digunakan sebagai pembayaran di PLN Mobile.
-                </li>
-            </ol>
+                <h6 class="font-weight-bold mb-3 terms-title">Syarat & Ketentuan</h6>
+                <ol class="pl-3 terms-list">
+                    <li class="mb-2 terms-item">
+                        Sudah memiliki Akun ShopePay, dan aktivasi ShopePay payment.
+                    </li>
+                    <li class="mb-2 terms-item">
+                        Saldo ShopePay cukup untuk membeli produk di PLN Mobile.
+                    </li>
+                    <li class="mb-2 terms-item">
+                        Anda akan menghubungkan akun ShopePay anda dengan PLN Mobile dan setelah dihubungkan ShopePay
+                        baru
+                        bisa
+                        digunakan sebagai pembayaran di PLN Mobile.
+                    </li>
+                </ol>
 
-        </div>
-    </div>
+                <div class="fixed-bottom bg-transparent bottom-button-bar">
+                    <div class="container p-0">
+                        <button type="submit" class="btn btn-block font-weight-bold continue-button">
+                            Lanjutkan
+                        </button>
+                    </div>
+                </div>
+            </form>
 
-    <div class="fixed-bottom bg-transparent bottom-button-bar">
-        <div class="container p-0">
-            <button class="btn btn-block font-weight-bold continue-button"
-                onclick="window.location.href='{{ url('/verifikasi-shopePay') }}'">
-                Lanjutkan
-            </button>
         </div>
     </div>
 
@@ -103,6 +107,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
+    <script src="js/beli-token/verifikasi.js"></script>
 </body>
 
 </html>
