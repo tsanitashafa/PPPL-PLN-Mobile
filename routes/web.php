@@ -3,10 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenggunaController;
+<<<<<<< HEAD
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\VoucherController;
 
 
+=======
+// coba cek masuk gak ya ini from my branch yok bisa dah ngantuk
+//
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
 
 // //Route pengerjaan manzil
 // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Models\Pelanggan; // ← WAJIB di atas
 use App\Models\Pengguna;
 use App\Models\BeliToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+
 
 class PenggunaController extends Controller
 {
@@ -55,16 +55,16 @@ class PenggunaController extends Controller
 
     public function cekTokenPelanggan($pelangganId) //Tiara Aulia Azadirachta Indica | 5026231148
     {
-         // ambil data pelanggan (supaya tandaisebagai bisa dipakai di Blade)
+        // ambil data pelanggan (supaya tandaisebagai bisa dipakai di Blade)
         $pelanggan = Pelanggan::find($pelangganid);
 
         // ambil data tokennya
         $data = BeliToken::where('pelangganid', $pelangganid)->get();
-            return view('CekToken.cek-token', [
-                'tokens' => $data,
-                'pelanggan' => $pelanggan,
-                'pelangganid' => $pelangganId
-            ]);
+        return view('CekToken.cek-token', [
+            'tokens' => $data,
+            'pelanggan' => $pelanggan,
+            'pelangganid' => $pelangganId
+        ]);
     }
 
     // signup, login, and notif by mirza
@@ -348,7 +348,7 @@ class PenggunaController extends Controller
 
     public function cekJumlahPoin(int $tukarId): bool
     {
-        $user  = $this->getCurrentUser();
+        $user = $this->getCurrentUser();
         $tukar = TukarPoin::findOrFail($tukarId);
 
         return (int) $user->poin >= (int) $tukar->poindibutuhkan;
@@ -357,18 +357,15 @@ class PenggunaController extends Controller
     // mengurangi poin user sesuai poin yang dibutuhkan
     public function updatePoin(int $tukarId): void
     {
-        $user  = $this->getCurrentUser();
+        $user = $this->getCurrentUser();
         $tukar = TukarPoin::findOrFail($tukarId);
 
         $user->poin = (int) $user->poin - (int) $tukar->poindibutuhkan;
         $user->save();
-=======
-use Illuminate\Http\Request;
-use App\Models\Pengguna;
+
+    }
 
 
-class PenggunaController extends Controller
-{
     public function verifyOTP(Request $request)
     {
         $phone = $request->phone;
@@ -378,6 +375,6 @@ class PenggunaController extends Controller
             return view('hubungkan-ewallet/menyambungkan-gagal');
         }
         return view('hubungkan-ewallet/menyambungkan-berhasil');
->>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
     }
 }
+
