@@ -6,16 +6,8 @@ use App\Http\Controllers\TokenController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\PenggunaController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// coba cek masuk gak ya ini from my branch yok bisa dah ngantuk
+//
 
 // //Route pengerjaan manzil
 // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
