@@ -14,18 +14,13 @@ body {
     border-bottom-color: #eee !important;
 }
 
-.header-content {
-    /* Menentukan lebar untuk elemen panah kembali */
-    /* Menggantikan style="padding-right: 15px;" */
-}
+
 
 .back-button {
     padding-right: 15px;
 }
 
-.header-title {
-    /* Memindahkan style font untuk judul dari inline */
-}
+
 
 .header-title span {
     font-size: 1.1rem;
@@ -70,10 +65,6 @@ body {
     line-height: 1.5;
 }
 
-/* --- Button Section --- */
-.connect-button-container {
-    /* Jika diperlukan styling container */
-}
 
 .connect-button {
     background-color: #16a1ba !important;

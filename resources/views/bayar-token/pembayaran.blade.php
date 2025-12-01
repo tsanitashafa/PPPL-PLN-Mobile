@@ -29,7 +29,7 @@
 </head>
 
 <body>
-    <div class="bg-white pt-2 pb-3 mb-3">
+    {{-- <div class="bg-white pt-2 pb-3 mb-3">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between mt-2 ">
                 <a href='{{ url('/beli-token') }}' class="text-decoration-none text-dark">
@@ -42,7 +42,9 @@
                 <div style="width: 24px;"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    <x-nav-top title="Beli Token" backUrl="{{ url('/beli-token') }}" />
     <div class="container pb-5 " data-spy="scroll">
 
 
@@ -60,7 +62,8 @@
         </div> --}}
 
 
-        <div class="text-center mb-4 card p-4" style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
+        <div class="text-center mb-4 card p-4 mt-2"
+            style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
             <p class="nunito-sans mb-1" style="font-size: 0.9rem;">Total Pembayaran</p>
             <h2 class="h5 mb-0 nunito-sans-semibold">
                 <span class="poppins-regular">
@@ -223,8 +226,6 @@
             data-total="{{ request('total', 0) }}" data-voucher="{{ request('voucher', 0) }}">
             Bayar
         </button>
-
-
 
 
     </div>
