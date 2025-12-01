@@ -339,15 +339,22 @@ class PenggunaController extends Controller
     }
 
     // {{--5026231088 Tsanita Shafa Hadinanda--}}
-    // ambil user yang "lagi login" (asumsi: id = 1)
-    protected function getCurrentUser(): Pengguna
-    {
-        return Pengguna::findOrFail(1);
-    }
-
     public function cekJumlahPoin(int $tukarId): bool
     {
-        $user  = $this->getCurrentUser();
+        // ambil user yg login dari session
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+
+        if (!$userId) {
+            // kalau belum login, otomatis ga cukup poin
+            return false;
+        }
+
+        $user = Pengguna::find($userId);
+
+        if (!$user) {
+            return false;
+        }
+
         $tukar = TukarPoin::findOrFail($tukarId);
 
         return (int) $user->poin >= (int) $tukar->poindibutuhkan;
@@ -356,10 +363,20 @@ class PenggunaController extends Controller
     // mengurangi poin user sesuai poin yang dibutuhkan
     public function updatePoin(int $tukarId): void
     {
-        $user  = $this->getCurrentUser();
+        // ambil user yg login dari session
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+
+        if (!$userId) {
+            // kalau ga ada user login, jangan lakukan apa-apa
+            return;
+        }
+
+        $user  = Pengguna::findOrFail($userId);
         $tukar = TukarPoin::findOrFail($tukarId);
 
         $user->poin = (int) $user->poin - (int) $tukar->poindibutuhkan;
+        // kalau mau aman biar ga minus:
+        // $user->poin = max(0, (int) $user->poin - (int) $tukar->poindibutuhkan);
         $user->save();
     }
 }

@@ -1,4 +1,5 @@
 /* {{--5026231088 Tsanita Shafa Hadinanda--}} */
+
 :root{
   --nav-h: 92px;
   --nav-icon-size: 1.25rem;
@@ -24,7 +25,7 @@
   margin: 0 auto;
 }
 
-/* Notch effect di tengah navbar */
+/* Notch effect */
 .bottom-nav.curved::before {
   content: '';
   position: absolute;
@@ -38,7 +39,7 @@
   z-index: 1;
 }
 
-/* Nav links */
+/* Nav links default */
 .bottom-nav.curved .nav-link {
   flex: 1;
   font-size: .8rem;
@@ -48,21 +49,26 @@
   z-index: 2;
 }
 
-/* === ACTIVE / SELECTED item jadi BIRU === */
-.bottom-nav.curved .nav-link.active,
-.bottom-nav.curved .nav-link.active i {
-  color: #14a2ba !important;
-}
-
+/* Ikon default */
 .bottom-nav.curved i {
   display: block;
   font-size: 1.3rem;
+  color: inherit;
+}
+
+/* ============================================
+      ACTIVE STATE — TEKS & ICON JADI BIRU
+   ============================================ */
+.bottom-nav.curved .nav-link.active,
+.bottom-nav.curved .nav-link.active i {
+  color: #14a2ba !important;
+  fill: #14a2ba !important;
 }
 
 /* ===== Floating Action Button (FAB) ===== */
 .fab-main {
   position: fixed;
-  bottom: 38px; /* sejajar dengan notch */
+  bottom: 38px;
   left: 50%;
   transform: translateX(-50%);
   width: 64px;
@@ -85,7 +91,7 @@
   box-shadow: 0 4px 10px rgba(20, 162, 186, .3);
 }
 
-/* Responsif untuk layar kecil */
+/* Responsif */
 @media (max-width: 400px) {
   .fab-main {
     width: 58px;

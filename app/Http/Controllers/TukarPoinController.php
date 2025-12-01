@@ -8,6 +8,7 @@ use App\Models\Pengguna;
 use App\Models\Riwayat;
 use App\Http\Controllers\BeliTokenController;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\DB;
 
@@ -46,8 +47,15 @@ class TukarPoinController extends Controller
         $id    = (int) $id;
         $tukar = TukarPoin::findOrFail($id);
 
-        // anggap user login = id 1
-        $user = Pengguna::findOrFail(1);
+        // ambil user yang lagi login dari session
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+
+        if (!$userId) {
+            // kalau belum login, balikin ke welcome (atau route lain yang kamu mau)
+            return redirect()->route('welcome');
+        }
+
+        $user = Pengguna::findOrFail($userId);
 
         // 1. cek poin cukup atau tidak
         if ((int) $user->poin < (int) $tukar->poindibutuhkan) {
