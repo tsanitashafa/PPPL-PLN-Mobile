@@ -13,7 +13,7 @@
     rel="stylesheet">
 
 <link rel="stylesheet" href="css/beli-token/beli-token.css">
-<div class="d-flex align-items-center position-relative py-3" style="border-bottom: 1px solid #eaeaea;">
+<div class="d-flex align-items-center position-relative py-3">
 
     <!-- Tombol Back -->
     <a href="{{ $backUrl }}" class="position-absolute  m-3 text-decoration-none text-dark" style="z-index: 10;">

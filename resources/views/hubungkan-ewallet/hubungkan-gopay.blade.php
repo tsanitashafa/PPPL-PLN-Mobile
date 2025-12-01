@@ -87,13 +87,24 @@
                         digunakan sebagai pembayaran di PLN Mobile.
                     </li>
                 </ol>
-                <div class="fixed-bottom bg-transparent bottom-button-bar">
+                {{-- <div class="fixed-bottom
+                bg-transparent
+                bottom-button-bar">
                     <div class="container p-0">
                         <button class="btn btn-block font-weight-bold continue-button" type="submit">
                             Lanjutkan
                         </button>
                     </div>
+                </div> --}}
+
+                <div class="fixed-bottom bg-transparent bottom-button-bar">
+                    <div class="container p-0">
+                        <x-button type="submit" variant="continue-button" class="font-weight-bold">
+                            Lanjutkan
+                        </x-button>
+                    </div>
                 </div>
+
             </form>
 
 

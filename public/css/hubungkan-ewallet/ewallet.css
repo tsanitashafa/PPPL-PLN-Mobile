@@ -37,7 +37,7 @@ body {
 /* --- Main Content Area --- */
 .main-content-padding {
     padding-top: 55px; /* Memberikan ruang agar tidak tertutup fixed header */
-    padding-bottom: 100px;
+    padding-bottom: 60px;
 }
 
 /* --- Logo Section --- */
