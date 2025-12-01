@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\Pelanggan; // ← WAJIB di atas
 use App\Models\Pengguna;
 use App\Models\BeliToken;
@@ -361,5 +362,22 @@ class PenggunaController extends Controller
 
         $user->poin = (int) $user->poin - (int) $tukar->poindibutuhkan;
         $user->save();
+=======
+use Illuminate\Http\Request;
+use App\Models\Pengguna;
+
+
+class PenggunaController extends Controller
+{
+    public function verifyOTP(Request $request)
+    {
+        $phone = $request->phone;
+        $verifikasi = $request->verifikasi;
+        $pengguna = Pengguna::where('phone', $phone)->where('pin', $verifikasi)->first();
+        if (!$pengguna) {
+            return view('hubungkan-ewallet/menyambungkan-gagal');
+        }
+        return view('hubungkan-ewallet/menyambungkan-berhasil');
+>>>>>>> dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah
     }
 }

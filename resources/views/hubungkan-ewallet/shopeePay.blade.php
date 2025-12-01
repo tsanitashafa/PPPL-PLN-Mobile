@@ -22,7 +22,7 @@
 </head>
 
 <body>
-
+    {{--
     <div class="fixed-top bg-white custom-header-border">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between header-content">
@@ -35,7 +35,8 @@
                 <div class="placeholder-space"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    <x-nav-top title="shopePay" backUrl="{{ url('/pembayaran') }}" />
 
     <div class="container main-content-padding">
 
@@ -67,12 +68,20 @@
 
     </div>
 
-    <div class="container connect-button-container">
+    {{-- <div class="container connect-button-container">
         <button class="btn btn-block connect-button poppins-regular"
             onclick="window.location.href='{{ url('/hubungkan-shopepay') }}'">
             Sambungkan Akun shopePay
         </button>
+    </div> --}}
+
+    <div class="connect-button-container">
+        <x-button href="{{ url('/hubungkan-shopepay') }}" variant="connect">
+            Sambungkan Akun ShopePay
+        </x-button>
     </div>
+
+    <br />
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

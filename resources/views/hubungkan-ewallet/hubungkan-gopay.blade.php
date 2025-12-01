@@ -60,39 +60,55 @@
                 </div>
             </div>
 
+
             <p class="text-secondary small mb-2">Masukkan nomor HP sebagai ID Gopay</p>
-            <div class="input-group mb-4 custom-input-group border-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white ">
-                        <i class="fa-solid fa-phone text-secondary"></i>
-                    </span>
+            <form method="GET" action="{{ url('verifikasi-goPay') }}">
+                <div class="input-group mb-4 custom-input-group border-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white ">
+                            <i class="fa-solid fa-phone text-secondary"></i>
+                        </span>
+                    </div>
+                    <input type="tel" name="phone" class="form-control phone-input" placeholder="+62213129328"
+                        aria-label="Nomor HP" required>
                 </div>
-                <input type="tel" class="form-control phone-input" placeholder="+62213129328" aria-label="Nomor HP">
-            </div>
 
-            <h6 class="font-weight-bold mb-3 terms-title">Syarat & Ketentuan</h6>
-            <ol class="pl-3 terms-list">
-                <li class="mb-2 terms-item">
-                    Sudah memiliki Akun Gopay , dan aktivasi Gopay payment.
-                </li>
-                <li class="mb-2 terms-item">
-                    Saldo Gopay cukup untuk membeli produk di PLN Mobile.
-                </li>
-                <li class="mb-2 terms-item">
-                    Anda akan menghubungkan akun Gopay anda dengan PLN Mobile dan setelah dihubungkan Gopay baru bisa
-                    digunakan sebagai pembayaran di PLN Mobile.
-                </li>
-            </ol>
+                <h6 class="font-weight-bold mb-3 terms-title">Syarat & Ketentuan</h6>
+                <ol class="pl-3 terms-list">
+                    <li class="mb-2 terms-item">
+                        Sudah memiliki Akun Gopay , dan aktivasi Gopay payment.
+                    </li>
+                    <li class="mb-2 terms-item">
+                        Saldo Gopay cukup untuk membeli produk di PLN Mobile.
+                    </li>
+                    <li class="mb-2 terms-item">
+                        Anda akan menghubungkan akun Gopay anda dengan PLN Mobile dan setelah dihubungkan Gopay baru
+                        bisa
+                        digunakan sebagai pembayaran di PLN Mobile.
+                    </li>
+                </ol>
+                {{-- <div class="fixed-bottom
+                bg-transparent
+                bottom-button-bar">
+                    <div class="container p-0">
+                        <button class="btn btn-block font-weight-bold continue-button" type="submit">
+                            Lanjutkan
+                        </button>
+                    </div>
+                </div> --}}
 
-        </div>
-    </div>
+                <div class="fixed-bottom bg-transparent bottom-button-bar">
+                    <div class="container p-0">
+                        <x-button type="submit" variant="continue-button" class="font-weight-bold">
+                            Lanjutkan
+                        </x-button>
+                    </div>
+                </div>
 
-    <div class="fixed-bottom bg-transparent bottom-button-bar">
-        <div class="container p-0">
-            <button class="btn btn-block font-weight-bold continue-button"
-                onclick="window.location.href='{{ url('/verifikasi-gopay') }}'">
-                Lanjutkan
-            </button>
+            </form>
+
+
+
         </div>
     </div>
 
@@ -102,6 +118,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
+    <script src="js/beli-token/verifikasi.js"></script>
 </body>
 
 </html>

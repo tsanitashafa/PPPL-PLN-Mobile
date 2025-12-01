@@ -23,21 +23,8 @@
 
 <body>
 
-    <div class="fixed-top bg-white custom-header-border">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between header-content">
-                <a href='{{ url('/pembayaran') }}' class="text-decoration-none text-dark back-button">
-
-                    <i class="fa-solid fa-arrow-left fa-xl"></i>
-                </a>
-                <h1 class="h5 m-0 font-weight-bold text-center w-100 text-dark header-title">
-                    <span>Gopay</span>
-                </h1>
-                <div class="placeholder-space"></div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Header Template -->
+    <x-nav-top title="Gopay" backUrl="{{ url('/pembayaran') }}" />
     <div class="container main-content-padding">
 
         <div class="d-flex justify-content-center align-items-center py-4 logo-section">
@@ -68,12 +55,12 @@
 
     </div>
 
-    <div class="container connect-button-container">
-        <button class="btn btn-block connect-button poppins-regular"
-            onclick="window.location.href='{{ url('/hubungkan-gopay') }}'">
+    <div class="connect-button-container">
+        <x-button href="{{ url('/hubungkan-gopay') }}" variant="connect">
             Sambungkan Akun Gopay
-        </button>
+        </x-button>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

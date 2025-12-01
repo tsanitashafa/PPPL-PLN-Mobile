@@ -165,13 +165,7 @@
 </style>
 
 <body>
-<<<<<<< HEAD:resources/views/edit-profile-1.blade.php
-    {{-- <div class=" d-block" style="z-index: 1050;">
-        <img src="assets/img/top-bar.png" alt="Status Bar Mobile" style="width: 100%;">
-    </div> --}}
-=======
     @include('template')
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah:resources/views/fitur-tambahan/edit-profile-1.blade.php
 
     <div style="position: relative; ">
 
@@ -187,7 +181,7 @@
             <div style="width: 24px;"></div>
         </div>
 
-        @if(session('success'))
+        @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
                 {{ session('success') }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -196,7 +190,7 @@
             </div>
         @endif
 
-        @if(session('error'))
+        @if (session('error'))
             <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
                 {{ session('error') }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -210,24 +204,13 @@
                 <div class="col">
                     <div class="d-flex align-items-center justify-content-between">
 
-<<<<<<< HEAD:resources/views/edit-profile-1.blade.php
                         <div class="d-flex align-items-center text-black">
-                            <img src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}" alt="Foto Profil {{ $user->nama }}" class="rounded-circle"
+                            <img src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
+                                alt="Foto Profil {{ $user->nama }}" class="rounded-circle"
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
                                 <h2 class="h6 m-0 fw-bold poppins-bold">{{ $user->nama }}</h2>
                                 <p class="small m-0 poppins-regular">{{ $user->email }}</p>
-=======
-                        <div class="d-flex align-items-center text-black" style="font-family: 'Poppins', sans-serif;">
-                            <img src="{{ $pengguna->photoUrl ?? '' }}" alt="Foto Profil " class="rounded-circle"
-                                style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
-                            <div>
-                                <h5 class="poppins-medium">
-                                    {{ $pengguna->nama ?? '' }}
-                                </h5>
-                                <p class=" poppins-regular">
-                                    {{ $pengguna->email ?? '' }}</p>
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah:resources/views/fitur-tambahan/edit-profile-1.blade.php
                             </div>
                         </div>
 
@@ -268,15 +251,7 @@
 
                 <!-- Edit Profile -->
                 <li class="mb-3">
-<<<<<<< HEAD:resources/views/edit-profile-1.blade.php
                     <a href="{{ route('edit-profil-2') }}"
-=======
-
-
-
-                <li class="mb-3">
-                    <a href="{{ route('profile.edit', ['id' => $pengguna->penggunaid]) }}"
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah:resources/views/fitur-tambahan/edit-profile-1.blade.php
                         class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm text-dark text-decoration-none">
                         <div class="d-flex align-items-center">
                             <i class="far fa-user-circle fa-lg mr-3 text-secondary "></i>
@@ -295,7 +270,8 @@
                             <span class="font-weight-normal text-dark">Notifications</span>
                         </div>
                         <div class="custom-control custom-switch m-0">
-                            <input type="checkbox" class="custom-control-input" id="notifSwitch" {{ $user->notifenabled ? 'checked' : '' }}>
+                            <input type="checkbox" class="custom-control-input" id="notifSwitch"
+                                {{ $user->notifenabled ? 'checked' : '' }}>
                             <label class="custom-control-label" for="notifSwitch"></label>
                         </div>
                     </div>
@@ -323,14 +299,13 @@
         </div>
     </div>
 
-<<<<<<< HEAD:resources/views/edit-profile-1.blade.php
-    {{-- script untuk set notification switch agar terganti di database by mirza--}}
+    {{-- script untuk set notification switch agar terganti di database by mirza --}}
     <script>
         $(document).ready(function() {
             $('#notifSwitch').change(function() {
                 var isChecked = $(this).is(':checked');
                 $.ajax({
-                    url: '{{ route("toggle-notification") }}',
+                    url: '{{ route('toggle-notification') }}',
                     type: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}',
@@ -398,8 +373,5 @@
             </ul>
         </nav>
     </div>
-=======
-
->>>>>>> origin/dev-5026231037-Al-khiqmah-Manzilatul-Mukaromah:resources/views/fitur-tambahan/edit-profile-1.blade.php
 
 </html>

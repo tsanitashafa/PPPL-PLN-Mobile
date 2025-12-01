@@ -1,3 +1,4 @@
+/* {{-- 5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH  --}} */
 /* Menggunakan font Poppins atau Inter sebagai default */
 body {
     font-family: 'Poppins', 'Inter', sans-serif;
@@ -120,4 +121,19 @@ align-items: center;
     /* Warna abu-abu muda saat di-hover */
 }
 
+
+ .btn-pay {
+    background-color: #4fa3bb !important;
+    border-radius: 15px !important;
+    font-size: 18px;
+    padding: 14px 0 !important; /* ini yang bikin tombol tinggi */
+    border: none !important;
+}
+
+
+.connect-button-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
 

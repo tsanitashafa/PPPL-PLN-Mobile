@@ -5,77 +5,8 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\VoucherController;
-use App\Http\Controllers\RiwayatController;
-use App\Http\Controllers\TukarPoinController;
-use App\Http\Controllers\ProfileController;
-
-Route::get('/tes', function () {
-    return view('tes'); // Ambil dari nama file template.blade.php
-});
-
-Route::get('/homepage', function () {
-    return view('homepage');
-});
 
 
-/*Route::get('/masukkan-token', function () {
-    return view('MasukkanToken.masukkan-token');
-})->name('masukkan-token');*/ //ketimpa controller
-
-Route::get('/token-success', function () {
-    return view('MasukkanToken.token-success');
-});
-
-
-Route::get('/cek-token', function () {
-    return view('CekToken.cek-token');
-})->name('cek-token'); //ketimpa controller ini nanti diganti yaaa
-
-/*Route::get('/detail-pelanggan', function () {
-    return view('CekToken.detail-pelanggan');
-});*/ //ketimpa controller
-
-Route::get('/history-pemakaian', function () {
-    return view('CekToken.history-pemakaian');
-});
-Route::get('/template', function () {
-    return view('template'); // Ambil dari nama file template.blade.php
-});
-
-//masukkan data pelanggan
-Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'])
-    ->name('detail-pelanggan');
-
-Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
-    ->name('lokasi.tambah');
-//cek token Tiara Aulia Azadirachta Indica | 5026231148
-Route::get('/cek-token/pelanggan/{pelangganid}',
-[PelangganController::class, 'cekTokenPelanggan']
-)->name('cek-token-pelanggan');
-
-
-//masukkan token
-Route::get('/masukkan-token', [TokenController::class, 'showForm'])->name('masukkan-token');
-
-Route::post('/verifikasi-token', [TokenController::class, 'verifikasiToken'])->name('verifikasi-token');
-
-Route::get('/token-success', [TokenController::class, 'selamat'])->name('selamat');
-Route::get('/token-failed', [TokenController::class, 'gagal'])->name('gagal');
-
-
-// {{--5026231088 Tsanita Shafa Hadinanda--}}
-Route::get('/reward', [VoucherController::class, 'loadReward']);
-Route::get('/voucher', [VoucherController::class, 'loadVoucher'])->name('voucher/voucher');
-Route::get('/infovoucher/{id}', [VoucherController::class, 'loadInfoVoucher'])->name('voucher/infovoucher');
-Route::get('/riwayat', [RiwayatController::class, 'loadRiwayat'])->name('riwayat/riwayat');
-Route::get('/riwayatpoin', [RiwayatController::class, 'loadRiwayatPoin'])->name('riwayat/riwayatpoin');
-Route::get('/tukar', [TukarPoinController::class, 'loadTukarSemua']);
-Route::get('/tukar/{id}', [TukarPoinController::class, 'loadTukarById']);
-Route::get('/tukar/redeem/{id}', [TukarPoinController::class, 'redeem'])->name('tukar/redeem');
-
-// Route::get('/pln', function () {
-//     return view('welcome');
-// });
 
 // //Route pengerjaan manzil
 // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
@@ -147,6 +78,11 @@ Route::get('verifikasi-gopay', function () {
     return view('hubungkan-ewallet/verifikasi-gopay');
 });
 
+// Also accept GET with the exact path used by the form (`verifikasi-goPay`)
+Route::get('/verifikasi-goPay', function () {
+    return view('hubungkan-ewallet/verifikasi-gopay');
+});
+
 Route::get('verifikasi-shopePay', function () {
     return view('hubungkan-ewallet/verifikasi-shopeePay');
 });
@@ -159,10 +95,6 @@ Route::get('menyambungkan-berhasil', function () {
 Route::get('menyambungkan-gagal', function () {
     return view('hubungkan-ewallet/menyambungkan-gagal');
 });
-
-
-
-
 
 
 //homepage
@@ -185,10 +117,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('menyambungkan-berhasil', function () {
+    return view('hubungkan-ewallet/menyambungkan-berhasil');
+});
+Route::get('menyambungkan-berhasil', function () {
+    return view('hubungkan-ewallet/menyambungkan-gagal');
+});
+
+
 
 
 // mengambil data pelanggan beli token
 Route::get('/pelanggan/detail/{nomorMeter}', [PelangganController::class, 'detailPelanggan']);
+
+// mengambil data verifikasi shopepay
+Route::post('/verifikasi-shopePay', [PenggunaController::class, 'verifyOTP'])->name('verifikasi.shopepay');
+
+// mengambil data verifikasi gopay
+Route::post('/verifikasi-goPay', [PenggunaController::class, 'verifyOTP'])->name('verifikasi.gopay');
+
 // Mengambil get voucher untuk di beli token
 Route::get('voucher/get/{pelangganid}', [VoucherController::class, 'getVoucher']);
 
