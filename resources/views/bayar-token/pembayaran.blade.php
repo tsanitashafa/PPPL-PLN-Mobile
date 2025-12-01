@@ -44,7 +44,7 @@
         </div>
     </div> --}}
 
-    <x-nav-top title="Beli Token" backUrl="{{ url('/beli-token') }}" />
+    <x-nav-top title="Pembayaran" backUrl="{{ url('/beli-token') }}" />
     <div class="container pb-5 " data-spy="scroll">
 
 

@@ -14,18 +14,16 @@
 </head>
 
 <body>
-
-<div class="container container-app px-3">
-
-    <div class="app-bar position-relative mb-2">
-        <a href="#" class="back-btn text-dark position-absolute start-0">
-            <i class="bi bi-arrow-left fs-4"></i>
-        </a>
-        <h5 class="app-title text-center m-0">Reward</h5>
-    </div>
+<!-- Header Template -->
+    <x-templatenavbar 
+        title="Reward"
+        backUrl="{{ url('/homepage') }}"
+    />
 
     <div class="card tier-card p-3 mb-5">
         <div class="d-flex align-items-center justify-content-between">
+
+            <!-- KIRI -->
             <div class="flex-grow-1 pe-2">
                 <div class="tier-badge fw-semibold">
                     {{ $tier }} - {{ number_format($points) }} Poin
@@ -39,11 +37,18 @@
                 </div>
             </div>
 
-            <div class="ms-2">
-                <img src="{{ asset('img/' . $tierImage) }}" alt="{{ $tier }} Coin" class="tier-coin">
+            <!-- KANAN: GAMBAR -->
+            <div class="ms-2 d-flex align-items-center">
+                <img 
+                    src="{{ asset('img/' . $tierImage) }}" 
+                    alt="{{ $tier }} Coin" 
+                    class="tier-coin img-fluid"
+                >
             </div>
+
         </div>
     </div>
+
 
     <ul class="nav nav-pills nav-chips-split mb-5" role="tablist">
         <li class="nav-item flex-fill">

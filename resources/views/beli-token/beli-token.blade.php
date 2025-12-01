@@ -46,7 +46,7 @@
 
     <!-- Header Template -->
     <!-- Header Template -->
-    <x-nav-top title="Beli Token" backUrl="{{ url('/beli-token') }}" />
+    <x-nav-top title="Beli Token" backUrl="{{ url('/homepage') }}" />
 
 
 

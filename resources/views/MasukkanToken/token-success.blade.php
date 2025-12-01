@@ -66,7 +66,7 @@
     <!-- Tombol kembali -->
     <button 
         class="btn-figma"
-        onclick="window.location.href='{{ url('/masukkan-token') }}'">
+        onclick="window.location.href='{{ url('/homepage') }}'">
         Kembali
     </button>
 

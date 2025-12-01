@@ -126,7 +126,7 @@
                         <div class="row row-cols-4 g-3">
 
                             <div class="col text-center">
-                                <a href="#" class="text-decoration-none d-block">
+                                <a href="{{ route('beli-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
                                         <img src="assets/img/beli-token.svg" alt="beli token"
                                             class="d-block mx-auto" style="width: 48px; height: 48px;">

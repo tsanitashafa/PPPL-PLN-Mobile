@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\TokenController;
+use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\TukarPoinController;
+use App\Http\Controllers\ProfileController;
 // coba cek masuk gak ya ini from my branch yok bisa dah ngantuk
 //
 
@@ -28,7 +33,7 @@ Route::get('transaksi-gagal', function () {
 //beli token
 Route::get('beli-token', function () {
     return view('beli-token/beli-token');
-});
+})->name('beli-token');
 
 
 //fitur tambahan
@@ -218,6 +223,16 @@ Route::get('/notif', [PenggunaController::class, 'notif'])->name('notif');
 
 Route::get('/notif', [PenggunaController::class, 'notif'])->name('notif');
 Route::post('/logout', [PenggunaController::class, 'logout'])->name('logout');
+
+//route dari shafa
+Route::get('/reward', [VoucherController::class, 'loadReward']);
+Route::get('/voucher', [VoucherController::class, 'loadVoucher'])->name('voucher/voucher');
+Route::get('/infovoucher/{id}', [VoucherController::class, 'loadInfoVoucher'])->name('voucher/infovoucher');
+Route::get('/riwayat', [RiwayatController::class, 'loadRiwayat'])->name('riwayat/riwayat');
+Route::get('/riwayatpoin', [RiwayatController::class, 'loadRiwayatPoin'])->name('riwayat/riwayatpoin');
+Route::get('/tukar', [TukarPoinController::class, 'loadTukarSemua']);
+Route::get('/tukar/{id}', [TukarPoinController::class, 'loadTukarById']);
+Route::get('/tukar/redeem/{id}', [TukarPoinController::class, 'redeem']);
 
 //route dai Tiara
 Route::get('/token-success', function () {
