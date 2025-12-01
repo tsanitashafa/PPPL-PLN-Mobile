@@ -6,6 +6,8 @@ use App\Models\Pengguna;
 use App\Models\Voucher;
 use App\Http\Controllers\TukarPoinController;
 use App\Http\Controllers\RiwayatController;
+use Illuminate\Support\Facades\Session;
+
 
 class VoucherController extends Controller
 {
@@ -13,8 +15,15 @@ class VoucherController extends Controller
         TukarPoinController $tukarCtrl,
         RiwayatController $riwayatCtrl
     ) {
-        // sementara: user id 1
-        $user = Pengguna::findOrFail(1);
+        // ambil user yang lagi login dari session
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+
+        if (!$userId) {
+            // kalau belum login, balikin ke welcome (atau route lain yang kamu mau)
+            return redirect()->route('welcome');
+        }
+
+        $user = Pengguna::findOrFail($userId);
 
         $points = (int) $user->poin;
 
