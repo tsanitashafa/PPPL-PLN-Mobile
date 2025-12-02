@@ -53,7 +53,7 @@
             position: relative;
             height: 40px;
             margin-bottom: 10px;
-        }   
+        }
         .modal-title-centered {
             position: absolute;
             left: 50%;
@@ -79,7 +79,7 @@
             border: none;
             font-size: 22px;
             padding: 5px;
-        } 
+        }
 
         .location-item {
             background: #ffffff;
@@ -117,7 +117,7 @@
         </button>
 
         @foreach($pelanggan as $p)
-            <a href="{{ route('cek-token', $p->id) }}" 
+            <a href="{{ route('cek-token', $p->id) }}"
             class="location-item d-flex justify-content-between align-items-center mt-3 text-decoration-none">
 
                 <span class="text-dark fw-semibold">
@@ -166,7 +166,7 @@
             <!-- Form -->
             <form action="{{ route('lokasi.tambah') }}" method="POST">
                 @csrf
-                
+
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Alamat</label>
                     <input type="text" name="alamat" class="form-control" placeholder="Masukkan alamat" required>
@@ -176,7 +176,7 @@
                     <label class="form-label fw-semibold">Nomor Meter</label>
                     <input type="text" name="nomormeter" class="form-control" placeholder="Nomor meter listrik" required>
                 </div>
-
+                <!--
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Nama Pengguna</label>
                     <input type="text" name="nama" class="form-control" placeholder="Masukkan nama pengguna" required>
@@ -185,7 +185,7 @@
                 <div class="mb-3">
                     <label class="form-label fw-semibold">ID Pengguna</label>
                     <input type="text" name="penggunaid" class="form-control" placeholder="Masukkan ID Pengguna" required>
-                </div>
+                </div> -->
 
             <!-- TANDAI LOKASI SEBAGAI-->
                 <div class="mb-3">
@@ -201,11 +201,11 @@
 
                 <div class="mb-3 d-none" id="inputLainnyaWrapper">
                 <label class="form-label fw-semibold">Nama Custom</label>
-                <input 
-                    type="text" 
-                    id="inputLainnya" 
-                    name="tandaisebagai_custom" 
-                    class="form-control" 
+                <input
+                    type="text"
+                    id="inputLainnya"
+                    name="tandaisebagai_custom"
+                    class="form-control"
                     placeholder="Tulis nama label…" />
                 </div>
 

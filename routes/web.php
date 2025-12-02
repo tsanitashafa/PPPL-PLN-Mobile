@@ -8,6 +8,8 @@ use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\TukarPoinController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\BantuanController;
 // coba cek masuk gak ya ini from my branch yok bisa dah ngantuk
 //
 
@@ -257,7 +259,7 @@ Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'
 Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
     ->name('lokasi.tambah');
 //cek token Tiara Aulia Azadirachta Indica | 5026231148
-Route::get('/cek-token/pelanggan/{pelangganId}', 
+Route::get('/cek-token/pelanggan/{pelangganId}',
 [PelangganController::class, 'cekTokenPelanggan']
 )->name('cek-token-pelanggan');
 
@@ -269,6 +271,23 @@ Route::post('/verifikasi-token', [TokenController::class, 'verifikasiToken'])->n
 
 Route::get('/token-success', [TokenController::class, 'selamat'])->name('selamat');
 Route::get('/token-failed', [TokenController::class, 'gagal'])->name('gagal');
+
+//route Haliza
+Route::get('/', [NewsController::class, 'index']);
+
+
+Route::get('/artikel', [NewsController::class, 'index'])->name('artikel');
+
+
+
+Route::get('/berita', [NewsController::class, 'berita'])->name('berita');
+
+Route::get('/berita/{id}', [NewsController::class, 'beritaDetail'])->name('berita.detail');
+
+
+Route::get('/bantuan', [BantuanController::class, 'bantuan'])->name('bantuan');
+
+Route::get('/bantuan/{id}', [BantuanController::class, 'bantuanDetail'])->name('bantuan.detail');
 
 // ... (Route lainnya)
 

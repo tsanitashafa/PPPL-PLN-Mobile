@@ -170,6 +170,7 @@
 
             <div class="row mt-4 mb-2">
                 <div class="col">
+
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-black">

@@ -12,43 +12,47 @@ use Illuminate\Support\Facades\Session;
 
 class PenggunaController extends Controller
 {
-    public function getDetailPelanggan(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
+    public function getDetailPelanggan(Request $request)
     {
-        //$pelanggan = Pelanggan::where('penggunaid', Auth::id())->get(); //nanti dipakai kalau udah nyambung login
-        $pelanggan = Pelanggan::where('penggunaid', 19)->get(); // sementara hardcode
-
+        // Ambil user login
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+        if (!$userId) {
+            return redirect()->route('welcome');
+        }
+        $user = Pengguna::findOrFail($userId);
+        // Ambil semua pelanggan milik user login
+        $pelanggan = Pelanggan::where('penggunaid', $user->id)->get();
+        // Kirim ke view
         return view('CekToken.detail-pelanggan', compact('pelanggan'));
-
-        $pelanggan = Pelanggan::with('alamat')->find($pelangganId); // ini untuk cek token
-
-        return view('CekToken.detail-pelanggan', [
-            'pelanggan' => $pelanggan
-        ]);
-    }
+}
 
     public function tambahLokasi(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
     {
+        // 1. Ambil user login dari session
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+        if (!$userId) {
+            return redirect()->route('welcome');
+        }
+        $user = Pengguna::findOrFail($userId);
+        // 2. Validasi input user
         $request->validate([
             'alamat' => 'required',
             'nomormeter' => 'required',
             'tandaisebagai' => 'required',
-            'nama' => 'required',
-            'penggunaid' => 'required',
         ]);
-
+        // 3. Jika user memilih "Lainnya"
         $tandaisebagai = $request->tandaisebagai == "Lainnya"
             ? $request->tandaisebagai_custom
             : $request->tandaisebagai;
-
+        // 4. Simpan data lokasi — nama, penggunaid, saldo dari user login
         Pelanggan::create([
-            'nama' => $request->nama,
+            'nama' => $user->nama,            // otomatis dari user login
             'alamat' => $request->alamat,
             'tandaisebagai' => $tandaisebagai,
-            'penggunaid' => $request->penggunaid,
+            'penggunaid' => $user->id,        // otomatis dari user login
             'nomormeter' => $request->nomormeter,
-            'saldo' => 0,
+            'saldo' => $user->saldo,                     // ambil dari login
         ]);
-
         return redirect()->route('detail-pelanggan')
             ->with('success', 'Lokasi berhasil ditambahkan!');
     }
