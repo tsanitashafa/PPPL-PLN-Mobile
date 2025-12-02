@@ -87,8 +87,9 @@
 
                         <div class="d-flex justify-content-between align-items-center pb-2 border-bottom mb-3">
                             <h3 class="h4 m-0 fw-normal">{{ $user->phone }}</h3>
-                            <div class="d-flex align-items-center text-black" style="color: #18a2bb">
-                                <i class="h4 fa-solid fa-chevron-right"></i>
+
+                            <div class="d-flex align-items-center text-black">
+                                <i class="fa-solid fa-chevron-right" style="font-size: 14px; color: #18a2bb;"></i>
                             </div>
                         </div>
 
@@ -168,23 +169,17 @@
 
             </div>
 
-            <div class="row mt-4 mb-2">
-                <div class="col">
+            <a href="{{ route('artikel') }}" class="text-decoration-none text-black">
+                <div class="d-flex align-items-center justify-content-between py-3">
+                    
+                    <h4 class="m-0 fw-bold" style="font-size: 20px;">
+                        Artikel
+                    </h4>
 
-                    <div class="d-flex align-items-center justify-content-between">
+                    <i class="fa-solid fa-chevron-right" style="font-size: 18px;"></i>
 
-                        <div class="d-flex align-items-center text-black">
-                            <h4 class="h4 m-0 fw-bold poppins">Artikel</h4>
-                        </div>
-
-                        <div class="d-flex align-items-center text-black ">
-                            <i class=" h4 fa-solid fa-chevron-right"></i>
-                        </div>
-
-                    </div>
                 </div>
-            </div>
-
+            </a>
 
             <div class="row mb-4">
                 <div class="col">

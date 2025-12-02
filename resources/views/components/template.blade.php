@@ -26,7 +26,7 @@
             <i class="bi bi-gift fs-5 d-block"></i>Reward
         </a>
 
-        <a class="nav-link text-center ms-5 {{ Request::is('artikel') ? 'active' : '' }}" href="{{ url('/artikel') }}">
+        <a class="nav-link text-center ms-5 {{ Request::is('halamanartikel') ? 'active' : '' }}" href="{{ url('/artikel') }}">
             <i class="bi bi-newspaper fs-5 d-block"></i>Artikel
         </a>
 

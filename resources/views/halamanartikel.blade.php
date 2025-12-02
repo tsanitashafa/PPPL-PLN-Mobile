@@ -210,10 +210,9 @@
     </style>
 </head>
 <body>
-
     <div class="mobile-frame">
         <div class="app-header">
-            <a href="{{ url('/') }}" class="back-btn">
+            <a href="{{ url('/homepage') }}" class="back-btn">
                 <i class="bi bi-arrow-left"></i>
             </a>
             <h5>Artikel</h5>
@@ -280,7 +279,7 @@
         </div>
 
     </div>
-
+    @include('components.template')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
