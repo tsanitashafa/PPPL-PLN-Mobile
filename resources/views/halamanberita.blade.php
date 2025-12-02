@@ -104,12 +104,12 @@
             <a href="{{ route('artikel') }}" class="back-btn">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h5>Bantuan</h5>
+            <h5>Berita</h5>
         </div>
 
         <div class="content-area pt-2">
-            @foreach($bantuan as $item)
-            <a href="{{ route('bantuan.detail', ['id' => $item->bantuanid]) }}" class="help-card">
+            @foreach($news as $item)
+            <a href="{{ route('berita.detail', ['id' => $item->beritaid]) }}" class="help-card">
                 {{ $item->judul }}
             </a>
             @endforeach

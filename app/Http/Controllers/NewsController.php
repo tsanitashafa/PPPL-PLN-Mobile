@@ -10,21 +10,24 @@ class NewsController extends Controller
 {
     public function index()
     {
-
         $news = News::orderBy('beritaid', 'desc')->take(2)->get();
-
-
         $bantuan = Bantuan::orderBy('bantuanid', 'desc')->take(2)->get();
-
 
         return view('halamanartikel', compact('news', 'bantuan'));
     }
 
+    // --- BAGIAN INI YANG KITA PERBAIKI ---
     public function berita()
     {
         $news = News::orderBy('beritaid', 'desc')->get();
-        return view('halamanberita', compact('news'));
+        
+        // Tambahkan ini supaya variabel $bantuan dikenali di view
+        $bantuan = Bantuan::orderBy('bantuanid', 'desc')->get(); 
+        
+        // Jangan lupa masukkan 'bantuan' ke dalam compact
+        return view('halamanberita', compact('news', 'bantuan'));
     }
+    // -------------------------------------
 
     public function beritaDetail($id)
     {

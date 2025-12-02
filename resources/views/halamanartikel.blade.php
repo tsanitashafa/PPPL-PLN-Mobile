@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,157 +8,138 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     
     <style>
-        
+        /* --- RESET & BODY --- */
         body {
-            background-color: #333;
+            background-color: #f0f2f5;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* 
         }
 
+        /* --- CONTAINER UTAMA (SIMULASI HP) --- */
         .mobile-frame {
-            width: 375px;
-            height: 667px;
-            background-color: #ffffff; /* Background aplikasi putih bersih */
+            width: 100%;
+            max-width: 480px;
+            background-color: #ffffff;
+            min-height: 100vh;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
         }
 
-        .content-scroll {
-            flex: 1;
-            overflow-y: auto;
-            padding-bottom: 100px;
-            background-color: #fff; /* Pastikan background putih */
-        }
-
-        /* --- WARNA --- */
-        :root {
-            --primary-cyan: #00aeb6;
-            --text-dark: #212529;
-            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow lembut seperti di foto */
-        }
-
         /* --- HEADER --- */
         .app-header {
-            padding: 20px 15px;
+            padding: 20px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             background: white;
-            /* Header di foto terlihat menyatu dengan body, border tipis atau tidak ada */
+            position: sticky;
+            top: 0;
+            z-index: 50;
         }
         
         .app-header h5 {
-            font-weight: 600;
+            font-weight: 700;
             margin: 0;
-            font-size: 1.2rem;
-            color: black;
+            font-size: 1.1rem;
+            color: #212529;
         }
 
         .back-btn {
             position: absolute;
             left: 20px;
-            font-size: 1.5rem;
-            color: black;
+            font-size: 1.4rem;
+            color: #212529;
             cursor: pointer;
             text-decoration: none;
         }
 
-        /* --- SECTION TITLE --- */
+        /* --- SCROLLABLE CONTENT --- */
+        .content-scroll {
+            flex: 1;
+            padding: 10px 20px 120px 20px;
+            overflow-y: auto;
+        }
+
         .section-title {
-            font-weight: 500;
+            font-weight: 700;
             margin: 10px 0 15px 0;
-            color: #000;
+            color: #212529;
             font-size: 1rem;
         }
 
-        /* --- CARD STYLE (NEWS & BANTUAN) --- */
+        /* --- CARDS STYLE --- */
         .custom-card {
             background: white;
-            border: none; /* Hilangkan border garis */
-            border-radius: 16px; /* Sudut lebih bulat seperti di foto */
-            box-shadow: var(--card-shadow); /* Efek melayang */
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             margin-bottom: 16px;
             padding: 15px;
             text-decoration: none;
             color: inherit;
-            display: flex;
+            display: flex; 
             align-items: center;
-            transition: transform 0.1s;
+            border: 1px solid #f0f0f0;
+            transition: transform 0.2s;
         }
 
         .custom-card:active {
             transform: scale(0.98);
         }
 
-        /* --- NEWS SPECIFIC --- */
+        /* Style Khusus News (Ada Gambar) */
         .news-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 8px;
+            width: 80px;
+            height: 60px;
+            border-radius: 10px;
             object-fit: cover;
-            flex-shrink: 0;
             margin-right: 15px;
+            flex-shrink: 0;
         }
 
         .news-title {
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.4;
             color: #333;
-            /* Membatasi teks maksimal 3 baris */
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        /* --- BANTUAN SPECIFIC --- */
-        .bantuan-card {
-            display: block; /* Agar full width */
-            padding: 20px; /* Padding lebih besar */
-        }
-
+        /* Style Khusus Bantuan (Teks Saja) */
         .bantuan-text {
             font-size: 0.95rem;
-            font-weight: 400;
+            font-weight: 500;
             color: #333;
-            text-align: left; /* PENTING: Sesuai foto, teks rata kiri */
             margin: 0;
-            line-height: 1.5;
+            width: 100%; 
         }
 
-        /* --- LIHAT SEMUA --- */
         .see-all {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.9rem;
-            color: #555;
+            display: block;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6c757d;
             text-decoration: none;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-weight: 500;
         }
 
-        .see-all i {
-            margin-left: 5px;
-        }
-
-        /* --- BOTTOM NAVIGATION --- */
+        /* --- BOTTOM NAVIGATION (CURVED) --- */
         .bottom-nav-container {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             width: 100%;
-            height: 85px; /* Sedikit lebih tinggi */
-            z-index: 10;
-            pointer-events: none; /* Agar klik tembus ke area kosong */
+            max-width: 480px;
+            height: 90px;
+            z-index: 100;
+            pointer-events: none; 
         }
 
         .nav-bg {
@@ -167,69 +148,64 @@
             width: 100%;
             height: 70px;
             background: white;
-            border-top-left-radius: 30px; /* Lengkungan sudut atas lebih besar */
-            border-top-right-radius: 30px;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            padding: 0 15px 15px 15px;
-            pointer-events: auto;
-            
-            /* Masking lengkungan tengah */
-            -webkit-mask-image: radial-gradient(circle at 50% 0px, transparent 38px, black 39px);
-            mask-image: radial-gradient(circle at 50% 0px, transparent 38px, black 39px);
+            align-items: center;
+            padding: 0 20px;
+            pointer-events: auto; 
+            -webkit-mask-image: radial-gradient(circle at 50% 0, transparent 35px, black 36px);
+            mask-image: radial-gradient(circle at 50% 0, transparent 35px, black 36px);
         }
 
         .nav-item {
-            flex: 1;
             text-align: center;
-            font-size: 0.75rem;
-            color: #ccc; /* Warna non-aktif abu muda */
+            color: #adb5bd;
             text-decoration: none;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 5px;
+            font-size: 0.75rem;
+            width: 60px;
         }
 
         .nav-item i {
-            font-size: 1.5rem;
-            margin-bottom: 4px;
+            font-size: 1.4rem;
+            margin-bottom: 2px;
         }
 
         .nav-item.active {
-            color: var(--primary-cyan);
-            font-weight: 500;
+            color: #00aeb6;
+            font-weight: 600;
         }
 
         .scan-btn-wrapper {
             position: absolute;
-            bottom: 35px; /* Naik sedikit */
+            bottom: 35px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 20;
-            background: white; /* Lingkaran putih di balik tombol */
-            border-radius: 50%;
-            padding: 6px;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+            z-index: 101;
             pointer-events: auto;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
         }
 
         .scan-btn {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-cyan);
+            width: 55px;
+            height: 55px;
+            background-color: #00aeb6;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 15px rgba(0, 174, 182, 0.4);
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 174, 182, 0.4);
         }
 
-        /* Scrollbar hide */
         ::-webkit-scrollbar { width: 0px; background: transparent; }
     </style>
 </head>
@@ -243,14 +219,13 @@
             <h5>Artikel</h5>
         </div>
 
-        <div class="content-scroll px-4"> <h6 class="section-title">News</h6>
-
+        <div class="content-scroll"> 
+            
+            <h6 class="section-title">News</h6>
             @forelse($news as $item)
                 <a href="{{ route('berita.detail', ['id' => $item->beritaid]) }}" class="custom-card">
                     <img src="{{ asset('assets/img/Image placeholder.png') }}" class="news-img" alt="news">
-                    <div class="news-title">
-                        {{ $item->judul }}
-                    </div>
+                    <div class="news-title">{{ $item->judul }}</div>
                 </a>
             @empty
                 <div class="text-center py-3 text-muted small">Belum ada berita terbaru.</div>
@@ -261,19 +236,16 @@
             </a>
 
 
-            <h6 class="section-title mt-2">Bantuan</h6>
-
+            <h6 class="section-title mt-4">Bantuan</h6>
             @forelse($bantuan as $item)
-                <a href="{{ route('bantuan.detail', ['id' => $item->bantuanid]) }}" class="custom-card bantuan-card">
-                    <p class="bantuan-text">
-                        {{ $item->judul }}
-                    </p>
+                <a href="{{ route('bantuan.detail', ['id' => $item->bantuanid]) }}" class="custom-card">
+                    <div class="bantuan-text">{{ $item->judul }}</div>
                 </a>
             @empty
                 <div class="text-center py-3 text-muted small">Belum ada bantuan tersedia.</div>
             @endforelse
 
-            <a href="{{ route('bantuan') }}" class="see-all mb-4">
+            <a href="{{ route('bantuan') }}" class="see-all">
                 Lihat Semua <i class="bi bi-chevron-down"></i>
             </a>
 
@@ -295,8 +267,8 @@
                     <i class="bi bi-gift"></i>
                     <span>Reward</span>
                 </a>
-                
-                <div style="width: 70px;"></div> <a href="#" class="nav-item active">
+                <div style="width: 50px;"></div> 
+                <a href="#" class="nav-item active">
                     <i class="bi bi-file-text"></i>
                     <span>Artikel</span>
                 </a>
@@ -306,6 +278,7 @@
                 </a>
             </div>
         </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
