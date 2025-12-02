@@ -121,21 +121,19 @@ class PenggunaController extends Controller
     }
 
     // verif otp hp
+    public function verifyOTP(Request $request)
+    {
+        $validated = $request->validate([
+            'otp' => 'required|min:6|max:6'
+        ]);
 
-    // punya siapa ini rek konflik ? aku sequence e namanya verifyOTP kok tiba2 ada ini :(
-    // public function verifyOTP(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'otp' => 'required|min:6|max:6'
-    //     ]);
-
-    //     // Misal OTP benar (dummy)
-    //     if ($request->otp == '000000') {
-    //         return redirect()->route('registuser');
-    //     } else {
-    //         return back()->with('error', 'Kode OTP salah!');
-    //     }
-    // }
+        // Misal OTP benar (dummy)
+        if ($request->otp == '000000') {
+            return redirect()->route('registuser');
+        } else {
+            return back()->with('error', 'Kode OTP salah!');
+        }
+    }
 
     // isi nama & email
     public function showRegistUser()
@@ -385,7 +383,7 @@ class PenggunaController extends Controller
     }
 
 
-    public function verifyOTP(Request $request)
+    public function verifyPOTP(Request $request)
     {
         $phone = $request->phone;
         $verifikasi = $request->verifikasi;

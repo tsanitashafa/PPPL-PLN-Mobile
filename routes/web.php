@@ -134,10 +134,10 @@ Route::get('menyambungkan-berhasil', function () {
 Route::get('/pelanggan/detail/{nomorMeter}', [PelangganController::class, 'detailPelanggan']);
 
 // mengambil data verifikasi shopepay
-Route::post('/verifikasi-shopePay', [PenggunaController::class, 'verifyOTP'])->name('verifikasi.shopepay');
+Route::post('/verifikasi-shopePay', [PenggunaController::class, 'verifyPOTP'])->name('verifikasi.shopepay');
 
 // mengambil data verifikasi gopay
-Route::post('/verifikasi-goPay', [PenggunaController::class, 'verifyOTP'])->name('verifikasi.gopay');
+Route::post('/verifikasi-goPay', [PenggunaController::class, 'verifyPOTP'])->name('verifikasi.gopay');
 
 // Mengambil get voucher untuk di beli token
 Route::get('voucher/get/{pelangganid}', [VoucherController::class, 'getVoucher']);
