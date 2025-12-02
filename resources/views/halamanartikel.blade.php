@@ -224,7 +224,7 @@
             <h6 class="section-title">News</h6>
             @forelse($news as $item)
                 <a href="{{ route('berita.detail', ['id' => $item->beritaid]) }}" class="custom-card">
-                    <img src="{{ asset('assets/img/Image placeholder.png') }}" class="news-img" alt="news">
+                    <img src="{{ asset('/img/artikel.png') }}" class="news-img" alt="news">
                     <div class="news-title">{{ $item->judul }}</div>
                 </a>
             @empty
