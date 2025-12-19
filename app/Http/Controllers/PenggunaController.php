@@ -12,19 +12,23 @@ use Illuminate\Support\Facades\Session;
 
 class PenggunaController extends Controller
 {
-    public function getDetailPelanggan(Request $request)
+   public function getDetailPelanggan(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
     {
-        // Ambil user login
         $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
         if (!$userId) {
             return redirect()->route('welcome');
         }
-        $user = Pengguna::findOrFail($userId);
-        // Ambil semua pelanggan milik user login
-        $pelanggan = Pelanggan::where('penggunaid', $user->id)->get();
-        // Kirim ke view
+
+        $user = Pengguna::find($userId);
+        if (!$user) {
+            return redirect()->route('welcome');
+        }
+
+        // ⬇️ INI YANG SEBELUMNYA KURANG
+        $pelanggan = Pelanggan::where('penggunaid', $user->penggunaid)->get();
+
         return view('CekToken.detail-pelanggan', compact('pelanggan'));
-}
+    }
 
     public function tambahLokasi(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
     {
@@ -49,7 +53,7 @@ class PenggunaController extends Controller
             'nama' => $user->nama,            // otomatis dari user login
             'alamat' => $request->alamat,
             'tandaisebagai' => $tandaisebagai,
-            'penggunaid' => $user->id,        // otomatis dari user login
+            'penggunaid' => $user->penggunaid,        // otomatis dari user login
             'nomormeter' => $request->nomormeter,
             'saldo' => $user->saldo,                     // ambil dari login
         ]);
@@ -57,7 +61,7 @@ class PenggunaController extends Controller
             ->with('success', 'Lokasi berhasil ditambahkan!');
     }
 
-    public function cekTokenPelanggan($pelangganId) //Tiara Aulia Azadirachta Indica | 5026231148
+    public function cekTokenPelanggan($pelangganid) //Tiara Aulia Azadirachta Indica | 5026231148
     {
         // ambil data pelanggan (supaya tandaisebagai bisa dipakai di Blade)
         $pelanggan = Pelanggan::find($pelangganid);
@@ -67,7 +71,7 @@ class PenggunaController extends Controller
         return view('CekToken.cek-token', [
             'tokens' => $data,
             'pelanggan' => $pelanggan,
-            'pelangganid' => $pelangganId
+            'pelangganid' => $pelangganid
         ]);
     }
 
@@ -398,4 +402,3 @@ class PenggunaController extends Controller
         return view('hubungkan-ewallet/menyambungkan-berhasil');
     }
 }
-

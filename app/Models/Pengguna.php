@@ -14,6 +14,8 @@ class Pengguna extends Authenticatable
 {
     protected $table = 'pengguna';
     protected $primaryKey = 'penggunaid';
+    public $incrementing = true;
+    protected $keyType = 'int';
     public $timestamps = false;
 
     protected $fillable = ['phone', 'nama', 'email', 'pin', 'poin', 'tier', 'notifenabled', 'saldo', 'photourl', 'tanggallahir'];

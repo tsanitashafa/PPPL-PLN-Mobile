@@ -236,7 +236,7 @@ Route::get('/tukar', [TukarPoinController::class, 'loadTukarSemua']);
 Route::get('/tukar/{id}', [TukarPoinController::class, 'loadTukarById']);
 Route::get('/tukar/redeem/{id}', [TukarPoinController::class, 'redeem']);
 
-//route dai Tiara
+//route Tiara Aulia Azadirachta Indica | 5026231148
 Route::get('/token-success', function () {
     return view('MasukkanToken.token-success');
 });
@@ -258,7 +258,7 @@ Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'
 
 Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
     ->name('lokasi.tambah');
-//cek token Tiara Aulia Azadirachta Indica | 5026231148
+//cek token 
 Route::get('/cek-token/pelanggan/{pelangganId}',
 [PelangganController::class, 'cekTokenPelanggan']
 )->name('cek-token-pelanggan');
