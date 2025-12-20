@@ -48,6 +48,11 @@ Route::get('edit-profil-2', function () {
     return view('fitur-tambahan/edit-profile-2');
 });
 
+// Tambahkan ->name('search') di akhir
+Route::get('search', function () {
+    return view('fitur-tambahan/search');
+})->name('search');
+
 Route::get('/profile', [ProfileController::class, 'loadEditProfile']);
 // Added a placeholder {id} for the edit route
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -258,9 +263,10 @@ Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'
 
 Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
     ->name('lokasi.tambah');
-//cek token 
-Route::get('/cek-token/pelanggan/{pelangganId}',
-[PelangganController::class, 'cekTokenPelanggan']
+//cek token
+Route::get(
+    '/cek-token/pelanggan/{pelangganId}',
+    [PelangganController::class, 'cekTokenPelanggan']
 )->name('cek-token-pelanggan');
 
 

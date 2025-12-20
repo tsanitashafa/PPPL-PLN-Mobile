@@ -9,14 +9,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +55,8 @@
                                 style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
                             <div>
                                 <h2 class="h6 m-0 fw-bold poppins-bold">Hi, {{ $user->nama }}</h2>
-                                <p class="small m-0 poppins-regular">{{ ucfirst($user->tier) }} - {{ $user->poin }} Poin</p>
+                                <p class="small m-0 poppins-regular">{{ ucfirst($user->tier) }} - {{ $user->poin }}
+                                    Poin</p>
                             </div>
                         </div>
 
@@ -129,8 +134,8 @@
                             <div class="col text-center">
                                 <a href="{{ route('beli-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
-                                        <img src="assets/img/beli-token.svg" alt="beli token"
-                                            class="d-block mx-auto" style="width: 48px; height: 48px;">
+                                        <img src="assets/img/beli-token.svg" alt="beli token" class="d-block mx-auto"
+                                            style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Beli Token</p>
                                 </a>
@@ -155,10 +160,10 @@
                                 </a>
                             </div>
                             <div class="col text-center">
-                                <a href="#" class="text-decoration-none d-block">
+                                <a href="{{ route('search') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
-                                        <img src="/images/lihat-semua.png" alt="Lihat Semuanya" class="d-block mx-auto"
-                                            style="width: 48px; height: 48px;">
+                                        <img src="/images/lihat-semua.png" alt="Lihat Semuanya"
+                                            class="d-block mx-auto" style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Lihat Semuanya</p>
                                 </a>
@@ -171,7 +176,7 @@
 
             <a href="{{ route('artikel') }}" class="text-decoration-none text-black">
                 <div class="d-flex align-items-center justify-content-between py-3">
-                    
+
                     <h4 class="m-0 fw-bold" style="font-size: 20px;">
                         Artikel
                     </h4>
@@ -238,7 +243,8 @@
         </div>
     </div>
 
-   @include('components/template')
+    @include('components/template')
 
 </body>
+
 </html>
