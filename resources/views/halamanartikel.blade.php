@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
             background-color: #ffffff;
             min-height: 100vh;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
         }
@@ -150,7 +151,7 @@
             background: white;
             border-top-left-radius: 25px;
             border-top-right-radius: 25px;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -206,9 +207,13 @@
             box-shadow: 0 4px 10px rgba(0, 174, 182, 0.4);
         }
 
-        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
     </style>
 </head>
+
 <body>
     <div class="mobile-frame">
         <div class="app-header">
@@ -250,36 +255,9 @@
 
         </div>
 
-        <div class="bottom-nav-container">
-            <div class="scan-btn-wrapper">
-                <div class="scan-btn">
-                    <i class="bi bi-qr-code-scan"></i>
-                </div>
-            </div>
-
-            <div class="nav-bg">
-                <a href="#" class="nav-item">
-                    <i class="bi bi-house"></i>
-                    <span>Home</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <i class="bi bi-gift"></i>
-                    <span>Reward</span>
-                </a>
-                <div style="width: 50px;"></div>
-                <a href="#" class="nav-item active">
-                    <i class="bi bi-file-text"></i>
-                    <span>Artikel</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-                </a>
-            </div>
-        </div>
-
     </div>
     @include('components.template')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
