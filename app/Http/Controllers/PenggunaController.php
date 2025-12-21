@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 
 class PenggunaController extends Controller
 {
-   public function getDetailPelanggan(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
+    public function getDetailPelanggan(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
     {
         $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
         if (!$userId) {
@@ -24,7 +24,7 @@ class PenggunaController extends Controller
             return redirect()->route('welcome');
         }
 
-        // ⬇️ INI YANG SEBELUMNYA KURANG
+        // ⬇ INI YANG SEBELUMNYA KURANG
         $pelanggan = Pelanggan::where('penggunaid', $user->penggunaid)->get();
 
         return view('CekToken.detail-pelanggan', compact('pelanggan'));

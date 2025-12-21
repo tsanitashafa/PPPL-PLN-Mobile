@@ -39,19 +39,27 @@ Route::get('beli-token', function () {
 
 
 //fitur tambahan
-// edit profile
-Route::get('edit-profile-1', function () {
-    return view('fitur-tambahan/edit-profile-1');
-});
+
 
 Route::get('edit-profil-2', function () {
     return view('fitur-tambahan/edit-profile-2');
 });
 
 // Tambahkan ->name('search') di akhir
-Route::get('search', function () {
-    return view('fitur-tambahan/search');
-})->name('search');
+// Route::get('search', function () {
+//     return view('fitur-tambahan/search');
+// })->name('search');
+
+// --- HAPUS SEMUA ROUTE EDIT-PROFILE YANG LAMA DAN GANTI DENGAN INI ---
+
+// Kelompokkan agar rapi
+Route::group(['prefix' => 'fitur-tambahan'], function () {
+    Route::get('/edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
+    Route::get('/edit-profile-2', [ProfileController::class, 'editProfile2'])->name('edit-profile-2');
+    Route::get('/search', function () {
+        return view('fitur-tambahan/search');
+    })->name('search');
+});
 
 Route::get('/profile', [ProfileController::class, 'loadEditProfile']);
 // Added a placeholder {id} for the edit route
@@ -153,8 +161,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('homepage', [PenggunaController::class, 'ambilDataPengguna'])->name('homepage');
-Route::get('edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
-Route::get('edit-profil-2', [ProfileController::class, 'editProfile2'])->name('edit-profil-2');
+
+
+// Route::get('edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
+// Route::get('edit-profil-2', [ProfileController::class, 'editProfile2'])->name('edit-profil-2');
+
+
 Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
 Route::post('/toggle-notification', [PenggunaController::class, 'toggleNotification'])->name('toggle-notification');
 
