@@ -39,11 +39,28 @@
             height: 18px;
         }
         .alert-token {
-            background-color: #EA4E4E;
-            color: white;
-            border-radius: 12px;
-            padding: 8px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 600;
             font-size: 14px;
+        }
+
+        /* hijau */
+        .alert-success {
+            background-color: #3c970bff;
+            color: #ffffffff;
+        }
+
+        /* kuning */
+        .alert-warning {
+            background-color: #e17f08ff;
+            color: #ffffffff;
+        }
+
+        /* merah */
+        .alert-danger {
+            background-color: #EA4E4E;
+            color: #ffffffff;
         }
     </style>
 </head>
@@ -58,59 +75,44 @@
 <div class="container mt-4">
 
         {{-- DATA TOKEN DINAMIS BERDASARKAN LOKASI --}}
-    @if(isset($pelanggan))
-        <div class="token-card mb-3">
-            <h6 class="fw-bold">
-                Cek Token — {{ $pelanggan->tandaisebagai ?? 'Lokasi' }}
-            </h6>
-            <p class="text-muted mb-2">{{ $pelanggan->alamat }}</p>
-
-            @if($tokens->isEmpty())
-                <p class="text-center text-danger mb-0">Tidak ada data token untuk alamat ini.</p>
-            @else
-                <table class="table table-bordered mt-2">
-                    <thead>
-                        <tr>
-                            <th>Tanggal Beli</th>
-                            <th>Jumlah Token</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($tokens as $t)
-                        <tr>
-                            <td>{{ $t->tanggal_beli }}</td>
-                            <td>{{ $t->token }} kWh</td>
-                            <td>
-                                <span class="badge {{ $t->is_used ? 'bg-danger' : 'bg-success' }}">
-                                    {{ $t->is_used ? 'Sudah Dipakai' : 'Belum Dipakai' }}
-                                </span>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @endif
-        </div>
-    @endif
-
-    <!-- TOKEN CARD -->
     <div class="token-card">
-        <h6 class="fw-bold text-center">Sisa Token Rumah</h6>
-        <p class="text-center mb-2">5.26 kWh / 62.23 kWh</p>
+        <h6 class="fw-bold text-center">
+            Sisa Token {{ $pelangganAktif->tandaisebagai }}
+        </h6>
+
+        <p class="text-center mb-2">
+            {{ number_format($sisaToken, 2) }} kWh /
+            {{ number_format($totalToken, 2) }} kWh
+        </p>
 
         <div class="progress-bg w-100 mb-3">
-            <div class="progress-bar-custom" style="width: 8%;"></div>
+            <div class="progress-bar-custom"
+                style="width: {{ $persentase }}%;">
+            </div>
         </div>
 
-        <div class="alert-token text-center">⚠ Token Cukup Untuk 1 Hari</div>
+        @php
+            if ($sisaToken <= 0) {
+                $statusText = 'Token habis';
+                $statusClass = 'alert-danger';
+            } elseif ($sisaToken <= 20) {
+                $statusText = 'Token cukup untuk 1 hari';
+                $statusClass = 'alert-warning';
+            } else {
+                $statusText = 'Token masih tersedia';
+                $statusClass = 'alert-success';
+            }
+        @endphp
+
+        <div class="alert-token text-center {{ $statusClass }}">
+            ⚠ {{ $statusText }}
+        </div>
 
         <div class="text-center mt-2">
-            <div class="text-center mt-2">
-                <a href="{{ url('/detail-pelanggan') }}" 
-                    class="text-decoration-none text-dark">Lihat Detail ▼
-                </a>
-            </div>
+            <a href="{{ url('/detail-pelanggan') }}"
+            class="text-decoration-none text-dark">
+            Lihat Detail ▼
+            </a>
         </div>
     </div>
 
@@ -119,26 +121,24 @@
         <h6 class="fw-bold">Dashboard Pemakaian</h6>
 
         <div class="w-100" style="height: 220px;">
-            <canvas id="usageChart" style="max-height: 220px !important;"></canvas>
+            <canvas id="usageChart"></canvas>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <button class="btn btn-outline-dark w-100 mt-3 py-2" 
-                style="border-radius:12px; font-weight:600; font-size:14px;" 
-                onclick="window.location.href='{{ url('/history-pemakaian') }}'">Lihat History Pemakaian ▼
-            </button>
+
         <script>
             const ctx = document.getElementById('usageChart').getContext('2d');
 
             const usageData = {
-                labels: ['OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR'],
+                labels: @json($labels),
                 datasets: [{
-                    data: [35.0, 62.5, 31.6, 34.0, 44.3, 11.0],
+                    data: @json($dataPemakaian),
                     tension: 0.4,
                     borderColor: '#000000',
                     pointRadius: 5,
                     pointBackgroundColor: '#000000',
-                    borderWidth: 2
+                    borderWidth: 2,
+                    fill: false
                 }]
             };
 
@@ -148,30 +148,24 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false }},
+                    plugins: {
+                        legend: { display: false }
+                    },
                     scales: {
                         y: {
                             beginAtZero: true,
                             ticks: { stepSize: 10 }
                         }
-                    },
-                    layout: {
-                        padding: { top: 10, bottom: 10 }
-                    }
-                }
-            });(ctx, {
-                type: 'line',
-                data: usageData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false }},
-                    scales: {
-                        y: { beginAtZero: true }
                     }
                 }
             });
         </script>
+
+        <button class="btn btn-outline-dark w-100 mt-3 py-2"
+            style="border-radius:12px; font-weight:600; font-size:14px;"
+            onclick="window.location.href='{{ url('/history-pemakaian') }}'">
+            Lihat History Pemakaian ▼
+        </button>
     </div>
 
     <!-- CARBON TRACKING CARD -->

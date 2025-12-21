@@ -117,9 +117,8 @@
         </button>
 
         @foreach($pelanggan as $p)
-            <a href="{{ route('cek-token', $p->id) }}"
-            class="location-item d-flex justify-content-between align-items-center mt-3 text-decoration-none">
-
+            <a href="{{ route('cek-token', ['pelangganid' => $p->pelangganid]) }}"
+                class="location-item d-flex justify-content-between align-items-center mt-3 text-decoration-none">
                 <span class="text-dark fw-semibold">
                     {{ $p->tandaisebagai }} ({{ $p->alamat }})
                 </span>

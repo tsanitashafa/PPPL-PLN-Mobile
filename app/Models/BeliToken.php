@@ -18,6 +18,7 @@ class BeliToken extends Model
         'generatenotoken',
         'pelangganid',
         'metodeid',
-        'rewardid'
+        'rewardid',
+        'is_used'
     ];
 }

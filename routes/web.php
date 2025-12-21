@@ -237,13 +237,8 @@ Route::get('/tukar/{id}', [TukarPoinController::class, 'loadTukarById']);
 Route::get('/tukar/redeem/{id}', [TukarPoinController::class, 'redeem']);
 
 //route Tiara Aulia Azadirachta Indica | 5026231148
-Route::get('/token-success', function () {
-    return view('MasukkanToken.token-success');
-});
-
-Route::get('/cek-token', function () {
-    return view('CekToken.cek-token');
-})->name('cek-token'); //ini nanti diganti lagi kalau udah kehubung login
+Route::get('/cek-token', [PenggunaController::class, 'cekToken'])
+    ->name('cek-token');
 
 Route::get('/history-pemakaian', function () {
     return view('CekToken.history-pemakaian');
@@ -258,11 +253,6 @@ Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'
 
 Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
     ->name('lokasi.tambah');
-//cek token 
-Route::get('/cek-token/pelanggan/{pelangganId}',
-[PelangganController::class, 'cekTokenPelanggan']
-)->name('cek-token-pelanggan');
-
 
 //masukkan token
 Route::get('/masukkan-token', [TokenController::class, 'showForm'])->name('masukkan-token');
