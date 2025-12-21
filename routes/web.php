@@ -262,9 +262,8 @@ Route::get('/tukar/redeem/{id}', [TukarPoinController::class, 'redeem']);
 Route::get('/cek-token', [PenggunaController::class, 'cekToken'])
     ->name('cek-token');
 
-Route::get('/history-pemakaian', function () {
-    return view('CekToken.history-pemakaian');
-});
+Route::get('/history-pemakaian', [PenggunaController::class, 'historyPemakaian']);
+
 Route::get('/template', function () {
     return view('template'); // Ambil dari nama file template.blade.php
 });

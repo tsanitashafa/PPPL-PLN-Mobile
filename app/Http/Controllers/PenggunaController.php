@@ -136,7 +136,7 @@ class PenggunaController extends Controller
             'dataPemakaian'
         ));
     }
-
+    // history pemakaian by Tiara Aulia Azadirachta Indica | 5026231148
     public function historyPemakaian(Request $request)
     {
         // 1. ambil user login
