@@ -145,14 +145,47 @@ class PenggunaController extends Controller
             return redirect()->route('welcome');
         }
 
-        // 2. ambil pelanggan aktif (sama kaya cekToken)
-        $pelangganAktif = Pelanggan::where('penggunaid', $userId)->first();
-
-        if (!$pelangganAktif) {
+        // 2. ambil semua pelanggan user
+        $pelanggans = Pelanggan::where('penggunaid', $userId)->get();
+        if ($pelanggans->isEmpty()) {
             return redirect()->route('detail-pelanggan');
         }
 
-        // 3. ambil history pemakaian dari cektoken
+        // 3. tentukan pelanggan aktif (SAMA seperti cekToken)
+        $pelangganAktif = null;
+
+        /**
+         * 3.1 Kalau ada pelangganid dari request → pakai & simpan ke session
+         */
+        if ($request->filled('pelangganid')) {
+            $pelangganAktif = $pelanggans->firstWhere(
+                'pelangganid',
+                $request->pelangganid
+            );
+
+            if ($pelangganAktif) {
+                session(['pelanggan_aktif' => $pelangganAktif->pelangganid]);
+            }
+        }
+
+        /**
+         * 3.2 Kalau TIDAK ada request tapi ADA di session → pakai session
+         */
+        elseif (session()->has('pelanggan_aktif')) {
+            $pelangganAktif = $pelanggans->firstWhere(
+                'pelangganid',
+                session('pelanggan_aktif')
+            );
+        }
+
+        /**
+         * 3.3 Fallback terakhir → pelanggan pertama
+         */
+        if (!$pelangganAktif) {
+            $pelangganAktif = $pelanggans->first();
+        }
+
+        // 3.4 ambil history sesuai pelanggan AKTIF
         $historyPemakaian = DB::table('cektoken')
             ->select(
                 DB::raw("EXTRACT(YEAR FROM tanggal) as tahun"),

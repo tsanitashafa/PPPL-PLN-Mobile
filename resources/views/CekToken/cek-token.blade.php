@@ -62,6 +62,12 @@
             background-color: #EA4E4E;
             color: #ffffffff;
         }
+
+        /* belum ada data */
+        .alert-notif {
+            background-color: #ece6a9ff;
+            color: #000000ff;
+        }
     </style>
 </head>
 <body>
@@ -91,22 +97,28 @@
             </div>
         </div>
 
-        @php
-            if ($sisaToken <= 0) {
-                $statusText = 'Token habis';
-                $statusClass = 'alert-danger';
-            } elseif ($sisaToken <= 20) {
-                $statusText = 'Token cukup untuk 1 hari';
-                $statusClass = 'alert-warning';
-            } else {
-                $statusText = 'Token masih tersedia';
-                $statusClass = 'alert-success';
-            }
-        @endphp
+        @if(empty($dataPemakaian) || count($dataPemakaian) === 0)
 
-        <div class="alert-token text-center {{ $statusClass }}">
-            ⚠ {{ $statusText }}
-        </div>
+            <div class="alert alert-notif text-center">
+                 Belum ada data pemakaian
+            </div>
+        @else
+            @php
+                if ($sisaToken <= 0) {
+                    $statusText = 'Token habis';
+                    $statusClass = 'alert-danger';
+                } elseif ($sisaToken <= 20) {
+                    $statusText = 'Token cukup untuk 1 hari';
+                    $statusClass = 'alert-warning';
+                } else {
+                    $statusText = 'Token masih tersedia';
+                    $statusClass = 'alert-success';
+                }
+            @endphp
+            <div class="alert-token text-center {{ $statusClass }}">
+                ⚠ {{ $statusText }}
+            </div>
+        @endif
 
         <div class="text-center mt-2">
             <a href="{{ url('/detail-pelanggan') }}"
@@ -161,9 +173,8 @@
             });
         </script>
 
-        <button class="btn btn-outline-dark w-100 mt-3 py-2"
-            style="border-radius:12px; font-weight:600; font-size:14px;"
-            onclick="window.location.href='{{ url('/history-pemakaian') }}'">
+       <button class="btn btn-outline-dark w-100 mt-3 py-2"
+            onclick="window.location.href='{{ url('/history-pemakaian?pelangganid=' . $pelangganAktif->pelangganid) }}'">
             Lihat History Pemakaian ▼
         </button>
     </div>
