@@ -196,8 +196,13 @@ Route::post('/registuser', [PenggunaController::class, 'savePengguna'])->name('s
 Route::post('/set-total-pembayaran', [PelangganController::class, 'setTotalPembayaran'])
     ->name('set.total.pembayaran');
 
+
+Route::get('/pilih-voucher/{id}', [VoucherController::class, 'pilihVoucher'])->name('pilih-voucher');
 Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
     ->name('pembayaran');
+
+
+Route::get('/pakai-voucher/{id}', [VoucherController::class, 'pakaiVoucher'])->name('pakai-voucher');
 
 //mengarahkan yg bayar itu transaksinya berhasil atau nggak
 // Route yang menggunakan controller

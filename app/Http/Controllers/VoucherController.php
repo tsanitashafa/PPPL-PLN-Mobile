@@ -68,10 +68,10 @@ class VoucherController extends Controller
         // PROGRESS BAR (MAX 5000)
         // ======================
         $totalGoal = 5000; // << sesuai permintaan
-        $progress  = min(100, round(($points / $totalGoal) * 100));
+        $progress = min(100, round(($points / $totalGoal) * 100));
 
         // 3 voucher
-        $vouchers   = Voucher::limit(3)->get();
+        $vouchers = Voucher::limit(3)->get();
 
         // 3 tukar dari TukarPoinController
         $tukarItems = $tukarCtrl->loadTukar(3);
@@ -80,12 +80,12 @@ class VoucherController extends Controller
         $riwayatLast = $riwayatCtrl->loadRiwayatLimit(3);
 
         return view('voucher/reward', [
-            'tier'        => $calculatedTier,
-            'tierImage'   => $tierImage,
-            'points'      => $points,
-            'progress'    => $progress,
-            'vouchers'    => $vouchers,
-            'tukarItems'  => $tukarItems,
+            'tier' => $calculatedTier,
+            'tierImage' => $tierImage,
+            'points' => $points,
+            'progress' => $progress,
+            'vouchers' => $vouchers,
+            'tukarItems' => $tukarItems,
             'riwayatLast' => $riwayatLast,
         ]);
     }
@@ -106,5 +106,22 @@ class VoucherController extends Controller
         return view('voucher/infovoucher', [
             'voucher' => $voucher
         ]);
+    }
+
+    // 5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
+    // Tambahkan di VoucherController.php
+
+    public function pakaiVoucher($id)
+    {
+        $voucher = Voucher::findOrFail($id);
+
+        // Simpan ke session agar bisa dibaca di beli-token
+        session([
+            'selected_voucher_id' => $voucher->rewardid,
+            'selected_voucher_name' => $voucher->rewardname,
+            'selected_voucher_value' => $voucher->nilai // Misal nilainya 5000
+        ]);
+
+        return redirect()->route('beli-token');
     }
 }

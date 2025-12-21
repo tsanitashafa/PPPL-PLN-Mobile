@@ -22,20 +22,7 @@
 </head>
 
 <body>
-    {{--
-    <div class="fixed-top bg-white custom-header-border">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between header-content">
-                <a href='{{ url('/pembayaran') }}' class="text-decoration-none text-dark back-button">
-                    <i class="fa-solid fa-arrow-left fa-xl"></i>
-                </a>
-                <h1 class="h5 m-0 font-weight-bold text-center w-100 text-dark header-title">
-                    <span>shopePay</span>
-                </h1>
-                <div class="placeholder-space"></div>
-            </div>
-        </div>
-    </div> --}}
+
     <x-nav-top title="shopePay" backUrl="{{ url('/pembayaran') }}" />
 
     <div class="container main-content-padding">

@@ -10,11 +10,23 @@ function formatRupiah(angka) {
 
 // Fungsi untuk memperbarui tampilan Total Pembayaran
 function updateSummary(nominal) {
-    var totalFormatted = formatRupiah(nominal);
+    // Ambil nilai voucher dari input hidden yang kita buat tadi
+    var persentase = parseInt($('#session-voucher-value').val()) || 0;
 
-    $('.total-pln').text(totalFormatted);
-    $('.total-payment-amount').text(totalFormatted);
-    $('.total-amount').text(totalFormatted);
+    // rumus presentase
+   var nilaiPotongan = (persentase / 100) * nominal;
+// Hitung total bayar
+    var totalBayar = nominal - nilaiPotongan;
+    if (totalBayar < 0) totalBayar = 0;
+
+  // Update Tampilan
+    $('.total-pln').text(formatRupiah(nominal));
+
+    // Tampilkan nominal hasil perkalian persentase di baris diskon
+    $('.discount-amount').text('-' + formatRupiah(nilaiPotongan));
+
+    $('.total-payment-amount').text(formatRupiah(totalBayar));
+    $('.total-amount').text(formatRupiah(totalBayar));
 }
 
 $(document).ready(function() {
@@ -92,33 +104,40 @@ document.getElementById('nomor-meter').addEventListener('input', function () {
 
 //mengambil data voucher untuk beli token
 function attachVoucherClick() {
-    document.querySelectorAll('.voucher-item').forEach(item => {
-        item.addEventListener('click', function () {
-            const nilaiVoucher = parseInt(this.dataset.value);
+   $(document).ready(function() {
+    // Ambil nilai voucher dari session (kita lempar ke JS via variabel global atau data-attribute)
+    // Untuk cara termudah, kita cek label discount-amount
 
-            // ambil total pembayaran saat ini
-            const totalPlnText = document.querySelector('.total-pln').innerText.replace(/\D/g, '');
+    function calculateFinal() {
+        var nominalToken = parseInt($('.token-btn.active').data('nominal')) || 0;
 
-            const totalPln = parseInt(totalPlnText);
+        // Ambil nilai potongan dari session Laravel yang sudah dicetak ke HTML
+        // Kita asumsikan Anda mencetak nilai potongan di sebuah hidden input atau variable
+        var potongan = parseInt("{{ session('selected_voucher_value', 0) }}") || 0;
 
-            //hitung
-            const totalSetelahVoucher = Math.max(totalPln - nilaiVoucher, 0);
+        var totalAkhir = Math.max(nominalToken - potongan, 0);
 
-            //update tampilan
-            document.querySelector('.discount-amount').innerText =
-            `-Rp ${nilaiVoucher.toLocaleString()}`;
+        $('.total-pln').text(formatRupiah(nominalToken));
+        $('.discount-amount').text('-' + formatRupiah(potongan));
+        $('.total-payment-amount').text(formatRupiah(totalAkhir));
+        $('.total-amount').text(formatRupiah(totalAkhir));
 
-            document.querySelector('.total-payment-amount').innerText =
-            `Rp ${totalSetelahVoucher.toLocaleString()}`;
+        // Update data-attribute tombol lanjutkan
+        $('#btnLanjutkan').attr('data-nominal', nominalToken);
+        $('#btnLanjutkan').attr('data-total', totalAkhir);
+        $('#btnLanjutkan').attr('data-voucher', potongan);
+    }
 
-            // update element di summmary bawah (fixed-bottom-summary)
-            document.querySelector('.total-amount').innerText =
-            `Rp ${totalSetelahVoucher.toLocaleString()}`;
+    // Jalankan setiap kali ganti nominal
+    $('.token-btn').on('click', function() {
+        $('.token-btn').removeClass('active');
+        $(this).addClass('active');
+        calculateFinal();
+    });
 
-            //tutup list voucher
-            document.getElementById('voucher-list').classList.add('d-none');
-        })
-    })
+    // Jalankan sekali saat start
+    calculateFinal();
+});
 }
 
 
