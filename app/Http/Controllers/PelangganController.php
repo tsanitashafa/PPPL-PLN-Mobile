@@ -67,12 +67,14 @@ class PelangganController extends Controller
         // Data dari input
         $meter = trim($request->meter);
         $nominal = (int) $request->nominal;
-        $total = (int) $request->total;
-        $voucher = (int) $request->voucher;
-
+        // $total = (int) $request->total;
+        $persentaseVoucher = (int) $request->voucher; // Ini angka 10 dari session
+        // LOGIKA PERSENTASE DI SERVER
+        $potongan = ($persentaseVoucher / 100) * $nominal;
+        $totalSetelahDiskon = $nominal - $potongan;
         // Biaya layanan
         $biayaLayanan = 1500;
-        $totalAkhir = $total + $biayaLayanan;
+        $totalAkhir = $totalSetelahDiskon + $biayaLayanan;
 
         // Ambil data pelanggan berdasarkan nomor meter
         $pelanggan = Pelanggan::where('nomormeter', $meter)->first();

@@ -39,13 +39,26 @@ Route::get('beli-token', function () {
 
 
 //fitur tambahan
-// edit profile
-Route::get('edit-profile-1', function () {
-    return view('fitur-tambahan/edit-profile-1');
-});
+
 
 Route::get('edit-profil-2', function () {
     return view('fitur-tambahan/edit-profile-2');
+});
+
+// Tambahkan ->name('search') di akhir
+// Route::get('search', function () {
+//     return view('fitur-tambahan/search');
+// })->name('search');
+
+// --- HAPUS SEMUA ROUTE EDIT-PROFILE YANG LAMA DAN GANTI DENGAN INI ---
+
+// Kelompokkan agar rapi
+Route::group(['prefix' => 'fitur-tambahan'], function () {
+    Route::get('/edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
+    Route::get('/edit-profile-2', [ProfileController::class, 'editProfile2'])->name('edit-profile-2');
+    Route::get('/search', function () {
+        return view('fitur-tambahan/search');
+    })->name('search');
 });
 
 Route::get('/profile', [ProfileController::class, 'loadEditProfile']);
@@ -148,8 +161,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('homepage', [PenggunaController::class, 'ambilDataPengguna'])->name('homepage');
-Route::get('edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
-Route::get('edit-profil-2', [ProfileController::class, 'editProfile2'])->name('edit-profil-2');
+
+
+// Route::get('edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
+// Route::get('edit-profil-2', [ProfileController::class, 'editProfile2'])->name('edit-profil-2');
+
+
 Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
 Route::post('/toggle-notification', [PenggunaController::class, 'toggleNotification'])->name('toggle-notification');
 
@@ -179,8 +196,13 @@ Route::post('/registuser', [PenggunaController::class, 'savePengguna'])->name('s
 Route::post('/set-total-pembayaran', [PelangganController::class, 'setTotalPembayaran'])
     ->name('set.total.pembayaran');
 
+
+Route::get('/pilih-voucher/{id}', [VoucherController::class, 'pilihVoucher'])->name('pilih-voucher');
 Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
     ->name('pembayaran');
+
+
+Route::get('/pakai-voucher/{id}', [VoucherController::class, 'pakaiVoucher'])->name('pakai-voucher');
 
 //mengarahkan yg bayar itu transaksinya berhasil atau nggak
 // Route yang menggunakan controller
@@ -253,6 +275,11 @@ Route::get('/detail-pelanggan', [PenggunaController::class, 'getDetailPelanggan'
 
 Route::post('/lokasi/tambah', [PenggunaController::class, 'tambahLokasi'])
     ->name('lokasi.tambah');
+//cek token
+Route::get(
+    '/cek-token/pelanggan/{pelangganid}',
+    [PelangganController::class, 'cekTokenPelanggan']
+)->name('cek-token-pelanggan');
 
 //masukkan token
 Route::get('/masukkan-token', [TokenController::class, 'showForm'])->name('masukkan-token');

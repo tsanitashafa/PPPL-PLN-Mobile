@@ -15,111 +15,76 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('css/fitur-tambahan/edit-profile-2.css') }}">
 </head>
 
-<body style="font-family: 'Poppins', sans-serif; background-color: #fff;">
+<body>
 
-    <!-- Header -->
-    <div class="d-flex align-items-center justify-content-between p-3  bg-white">
-        <a href="/profile" class="text-dark">
-            <i class="fas fa-arrow-left fa-lg"></i>
-
-        </a>
-
-        <h5 class="nunito-sans-semibold">Edit Profile</h5>
-        <a href="#" class="nunito-sans-semibold font-weight-medium text-black" style="color: black"
-            onclick="document.getElementById('formProfile').submit();">
-            Simpan
-        </a>
+    <div class="header-edit-profile">
+        <a href="{{ route('edit-profile-1') }}" class="text-dark"><i class="fas fa-arrow-left fa-lg"></i></a>
+        <h5 class="mb-0 font-weight-medium">Edit Profile</h5>
+        <button type="submit" form="editProfileForm" class="btn-save-link">Simpan</button>
     </div>
 
-    <!-- Foto Profil -->
     <div class="text-center my-4">
-        <div style="position: relative; display: inline-block;">
-            <img src="{{ $pengguna->photoUrl ?? '' }}"
-                style="
-            width:100px;
-            height:100px;
-            min-width: 100px; /* Tambahkan ini */
-            min-height: 100px; /* Tambahkan ini */
-            border-radius:50%;
-            object-fit:cover;
-            display:block; /* Tambahkan ini */
-        ">
-
+        <div class="profile-container">
+            <img id="profileImage" src="{{ asset($user->photourl) }}" class="rounded-circle">
+            <div class="upload-icon">
+                <label for="profileImageInput">
+                    <i class="fas fa-plus"></i>
+                </label>
+                <input type="file" id="profileImageInput" name="profile_image" accept="image/*"
+                    style="display: none;" form="editProfileForm">
+            </div>
         </div>
     </div>
 
-    <!-- Form Edit -->
     <div class="container">
-        <form id="formProfile" action="{{ route('profile.update') }}" method="POST">
+        <form id="editProfileForm" method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
-            <input type="hidden" name="penggunaid" value="{{ $pengguna->penggunaid ?? '' }}">
             <div class="form-group">
                 <label for="nama">Nama</label>
-                <input type="text" name="nama"
-                    class="form-control rounded-pill poppins-medium color-white shadow-sm" id="nama"
-                    placeholder="Masukkan nama Anda" value="{{ $pengguna->nama ?? '' }}">
+                <input type="text" class="form-control rounded-pill" id="nama" name="nama"
+                    value="{{ $user->nama }}" placeholder="Masukkan nama Anda" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email"
-                    class="form-control rounded-pill poppins-medium color-white shadow-sm" id="email"
-                    value="{{ $pengguna->email ?? '' }}">
+                <input type="email" class="form-control rounded-pill" id="email" name="email"
+                    value="{{ $user->email }}" placeholder="Masukkan email Anda" required>
             </div>
 
             <div class="form-group">
-                <label for="tgl">Tanggal Lahir</label>
-                <input type="date" name="tanggallahir"
-                    class="form-control rounded-pill poppins-medium color-white shadow-sm" id="tgl"
-                    value="{{ $pengguna->tanggallahir ? date('Y-m-d', strtotime($pengguna->tanggallahir)) : '' }}">
+                <label for="phone">No. HP</label>
+                <input type="text" class="form-control rounded-pill" id="phone" name="phone"
+                    value="{{ $user->phone }}" placeholder="Masukkan nomor HP" required>
             </div>
 
-            <div class="form-group poppins-medium">
-                <label for="hp">No. HP</label>
-                <input type="text" name="phone"
-                    class="form-control rounded-pill poppins-medium color-white shadow-sm" id="hp"
-                    value="{{ $pengguna->phone ?? '' }}" placeholder="Masukkan nomor HP">
+            <div class="form-group">
+                <label for="tanggal_lahir">Tanggal Lahir</label>
+                <input type="date" class="form-control rounded-pill" id="tanggallahir" name="tanggallahir"
+                    value="{{ $user->tanggallahir }}">
             </div>
+
         </form>
     </div>
 
-
-    <!-- Toast Success -->
-    @if (session('success'))
-        <div class="toast position-fixed" style="top: 20px; right: 20px; z-index: 9999;" data-delay="2000"
-            id="successToast">
-            <div class="toast-header bg-success text-white">
-                <strong class="mr-auto">Berhasil</strong>
-                <button type="button" class="ml-2 mb-1 close text-white" data-dismiss="toast">&times;</button>
-            </div>
-            <div class="toast-body">
-                {{ session('success') }}
-            </div>
-        </div>
-    @endif
-
     <!-- Bootstrap Script -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        @if (session('success'))
-            $(document).ready(function() {
-                $('#successToast').toast('show');
-            });
-        @endif
+        // Preview image before upload
+        document.getElementById('profileImageInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     </script>
 
 </body>

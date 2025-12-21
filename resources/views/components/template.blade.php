@@ -26,12 +26,13 @@
             <i class="bi bi-gift fs-5 d-block"></i>Reward
         </a>
 
-        <a class="nav-link text-center ms-5 {{ Request::is('halamanartikel') ? 'active' : '' }}" href="{{ url('/artikel') }}">
+        <a class="nav-link text-center ms-5 {{ Request::is('halamanartikel') ? 'active' : '' }}"
+            href="{{ url('/artikel') }}">
             <i class="bi bi-newspaper fs-5 d-block"></i>Artikel
         </a>
 
-        <a class="nav-link text-center {{ Request::is('edit-profile-1') ? 'active' : '' }}"
-            href="{{ url('/edit-profile-1') }}">
+        <a class="nav-link text-center {{ Request::is('fitur-tambahan/edit-profile-1') ? 'active' : '' }}"
+            href="{{ route('edit-profile-1') }}">
             <i class="bi bi-person fs-5 d-block"></i>Profile
         </a>
 

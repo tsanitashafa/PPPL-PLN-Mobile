@@ -1,0 +1,64 @@
+/* Layout & Container */
+.profile-container {
+    position: relative;
+}
+
+.profile-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Header & Navigation */
+.header-wrapper {
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    left: 1rem; /* setara ms-3 */
+}
+
+/* User Info Section */
+.profile-img-circle {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid white;
+    margin-right: 12px;
+}
+
+.settings-icon-circle {
+    background-color: #16a1ba;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 50%;
+}
+
+/* List Items Custom Styling */
+.list-item-custom {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none !important;
+    color: #212529;
+    border: none;
+    width: 100%;
+}
+
+.list-item-custom:hover {
+    background-color: #f8f9fa;
+}
+
+/* Utility for Spacing */
+.placeholder-box {
+    width: 24px;
+}

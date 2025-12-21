@@ -25,26 +25,6 @@
 
 <body>
 
-    {{-- <div class="fixed-top custom-header">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between">
-                <a href="#" class="text-decoration-none text-dark">
-                    <i class="fa-solid fa-arrow-left fa-xl"></i>
-                </a>
-
-                <h1 class="h5 m-0 font-weight-bold text-center w-100 header-title">
-                    <span>Beli Token</span>
-                </h1>
-
-
-
-
-                <div class="empty-space"></div>
-            </div>
-        </div>
-    </div> --}}
-
-    <!-- Header Template -->
     <!-- Header Template -->
     <x-nav-top title="Beli Token" backUrl="{{ url('/homepage') }}" />
 
@@ -99,31 +79,43 @@
 
 
     <div class="container content-padding">
-        <div class="voucher-box p-3 mb-3 shadow p-3 voucher-btn" style="cursor: pointer;">
-            <i class="fa-solid fa-ticket-simple mr-2"></i>
-            Gunakan Voucher
+        <div class="voucher-box p-3 mb-3 shadow voucher-btn" style="cursor: pointer;"
+            onclick="window.location.href='{{ route('voucher/voucher') }}'">
 
-            <div id="voucher-list" class="p-3 bg-light shadow mt-2 d-none">
-                <h5>Pilih Voucher</h5>
-                <div id="voucher-items"></div>
-            </div>
+            <i class="fa-solid fa-ticket-simple mr-2 text-primary"></i>
+            @if (session('selected_voucher_id'))
+                <span class="fw-bold text-success">Voucher Terpasang: {{ session('selected_voucher_name') }}</span>
+            @else
+                Gunakan Voucher
+            @endif
+
+            <i class="fa-solid fa-chevron-right float-right mt-1 text-secondary"></i>
         </div>
 
 
-        <div class="summary-detail-box p-3 shadow p-3 ">
+        <div class="summary-detail-box p-3 shadow">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="popins-regular">Total Listrik PLN</span>
                 <span class="total-pln">Rp 10.000</span>
             </div>
+
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="popins-regular">Voucher & Diskon</span>
-                <span class="discount-amount">-Rp 0</span>
+                <span class="discount-amount text-success">
+                    @if (session('selected_voucher_value'))
+                        (Diskon {{ session('selected_voucher_value') }}%)
+                    @endif
+
+                </span>
             </div>
+
             <div class="d-flex justify-content-between align-items-center popins-regular total-payment-row">
-                <span class="total-payment-label ">Total Pembayaran</span>
+                <span class="total-payment-label">Total Pembayaran</span>
                 <span class="total-payment-amount">Rp 10.000</span>
             </div>
         </div>
+
+        <input type="hidden" id="session-voucher-value" value="{{ session('selected_voucher_value', 0) }}">
 
         <div class="fixed-bottom-summary p-3 ">
             <div class="container p-0">

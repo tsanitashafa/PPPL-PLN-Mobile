@@ -89,15 +89,7 @@
                     </li>
                 </ol>
 
-                {{-- <div class="fixed-bottom
-                bg-transparent
-                bottom-button-bar">
-                    <div class="container p-0">
-                        <button type="submit" class="btn btn-block font-weight-bold continue-button">
-                            Lanjutkan
-                        </button>
-                    </div>
-                </div> --}}
+
 
                 <div class="fixed-bottom bg-transparent bottom-button-bar">
                     <div class="container p-0">

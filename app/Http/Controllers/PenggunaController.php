@@ -13,8 +13,7 @@ use App\Models\TukarPoin;
 
 class PenggunaController extends Controller
 {
-    //detail pelanggan by Tiara Aulia Azadirachta Indica | 5026231148
-   public function getDetailPelanggan(Request $request) 
+    public function getDetailPelanggan(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
     {
         $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
         if (!$userId) {
@@ -26,7 +25,7 @@ class PenggunaController extends Controller
             return redirect()->route('welcome');
         }
 
-        // ⬇️ INI YANG SEBELUMNYA KURANG
+        // ⬇ INI YANG SEBELUMNYA KURANG
         $pelanggan = Pelanggan::where('penggunaid', $user->penggunaid)->get();
 
         return view('CekToken.detail-pelanggan', compact('pelanggan'));
@@ -135,6 +134,43 @@ class PenggunaController extends Controller
             'persentase',
             'labels',
             'dataPemakaian'
+        ));
+    }
+
+    public function historyPemakaian(Request $request)
+    {
+        // 1. ambil user login
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+        if (!$userId) {
+            return redirect()->route('welcome');
+        }
+
+        // 2. ambil pelanggan aktif (sama kaya cekToken)
+        $pelangganAktif = Pelanggan::where('penggunaid', $userId)->first();
+
+        if (!$pelangganAktif) {
+            return redirect()->route('detail-pelanggan');
+        }
+
+        // 3. ambil history pemakaian dari cektoken
+        $historyPemakaian = DB::table('cektoken')
+            ->select(
+                DB::raw("EXTRACT(YEAR FROM tanggal) as tahun"),
+                DB::raw("EXTRACT(MONTH FROM tanggal) as bulan"),
+                DB::raw("SUM(penggunaantoken) as total_pemakaian")
+            )
+            ->where('pelangganid', $pelangganAktif->pelangganid)
+            ->groupBy(
+                DB::raw("EXTRACT(YEAR FROM tanggal)"),
+                DB::raw("EXTRACT(MONTH FROM tanggal)")
+            )
+            ->orderBy('tahun', 'desc')
+            ->orderBy('bulan', 'desc')
+            ->get();
+
+        return view('CekToken.history-pemakaian', compact(
+            'historyPemakaian',
+            'pelangganAktif'
         ));
     }
 

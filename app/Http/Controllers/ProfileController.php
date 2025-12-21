@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Pengguna;
 // Controller profile untuk edit profile+picture by Mirza Fathi Taufiqurrahman 5026231105
+// controller profile untuk menamnpilkan data dan mengupdate data profile by Al-khiqmah Manzilatul Mukaromah 5026231037
+
 class ProfileController extends Controller
 {
     public function editProfile1()
@@ -23,7 +25,7 @@ class ProfileController extends Controller
             return redirect()->route('welcome');
         }
 
-        return view('edit-profile-1', compact('user'));
+        return view('fitur-tambahan/edit-profile-1', compact('user'));
     }
 
     public function editProfile2()
@@ -41,7 +43,7 @@ class ProfileController extends Controller
             return redirect()->route('welcome');
         }
 
-        return view('edit-profil-2', compact('user'));
+        return view('fitur-tambahan/edit-profile-2', compact('user'));
     }
 
     public function updateProfile(Request $request)
@@ -76,7 +78,7 @@ class ProfileController extends Controller
             if ($user->photourl && file_exists(public_path($user->photourl))) {
                 unlink(public_path($user->photourl));
             }
-            
+
             $imageName = time() . '_' . $user->penggunaid . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('storage/profile_images');
 

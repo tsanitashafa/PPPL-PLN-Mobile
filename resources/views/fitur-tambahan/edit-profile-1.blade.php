@@ -42,130 +42,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/fitur-tambahan/edit-profile-1.css') }}">
 </head>
-<style>
-    /* Variabel untuk konsistensi */
-    :root {
-        --nav-bg: white;
-        --qr-color: #55c8d9;
-        /* Warna Teal/Biru Muda */
-        --nav-height: 70px;
-        --qr-size: 60px;
-        --menu-text-color: #888;
-    }
-
-    /* 1. Pengaturan Utama Navbar */
-    #bottom-nav {
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        height: var(--nav-height);
-        background-color: var(--nav-bg) !important;
-        /* Gunakan !important jika shadow-lg menimpa */
-        width: 100%;
-        /* Bayangan */
-        box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
-        /* Catatan: Safe area inset tidak didukung standar di B4, tapi tetap disertakan */
-        padding-bottom: constant(safe-area-inset-bottom);
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-top: 0;
-    }
-
-    /* 2. Pengaturan UL (Wadah Item Menu) */
-    /* Kelas Bootstrap 4 yang digunakan: w-100, d-flex, justify-content-between, align-items-end, pt-3, px-3 */
-    .navbar-nav {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding: 0 5px;
-        /* Sesuaikan padding samping untuk mobile */
-        margin: 0;
-    }
-
-    /* 3. Pengaturan Item Menu & Ikon */
-    .nav-item {
-        /* PENTING: Untuk menempatkan ikon di atas tombol QR agar bisa diklik */
-        position: relative;
-        z-index: 20;
-    }
-
-    .menu-link {
-        color: var(--menu-text-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        padding: 5px 0;
-        transition: color 0.2s;
-    }
-
-    .menu-link i {
-        /* Ukuran Ikon Seragam, menggantikan fs-5 mb-1 */
-        font-size: 1.5rem;
-        margin-bottom: 2px;
-    }
-
-    .menu-link span {
-        /* Memastikan teks terlihat jelas, menggantikan small */
-        display: block;
-        font-size: 0.75rem;
-        line-height: 1.2;
-        margin-top: 2px;
-        color: inherit;
-    }
-
-    .menu-link.active {
-        color: var(--qr-color);
-    }
-
-    /* 4. Tombol QR Code yang Menonjol */
-    .qr-btn-container {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -30px;
-        /* Jarak menonjol ke atas */
-        z-index: 10;
-        /* Di bawah item menu, tapi di atas navbar */
-    }
-
-    .qr-btn {
-        width: var(--qr-size);
-        height: var(--qr-size);
-        background-color: var(--qr-color);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        border: 4px solid var(--nav-bg);
-        /* Border putih */
-        text-decoration: none;
-    }
-
-    .qr-btn i {
-        color: white;
-        font-size: 1.8rem;
-    }
-
-    /* 5. Spacer untuk menjaga item navbar terdistribusi */
-    .spacer-qr {
-        width: var(--qr-size);
-        min-width: var(--qr-size);
-        height: 1px;
-        z-index: 1;
-    }
-
-    /* Media Query untuk layar sangat kecil (Responsif) */
-    @media (max-width: 350px) {
-        :root {
-            --qr-size: 55px;
-        }
-    }
-</style>
 
 <body>
-    @include('template')
+    @include('components/template')
 
     <div style="position: relative; ">
 
@@ -205,9 +87,7 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-black">
-                            <img src="{{ $user->profile_image ?: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
-                                alt="Foto Profil {{ $user->nama }}" class="rounded-circle"
-                                style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white; margin-right: 12px;">
+                            <img src="{{ asset($user->photourl) }}" class="rounded-circle profile-img-circle">
                             <div>
                                 <h2 class="h6 m-0 fw-bold poppins-bold">{{ $user->nama }}</h2>
                                 <p class="small m-0 poppins-regular">{{ $user->email }}</p>
@@ -251,7 +131,7 @@
 
                 <!-- Edit Profile -->
                 <li class="mb-3">
-                    <a href="{{ route('edit-profil-2') }}"
+                    <a href="{{ route('edit-profile-2') }}"
                         class="d-flex justify-content-between align-items-center p-3 bg-white rounded shadow-sm text-dark text-decoration-none">
                         <div class="d-flex align-items-center">
                             <i class="far fa-user-circle fa-lg mr-3 text-secondary "></i>
@@ -330,48 +210,5 @@
         });
     </script>
 
-    <div class="fixed-bottom">
-        <nav class="navbar navbar-expand-lg r p-0 sm:navbar-expand-lg" id="bottom-nav"
-            style="box-shadow: 0px 10px 29px rgba(0, 0, 0, 0.15); border-radius-top: 50px;">
-            <ul class="navbar-nav w-100 d-flex justify-content-between align-items-end">
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="{{ route('homepage') }}">
-                        <i class="fa-solid fa-house-chimney"></i>
-                        <span class="d-block small">Home</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="fa-solid fa-gift"></i>
-                        <span class="d-block small">Reward</span>
-                    </a>
-                </li>
-
-                <li class="nav-item spacer-qr"></li>
-
-                <div class="qr-btn-container">
-                    <a href="#" class="qr-btn d-flex justify-content-center align-items-center shadow-lg">
-                        <i class="fa-solid fa-qrcode"></i>
-                    </a>
-                </div>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link" href="{{ route('notif') }}">
-                        <i class="fa-solid fa-newspaper"></i>
-                        <span class="d-block small">Artikel</span>
-                    </a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link menu-link active" href="{{ route('edit-profile-1') }}">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="d-block small">Profile</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
 
 </html>
