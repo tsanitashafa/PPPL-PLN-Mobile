@@ -14,58 +14,22 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #fff;
-        }
-
-        .profile-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .profile-container img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .upload-icon {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            transform: translate(20%, 20%);
-            background-color: #17a2b8;
-            color: white;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #fff;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/fitur-tambahan/edit-profile-2.css') }}">
 </head>
 
 <body>
 
-    <div class="d-flex align-items-center justify-content-between p-3 border-bottom bg-white">
+    <div class="header-edit-profile">
         <a href="{{ route('edit-profile-1') }}" class="text-dark"><i class="fas fa-arrow-left fa-lg"></i></a>
         <h5 class="mb-0 font-weight-medium">Edit Profile</h5>
-        <button type="submit" form="editProfileForm"
-            class="btn btn-link text-info font-weight-medium p-0">Simpan</button>
+        <button type="submit" form="editProfileForm" class="btn-save-link">Simpan</button>
     </div>
 
     <div class="text-center my-4">
         <div class="profile-container">
             <img id="profileImage" src="{{ asset($user->photourl) }}" class="rounded-circle">
             <div class="upload-icon">
-                <label for="profileImageInput" style="cursor: pointer; margin: 0;">
+                <label for="profileImageInput">
                     <i class="fas fa-plus"></i>
                 </label>
                 <input type="file" id="profileImageInput" name="profile_image" accept="image/*"

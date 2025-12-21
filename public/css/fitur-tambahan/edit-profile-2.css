@@ -1,0 +1,68 @@
+/* Global Style */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+}
+
+/* Header Styling */
+.header-edit-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    background-color: white;
+}
+
+.font-weight-medium {
+    font-weight: 500;
+}
+
+/* Profile Image & Upload Icon */
+.profile-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.upload-icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(20%, 20%);
+    background-color: #17a2b8;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    cursor: pointer;
+}
+
+.upload-icon label {
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Form Styling */
+.form-control.rounded-pill {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.btn-save-link {
+    color: #17a2b8; /* text-info */
+    font-weight: 500;
+    padding: 0;
+    border: none;
+    background: none;
+}
