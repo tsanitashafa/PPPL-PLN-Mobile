@@ -30,7 +30,7 @@
 <!-- NAVBAR TEMPLATE -->
 <x-templatenavbar 
     title="History" 
-    backUrl="{{ url('/cek-token') }}" 
+    backUrl="{{ route('cek-token', ['pelangganid' => $pelangganAktif->pelangganid]) }}"
 />
 
 <div class="container mt-3 mb-5">

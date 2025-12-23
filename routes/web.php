@@ -120,12 +120,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('homepage', function () {
-    return view('homepage');
-});
-
-
-
 //template
 Route::get('/template', function () {
     return view('template'); // Ambil dari nama file template.blade.php
