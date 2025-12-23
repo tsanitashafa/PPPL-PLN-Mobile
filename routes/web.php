@@ -15,7 +15,7 @@ use App\Http\Controllers\BantuanController;
 
 // //Route pengerjaan manzil
 // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
-
+Route::get('/pakai-voucher/{id}', [VoucherController::class, 'pakaiVoucher'])->name('pakai-voucher');
 //bayar token
 Route::get('pembayaran', function () {
     return view('bayar-token/pembayaran');
@@ -197,12 +197,11 @@ Route::post('/set-total-pembayaran', [PelangganController::class, 'setTotalPemba
     ->name('set.total.pembayaran');
 
 
-Route::get('/pilih-voucher/{id}', [VoucherController::class, 'pilihVoucher'])->name('pilih-voucher');
+
 Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
     ->name('pembayaran');
 
 
-Route::get('/pakai-voucher/{id}', [VoucherController::class, 'pakaiVoucher'])->name('pakai-voucher');
 
 //mengarahkan yg bayar itu transaksinya berhasil atau nggak
 // Route yang menggunakan controller

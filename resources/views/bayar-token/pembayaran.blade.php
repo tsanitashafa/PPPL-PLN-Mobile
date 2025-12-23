@@ -29,37 +29,13 @@
 </head>
 
 <body>
-    {{-- <div class="bg-white pt-2 pb-3 mb-3">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between mt-2 ">
-                <a href='{{ url('/beli-token') }}' class="text-decoration-none text-dark">
-                    <i class="fa-solid fa-arrow-left fa-lg"></i>
-                </a>
 
-                <h1 class="h5 m-0 nunito-sans-semibold text-center w-100" style="color: #333;">
-                    Pembayaran
-                </h1>
-                <div style="width: 24px;"></div>
-            </div>
-        </div>
-    </div> --}}
 
     <x-nav-top title="Pembayaran" backUrl="{{ url('/beli-token') }}" />
     <div class="container pb-5 " data-spy="scroll">
 
 
-        {{-- <div class="text-center mb-4 card p-4" style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
-            <p class="nunito-sans mb-1" style="font-size: 0.9rem;">Total Pembayaran</p>
-            <h2 class="h5 mb-0 nunito-sans-semibold">
-                <span class="poppins-regular">@php
-                    $total = request('total') ?? 0;
-                @endphp
 
-                    <span class="poppins-regular">Rp {{ number_format($total, 0, ',', '.') }}</span>
-                </span>
-
-            </h2>
-        </div> --}}
 
 
         <div class="text-center mb-4 card p-4 mt-2"
@@ -151,38 +127,12 @@
         </div>
 
 
-        {{-- <div class="p-3 card p-4 shadow" style="border-radius: 12px; margin-top: 10px; background-color: white;"
-            style="border-radius: 20px; ">
-            <div class="d-flex justify-content-between mb-2">
-                <span class="poppins-regular">Total Listrik PLN</span>
-                <span class="poppins-regular">Rp 10.000</span>
-            </div>
-            <div class="d-flex justify-content-between mb-3">
-                @php
-                    $total = request('total') ?? 0;
-                    $biayaLayanan = 1500;
-                    $totalAkhir = $total + $biayaLayanan;
-                @endphp
-
-
-                <span class="poppins-regular">Biaya Layanan</span>
-                <span class="poppins-regular">Rp 1.500</span>
-            </div>
-            <hr class="my-2">
-            <div class="d-flex justify-content-between pt-2">
-                <span class="text-danger font-weight-bold poppins-regular">Total Pembayaran</span>
-                <span class="text-danger font-weight-bold">
-                    Rp {{ number_format($totalAkhir, 0, ',', '.') }}
-                </span>
-
-            </div>
-        </div> --}}
 
         <div class="p-3 card p-4 shadow" style="border-radius: 12px; margin-top: 10px; background-color: white;"
             style="border-radius: 20px; ">
             <div class="d-flex justify-content-between mb-2">
                 <span class="poppins-regular">Total Listrik PLN</span>
-                <span class="poppins-regular">Rp {{ number_format(request('nominal'), 0, ',', '.') }}</span>
+                <span class="poppins-regular">Rp {{ number_format(request('total') ?? 0, 0, ',', '.') }}</span>
             </div>
             <div class="d-flex justify-content-between mb-3">
                 @php
