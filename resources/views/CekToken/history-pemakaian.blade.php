@@ -7,23 +7,8 @@
     <title>History Pemakaian</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        body { background: #ffffff; }
-
-        .history-card {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            padding: 18px;
-            margin-bottom: 18px;
-        }
-        .label-title {
-            font-size: 15px;
-            font-weight: 600;
-        }
-        .value-red { color: #D9534F; font-weight: 600; }
-        .value-blue { color: #1BA7B5; font-weight: 600; }
-    </style>
+     <!-- CSS dipisah -->
+    <link rel="stylesheet" href="{{ asset('css/history-pemakaian.css') }}">
 </head>
 <body>
 

@@ -7,68 +7,8 @@
     <title>Cek Token</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        body {
-            background-color: #ffffff;
-        }
-        .token-card, .usage-card{
-            border-radius: 16px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 20px;
-            background: #fff;
-            margin-bottom: 20px;
-        }
-        .carbon-card {
-            border-radius: 16px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 20px;
-            background: #E7F6F9; /* <-- warna sesuai permintaan */
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;  /* posisi horizontal */
-            align-items: center;      /* posisi vertical */
-        }
-        .progress-bar-custom {
-            background-color: #0A7B8C;
-            height: 18px;
-            border-radius: 10px;
-        }
-        .progress-bg {
-            background-color: #D7EEF2;
-            border-radius: 10px;
-            height: 18px;
-        }
-        .alert-token {
-            padding: 10px 14px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        /* hijau */
-        .alert-success {
-            background-color: #3c970bff;
-            color: #ffffffff;
-        }
-
-        /* kuning */
-        .alert-warning {
-            background-color: #e17f08ff;
-            color: #ffffffff;
-        }
-
-        /* merah */
-        .alert-danger {
-            background-color: #EA4E4E;
-            color: #ffffffff;
-        }
-
-        /* belum ada data */
-        .alert-notif {
-            background-color: #ece6a9ff;
-            color: #000000ff;
-        }
-    </style>
+   <!-- CSS dipisah -->
+    <link rel="stylesheet" href="{{ asset('css/cek-token.css') }}">
 </head>
 <body>
 
