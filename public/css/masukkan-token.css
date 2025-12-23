@@ -1,0 +1,38 @@
+body {
+    background-color: #ffffff;
+}
+
+/* Icon Circle (mirip figma) */
+.icon-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #E5F7FB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Input style */
+.input-token {
+    border-radius: 10px;
+    font-size: 16px;
+    height: 50px;
+}
+
+/* Tombol style figma */
+.btn-figma {
+    background-color: #0AA3BB;
+    color: white;
+    border: none;
+    border-radius: 22px;
+    padding: 14px;
+    font-size: 18px;
+    width: 100%;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.15);
+}
+
+.btn-figma:hover {
+    opacity: 0.9;
+}
