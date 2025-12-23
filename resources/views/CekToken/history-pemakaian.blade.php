@@ -35,47 +35,19 @@
 
 <div class="container mt-3 mb-5">
 
-    <!-- MAR -->
-    <h6 class="fw-bold mb-3">Maret 2025</h6>
-    <div class="history-card d-flex justify-content-between align-items-center mb-4">
-        <span class="label-title">Pemakaian Listrik</span>
-        <span class="value-red">-11.0 kWh</span>
-    </div>
+    @foreach($historyPemakaian as $row)
+    <h6 class="fw-bold mb-3 mt-4">
+        {{ \Carbon\Carbon::create()->month($row->bulan)->translatedFormat('F') }}
+        {{ $row->tahun }}
+    </h6>
 
-    <!-- FEB -->
-    <h6 class="fw-bold mb-3 mt-4">Februari 2025</h6>
     <div class="history-card d-flex justify-content-between align-items-center mb-4">
         <span class="label-title">Pemakaian Listrik</span>
-        <span class="value-red">-44.3 kWh</span>
+        <span class="value-red">
+            -{{ number_format($row->total_pemakaian, 2) }} kWh
+        </span>
     </div>
-
-    <!-- JAN -->
-    <h6 class="fw-bold mb-3 mt-4">Januari 2025</h6>
-    <div class="history-card d-flex justify-content-between align-items-center mb-4">
-        <span class="label-title">Pemakaian Listrik</span>
-        <span class="value-red">-34.0 kWh</span>
-    </div>
-
-    <!-- DEC -->
-    <h6 class="fw-bold mb-3 mt-4">Desember 2024</h6>
-    <div class="history-card d-flex justify-content-between align-items-center mb-4">
-        <span class="label-title">Pemakaian Listrik</span>
-        <span class="value-red">-31.6 kWh</span>
-    </div>
-
-    <!-- NOV -->
-    <h6 class="fw-bold mb-3 mt-4">November 2024</h6>
-    <div class="history-card d-flex justify-content-between align-items-center mb-4">
-        <span class="label-title">Pemakaian Listrik</span>
-        <span class="value-red">-62.5 kWh</span>
-    </div>
-
-    <!-- OCT -->
-    <h6 class="fw-bold mb-3 mt-4">Oktober 2024</h6>
-    <div class="history-card d-flex justify-content-between align-items-center mb-4">
-        <span class="label-title">Pemakaian Listrik</span>
-        <span class="value-red">-35.0 kWh</span>
-    </div>
+@endforeach
 
 </div>
 

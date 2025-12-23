@@ -61,18 +61,6 @@ class TokenController extends Controller
         ]);
     }
 
-    public function history($generateNoToken) //Tiara Aulia Azadirachta Indica | 5026231148
-    {
-        // sesuai diagram: getHistoryPemakaian(generateNoToken)
-        $history = BeliToken::where('generateNoToken', $generateNoToken)
-            ->with('pelanggan')
-            ->first();
-
-        return view('CekToken.history-pemakaian', [
-            'history' => $history
-        ]);
-    }
-
 // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
     // check duluh nanti belum fixs
@@ -84,7 +72,6 @@ class TokenController extends Controller
         // Ganti dengan view yang sesuai
         return view('beli-token/beli-token');
     }
-
 
     /**
      * Mencari Nama Pelanggan berdasarkan Nomor Meter.

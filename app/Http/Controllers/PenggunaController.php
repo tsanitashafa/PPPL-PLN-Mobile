@@ -8,7 +8,8 @@ use App\Models\BeliToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\TukarPoin;
 
 class PenggunaController extends Controller
 {
@@ -30,7 +31,8 @@ class PenggunaController extends Controller
         return view('CekToken.detail-pelanggan', compact('pelanggan'));
     }
 
-    public function tambahLokasi(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
+    //menambah lokasi by Tiara Aulia Azadirachta Indica | 5026231148
+    public function tambahLokasi(Request $request) 
     {
         // 1. Ambil user login dari session
         $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
@@ -61,18 +63,148 @@ class PenggunaController extends Controller
             ->with('success', 'Lokasi berhasil ditambahkan!');
     }
 
-    public function cekTokenPelanggan($pelangganid) //Tiara Aulia Azadirachta Indica | 5026231148
+    //cek token by Tiara Aulia Azadirachta Indica | 5026231148
+    public function cekToken(Request $request)
     {
-        // ambil data pelanggan (supaya tandaisebagai bisa dipakai di Blade)
-        $pelanggan = Pelanggan::find($pelangganid);
+        // 1. ambil pengguna login
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+        if (!$userId) {
+            return redirect()->route('welcome');
+        }
 
-        // ambil data tokennya
-        $data = BeliToken::where('pelangganid', $pelangganid)->get();
-        return view('CekToken.cek-token', [
-            'tokens' => $data,
-            'pelanggan' => $pelanggan,
-            'pelangganid' => $pelangganid
-        ]);
+        // 2. ambil semua lokasi milik user
+        $pelanggans = Pelanggan::where('penggunaid', $userId)->get();
+
+        if ($pelanggans->isEmpty()) {
+            return redirect()->route('detail-pelanggan')
+                ->with('error', 'Silakan tambah lokasi terlebih dahulu.');
+        }
+
+        // 3. pelanggan aktif
+        $pelangganAktif = $request->filled('pelangganid')
+            ? $pelanggans->firstWhere('pelangganid', $request->pelangganid)
+            : $pelanggans->first();
+
+        // 4. ambil data token dari cektoken
+        $dataToken = DB::table('cektoken')
+            ->where('pelangganid', $pelangganAktif->pelangganid)
+            ->get();
+
+        // token terakhir
+        $tokenTerakhir = DB::table('cektoken')
+        ->where('pelangganid', $pelangganAktif->pelangganid)
+        ->orderBy('tanggal', 'desc')
+        ->first();
+
+        // total & terpakai
+        $totalToken = $tokenTerakhir?->totalkwh ?? 0;
+        $tokenTerpakai = $tokenTerakhir?->penggunaantoken ?? 0;
+
+        // sisa
+        $sisaToken = max(0, $totalToken - $tokenTerpakai);
+
+        $persentase = $totalToken > 0
+            ? ($sisaToken / $totalToken) * 100
+            : 0;
+
+        // 5. grafik pemakaian bulanan
+        $grafikPemakaian = DB::table('cektoken')
+            ->select(
+                DB::raw("EXTRACT(MONTH FROM tanggal) as bulan"),
+                DB::raw("SUM(penggunaantoken) as total_pemakaian")
+            )
+            ->where('pelangganid', $pelangganAktif->pelangganid)
+            ->groupBy(DB::raw("EXTRACT(MONTH FROM tanggal)"))
+            ->orderBy(DB::raw("EXTRACT(MONTH FROM tanggal)"))
+            ->get();
+
+        $labels = [];
+        $dataPemakaian = [];
+
+        foreach ($grafikPemakaian as $row) {
+            $labels[] = date('M', mktime(0, 0, 0, $row->bulan, 1));
+            $dataPemakaian[] = round($row->total_pemakaian, 2);
+        }
+
+        return view('CekToken.cek-token', compact(
+            'pelanggans',
+            'pelangganAktif',
+            'totalToken',
+            'sisaToken',
+            'persentase',
+            'labels',
+            'dataPemakaian'
+        ));
+    }
+    // history pemakaian by Tiara Aulia Azadirachta Indica | 5026231148
+    public function historyPemakaian(Request $request)
+    {
+        // 1. ambil user login
+        $userId = Session::get('authenticated_user_id') ?: Session::get('user_id');
+        if (!$userId) {
+            return redirect()->route('welcome');
+        }
+
+        // 2. ambil semua pelanggan user
+        $pelanggans = Pelanggan::where('penggunaid', $userId)->get();
+        if ($pelanggans->isEmpty()) {
+            return redirect()->route('detail-pelanggan');
+        }
+
+        // 3. tentukan pelanggan aktif (SAMA seperti cekToken)
+        $pelangganAktif = null;
+
+        /**
+         * 3.1 Kalau ada pelangganid dari request → pakai & simpan ke session
+         */
+        if ($request->filled('pelangganid')) {
+            $pelangganAktif = $pelanggans->firstWhere(
+                'pelangganid',
+                $request->pelangganid
+            );
+
+            if ($pelangganAktif) {
+                session(['pelanggan_aktif' => $pelangganAktif->pelangganid]);
+            }
+        }
+
+        /**
+         * 3.2 Kalau TIDAK ada request tapi ADA di session → pakai session
+         */
+        elseif (session()->has('pelanggan_aktif')) {
+            $pelangganAktif = $pelanggans->firstWhere(
+                'pelangganid',
+                session('pelanggan_aktif')
+            );
+        }
+
+        /**
+         * 3.3 Fallback terakhir → pelanggan pertama
+         */
+        if (!$pelangganAktif) {
+            $pelangganAktif = $pelanggans->first();
+        }
+
+        // 3.4 ambil history sesuai pelanggan AKTIF
+        $historyPemakaian = DB::table('cektoken')
+            ->select(
+                DB::raw("EXTRACT(YEAR FROM tanggal) as tahun"),
+                DB::raw("EXTRACT(MONTH FROM tanggal) as bulan"),
+                DB::raw("SUM(penggunaantoken) as total_pemakaian")
+            )
+            ->where('pelangganid', $pelangganAktif->pelangganid)
+            ->groupBy(
+                DB::raw("EXTRACT(YEAR FROM tanggal)"),
+                DB::raw("EXTRACT(MONTH FROM tanggal)")
+            )
+            ->orderBy('tahun', 'desc')
+            ->orderBy('bulan', 'desc')
+            ->get();
+
+        return view('CekToken.history-pemakaian', compact(
+            'historyPemakaian',
+            'pelangganAktif'
+        ));
     }
 
     // signup, login, and notif by mirza
