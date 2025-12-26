@@ -51,15 +51,6 @@ class TokenController extends Controller
         return view('MasukkanToken.token-gagal');
     }
 
-    public function cekToken() //Tiara Aulia Azadirachta Indica | 5026231148
-    {
-        // ambil data beli token (generateNoToken)
-        $data = BeliToken::select('generatenotoken', 'is_used', 'pelanggan_id')->get();
-
-        return view('CekToken.cek-token', [
-            'tokens' => $data
-        ]);
-    }
 
 // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
