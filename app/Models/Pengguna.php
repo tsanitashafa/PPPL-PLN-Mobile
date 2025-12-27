@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+// Main Part by Mirza Fathi Taufiqurrahman 5026231105
 
 
 class Pengguna extends Authenticatable
@@ -24,7 +24,7 @@ class Pengguna extends Authenticatable
     // Accessor: ketika mengakses $user->profile_image, mengembalikan nilai photourl
     public function getProfileImageAttribute()
     {
-        return $this->photourl;
+        return $this->photourl ?: 'images/image-profile.png';
     }
 
     // Mutator: ketika mengatur $user->profile_image = value, disimpan ke photourl

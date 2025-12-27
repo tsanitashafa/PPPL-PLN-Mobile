@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{{-- by mirza --}}
+<!-- Mirza Fathi Taufiqurrahman | 5026231105 -->
 <html lang="id">
 <head>
   <meta charset="UTF-8">

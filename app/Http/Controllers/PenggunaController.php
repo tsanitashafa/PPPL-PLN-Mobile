@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// Main Part for Pengguna by Mirza Fathi Taufiqurrahman 5026231105
 use App\Models\Pelanggan; // ← WAJIB di atas
 use App\Models\Pengguna;
 use App\Models\BeliToken;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Models\TukarPoin;
-
+// Main Part for Pengguna by Mirza Fathi Taufiqurrahman 5026231105
 class PenggunaController extends Controller
 {
     public function getDetailPelanggan(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
@@ -457,7 +457,38 @@ class PenggunaController extends Controller
             return redirect()->route('welcome');
         }
 
-        return view('notif', compact('user'));
+        // Check for low token notification
+        $lowToken = false;
+        $pelanggans = Pelanggan::where('penggunaid', $userId)->get();
+        if ($pelanggans->isNotEmpty()) {
+            $pelangganAktif = session()->has('pelanggan_aktif')
+                ? $pelanggans->firstWhere('pelangganid', session('pelanggan_aktif'))
+                : $pelanggans->first();
+
+            if ($pelangganAktif) {
+                $tokenTerakhir = DB::table('cektoken')
+                    ->where('pelangganid', $pelangganAktif->pelangganid)
+                    ->orderBy('tanggal', 'desc')
+                    ->first();
+
+                if ($tokenTerakhir) {
+                    $totalToken = $tokenTerakhir->totalkwh ?? 0;
+                    $tokenTerpakai = $tokenTerakhir->penggunaantoken ?? 0;
+                    $sisaToken = max(0, $totalToken - $tokenTerpakai);
+                    $persentase = $totalToken > 0 ? ($sisaToken / $totalToken) * 100 : 0;
+                    $lowToken = $persentase < 20; // Threshold for low token
+                }
+            }
+        }
+
+        // Check for recent successful purchase notification
+        $recentPurchase = Session::has('recent_purchase') && Session::get('recent_purchase') == true;
+        // Clear the session flag after checking to avoid persistent notifications
+        if ($recentPurchase) {
+            Session::forget('recent_purchase');
+        }
+
+        return view('fitur-tambahan.notif', compact('user', 'lowToken', 'recentPurchase'));
     }
 
     public function logout()

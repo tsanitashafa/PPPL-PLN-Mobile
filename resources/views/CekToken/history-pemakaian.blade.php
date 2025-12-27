@@ -13,8 +13,8 @@
 <body>
 
 <!-- NAVBAR TEMPLATE -->
-<x-templatenavbar 
-    title="History" 
+<x-templatenavbar
+    title="History"
     backUrl="{{ route('cek-token', ['pelangganid' => $pelangganAktif->pelangganid]) }}"
 />
 

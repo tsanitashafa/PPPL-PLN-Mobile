@@ -13,7 +13,7 @@
 <body>
 
 <!-- NAVBAR TEMPLATE -->
-<x-templatenavbar title="Detail Pelanggan" backUrl="{{ url('/cek-token') }}" />
+<x-templatenavbar title="Detail Pelanggan" backUrl="{{ route('homepage') }}" />
 
 <div class="container mt-3 mb-5">
 

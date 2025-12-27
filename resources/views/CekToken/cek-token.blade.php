@@ -13,9 +13,9 @@
 <body>
 
 <!-- Header Template -->
-    <x-templatenavbar 
+    <x-templatenavbar
         title="Cek Token"
-        backUrl="{{ url('/homepage') }}"
+        backUrl="{{ route('detail-pelanggan') }}"
     />
 
 <div class="container mt-4">

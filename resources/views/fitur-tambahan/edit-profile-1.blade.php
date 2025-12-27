@@ -87,7 +87,7 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center text-black">
-                            <img src="{{ asset($user->photourl) }}" class="rounded-circle profile-img-circle">
+                            <img src="{{ asset($user->profile_image) }}" class="rounded-circle profile-img-circle">
                             <div>
                                 <h2 class="h6 m-0 fw-bold poppins-bold">{{ $user->nama }}</h2>
                                 <p class="small m-0 poppins-regular">{{ $user->email }}</p>

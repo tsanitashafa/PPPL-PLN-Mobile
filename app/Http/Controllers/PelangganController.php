@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; // Import Request
 use Illuminate\Support\Str; // Import Str untuk generate token
+use Illuminate\Support\Facades\Session;
 use App\Models\Pelanggan;
 use App\Models\Pengguna; // ← WAJIB!
 use function PHPUnit\Framework\returnArgument;
@@ -124,6 +125,8 @@ class PelangganController extends Controller
      */
     public function transaksiBerhasil()
     {
+        // Set session flag for recent purchase notification
+        Session::put('recent_purchase', true);
         // Halaman ini akan mengambil data dari session flash
         return view('bayar-token.transaksi-berhasil');
     }
