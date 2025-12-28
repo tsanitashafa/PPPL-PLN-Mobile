@@ -282,7 +282,7 @@ Route::get('/token-success', [TokenController::class, 'selamat'])->name('selamat
 Route::get('/token-failed', [TokenController::class, 'gagal'])->name('gagal');
 
 //route Haliza
-Route::get('/artikel', [NewsController::class, 'index'])->name('artikel');
+Route::get('/artikel', [App\Http\Controllers\NewsController::class, 'loadArtikel'])->name('artikel');
 
 Route::get('/berita', [NewsController::class, 'berita'])->name('berita');
 
@@ -294,4 +294,3 @@ Route::get('/bantuan', [BantuanController::class, 'bantuan'])->name('bantuan');
 Route::get('/bantuan/{id}', [BantuanController::class, 'bantuanDetail'])->name('bantuan.detail');
 
 // ... (Route lainnya)
-
