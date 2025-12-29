@@ -23,12 +23,19 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 15px 0;
             margin-bottom: 30px;
+            position: relative; 
         }
         
         .web-navbar .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
             color: #212529;
+            
+            
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
         }
 
         .back-link {
@@ -39,6 +46,8 @@
             align-items: center;
             gap: 8px;
             transition: color 0.2s;
+            z-index: 10; 
+            position: relative;
         }
 
         .back-link:hover {
@@ -47,7 +56,7 @@
 
         
         .main-container {
-            max-width: 960px;
+            max-width: 550px; 
             margin: 0 auto;
             padding-bottom: 50px;
         }
@@ -56,7 +65,7 @@
         .news-card {
             background: white;
             border-radius: 12px;
-            padding: 25px 25px;
+            padding: 15px;
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             text-decoration: none;
@@ -76,6 +85,16 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             border-color: #00aeb6;
             color: #000;
+        }
+
+        
+        .news-img {
+            width: 70px;  
+            height: 70px; 
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 20px; 
+            flex-shrink: 0;
         }
 
     </style>
@@ -99,7 +118,9 @@
             <div class="col-12">
                 @foreach($news as $item)
                 <a href="{{ route('berita.detail', ['id' => $item->beritaid]) }}" class="news-card">
-                    {{ $item->judul }}
+                    <img src="{{ asset('/img/artikel.png') }}" class="news-img" alt="news">
+                    
+                    <div>{{ $item->judul }}</div>
                 </a>
                 @endforeach
             </div>

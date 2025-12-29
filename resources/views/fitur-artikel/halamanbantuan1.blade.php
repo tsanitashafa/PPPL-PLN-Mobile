@@ -24,12 +24,20 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 15px 0;
             margin-bottom: 30px;
+            position: relative; 
         }
+        
         
         .web-navbar .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
             color: #212529;
+            
+            
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
         }
 
         .back-link {
@@ -40,13 +48,15 @@
             align-items: center;
             gap: 8px;
             transition: color 0.2s;
+            z-index: 10; 
+            position: relative;
         }
 
         .back-link:hover {
             color: #00aeb6;
         }
 
-        /* --- CONTENT CONTAINER --- */
+        
         .main-container {
             max-width: 960px;
             margin: 0 auto;

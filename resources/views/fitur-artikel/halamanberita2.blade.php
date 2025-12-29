@@ -103,7 +103,7 @@
             font-weight: 500;
         }
 
-        /* --- ARTICLE CONTENT --- */
+        
         .article-body {
             padding: 40px 40px 60px 40px;
             font-size: 1.1rem;

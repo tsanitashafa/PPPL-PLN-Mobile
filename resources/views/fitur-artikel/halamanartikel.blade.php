@@ -25,12 +25,21 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 15px 0;
             margin-bottom: 30px;
+            position: relative; 
         }
+        
         
         .web-navbar .navbar-brand {
             font-weight: 700;
-            font-size: 1.5rem;
-            color: #212529;
+            font-size: 1.5rem; 
+            color: #000000;    
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            
+            
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
         }
 
         .back-link {
@@ -41,6 +50,8 @@
             align-items: center;
             gap: 8px;
             transition: color 0.2s;
+            z-index: 10; 
+            position: relative; 
         }
 
         .back-link:hover {
@@ -54,13 +65,12 @@
             padding-bottom: 50px;
         }
 
+        
         .section-title {
             font-weight: 700;
             margin: 30px 0 15px 0;
             color: #212529;
             font-size: 1.1rem;
-            border-left: 5px solid #00aeb6;
-            padding-left: 15px;
             text-transform: capitalize;
         }
 
@@ -87,8 +97,8 @@
 
         
         .news-img {
-            width: 90px;
-            height: 65px; 
+            width: 70px;  
+            height: 70px; 
             border-radius: 8px;
             object-fit: cover;
             margin-right: 15px;
@@ -122,7 +132,7 @@
             margin: 0;
         }
 
-        
+        /* --- UPDATED SEE ALL STYLE --- */
         .see-all {
             display: inline-flex; 
             align-items: center;
