@@ -13,9 +13,9 @@
 <body>
 
 <!-- Header Template -->
-    <x-templatenavbar
+    <x-templatenavbar 
         title="Cek Token"
-        backUrl="{{ route('detail-pelanggan') }}"
+        backUrl="{{ url('/homepage') }}"
     />
 
 <div class="container mt-4">
@@ -77,6 +77,7 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
         <script>
             const ctx = document.getElementById('usageChart').getContext('2d');
@@ -85,11 +86,11 @@
                 labels: @json($labels),
                 datasets: [{
                     data: @json($dataPemakaian),
-                    tension: 0.4,
+                    tension: 0,                 // tajam
                     borderColor: '#000000',
-                    pointRadius: 5,
-                    pointBackgroundColor: '#000000',
                     borderWidth: 2,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#000000',
                     fill: false
                 }]
             };
@@ -97,26 +98,43 @@
             new Chart(ctx, {
                 type: 'line',
                 data: usageData,
+                plugins: [ChartDataLabels],     // 🔴 WAJIB
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { display: false }
+                        legend: { display: false },
+                        datalabels: {
+                            align: 'top',
+                            anchor: 'end',
+                            color: '#000',
+                            font: {
+                                weight: 'bold',
+                                size: 11
+                            },
+                            formatter: function(value) {
+                                return value + ' kWh';   // teks label
+                            }
+                        }
                     },
                     scales: {
                         y: {
                             beginAtZero: true,
-                            ticks: { stepSize: 10 }
+                            max: 200,              // batas maksimum sumbu Y
+                            ticks: {
+                                stepSize: 10      // interval tiap garis
+                            }
                         }
                     }
                 }
             });
         </script>
 
-       <button class="btn btn-outline-dark w-100 mt-3 py-2"
+       <button class="btn btn-history w-100 mt-3 py-2"
             onclick="window.location.href='{{ url('/history-pemakaian?pelangganid=' . $pelangganAktif->pelangganid) }}'">
             Lihat History Pemakaian ▼
         </button>
+
     </div>
 
     <!-- CARBON TRACKING CARD -->

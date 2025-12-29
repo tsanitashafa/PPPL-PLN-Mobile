@@ -64,3 +64,19 @@ body {
     background-color: #ece6a9ff;
     color: #000000ff;
 }
+
+.btn-history {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-weight: 600;
+    color: #000;
+}
+
+.btn-history:focus,
+.btn-history:active {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}

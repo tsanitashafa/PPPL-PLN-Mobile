@@ -20,6 +20,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: none;            
+    outline: none;           
 }
 
 .location-item {
@@ -40,6 +42,8 @@ body {
     font-weight: 600;
     width: 100%;
     padding: 10px;
+    border: none;            
+    outline: none;
 }
 
 .modal-header-custom {
