@@ -25,6 +25,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
+    <script src="js/beli-token/pembayaran.js.js"></script>
     <link rel="stylesheet" href="css/bayar-token/pembayaran.css">
 
 </head>
@@ -59,9 +60,9 @@
 
 
 
-            <div class="payment-card p-3 ">
+            <div class="payment-card p-3 " data-metode="5">
                 <h3 class="h6 font-weight-bold " style="color: #333;">Metode Pembayaran</h3>
-                <div class="payment-method-item pembayaran"
+                <div class="payment-method-item pembayaran metode-pilih" data-metode="5"
                     style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
                     <div class="payment-method-left">
                         <img src="assets/img/pembayaran/pln.svg" alt="PLN">
@@ -69,7 +70,7 @@
                     </div>
                 </div>
 
-                <div class="payment-method-item pembayaran"
+                <div class="payment-method-item pembayaran metode-pilih" data-metode="4"
                     style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
                     <div class="payment-method-left">
                         <img src="assets/img/pembayaran/qris.svg" alt="QRIS">
@@ -79,7 +80,7 @@
 
 
 
-                <div class="payment-method-item pembayaran justify-content-between"
+                <div class="payment-method-item pembayaran justify-content-between metode-pilih" data-metode="3"
                     style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
                     <div class="payment-method-left">
                         <img src="assets/img/pembayaran/gopay.svg" alt="gopay">
@@ -95,8 +96,9 @@
 
 
 
-                <div class="payment-method-item pembayaran justify-content-between"
-                    style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
+                <div class="payment-method-item pembayaran
+                justify-content-between metode-pilih"
+                    data-metode="1" style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
                     <div class="payment-method-left">
                         <img src="assets/img/pembayaran/shope.svg" alt="shope">
                         <span class="payment-method-name">shopePay</span>
@@ -107,7 +109,7 @@
                 </div>
 
 
-                <div class="payment-method-item pembayaran"
+                <div class="payment-method-item pembayaran metode-pilih" data-metode = "6"
                     style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
                     <div class="payment-method-left">
                         <img src="assets/img/pembayaran/bri.svg" alt="BRI Logo">
@@ -115,7 +117,7 @@
                     </div>
                 </div>
 
-                <div class="payment-method-item pembayaran"
+                <div class="payment-method-item pembayaran metode-pilih" data-metode="2"
                     style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
                     <div class="payment-method-left">
                         <img src="assets/img/pembayaran/bca.svg" alt="QRIS">
@@ -163,19 +165,15 @@
 
         <form id="formBayar" method="POST" action="{{ route('bayar-token') }}">
             @csrf
-
             <input type="hidden" name="meter" id="meterInput">
             <input type="hidden" name="nominal" id="nominalInput">
             <input type="hidden" name="total" id="totalInput">
             <input type="hidden" name="voucher" id="voucherInput">
+            <input type="hidden" name="metodeid" id="metodeInput">
         </form>
 
-        {{--
-        <button class="btn btn-primary btn-block poppins-regular btn-pay" type="button" id="btnBayar"
-            data-meter="{{ request('meter', 0) }}" data-nominal="{{ request('nominal', 0) }}"
-            data-total="{{ request('total', 0) }}" data-voucher="{{ request('voucher', 0) }}">
-            Bayar
-        </button> --}}
+
+
 
         <x-button id="btnBayar" variant="pay" data-meter="{{ request('meter', 0) }}"
             data-nominal="{{ request('nominal', 0) }}" data-total="{{ request('total', 0) }}"
@@ -195,11 +193,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
-    {{-- <script src="js/bayar-token/pembayaran.js"></script> --}}
-
 
     <script>
+        let selectedMetode = null;
+
+        document.querySelectorAll('.metode-pilih').forEach(item => {
+            item.addEventListener('click', function() {
+                selectedMetode = this.dataset.metode;
+                document.getElementById('metodeInput').value = selectedMetode;
+
+                document.querySelectorAll('.metode-pilih')
+                    .forEach(el => el.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
         document.getElementById("btnBayar").addEventListener("click", function() {
+            if (!selectedMetode) {
+                alert('Silakan pilih metode pembayaran');
+                return;
+            }
+
             document.getElementById("meterInput").value = this.dataset.meter;
             document.getElementById("nominalInput").value = this.dataset.nominal;
             document.getElementById("totalInput").value = this.dataset.total;
@@ -208,7 +223,6 @@
             document.getElementById("formBayar").submit();
         });
     </script>
-
 
 </body>
 

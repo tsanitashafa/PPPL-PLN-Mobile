@@ -114,6 +114,10 @@ class PelangganController extends Controller
         // 8. Generate token
         $tokenDihasilkan = $this->generateToken(16);
 
+        $metodeid = $request->metodeid;
+        if (!$metodeid) {
+            $metodeid = 5; // default metode pembayaran
+        }
         // 9. Simpan transaksi
         BeliToken::create([
             'jumlahbayar' => $totalAkhir,
@@ -122,7 +126,7 @@ class PelangganController extends Controller
             'tgltransaksi' => now(),
             'generatenotoken' => $tokenDihasilkan,
             'pelangganid' => $pelanggan->pelangganid,
-            'metodeid' => $request->metodeid ?? 1,
+            'metodeid' => $metodeid,
             'rewardid' => $rewardId,
             'is_used' => 1
         ]);
