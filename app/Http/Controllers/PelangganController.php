@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; // Import Request
-use Illuminate\Support\Str; // Import Str untuk generate token
+
 use Illuminate\Support\Facades\Session;
 use App\Models\Pelanggan;
+use App\Models\BeliToken;
 use App\Models\Pengguna; // ← WAJIB!
-use function PHPUnit\Framework\returnArgument;
+
 
 class PelangganController extends Controller
 {
-    public function getDataBeliToken()
-    {
-    }
+
     // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
     // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
@@ -32,6 +31,8 @@ class PelangganController extends Controller
 
 
     // antar sesion beli token ke pembayaran
+
+    //flow pembayaran 1
     public function setTotalPembayaran(Request $request)
     {
         // Simpan total ke session
@@ -40,6 +41,7 @@ class PelangganController extends Controller
         return response()->json(['status' => 'success']);
     }
     // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
+//flow pembayaran 2
 
     public function pembayaran(Request $request)
     {
@@ -50,84 +52,97 @@ class PelangganController extends Controller
         return view('bayar-token/pembayaran', compact('total'));
     }
 
-    public function getListPelanggan()
-    {
-    }
 
-    public function detailPelangganLokasi()
-    {
-    }
 
 
 
     // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
 
-
+    //flow pembayaran 2
     public function bayarToken(Request $request)
     {
-        // Data dari input
+        // 1. Ambil Data Input
         $meter = trim($request->meter);
         $nominal = (int) $request->nominal;
-        // $total = (int) $request->total;
-        $persentaseVoucher = (int) $request->voucher; // Ini angka 10 dari session
-        // LOGIKA PERSENTASE DI SERVER
+        $persentaseVoucher = (int) ($request->voucher ?? 0);
+
+        // 2. Hitung Logika Biaya
         $potongan = ($persentaseVoucher / 100) * $nominal;
         $totalSetelahDiskon = $nominal - $potongan;
-        // Biaya layanan
         $biayaLayanan = 1500;
         $totalAkhir = $totalSetelahDiskon + $biayaLayanan;
 
-        // Ambil data pelanggan berdasarkan nomor meter
+        // 3. Validasi Pelanggan & Saldo
         $pelanggan = Pelanggan::where('nomormeter', $meter)->first();
 
         if (!$pelanggan) {
-            return view('bayar-token.transaksi-gagal')->with('message', 'Pelanggan tidak ditemukan.');
-        }
 
-        // Cek saldo pelanggan
+            return $this->transaksiGagal('Pelanggan tidak ditemukan.');
+        }
         if ($pelanggan->saldo < $totalAkhir) {
-            return view('bayar-token.transaksi-gagal')->with('message', 'Saldo tidak mencukupi.');
+            return $this->transaksiGagal('Saldo tidak mencukupi.');
         }
 
-        // Kurangi saldo pelanggan
+
+        // 4. Eksekusi Pengurangan Saldo
         $pelanggan->saldo -= $totalAkhir;
         $pelanggan->save();
 
-        // Tambah poin ke tabel PENGGUNA
-        $poinTambahan = 10;
-
+        // 5. Update Poin Pengguna
         $pengguna = Pengguna::find($pelanggan->penggunaid);
-
         if ($pengguna) {
-            $pengguna->poin += $poinTambahan;
+            $pengguna->poin += 10; // Tambah 10 poin
             $pengguna->save();
         }
 
-        // Generate token PLN
-        $token = strtoupper(Str::random(20));
+        // 6. GENERATE TOKEN (Memanggil fungsi terpisah)
+        $tokenDihasilkan = $this->generateToken(16);
 
-        // Redirect ke halaman berhasil
+        // 7. SIMPAN KE TABEL 'belitoken'
+
+        BeliToken::create([
+            'jumlahbayar' => $totalAkhir,
+            'voucher' => $persentaseVoucher > 0 ? 1 : 0,
+            'status' => 'Berhasil',
+            'tgltransaksi' => now(),
+            'generatenotoken' => $tokenDihasilkan,
+            'pelangganid' => $pelanggan->id,
+            'metodeid' => $request->metodeid ?? 1,
+            'rewardid' => null,
+            'is_used' => 0
+        ]);
+
+        // 8. Redirect ke halaman berhasil dengan Session Flash
         return redirect()->route('transaksi.berhasil')->with([
-            'token' => $token,
-            'poin' => $poinTambahan,
+            'token' => $tokenDihasilkan,
+            'poin' => 10,
             'saldo' => $pelanggan->saldo,
             'nominal_beli' => $nominal,
             'meter' => $meter,
             'total_bayar' => $totalAkhir
-
         ]);
-
     }
 
+    private function transaksiGagal($pesan)
+    {
+        return view('bayar-token.transaksi-gagal', ['pesan' => $pesan]);
+    }
 
     /**
-     * Menampilkan halaman transaksi berhasil.
+     * FUNGSI TERPISAH: Generate angka 16 digit
      */
+    private function generateToken($length = 16)
+    {
+        $token = '';
+        for ($i = 0; $i < $length; $i++) {
+            $token .= mt_rand(0, 9);
+        }
+        return $token;
+    }
+
     public function transaksiBerhasil()
     {
-        // Set session flag for recent purchase notification
         Session::put('recent_purchase', true);
-        // Halaman ini akan mengambil data dari session flash
         return view('bayar-token.transaksi-berhasil');
     }
 
