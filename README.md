@@ -111,22 +111,55 @@ pln-mobile-app/
 │
 ├── app/
 │   ├── Http/
-│   │   ├── Controllers/        # Logic aplikasi dan alur data
-│   │   └── Middleware/
-│   └── Models/                 # Model database
+│   │   ├── Controllers/              # Logic aplikasi dan alur data
+│   │   │
+│   │   ├── BantuanController.php     # Mengelola halaman dan fitur bantuan
+│   │   ├── BeliTokenController.php   # Proses pembelian token listrik
+│   │   ├── Controller.php            # Base controller Laravel
+│   │   ├── MetodePembayaranController.php
+│   │   │                             # Mengelola metode pembayaran
+│   │   ├── NewsController.php        # Menampilkan artikel dan berita
+│   │   ├── PelangganController.php   # Mengelola data pelanggan
+│   │   ├── PenggunaController.php    # Mengelola data pengguna
+│   │   ├── ProfileController.php     # Mengelola profil pengguna
+│   │   ├── RiwayatController.php     # Menampilkan riwayat transaksi/pemakaian
+│   │   ├── TokenController.php       # Logika cek dan pengelolaan token
+│   │   ├── TukarPoinController.php   # Fitur penukaran poin
+│   │   └── VoucherController.php     # Pengelolaan voucher
+│   │
+│   └── Middleware/                   # Middleware aplikasi
 │
 ├── resources/
-│   ├── views/                  # Blade template (UI)
-│   └── css/                    # Styling
+│   ├── css/                          # Styling aplikasi
+│   ├── js/                           # Script JavaScript
+│   │
+│   └── views/                        # Blade template (UI)
+│       │
+│       ├── CekToken/                 # Halaman cek token
+│       ├── Login/                    # Halaman login pengguna
+│       ├── MasukkanToken/            # Halaman input token
+│       ├── SignUp/                   # Halaman registrasi akun
+│       ├── bayar-token/              # Halaman pembayaran token
+│       ├── beli-token/               # Halaman pembelian token
+│       ├── components/               # Komponen UI reusable
+│       ├── fitur-artikel/            # Halaman artikel / berita
+│       ├── fitur-tambahan/           # Fitur tambahan aplikasi
+│       ├── hubungkan-ewallet/        # Integrasi e-wallet
+│       ├── riwayat/                  # Halaman riwayat pemakaian/transaksi
+│       ├── tukar/                    # Halaman tukar poin
+│       ├── voucher/                  # Halaman voucher
+│       │
+│       ├── homepage.blade.php        # Halaman utama aplikasi
+│       └── welcome.blade.php         # Halaman landing default Laravel
 │
 ├── routes/
-│   └── web.php                 # Routing aplikasi
+│   └── web.php                       # Routing aplikasi
 │
-├── public/                     # Asset publik
-├── database/                   # Migrasi dan seeding database
-├── config/                     # Konfigurasi aplikasi
-├── .env                        # Konfigurasi environment
-├── README.md                   # Dokumentasi project
+├── public/                           # Asset publik
+├── database/                         # Migrasi dan seeding database
+├── config/                           # Konfigurasi aplikasi
+├── .env                              # Konfigurasi environment
+├── README.md                         # Dokumentasi project
 ```
 
 > **Catatan:**
