@@ -11,10 +11,12 @@
 <body>
 
   <!-- Top Navigation -->
-  <div class="top-bar">
-    <button class="back-btn" onclick="history.back()">&#8592;</button>
-    <div class="title">Masukkan PIN</div>
-  </div>
+  {{-- Revised by 5026231088 Tsanita Shafa Hadinanda --}}
+  <x-templatenavbar
+        title="Masukkan PIN"
+        backUrl="{{ url('/loginphone') }}"
+    />
+  {{-- End Revised by 5026231088 Tsanita Shafa Hadinanda --}}
 
   <!-- Main Section -->
   <div class="pin-section">

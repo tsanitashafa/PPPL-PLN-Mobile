@@ -31,10 +31,10 @@ body {
   text-align: center;
 }
 .pin-title {
-  font-weight: 700;
+  font-weight: 600;
   color: #106C7E;
   margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .pin-inputs {
   display: flex;

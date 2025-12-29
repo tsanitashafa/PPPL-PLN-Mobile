@@ -11,10 +11,12 @@
 </head>
 <body>
   <div class="container mt-4">
-    <div class="d-flex align-items-center mb-3">
-      <a href="javascript:history.back()" class="text-dark me-2"><i class="bi bi-arrow-left"></i></a>
-      <h5 class="m-4 fw-semibold">Verifikasi Phone Number</h5>
-    </div>
+    {{-- Revised by 5026231088 Tsanita Shafa Hadinanda --}}
+  <x-templatenavbar
+        title="Verifikasi"
+        backUrl="{{ url('/registerphone') }}"
+    />
+  {{-- End Revised by 5026231088 Tsanita Shafa Hadinanda --}}
 
     <h1>Masukkan kode verifikasi yang kami kirim ke nomor <span class="text-info fw-bold">{{ $phone }}</span></h1>
 

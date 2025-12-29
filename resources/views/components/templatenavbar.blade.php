@@ -12,7 +12,7 @@
     </a>
 
     <!-- Judul (tanpa bold) -->
-    <h5 class="text-center w-100 m-0" style="font-weight: 500;">
+    <h5 class="text-center w-100 m-0" style="font-weight: 600;">
         {{ $title }}
     </h5>
 </div>

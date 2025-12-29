@@ -32,10 +32,6 @@
 
 </head>
 
-<style>
-    /* (STYLE TETAP — tidak berubah) */
-</style>
-
 <body>
 
     <div style="position: relative; ">

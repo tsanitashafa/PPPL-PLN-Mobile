@@ -11,10 +11,12 @@
 <body>
 
   <!-- Top Navigation -->
-  <div class="top-bar">
-    <button class="back-btn" onclick="history.back()">&#8592;</button>
-    <div class="title">Buat PIN</div>
-  </div>
+  {{-- Revised by 5026231088 Tsanita Shafa Hadinanda --}}
+  <x-templatenavbar
+        title="Buat PIN"
+        backUrl="{{ url('/verifyemail') }}"
+    />
+  {{-- End Revised by 5026231088 Tsanita Shafa Hadinanda --}}
 
   <!-- Main Section -->
   <div class="pin-section">
@@ -33,10 +35,10 @@
   </div>
 
   <!-- Continue Button -->
-  <button type="submit" form="createpin-form" class="btn-continue">Continue</button>
+  <button type="submit" form="createpin-form" class="btn btn-continue">Continue</button>
   <script>
     document.querySelector('form').id = 'createpin-form';
-    // Combine PIN inputs into single field 
+    // Combine PIN inputs into single field
     document.querySelector('form').addEventListener('submit', function(e) {
       const pinInputs = document.querySelectorAll('input[name="pin[]"]');
       const pin = Array.from(pinInputs).map(input => input.value).join('');

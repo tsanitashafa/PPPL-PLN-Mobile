@@ -11,10 +11,12 @@
 </head>
 <body>
   <div class="container mt-4">
-    <div class="d-flex align-items-center mb-3">
-      <a href="javascript:history.back()" class="text-dark me-2"><i class="bi bi-arrow-left"></i></a>
-      <h5 class="m-4 fw-semibold">Register User</h5>
-    </div>
+    {{-- Revised by 5026231088 Tsanita Shafa Hadinanda --}}
+  <x-templatenavbar
+        title="Register"
+        backUrl="{{ url('/verifyphone') }}"
+    />
+  {{-- End Revised by 5026231088 Tsanita Shafa Hadinanda --}}
 
     <h1>Masukkan nama dan email anda</h1>
 
