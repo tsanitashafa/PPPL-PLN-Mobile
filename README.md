@@ -184,3 +184,11 @@ Pengembangan aplikasi dilakukan secara kolaboratif menggunakan GitHub dengan pen
 ---
 
 README ini disusun untuk membantu proses instalasi, menjalankan aplikasi, serta memahami struktur dan konsep pengembangan proyek PLN Mobile. Proyek ini diharapkan dapat menjadi contoh implementasi aplikasi layanan digital berbasis web dengan alur data yang terstruktur.
+
+---
+## Anggota Kelompok 8 PLN Mobile App:
+* Al-khiqmah Manzilatul Mukaromah    (5026221037)
+* Tsanita Shafa Hadinanda            (5026231088)
+* Mirza Fathi Taufiqurrahman         (5026231105)
+* Tiara Aulia Azadirachta Indica     (5026231148)
+* Haliza Putri Amelliani             (5026231213)
