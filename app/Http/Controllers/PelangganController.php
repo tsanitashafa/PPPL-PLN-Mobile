@@ -106,7 +106,7 @@ class PelangganController extends Controller
             'status' => 'Berhasil',
             'tgltransaksi' => now(),
             'generatenotoken' => $tokenDihasilkan,
-            'pelangganid' => $pelanggan->id,
+            'pelangganid' => $pelanggan->pelangganid,
             'metodeid' => $request->metodeid ?? 1,
             'rewardid' => null,
             'is_used' => 0
