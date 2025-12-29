@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Pelanggan</title>
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS dipisah -->
@@ -157,7 +158,7 @@
             <!-- Header -->
             <div class="modal-header-custom mb-2">
                 <button class="info-btn" type="button">
-                    <img src="/images/info.png" width="30">
+                    <img src="/assets/img/info.png" width="30">
                 </button>
 
                 <span class="modal-title-centered">Share</span>
@@ -173,17 +174,17 @@
             <div class="d-flex justify-content-around mb-4">
 
                 <div class="text-center">
-                    <img src="/images/pdf.png" width="50">
+                    <img src="/assets/img/pdf.png" width="50">
                     <div class="mt-1">PDF</div>
                 </div>
 
                 <div class="text-center">
-                    <img src="/images/xls.png" width="50">
+                    <img src="/assets/img/xls.png" width="50">
                     <div class="mt-1">XLS</div>
                 </div>
 
                 <div class="text-center">
-                    <img src="/images/png.png" width="50">
+                    <img src="/assets/img/png.png" width="50">
                     <div class="mt-1">PNG</div>
                 </div>
 
@@ -195,15 +196,15 @@
             <div class="d-flex justify-content-around mb-3">
 
                 <div class="text-center">
-                    <img src="/images/WA.png" width="55">
+                    <img src="/assets/img/WA.png" width="55">
                 </div>
 
                 <div class="text-center">
-                    <img src="/images/IG.png" width="55">
+                    <img src="/assets/img/IG.png" width="55">
                 </div>
 
                 <div class="text-center">
-                    <img src="/images/X.png" width="55">
+                    <img src="/assets/img/X.png" width="55">
                 </div>
 
             </div>

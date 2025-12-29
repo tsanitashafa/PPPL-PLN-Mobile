@@ -24,7 +24,7 @@ class Pengguna extends Authenticatable
     // Accessor: ketika mengakses $user->profile_image, mengembalikan nilai photourl
     public function getProfileImageAttribute()
     {
-        return $this->photourl ?: 'images/image-profile.png';
+        return $this->photourl ?: 'assets/img/image-profile.png';
     }
 
     // Mutator: ketika mengatur $user->profile_image = value, disimpan ke photourl

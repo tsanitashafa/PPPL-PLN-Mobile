@@ -6,37 +6,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Bantuan</title>
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        
+
         body {
             background-color: #f8f9fa;
             margin: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
-            overflow: hidden; 
+            overflow: hidden;
         }
 
-        
+
         .background-layer {
-            filter: blur(4px); 
-            opacity: 0.6;      
-            pointer-events: none; 
+            filter: blur(4px);
+            opacity: 0.6;
+            pointer-events: none;
             width: 100%;
             height: 100vh;
             overflow: hidden;
         }
 
-        
+
         .web-navbar {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 15px 0;
             margin-bottom: 30px;
         }
-        
+
         .web-navbar .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
@@ -52,13 +53,13 @@
             gap: 8px;
         }
 
-       
+
         .main-container {
             max-width: 960px;
             margin: 0 auto;
         }
 
-        
+
         .help-card {
             background: white;
             border-radius: 12px;
@@ -75,25 +76,25 @@
             border: 1px solid #e9ecef;
         }
 
-        
+
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); 
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 1000;
             display: flex;
-            justify-content: center; 
-            align-items: flex-end;   
+            justify-content: center;
+            align-items: flex-end;
             text-decoration: none;
         }
 
         .bottom-sheet {
             background-color: white;
             width: 100%;
-            max-width: 800px; 
+            max-width: 800px;
             border-top-left-radius: 25px;
             border-top-right-radius: 25px;
             padding: 40px 50px 60px 50px;
@@ -135,18 +136,12 @@
 </head>
 <body>
 
-    <div class="background-layer">
-        <nav class="web-navbar">
-            <div class="container d-flex align-items-center justify-content-between">
-                <div class="back-link">
-                    <i class="bi bi-arrow-left fs-4"></i>
-                </div>
-                
-                <span class="navbar-brand">Bantuan</span>
-                
-                <div style="width: 80px;"></div>
-            </div>
-        </nav>
+    {{-- Revised by 5026231088 Tsanita Shafa Hadinanda --}}
+  <x-templatenavbar
+        title="Bantuan"
+        backUrl="{{ url('/bantuan') }}"
+    />
+  {{-- End Revised by 5026231088 Tsanita Shafa Hadinanda --}}
 
         <div class="container main-container">
             <div class="row">
@@ -161,9 +156,9 @@
     </div>
 
     <a href="{{ route('bantuan') }}" class="modal-overlay">
-        
+
         <div class="bottom-sheet" onclick="event.stopPropagation()">
-            
+
             <div class="drag-handle"></div>
 
             <h2 class="sheet-title">{{ $bantuanItem->judul }}</h2>

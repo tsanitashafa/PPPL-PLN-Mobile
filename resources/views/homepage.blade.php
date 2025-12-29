@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homepage</title>
+    <title>Homepage</title>
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -140,7 +141,7 @@
                             <div class="col text-center">
                                 <a href="{{ route('masukkan-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
-                                        <img src="/images/masukkan-token.png" alt="masukkan token"
+                                        <img src="/assets/img/masukkan-token.png" alt="masukkan token"
                                             class="d-block mx-auto" style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Masukkan Token</p>
@@ -149,7 +150,7 @@
                             <div class="col text-center">
                                 <a href="{{ route('cek-token') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
-                                        <img src="/images/cek-token.png" alt="cek token" class="d-block mx-auto"
+                                        <img src="/assets/img/cek-token.png" alt="cek token" class="d-block mx-auto"
                                             style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Cek Token</p>
@@ -158,7 +159,7 @@
                             <div class="col text-center">
                                 <a href="{{ route('search') }}" class="text-decoration-none d-block">
                                     <div class="card rounded-3 p-3 bg-info-custom" style="background-color:#16a1ba">
-                                        <img src="/images/lihat-semua.png" alt="Lihat Semuanya"
+                                        <img src="/assets/img/lihat-semua.png" alt="Lihat Semuanya"
                                             class="d-block mx-auto" style="width: 48px; height: 48px;">
                                     </div>
                                     <p class="small mt-2 mb-0 text-dark poppins-regular">Lihat Semuanya</p>
@@ -199,7 +200,7 @@
                             </div>
 
                             <div class="col-4 d-flex justify-content-end align-items-center">
-                                <img src="/images/artikel.svg" alt="Foto Artikel" class="img-fluid"
+                                <img src="/assets/img/artikel.svg" alt="Foto Artikel" class="img-fluid"
                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
 
@@ -226,7 +227,7 @@
                             </div>
 
                             <div class="col-4 d-flex justify-content-end align-items-center">
-                                <img src="/images/artikel.svg" alt="Foto Artikel" class="img-fluid"
+                                <img src="/assets/img/artikel.svg" alt="Foto Artikel" class="img-fluid"
                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
 

@@ -8,15 +8,15 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
   <link href="{{ asset('css/reward.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <x-templatenavbar
-        title="Riwayat Poin"
-        backUrl="{{ url('/reward') }}"
+        title="Riwayat"
+        backUrl="{{ url()->previous() }}"
     />
-
     {{-- Loop Bulan --}}
     @foreach ($grouped as $month => $items)
 
@@ -48,8 +48,6 @@
         @endforeach
 
     @endforeach
-
-@include('components/template')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

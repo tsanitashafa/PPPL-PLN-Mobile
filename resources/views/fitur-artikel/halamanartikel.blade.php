@@ -7,11 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Artikel</title>
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        
+
         body {
             background-color: #f8f9fa;
             margin: 0;
@@ -19,23 +20,23 @@
             min-height: 100vh;
         }
 
-        
+
         .web-navbar {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 15px 0;
             margin-bottom: 30px;
-            position: relative; 
+            position: relative;
         }
-        
-        
+
+
         .web-navbar .navbar-brand {
             font-weight: 700;
-            font-size: 1.5rem; 
-            color: #000000;    
+            font-size: 1.5rem;
+            color: #000000;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            
-            
+
+
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -50,22 +51,22 @@
             align-items: center;
             gap: 8px;
             transition: color 0.2s;
-            z-index: 10; 
-            position: relative; 
+            z-index: 10;
+            position: relative;
         }
 
         .back-link:hover {
             color: #00aeb6;
         }
 
-        
+
         .main-container {
             max-width: 960px;
             margin: 0 auto;
             padding-bottom: 50px;
         }
 
-        
+
         .section-title {
             font-weight: 700;
             margin: 30px 0 15px 0;
@@ -74,7 +75,7 @@
             text-transform: capitalize;
         }
 
-        
+
         .custom-card {
             background: white;
             border-radius: 12px;
@@ -95,17 +96,17 @@
             border-color: #00aeb6;
         }
 
-        
+
         .news-img {
-            width: 70px;  
-            height: 70px; 
+            width: 70px;
+            height: 70px;
             border-radius: 8px;
             object-fit: cover;
             margin-right: 15px;
             flex-shrink: 0;
         }
 
-        
+
         .card-content {
             flex: 1;
             display: flex;
@@ -121,7 +122,7 @@
             margin-bottom: 4px;
         }
 
-        
+
         .item-excerpt {
             font-size: 0.85rem;
             color: #6c757d;
@@ -134,19 +135,19 @@
 
         /* --- UPDATED SEE ALL STYLE --- */
         .see-all {
-            display: inline-flex; 
+            display: inline-flex;
             align-items: center;
-            gap: 5px; 
+            gap: 5px;
             margin-top: 5px;
             font-size: 0.9rem;
-            color: #000000; 
+            color: #000000;
             text-decoration: none;
             font-weight: 600;
             transition: 0.2s;
         }
-        
+
         .see-all:hover {
-            color: #333; 
+            color: #333;
             text-decoration: none;
         }
 
@@ -155,28 +156,23 @@
 
 <body>
 
-    <nav class="web-navbar">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a href="{{ url('/homepage') }}" class="back-link">
-                <i class="bi bi-arrow-left fs-4"></i>
-            </a>
-            
-            <span class="navbar-brand">Artikel</span>
-            
-            <div style="width: 80px;"></div>
-        </div>
-    </nav>
+    {{-- Revised by 5026231088 Tsanita Shafa Hadinanda --}}
+  <x-templatenavbar
+        title="Artikel"
+        backUrl="{{ url('/homepage') }}"
+    />
+  {{-- End Revised by 5026231088 Tsanita Shafa Hadinanda --}}
 
     <div class="container main-container">
-        
+
         <h6 class="section-title">News</h6>
-        
+
         <div class="row">
             <div class="col-12">
                 @forelse($news as $item)
                     <a href="{{ route('berita.detail', ['id' => $item->beritaid]) }}" class="custom-card">
-                        <img src="{{ asset('/img/artikel.png') }}" class="news-img" alt="news">
-                        
+                        <img src="{{ asset('/assets/img/artikel.png') }}" class="news-img" alt="news">
+
                         <div class="card-content">
                             <div class="item-title">{{ $item->judul }}</div>
                         </div>
@@ -194,16 +190,16 @@
         </div>
 
         <h6 class="section-title mt-2">Bantuan</h6>
-        
+
         <div class="row">
             <div class="col-12">
                 @forelse($bantuan as $item)
                     <a href="{{ route('bantuan.detail', ['id' => $item->bantuanid]) }}" class="custom-card justify-content-between">
-                        
+
                         <div class="d-flex align-items-center">
                             <div class="item-title mb-0">{{ $item->judul }}</div>
                         </div>
-                        
+
                     </a>
                 @empty
                     <div class="alert alert-light text-center py-3 border small">Belum ada bantuan tersedia.</div>

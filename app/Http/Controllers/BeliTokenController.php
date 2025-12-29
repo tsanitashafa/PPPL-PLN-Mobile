@@ -11,7 +11,7 @@ class BeliTokenController extends Controller
      * Generate token 16 digit (depan bukan 0),
      * simpan ke tabel belitoken, lalu return token-nya.
      */
-    public function generateNoToken(int $jumlahBayar, int $penggunaId): string
+    public function generateNoToken(int $jumlahBayar, int $pelangganId): string
     {
         // generate 16 digit, digit pertama 1–9
         $token = (string) random_int(1, 9);
@@ -26,7 +26,7 @@ class BeliTokenController extends Controller
             'status'          => 'Berhasil',        // atau 'Sukses' seperti di screenshot-mu
             'tgltransaksi'    => Carbon::now(),
             'generatenotoken' => $token,
-            'pelangganid'     => $penggunaId,
+            'pelangganid'     => $pelangganId,
         ]);
 
         return $token;

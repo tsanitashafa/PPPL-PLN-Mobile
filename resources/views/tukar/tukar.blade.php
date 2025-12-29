@@ -8,13 +8,14 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
   <link href="{{ asset('css/reward.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <x-templatenavbar
-        title="Tukar Poin"
-        backUrl="{{ url('/reward') }}"
+        title="Tukar"
+        backUrl="{{  url()->previous() }}"
     />
 
     @foreach($tukarItems as $t)
@@ -25,7 +26,7 @@
                 {{-- kiri: gambar + teks --}}
                 <div class="d-flex align-items-center">
                     <div class="thumb">
-                        <img src="{{ asset('img/tukarpoin.png') }}" class="img-fluid">
+                        <img src="{{ asset('assets/img/tukarpoin.png') }}" class="img-fluid">
                     </div>
 
                     <div class="ms-3">
@@ -48,8 +49,6 @@
     @endforeach
 
 </div>
-
-@include('components/template')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

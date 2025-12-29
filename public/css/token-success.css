@@ -1,36 +1,69 @@
-/* {{--5026231148 Tiara Aulia Azadirachta Indica --}} */
+/* {{--502623088 Tsanita Shafa Hadinanda --}} */
+
+html, body {
+  height: 100%;
+}
 
 body {
-    background-color: #ffffff;
+  margin: 0;
+  background-color: #ffffff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* Circle kuning persis Figma */
-.success-circle {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background-color: #F4E63A; /* warna kuning Figma */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 25px auto;
-    font-size: 60px;
-    color: white;
-    font-weight: bold;
+/* 1 layar penuh */
+.success-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 20px;
 }
 
-/* Tombol style Figma */
+/* konten atas (logo + teks) */
+.success-content {
+  margin-top: 16vh; /* atur naik/turun biar mirip figma */
+}
+
+.success-icon {
+  width: 150px; /* logo lebih besar */
+  height: auto;
+  display: block;
+  margin: 0 auto 18px;
+}
+
+.success-title {
+  margin: 0 0 6px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #1f2937;
+}
+
+.success-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* tombol panjang dan di bawah */
 .btn-figma {
-    background-color: #0AA3BB;
-    color: white;
-    border: none;
-    border-radius: 22px;
-    padding: 14px;
-    font-size: 18px;
-    width: 100%;
-    box-shadow: 0px 3px 6px rgba(0,0,0,0.15);
+  margin-top: auto;     /* dorong tombol ke bawah */
+  margin-bottom: 64px;  /* jarak dari bawah */
+
+  width: min(380px, 90vw); /* panjang seperti figma */
+  height: 48px;
+
+  background-color: #0AA3BB;
+  color: white;
+  border: none;
+  border-radius: 999px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.12);
 }
 
 .btn-figma:hover {
-    opacity: 0.9;
+  opacity: 0.92;
 }

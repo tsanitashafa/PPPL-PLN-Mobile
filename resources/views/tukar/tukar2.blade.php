@@ -8,6 +8,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
   <link href="{{ asset('css/info.css') }}" rel="stylesheet">
 </head>
 
@@ -15,16 +16,14 @@
 
 <div class="container container-app px-3">
 
-    <div class="app-bar position-relative mb-3">
-        <a href="{{ url()->previous() }}" class="back-btn text-dark position-absolute start-0">
-            <i class="bi bi-arrow-left fs-4"></i>
-        </a>
-        <h5 class="app-title text-center m-0">Tukar</h5>
-    </div>
+    <x-templatenavbar
+        title="Tukar"
+        backUrl="{{  url()->previous() }}"
+    />
 
     {{-- banner promo --}}
     <div class="ratio ratio-16x9 mb-3">
-        <img src="{{ asset('img/tukarpoin.png') }}"
+        <img src="{{ asset('assets/img/tukarpoin.png') }}"
              alt="Banner Tukar"
              class="rounded-3 w-100 h-100"
              style="object-fit: cover;">

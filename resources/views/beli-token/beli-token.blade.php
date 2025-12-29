@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beli Token</title>
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -26,9 +27,7 @@
 <body>
 
     <!-- Header Template -->
-    <x-nav-top title="Beli Token" backUrl="{{ url('/homepage') }}" />
-
-
+    <x-templatenavbar title="Beli Token" backUrl="{{ url()->previous() }}" />
 
     <div class="container" style="padding-bottom: 10px;">
         <div class="mt-3">

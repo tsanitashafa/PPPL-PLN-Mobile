@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cek Token</title>
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
    <!-- CSS dipisah -->
@@ -13,7 +14,7 @@
 <body>
 
 <!-- Header Template -->
-    <x-templatenavbar 
+    <x-templatenavbar
         title="Cek Token"
         backUrl="{{ url('/homepage') }}"
     />
@@ -139,7 +140,7 @@
 
     <!-- CARBON TRACKING CARD -->
     <div class="carbon-card d-flex align-items-center">
-        <img src="{{ asset('images/carbon.png') }}" width="55" class="me-3">
+        <img src="{{ asset('assets/img/carbon.png') }}" width="55" class="me-3">
         <div>
             <h6 class="fw-bold mb-1">Traking Karbon</h6>
             <p class="text-muted mb-0">Perkiraan emisi karbon <b>17kg CO2</b></p>

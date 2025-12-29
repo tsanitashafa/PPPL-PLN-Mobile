@@ -8,6 +8,7 @@
     <title>Tukar Gagal</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link href="{{ asset('css/info.css') }}" rel="stylesheet">
 </head>
 
@@ -15,7 +16,7 @@
 
 <div class="container text-center" style="margin-top: 25vh;">
 
-    <img src="{{ asset('img/warning.png') }}"
+    <img src="{{ asset('assets/img/warning.png') }}"
          alt=""S
          width="150"
          style="margin-bottom: 25px;">

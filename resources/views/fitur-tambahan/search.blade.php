@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLN Mobile - Jelajahi Layanan</title>
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -48,7 +49,7 @@
             <div class="col text-center mb-4">
                 <a href="{{ route('masukkan-token') }}" class="menu-link text-decoration-none">
                     <div class="icon-card">
-                        <img src="/images/masukkan-token.png" alt="Masukkan Token">
+                        <img src="/assets/img/masukkan-token.png" alt="Masukkan Token">
                     </div>
                     <p class="menu-label">Masukkan Token</p>
                 </a>
@@ -57,7 +58,7 @@
             <div class="col text-center mb-4">
                 <a href="{{ route('cek-token') }}" class="menu-link text-decoration-none">
                     <div class="icon-card">
-                        <img src="/images/cek-token.png" alt="Cek Token">
+                        <img src="/assets/img/cek-token.png" alt="Cek Token">
                     </div>
                     <p class="menu-label">Cek Token</p>
                 </a>

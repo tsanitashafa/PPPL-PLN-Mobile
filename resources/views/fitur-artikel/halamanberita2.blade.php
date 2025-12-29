@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        
+
         body {
             background-color: #f8f9fa;
             margin: 0;
@@ -18,16 +18,16 @@
             min-height: 100vh;
         }
 
-        
+
         .web-navbar {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 15px 0;
             margin-bottom: 30px;
         }
-        
-        
-        
+
+
+
         .back-link {
             text-decoration: none;
             color: #212529;
@@ -42,39 +42,41 @@
             color: #00aeb6;
         }
 
-        
+
         .main-container {
             max-width: 960px;
             margin: 0 auto;
             padding-bottom: 50px;
         }
 
-        
+
         .content-card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            overflow: hidden; 
+            overflow: hidden;
             border: 1px solid #e9ecef;
         }
 
-        
-        .hero-image-container {
+
+        .hero-image-container{
             width: 100%;
-            height: 400px; 
-            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border-radius: 12px;
         }
 
-        .hero-image {
+        .hero-image{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
-        
+
         .info-card {
             background-color: #e3f6f7;
-            margin: -60px 40px 0 40px; 
+            margin: -60px 40px 0 40px;
             border-radius: 12px;
             padding: 25px 30px;
             position: relative;
@@ -103,7 +105,7 @@
             font-weight: 500;
         }
 
-        
+
         .article-body {
             padding: 40px 40px 60px 40px;
             font-size: 1.1rem;
@@ -115,23 +117,19 @@
     </style>
 </head>
 <body>
-
-    <nav class="web-navbar">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a href="{{ route('berita') }}" class="back-link">
-                <i class="bi bi-arrow-left fs-4"></i>
-            </a>
-            
-            <div style="width: 80px;"></div>
-        </div>
-    </nav>
+    {{-- Revised by 5026231088 Tsanita Shafa Hadinanda --}}
+  <x-templatenavbar
+        title=""
+        backUrl="{{ url()->previous() }}"
+    />
 
     <div class="container main-container">
-        
+
         <div class="content-card">
             <div class="hero-image-container">
-                <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" class="hero-image" alt="Berita PLN">
+                <img src="{{ asset('assets/img/artikel.png') }}" class="hero-image" alt="Berita PLN">
             </div>
+        {{-- End Revised by 5026231088 Tsanita Shafa Hadinanda --}}
 
             <div class="info-card">
                 <h1 class="news-title">{{ $newsItem->judul }}</h1>

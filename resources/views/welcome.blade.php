@@ -7,6 +7,7 @@
   <title>PLN Mobile - Welcome</title>
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
   <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 </head>
 <body>

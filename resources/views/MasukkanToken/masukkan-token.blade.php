@@ -7,6 +7,7 @@
     <title>Masukkan Token</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <!-- CSS dipisah -->
     <link rel="stylesheet" href="{{ asset('css/masukkan-token.css') }}">
 </head>
@@ -16,7 +17,7 @@
 <div class="container py-4">
 
     <!-- Header Template -->
-    <x-templatenavbar 
+    <x-templatenavbar
         title="Masukkan Token"
         backUrl="{{ url('/homepage') }}"
     />
@@ -24,7 +25,7 @@
     <!-- Icon + Title -->
     <div class="text-center mb-3">
         <div class="icon-circle mb-3">
-            <img src="/images/Ellipse6.png" width="70">
+            <img src="/assets/img/Ellipse6.png" width="70">
         </div>
 
         <h5 class="fw-bold">Punya token listrik?</h5>

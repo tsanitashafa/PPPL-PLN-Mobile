@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pembayaran</title>
+    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" sizes="any">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
@@ -29,14 +30,8 @@
 </head>
 
 <body>
-
-
-    <x-nav-top title="Pembayaran" backUrl="{{ url('/beli-token') }}" />
+    <x-templatenavbar title="Pembayaran" backUrl="{{ url('/beli-token') }}" />
     <div class="container pb-5 " data-spy="scroll">
-
-
-
-
 
         <div class="text-center mb-4 card p-4 mt-2"
             style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">

@@ -80,7 +80,7 @@ class ProfileController extends Controller
             }
 
             $imageName = time() . '_' . $user->penggunaid . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('storage/profile_images');
+            $destinationPath = public_path('storage/profile_assets/img');
 
             // Ensure directory exists
             if (!file_exists($destinationPath)) {
@@ -90,7 +90,7 @@ class ProfileController extends Controller
             // Move the file
             if ($image->move($destinationPath, $imageName)) {
                 // Save to photourl column (Laravel will use the mutator)
-                $user->photourl = 'storage/profile_images/' . $imageName;
+                $user->photourl = 'storage/profile_assets/img/' . $imageName;
             }
         }
 

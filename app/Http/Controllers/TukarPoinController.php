@@ -69,9 +69,18 @@ class TukarPoinController extends Controller
 
         // 3. generate & simpan token ke belitoken (SATU fungsi)
         $beliTokenCtrl = app(BeliTokenController::class);
+        $pelangganId = DB::table('pelanggan')
+            ->where('penggunaid', (int) $user->penggunaid)
+            ->orderByDesc('pelangganid')   // ambil yang terbaru (id terbesar)
+            ->value('pelangganid');
+
+        if (!$pelangganId) {
+            return back()->withErrors('Pelanggan untuk pengguna ini belum ada.');
+        }
+
         $kodeToken = $beliTokenCtrl->generateNoToken(
-            (int) $tukar->nilai,        // jumlahbayar
-            (int) $user->penggunaid     // pelangganid
+            (int) $tukar->nilai,
+            (int) $pelangganId
         );
 
         // 4. simpan token juga ke tukarpoin

@@ -10,8 +10,6 @@ use App\Http\Controllers\TukarPoinController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\BantuanController;
-// coba cek masuk gak ya ini from my branch yok bisa dah ngantuk
-//
 
 // //Route pengerjaan manzil
 // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
@@ -30,27 +28,15 @@ Route::get('transaksi-gagal', function () {
     return view('bayar-token/transaksi-gagal');
 });
 
-
-
 //beli token
 Route::get('beli-token', function () {
     return view('beli-token/beli-token');
 })->name('beli-token');
 
-
 //fitur tambahan
-
-
 Route::get('edit-profil-2', function () {
     return view('fitur-tambahan/edit-profile-2');
 });
-
-// Tambahkan ->name('search') di akhir
-// Route::get('search', function () {
-//     return view('fitur-tambahan/search');
-// })->name('search');
-
-// --- HAPUS SEMUA ROUTE EDIT-PROFILE YANG LAMA DAN GANTI DENGAN INI ---
 
 // Kelompokkan agar rapi
 Route::group(['prefix' => 'fitur-tambahan'], function () {
@@ -67,20 +53,16 @@ Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('prof
 // Consolidated update routes and made them RESTful-ish
 Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-
 // Hubungkan e wallete
 //halaman utama masuk
 Route::get('gopay', function () {
     return view('hubungkan-ewallet/gopay');
 });
-
 Route::get('shopePay', function () {
     return view('hubungkan-ewallet/shopeePay');
 });
 
-
 // halaman kedua
-
 Route::get('hubungkan-gopay', function () {
     return view('hubungkan-ewallet/hubungkan-gopay');
 });
@@ -88,10 +70,7 @@ Route::get('hubungkan-shopepay', function () {
     return view('hubungkan-ewallet/hubungkan-shopepay');
 });
 
-
-
 //verifikasi halaman
-
 Route::get('verifikasi-gopay', function () {
     return view('hubungkan-ewallet/verifikasi-gopay');
 });
@@ -114,15 +93,9 @@ Route::get('menyambungkan-gagal', function () {
     return view('hubungkan-ewallet/menyambungkan-gagal');
 });
 
-
 //homepage
 Route::get('/', function () {
     return view('welcome');
-});
-
-//template
-Route::get('/template', function () {
-    return view('template'); // Ambil dari nama file template.blade.php
 });
 
 Route::get('/', function () {
@@ -135,9 +108,6 @@ Route::get('menyambungkan-berhasil', function () {
 Route::get('menyambungkan-berhasil', function () {
     return view('hubungkan-ewallet/menyambungkan-gagal');
 });
-
-
-
 
 // mengambil data pelanggan beli token
 Route::get('/pelanggan/detail/{nomorMeter}', [PelangganController::class, 'detailPelanggan']);
@@ -155,12 +125,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('homepage', [PenggunaController::class, 'ambilDataPengguna'])->name('homepage');
-
-
-// Route::get('edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
-// Route::get('edit-profil-2', [ProfileController::class, 'editProfile2'])->name('edit-profil-2');
-
-
 Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update-profile');
 Route::post('/toggle-notification', [PenggunaController::class, 'toggleNotification'])->name('toggle-notification');
 
@@ -190,12 +154,8 @@ Route::post('/registuser', [PenggunaController::class, 'savePengguna'])->name('s
 Route::post('/set-total-pembayaran', [PelangganController::class, 'setTotalPembayaran'])
     ->name('set.total.pembayaran');
 
-
-
 Route::get('pembayaran', [PelangganController::class, 'pembayaran'])
     ->name('pembayaran');
-
-
 
 //mengarahkan yg bayar itu transaksinya berhasil atau nggak
 // Route yang menggunakan controller
@@ -235,13 +195,12 @@ Route::get('/transaksi-berhasil', [PelangganController::class, 'transaksiBerhasi
 Route::post('/cari-pelanggan', [TokenController::class, 'getPelanggan'])
     ->name('cari-pelanggan');
 
-
 Route::get('/notif', [PenggunaController::class, 'notif'])->name('notif');
 
 Route::get('/notif', [PenggunaController::class, 'notif'])->name('notif');
 Route::post('/logout', [PenggunaController::class, 'logout'])->name('logout');
 
-//route dari shafa
+// {{-- 5026231088 Tsanita Shafa Hadinanda --}}
 Route::get('/reward', [VoucherController::class, 'loadReward']);
 Route::get('/voucher', [VoucherController::class, 'loadVoucher'])->name('voucher/voucher');
 Route::get('/infovoucher/{id}', [VoucherController::class, 'loadInfoVoucher'])->name('voucher/infovoucher');
@@ -288,9 +247,6 @@ Route::get('/berita', [NewsController::class, 'berita'])->name('berita');
 
 Route::get('/berita/{id}', [NewsController::class, 'beritaDetail'])->name('berita.detail');
 
-
 Route::get('/bantuan', [BantuanController::class, 'bantuan'])->name('bantuan');
 
 Route::get('/bantuan/{id}', [BantuanController::class, 'bantuanDetail'])->name('bantuan.detail');
-
-// ... (Route lainnya)
