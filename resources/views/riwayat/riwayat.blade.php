@@ -12,15 +12,10 @@
 </head>
 
 <body>
-
-<div class="container container-app px-3">
-
-    <div class="app-bar position-relative mb-3">
-        <a href="{{ url()->previous() }}" class="back-btn text-dark position-absolute start-0">
-            <i class="bi bi-arrow-left fs-4"></i>
-        </a>
-        <h5 class="app-title text-center m-0">Riwayat Poin</h5>
-    </div>
+    <x-templatenavbar
+        title="Riwayat Poin"
+        backUrl="{{ url('/reward') }}"
+    />
 
     {{-- Loop Bulan --}}
     @foreach ($grouped as $month => $items)
@@ -53,8 +48,6 @@
         @endforeach
 
     @endforeach
-
-</div>
 
 @include('components/template')
 

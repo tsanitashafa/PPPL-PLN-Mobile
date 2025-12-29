@@ -11,15 +11,10 @@
   <link href="{{ asset('css/reward.css') }}" rel="stylesheet">
 </head>
 <body>
-
-<div class="container container-app px-3">
-
-    <div class="app-bar position-relative mb-2">
-        <a href="{{ url('reward') }}" class="back-btn text-dark position-absolute start-0">
-            <i class="bi bi-arrow-left fs-4"></i>
-        </a>
-        <h5 class="app-title text-center m-0">Voucher</h5>
-    </div>
+    <x-templatenavbar
+        title="Voucher"
+        backUrl="{{ url('/reward') }}"
+    />
 
     <div class="tab-content">
         <div class="tab-pane fade show active" id="tab-voucher" role="tabpanel">
@@ -45,7 +40,6 @@
             <div style="height: 24px;"></div>
         </div>
     </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
