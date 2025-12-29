@@ -217,7 +217,7 @@ class PenggunaController extends Controller
         ));
     }
 
-    // signup, login, and notif by mirza
+    // signup, login, and notif by Mirza Fathi Taufiqurrahman 5026231105
 
     // Controller pengguna(fitur signup+login+notification settings) by Mirza Fathi Taufiqurrahman 5026231105
     public function welcome()
@@ -227,6 +227,8 @@ class PenggunaController extends Controller
 
     public function showRegisterPhone()
     {
+        // Clear any existing authenticated session to prevent login conflicts
+        Session::forget('authenticated_user_id');
         return view('SignUp.registerphone');
     }
 
@@ -237,10 +239,14 @@ class PenggunaController extends Controller
             'phone' => 'required|numeric'
         ]);
 
-        // Simpan sementara ke session (bisa ke DB juga)
-        Session::put('phone', '+62' . $request->phone);
+        $phone = '+62' . $request->phone;
 
-        return redirect()->route('verifyphone');
+    if (Pengguna::where('phone', $phone)->exists()) {
+        return back()->with('error', 'Nomor HP sudah terdaftar, silakan login.');
+    }
+
+    Session::put('phone', $phone);
+    return redirect()->route('verifyphone');
     }
 
     public function showVerifyEmail()
@@ -345,6 +351,12 @@ class PenggunaController extends Controller
         if ($user) {
             $user->pin = $request->pin;
             $user->save();
+
+            // Set authenticated_user_id for the new user
+            Session::put('authenticated_user_id', $user->penggunaid);
+
+            // Clear temporary registration sessions
+            Session::forget(['user_id', 'phone', 'email']);
         }
 
         return redirect()->route('homepage')->with('success', 'Registrasi Berhasil!');
@@ -424,7 +436,7 @@ class PenggunaController extends Controller
     }
     public function ambilDataPengguna()
     {
-        // 🔴 TAMBAHKAN INI, ini buat bagian cek token Tiara Aulia | 148
+        // TAMBAHKAN INI, ini buat bagian cek token Tiara Aulia | 148
         session()->forget('pelanggan_aktif');
 
         // ambil user authenticated dari session | Mirza Fathi | 105

@@ -17,7 +17,11 @@
     />
   {{-- End Revised by 5026231088 Tsanita Shafa Hadinanda --}}
     <h1>Masukkan nomor handphone Anda</h1>
-
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
     <form action="{{ route('registerphone') }}" method="POST">
       @csrf
       <div class="d-flex gap-2">
