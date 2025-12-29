@@ -132,11 +132,11 @@ pln-mobile-app/
 > **Catatan:**
 Fokus utama pengembangan aplikasi ini berada pada:
 
-**app/Http/Controllers** → logika dan alur data
+* **app/Http/Controllers** → logika dan alur data
 
-**resources/views** → tampilan antarmuka pengguna
+* **resources/views** → tampilan antarmuka pengguna
 
-**routes/web.php** → penghubung antara UI dan backend
+* **routes/web.php** → penghubung antara UI dan backend
 
 ---
 
