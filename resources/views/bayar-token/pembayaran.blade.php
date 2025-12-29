@@ -39,11 +39,16 @@
             <h2 class="h5 mb-0 nunito-sans-semibold">
                 <span class="poppins-regular">
                     @php
-                        // Ambil nilai 'total' dari query string
-                        $total = request('total') ?? 0;
+                        // ambil data dari request yang dikirm controller
+                        $nominal_beli = request('nominal') ?? 0; // Nominal token
+                        $total_setelah_diskon = request('total') ?? 0; // Total setelah
+                        $biayaLayanan = 1500;
+
+                        //hitung total akhir yang bener
+                        $totalDisplay = $total_setelah_diskon + $biayaLayanan;
                     @endphp
 
-                    <span class="poppins-regular">Rp {{ number_format($total, 0, ',', '.') }}</span>
+                    <span class="poppins-regular">Rp {{ number_format($totalDisplay, 0, ',', '.') }}</span>
                 </span>
 
             </h2>

@@ -35,15 +35,6 @@
         <p class="font-weight-bold text-success mb-5">+{{ session('poin', 0) }} poin</p>
     </div>
 
-    {{-- <div class="container button-container text-center d-flex flex-column justify-content-center align-items-center">
-        <button class="btn btn-block back-button"
-         onclick="window.history.back()">
-            Kembali
-        </button>
-    </div> --}}
-
-
-
     <div
         class="container button-container
     text-center d-flex flex-column justify-content-center align-items-center">
@@ -51,8 +42,6 @@
             Kembali
         </x-button>
     </div>
-
-
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -45,11 +45,15 @@ class PelangganController extends Controller
 
     public function pembayaran(Request $request)
     {
+
         // Ambil total dari session
         // Data diambil dari query string/request dari beli-token.blade.php
         $total = $request->input('total') ?? session('total_pembayaran', 0);
+        $nominal = $request->input('nominal') ?? 0;
+        $meter = $request->input('meter') ?? '';
+        $voucher = $request->input('voucher') ?? 0;
 
-        return view('bayar-token/pembayaran', compact('total'));
+        return view('bayar-token/pembayaran', compact('total', 'nominal', 'meter', 'voucher'));
     }
 
 
@@ -57,18 +61,27 @@ class PelangganController extends Controller
 
 
     // --5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH
-
     //flow pembayaran 2
     public function bayarToken(Request $request)
     {
         // 1. Ambil Data Input
         $meter = trim($request->meter);
+        // Jika data dikirim lewat hidden input, pastikan namanya sesuai
         $nominal = (int) $request->nominal;
-        $persentaseVoucher = (int) ($request->voucher ?? 0);
+
+        // Ambil data voucher dari SESSION
+        $rewardId = session('selected_voucher_id');
+        $voucherValue = (int) session('selected_voucher_value', 0);
 
         // 2. Hitung Logika Biaya
-        $potongan = ($persentaseVoucher / 100) * $nominal;
-        $totalSetelahDiskon = $nominal - $potongan;
+        if ($voucherValue > 100) {
+            $potongan = $voucherValue;
+        } else {
+            $persen = (int) ($request->voucher ?? 0);
+            $potongan = ($persen / 100) * $nominal;
+        }
+
+        $totalSetelahDiskon = max(0, $nominal - $potongan);
         $biayaLayanan = 1500;
         $totalAkhir = $totalSetelahDiskon + $biayaLayanan;
 
@@ -76,13 +89,11 @@ class PelangganController extends Controller
         $pelanggan = Pelanggan::where('nomormeter', $meter)->first();
 
         if (!$pelanggan) {
-
             return $this->transaksiGagal('Pelanggan tidak ditemukan.');
         }
         if ($pelanggan->saldo < $totalAkhir) {
             return $this->transaksiGagal('Saldo tidak mencukupi.');
         }
-
 
         // 4. Eksekusi Pengurangan Saldo
         $pelanggan->saldo -= $totalAkhir;
@@ -91,28 +102,30 @@ class PelangganController extends Controller
         // 5. Update Poin Pengguna
         $pengguna = Pengguna::find($pelanggan->penggunaid);
         if ($pengguna) {
-            $pengguna->poin += 10; // Tambah 10 poin
+            $pengguna->poin += 10;
             $pengguna->save();
         }
 
-        // 6. GENERATE TOKEN (Memanggil fungsi terpisah)
+        // 6. GENERATE TOKEN (Simpan ke variabel agar konsisten)
         $tokenDihasilkan = $this->generateToken(16);
 
         // 7. SIMPAN KE TABEL 'belitoken'
-
         BeliToken::create([
             'jumlahbayar' => $totalAkhir,
-            'voucher' => $persentaseVoucher > 0 ? 1 : 0,
+            'voucher' => ($potongan > 0) ? 1 : 0,
             'status' => 'Berhasil',
             'tgltransaksi' => now(),
-            'generatenotoken' => $tokenDihasilkan,
+            'generatenotoken' => $tokenDihasilkan, // Gunakan variabel yang sama
             'pelangganid' => $pelanggan->pelangganid,
             'metodeid' => $request->metodeid ?? 1,
-            'rewardid' => null,
+            'rewardid' => $rewardId,
             'is_used' => 0
         ]);
 
-        // 8. Redirect ke halaman berhasil dengan Session Flash
+        // Hapus session voucher
+        session()->forget(['selected_voucher_id', 'selected_voucher_name', 'selected_voucher_value']);
+
+        // 8. Redirect dengan data konsisten
         return redirect()->route('transaksi.berhasil')->with([
             'token' => $tokenDihasilkan,
             'poin' => 10,
@@ -122,7 +135,6 @@ class PelangganController extends Controller
             'total_bayar' => $totalAkhir
         ]);
     }
-
     private function transaksiGagal($pesan)
     {
         return view('bayar-token.transaksi-gagal', ['pesan' => $pesan]);
