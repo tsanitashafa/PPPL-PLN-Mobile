@@ -26,7 +26,17 @@
       <div>
         <div class="section-title">Hari Ini</div>
 
-        @if($lowToken || $recentPurchase)
+        @if($zeroToken || $lowToken || $recentPurchase)
+        @if($zeroToken)
+        <div class="notif-card">
+          <div class="notif-icon"><i class="bi bi-exclamation-triangle"></i></div>
+          <div class="notif-text">
+            <span class="notif-title">Token anda hampir habis, Segera lakukan isi ulang</span>
+            <span class="notif-time">{{ now()->format('H.i') }} AM</span>
+          </div>
+        </div>
+        @endif
+
         @if($lowToken)
         <div class="notif-card">
           <div class="notif-icon"><i class="bi bi-exclamation-triangle"></i></div>
@@ -41,7 +51,7 @@
         <div class="notif-card">
           <div class="notif-icon"><i class="bi bi-check-circle"></i></div>
           <div class="notif-text">
-            <span class="notif-title">Token terisi</span>
+            <span class="notif-title">Anda baru saja membeli token</span>
             <span class="notif-time">{{ now()->format('H.i') }} AM</span>
           </div>
         </div>
@@ -53,6 +63,15 @@
           </div>
         </div>
         @endif
+      </div>
+      @else
+      <div class="text-center mt-5">
+        <div class="mb-4">
+          <i class="bi bi-bell-slash" style="font-size: 4rem; color: #6c757d;"></i>
+        </div>
+        <h4 class="text-muted mb-3">Notifications are currently off</h4>
+        <p class="text-muted mb-4">Please enable notifications in your profile settings to receive updates.</p>
+        <a href="{{ route('edit-profile-1') }}" class="btn btn-primary">Go to Profile Settings</a>
       </div>
       @endif
   </div>

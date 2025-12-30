@@ -38,7 +38,7 @@
     <div
         class="container button-container
     text-center d-flex flex-column justify-content-center align-items-center">
-        <x-button variant="back-button" href="{{ url('/beli-token') }}">
+        <x-button variant="back-button" href="{{ route('homepage') }}">
             Kembali
         </x-button>
     </div>

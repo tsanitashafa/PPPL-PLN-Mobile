@@ -113,7 +113,7 @@
                             <div class="col-6">
                                 <p class="text-muted small mb-1">Token Listrik</p>
                                 <div class="d-flex align-items-center">
-                                    <h4 class="m-0 fw-bold">0 kWh</h4>
+                                    <h4 class="m-0 fw-bold">{{ $totalSisaToken }} kWh</h4>
                                     <a href="#" class="text-info ms-2">
                                         <i class="fa-solid fa-circle-plus"></i>
                                     </a>

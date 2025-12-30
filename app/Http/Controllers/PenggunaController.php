@@ -452,7 +452,26 @@ class PenggunaController extends Controller
             return redirect()->route('welcome');
         }
 
-        return view('homepage', compact('user'));
+        // Calculate total remaining token for the user
+        $totalSisaToken = 0;
+        $pelanggans = Pelanggan::where('penggunaid', $userId)->get();
+        if ($pelanggans->isNotEmpty()) {
+            foreach ($pelanggans as $pelanggan) {
+                $tokenTerakhir = DB::table('cektoken')
+                    ->where('pelangganid', $pelanggan->pelangganid)
+                    ->orderBy('tanggal', 'desc')
+                    ->first();
+
+                if ($tokenTerakhir) {
+                    $totalToken = $tokenTerakhir->totalkwh ?? 0;
+                    $tokenTerpakai = $tokenTerakhir->penggunaantoken ?? 0;
+                    $sisaToken = max(0, $totalToken - $tokenTerpakai);
+                    $totalSisaToken += $sisaToken;
+                }
+            }
+        }
+
+        return view('homepage', compact('user', 'totalSisaToken'));
     }
     public function notif()
     {
@@ -469,17 +488,13 @@ class PenggunaController extends Controller
             return redirect()->route('welcome');
         }
 
-        // Check for low token notification
-        $lowToken = false;
+        // Calculate total remaining token for the user (same as homepage)
+        $totalSisaToken = 0;
         $pelanggans = Pelanggan::where('penggunaid', $userId)->get();
         if ($pelanggans->isNotEmpty()) {
-            $pelangganAktif = session()->has('pelanggan_aktif')
-                ? $pelanggans->firstWhere('pelangganid', session('pelanggan_aktif'))
-                : $pelanggans->first();
-
-            if ($pelangganAktif) {
+            foreach ($pelanggans as $pelanggan) {
                 $tokenTerakhir = DB::table('cektoken')
-                    ->where('pelangganid', $pelangganAktif->pelangganid)
+                    ->where('pelangganid', $pelanggan->pelangganid)
                     ->orderBy('tanggal', 'desc')
                     ->first();
 
@@ -487,20 +502,36 @@ class PenggunaController extends Controller
                     $totalToken = $tokenTerakhir->totalkwh ?? 0;
                     $tokenTerpakai = $tokenTerakhir->penggunaantoken ?? 0;
                     $sisaToken = max(0, $totalToken - $tokenTerpakai);
-                    $persentase = $totalToken > 0 ? ($sisaToken / $totalToken) * 100 : 0;
-                    $lowToken = $persentase < 20; // Threshold for low token
+                    $totalSisaToken += $sisaToken;
                 }
             }
         }
 
-        // Check for recent successful purchase notification
-        $recentPurchase = Session::has('recent_purchase') && Session::get('recent_purchase') == true;
-        // Clear the session flag after checking to avoid persistent notifications
-        if ($recentPurchase) {
-            Session::forget('recent_purchase');
+        // Check for low token notification based on total remaining token
+        $lowToken = $totalSisaToken > 0 && $totalSisaToken < 20; // Threshold for low token (less than 20 kWh)
+        $zeroToken = $totalSisaToken == 0; // Check if total token is exactly zero
+
+        // Set session flags for persistence
+        if ($lowToken) {
+            Session::put('low_token_notif', true);
+        } else {
+            Session::forget('low_token_notif');
         }
 
-        return view('fitur-tambahan.notif', compact('user', 'lowToken', 'recentPurchase'));
+        if ($zeroToken) {
+            Session::put('zero_token_notif', true);
+        } else {
+            Session::forget('zero_token_notif');
+        }
+
+        // Get notification flags from session for display
+        $lowToken = Session::get('low_token_notif', false);
+        $zeroToken = Session::get('zero_token_notif', false);
+
+        // Check for recent successful purchase notification
+        $recentPurchase = Session::has('recent_purchase') && Session::get('recent_purchase') == true;
+
+        return view('fitur-tambahan.notif', compact('user', 'lowToken', 'recentPurchase', 'zeroToken'));
     }
 
     public function logout()
