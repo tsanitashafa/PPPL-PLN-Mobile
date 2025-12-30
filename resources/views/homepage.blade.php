@@ -66,8 +66,11 @@
                                     <path
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                                 </svg>
-                                <input type="text" class="form-control rounded-pill pe-2" placeholder="Search"
-                                    style="height: 40px; padding-left: 40px; border: none; background-color: #fff; color: #6c757d; font-size: 0.9rem;">
+                                <form action="{{ route('search') }}" method="GET">
+                                    <input type="text" name="query" class="form-control rounded-pill pe-2" placeholder="Search"
+                                        style="height: 40px; padding-left: 40px; border: none; background-color: #fff; color: #6c757d; font-size: 0.9rem;"
+                                        value="{{ request('query') }}">
+                                </form>
                             </div>
 
                             <a href="{{ route('notif') }}" class="text-white fs-4 ms-2">

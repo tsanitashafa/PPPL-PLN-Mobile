@@ -42,8 +42,24 @@ Route::get('edit-profil-2', function () {
 Route::group(['prefix' => 'fitur-tambahan'], function () {
     Route::get('/edit-profile-1', [ProfileController::class, 'editProfile1'])->name('edit-profile-1');
     Route::get('/edit-profile-2', [ProfileController::class, 'editProfile2'])->name('edit-profile-2');
-    Route::get('/search', function () {
-        return view('fitur-tambahan/search');
+    Route::get('/search', function (Illuminate\Http\Request $request) {
+        $query = $request->query('query');
+
+        // Buat contoh menu yang bisa dicari
+        $menus = [
+            ['name' => 'Beli Token', 'route' => route('beli-token'), 'icon' => 'assets/img/beli-token.svg'],
+            ['name' => 'Masukkan Token', 'route' => route('masukkan-token'), 'icon' => 'assets/img/masukkan-token.png'],
+            ['name' => 'Cek Token', 'route' => route('cek-token'), 'icon' => 'assets/img/cek-token.png'],
+        ];
+
+        // Filter menu sesuai query
+        if ($query) {
+            $menus = array_filter($menus, function ($menu) use ($query) {
+                return stripos($menu['name'], $query) !== false;
+            });
+        }
+
+        return view('fitur-tambahan/search', compact('menus', 'query'));
     })->name('search');
 });
 

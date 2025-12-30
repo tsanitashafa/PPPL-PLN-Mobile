@@ -27,7 +27,7 @@
 <body>
 
     <!-- Header Template -->
-    <x-templatenavbar title="Beli Token" backUrl="{{ url()->previous() }}" />
+    <x-templatenavbar title="Beli Token" backUrl="{{ url('/homepage') }}" />
 
     <div class="container" style="padding-bottom: 10px;">
         <div class="mt-3">

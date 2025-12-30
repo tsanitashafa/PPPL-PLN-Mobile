@@ -107,6 +107,7 @@ class PelangganController extends Controller
         // 7. Tambah poin pengguna
         $pengguna = Pengguna::find($pelanggan->penggunaid);
         if ($pengguna) {
+            $pengguna->saldo -= $totalAkhir;
             $pengguna->poin += 10;
             $pengguna->save();
         }
@@ -128,7 +129,7 @@ class PelangganController extends Controller
             'pelangganid' => $pelanggan->pelangganid,
             'metodeid' => $metodeid,
             'rewardid' => $rewardId,
-            'is_used' => 1
+            'is_used' => 0  // default false, nanti baru true saat token dipakai
         ]);
 
         // 10. HAPUS SESSION REWARD (INI YANG BENAR)

@@ -34,7 +34,7 @@ class TokenController extends Controller
         $totalKwh = $token->jumlahbayar / $hargaPerKwh;
 
         // 3. PERKIRAAN pemakaian awal
-        $pemakaianAwal = 0.3; // kWh (assumption)
+        $pemakaianAwal = 0.0; // kWh (assumption)
 
         // 4. tanggal hari ini
         $tanggal = Carbon::now()->format('Y-m-d');
