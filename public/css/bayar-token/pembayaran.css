@@ -1,139 +1,108 @@
-/* {{-- 5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH  --}} */
+/* {{-- 5026231037 AL-KHIQMAH MANZILATUL MUKAROMAH --}} */
 /* Menggunakan font Poppins atau Inter sebagai default */
 body {
     font-family: 'Poppins', 'Inter', sans-serif;
 }
 
-/* Style untuk card metode pembayaran */
+/* =========================
+   Card Metode Pembayaran
+   ========================= */
 .payment-card {
     border-radius: 15px;
-    /* Sudut membulat pada card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    /* Sedikit shadow */
 }
 
-/* Style untuk setiap item metode pembayaran */
+/* =========================
+   Item Metode Pembayaran
+   ========================= */
 .payment-method-item {
+    display: flex;
+    align-items: center;
     padding: 15px 20px;
     margin-bottom: 10px;
-    background-color: #fff;
     cursor: pointer;
-    border: none;
-    transition: all 0.2s;
-   border-radius: 40px;
+    border-radius: 40px;
+    background-color: #e7f5f9;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-display: flex;
-align-items: center;
-    justify-content: flex-start;
-
+    transition: background-color 0.3s ease;
 }
 
+/* Logo pada metode pembayaran */
 .payment-method-item img {
-    margin-right: 15px; /* Memberi jarak ke kanan pada logo */
-    width: 40px; /* Ukuran logo yang pas */
+    width: 40px;
+    margin-right: 15px;
 }
 
-/* Style khusus untuk PLN Mobile yang terpilih */
+/* Hover hanya untuk item yang BELUM dipilih */
+.payment-method-item:not(.selected):hover {
+    background-color: #16a1ba;
+}
+
+/* Item yang dipilih */
 .payment-method-item.selected {
     background-color: #2a88a0;
-    /* Warna biru sesuai gambar */
-    color: #fff;
-    border-color: #2a88a0;
+    color: #ffffff;
 }
 
-/* Style untuk tombol utama di bawah */
-.btn-pay {
+
+/* Hover dikunci ketika item sudah dipilih */
+.payment-method-item.selected:hover {
     background-color: #2a88a0;
-    border-color: #2a88a0;
-    font-size: 1.1rem;
-    font-weight: 200;
-    border-radius: 12px;
-    padding: 15px 0;
+}
+
+/* =========================
+   Tombol Bayar
+   ========================= */
+.btn-pay {
+    background-color: #4fa3bb;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 14px 0;
+    transition: background-color 0.3s ease;
 }
 
 .btn-pay:hover {
     background-color: #237a91;
-    border-color: #237a91;
 }
 
-/* Style untuk teks "Hubungkan" */
+/* =========================
+   Teks Link "Hubungkan"
+   ========================= */
 .link-text {
     color: #2a88a0;
     font-weight: 300;
     font-size: 0.8rem;
 }
 
-/* Style untuk logo placeholder */
+/* =========================
+   Logo Placeholder
+   ========================= */
 .logo-placeholder {
     width: 30px;
     height: 30px;
     border-radius: 5px;
+    margin-right: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
     font-size: 0.8rem;
     font-weight: bold;
-    color: #fff;
+    color: #ffffff;
 }
 
-/* Warna logo khusus */
-.logo-pln {
-    background-color: #2a88a0;
-}
-
-.logo-qris {
-    background-color: #3f6848;
-}
-
-.logo-gopay {
-    background-color: #00AA13;
-}
-
-.logo-shopeepay {
-    background-color: #ee4d2d;
-}
-
-.logo-bri {
-    background-color: #00529c;
-}
-
-.logo-bca {
-    background-color: #00457c;
-}
-
-/* Styling dasar untuk item agar transisi lebih halus */
-.payment-method-item {
-    cursor: pointer;
-    /* Menandakan elemen dapat diklik */
-    transition: background-color 0.3s ease;
-    /* Transisi untuk perubahan warna */
-    border-radius: 0.25rem;
-    /* Menyesuaikan dengan border-radius div pembungkus */
-    padding: 10px;
-    /* Pastikan padding sudah ada atau tambahkan */
-    background-color: #e7f5f9;
-}
-
-/* Efek hover: mengubah warna latar belakang */
-.payment-method-item:hover {
-    background-color: #16a1ba;
-    /* Warna abu-abu muda saat di-hover */
-}
-
-
- .btn-pay {
-    background-color: #4fa3bb !important;
-    border-radius: 15px !important;
-    font-size: 18px;
-    padding: 14px 0 !important; /* ini yang bikin tombol tinggi */
-    border: none !important;
-}
-
-
+/* =========================
+   Container Tombol Connect
+   ========================= */
 .connect-button-container {
     padding-left: 20px;
     padding-right: 20px;
     margin-bottom: 20px;
 }
-
+/* ITEM TERPILIH (DIKUNCI) */
+.payment-method-item.active,
+.payment-method-item.active:hover {
+    background-color: #2a88a0 !important;
+    color: #ffffff;
+}
