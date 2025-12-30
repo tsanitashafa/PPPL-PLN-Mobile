@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pelanggan; // Import Model Pelanggan
+use Carbon\Carbon;
 
 class TokenController extends Controller
 {
@@ -13,32 +14,47 @@ class TokenController extends Controller
         return view('MasukkanToken.masukkan-token');
     }
 
-      public function verifikasiToken(Request $request) //Tiara Aulia Azadirachta Indica | 5026231148
+    public function verifikasiToken(Request $request)
     {
         $request->validate([
             'nomor_token' => 'required'
         ]);
 
-        // ambil token dari table belitoken
+        // 1. ambil token dari belitoken
         $token = DB::table('belitoken')
-                    ->where('generatenotoken', $request->nomor_token)
-                    ->first();
+            ->where('generatenotoken', $request->nomor_token)
+            ->first();
 
-        if (!$token) {
-            return redirect()->route('gagal')->with('message', 'Token tidak ditemukan.');
+        if (!$token || $token->is_used == true) {
+            return redirect()->route('gagal');
         }
 
-        // token sudah dipakai kalau is_used = true
-        if ($token->is_used) {
-            return redirect()->route('gagal')->with('message', 'Token sudah digunakan.');
-        }
+        // 2. hitung total kWh dari jumlahbayar
+        $hargaPerKwh = 1000;
+        $totalKwh = $token->jumlahbayar / $hargaPerKwh;
 
-        // tandai token sebagai sudah dipakai
+        // 3. PERKIRAAN pemakaian awal
+        $pemakaianAwal = 0.3; // kWh (assumption)
+
+        // 4. tanggal hari ini
+        $tanggal = Carbon::now()->format('Y-m-d');
+
+        // 5. update token jadi terpakai
         DB::table('belitoken')
             ->where('generatenotoken', $request->nomor_token)
-            ->update(['is_used' => true]);
+            ->update([
+                'is_used' => true
+            ]);
 
-        return redirect()->route('selamat')->with('token', $request->nomor_token);
+        // 6. simpan ke cektoken
+        DB::table('cektoken')->insert([
+            'pelangganid'      => $token->pelangganid,
+            'totalkwh'         => $totalKwh,
+            'penggunaantoken'  => $pemakaianAwal,
+            'tanggal'          => $tanggal
+        ]);
+
+        return redirect()->route('selamat');
     }
 
     public function selamat()
